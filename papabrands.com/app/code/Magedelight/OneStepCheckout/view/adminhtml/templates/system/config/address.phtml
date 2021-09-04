@@ -1,0 +1,170 @@
+<?php
+$htmlName = $block->getElement()->getName();
+$fieldArray = $block->makeAddressFieldArray();
+?>
+<div class="md-osc-field-customization-note">
+    <div class="important-notes">
+        <?php echo $block->escapeHtml(__('-> You can not edit some fields (like street address) from the configuration.')) ?>
+        <br/>
+        <?php echo $block->escapeHtml(__('-> Default Configuration for customer objects (liike street address, suffix, prefix, middle name): stores > configuration > customer configuration')) ?>
+    </div>
+    <?php echo $block->escapeHtml(__('Define field names and drag and drop them to required position.')) ?>
+</div>
+<div class="md-osc-field-customization-table">
+    <table class="admin__control-table" data-mage-init='{"mdDraggableFieldArray": {}}'>
+        <thead>
+            <tr>
+                <th></th>
+                <th><?php /* @noEscape */ echo __('Field') ?></th>
+                <th><?php /* @noEscape */ echo __('Label') ?></th>
+                <th><?php /* @noEscape */ echo __('Width') ?></th>
+                <th><?php /* @noEscape */ echo __('Additional Class') ?></th>
+                <th><?php /* @noEscape */ echo __('Required') ?></th>
+                <th><?php /* @noEscape */ echo __('Visible') ?></th>
+                <th><?php /* @noEscape */ echo __('Default Value') ?></th>
+            </tr>
+        </thead>
+        <tbody data-role="row-container">
+            <?php foreach ($fieldArray as $field): ?>
+                <?php
+                $fieldName = $htmlName.'[rows]['.$field['code'].']';
+                ?>
+            <tr>
+                <!--Sort Field Row-->
+                <td class="col-draggable">
+                    <div data-role="draggable-handle"
+                         class="draggable-handle"
+                         title="<?php echo $block->escapeHtml(__('Sort Rows')) ?>">
+                    </div>
+                    <input data-role="sort-order" type="hidden" name="<?php /* @noEscape */ echo $fieldName.'[sort_order]' ?>" value="<?php /* @noEscape */ echo $field['sort_order'] ?>"/>
+                </td>
+                <!--Header Row-->
+                <td class="col-attribute-label">
+                    <label class="item-label <?php if ($field['required']): ?>required-mark<?php endif; ?>" >
+                        <?php /* @noEscape */ echo $field['label'] ?>
+                    </label>
+                </td>
+
+                <td class="col-attributes">
+                    <div class="attribute-item-<?php /* @noEscape */ echo $field['code'] ?>" data-mage-init='{"mdAttributeMetaEdit": {}}'>
+                        <input
+                            id="<?php /* @noEscape */ echo $fieldName.'[label]' ?>"
+                            name="<?php /* @noEscape */ echo $fieldName.'[label]' ?>"
+                            value="<?php /* @noEscape */  echo $field['label'] ?>"
+                            placeholder="<?php /* @noEscape */ echo $field['label'] ?>"
+                            class="input-text required-entry"
+                            type="text"
+                            data-required="<?php if ($field['required']): ?>1<?php else: ?>0<?php endif; ?>"
+                            data-meta-field-name="label"/>
+                    </div>
+                </td>
+                <td class="col-attribute-width <?php if ($field['code'] == 'street' || !$field['visible']): ?>__disabled<?php endif; ?>">
+                    <select
+                        name="<?php /* @noEscape */ echo $fieldName.'[width]' ?>"
+                        id="<?php /* @noEscape */ echo $fieldName.'[width]'?>"
+                        <?php if ($field['code'] == 'street'): ?>disabled="disabled"<?php endif; ?>>
+                        <?php if (!$field['visible']): ?>disabled="disabled"<?php endif; ?>>
+                        <option value="50" <?php if ($field['width'] == '50'):?>selected="selected"<?php endif; ?>>50</option>
+                        <option value="100" <?php if ($field['width'] == '100' || $field['code'] == 'street'): ?>selected="selected"<?php endif; ?>>100</option>
+                    </select>
+                </td>
+                <td class="col-attributes">
+                    <div class="attribute-item-<?php /* @noEscape */ echo $field['code'] ?>">
+                        <input
+                                id="<?php /* @noEscape */ echo $fieldName.'[additional_class]' ?>"
+                                name="<?php /* @noEscape */ echo $fieldName.'[additional_class]' ?>"
+                                value="<?php /* @noEscape */  echo $field['additional_class'] ?>"
+                                placeholder="<?php /* @noEscape */ echo $field['additional_class'] ?>"
+                                class="input-text validate-alphanum-with-spaces"
+                                type="text"
+                                data-meta-field-name="label"/>
+                    </div>
+                </td>
+                <td class="col-attribute-required <?php if ($field['code'] == 'street' || !$field['visible']): ?>__disabled<?php endif; ?>">
+                    <input
+                        type="checkbox"
+                        name="<?php /* @noEscape */ echo $fieldName.'[required]' ?>"
+                        id="<?php /* @noEscape */ echo $fieldName.'[required]' ?>"
+                        <?php if ($field['required'] || $field['code'] == 'street'): ?>checked="checked"<?php endif; ?>
+                        <?php if (!$field['visible'] || $field['code'] == 'street'): ?>disabled="disabled"<?php endif; ?>>
+                </td>
+                <td class="col-attribute-visible <?php if ($field['code'] == 'street'): ?>__disabled<?php endif; ?>">
+                    <input
+                        type="checkbox"
+                        name="<?php /* @noEscape */ echo $fieldName.'[visible]' ?>"
+                        id="<?php /* @noEscape */ echo $fieldName.'[visible]' ?>"
+                        <?php if ($field['visible'] || $field['code'] == 'street'): ?>checked="checked"<?php endif; ?>
+                        <?php if ($field['code'] == 'street'): ?>disabled="disabled"<?php endif; ?>>
+                </td>
+                <td class="col-attribute-default-value <?php if (!$field['visible'] || $field['code'] == 'street'): ?>__disabled<?php endif; ?>">
+                    <?php if ($field['code'] == 'country_id'): ?>
+                    <select
+                            name="<?php /* @noEscape */ echo $fieldName.'[default]' ?>"
+                            id="<?php /* @noEscape */ echo $fieldName.'[default]'?>"
+                            <?php if (!$field['visible']): ?>disabled="disabled"<?php endif; ?>>
+                        <?php
+                            $allCountries = $block->getCountryValue();
+                        foreach ($allCountries as $key => $country): ?>
+                                <option value=<?php echo $country->getValue() ?> <?php if ($field['default'] == $country->getValue()):?>selected="selected"<?php endif; ?>><?php echo $country->getLabel()?></option>
+                            <?php endforeach;
+                        ?>
+                    </select>
+                    <?php elseif ($field['code'] == 'region_id'): ?>
+                        <select
+                                name="<?php /* @noEscape */ echo $fieldName.'[default]' ?>"
+                                id="<?php /* @noEscape */ echo $fieldName.'[default]'?>"
+                                <?php if (!$field['visible']): ?>disabled="disabled"<?php endif; ?>>
+                            <?php
+                            $allCountries = $block->getRegionValue();
+                            foreach ($allCountries as $key => $country): ?>
+                                <option value=<?php echo $country->getValue() ?> <?php if ($field['default'] == $country->getValue()):?>selected="selected"<?php endif; ?>><?php echo $country->getLabel()?></option>
+                            <?php endforeach;
+                            ?>
+                        </select>
+                    <?php else: ?>
+                        <input
+                            type="text"
+                            value="<?php /* @noEscape */  echo $field['default'] ?>"
+                            name="<?php /* @noEscape */ echo $fieldName.'[default]' ?>"
+                            id="<?php /* @noEscape */ echo $fieldName.'[default]' ?>"
+                            <?php if (!$field['visible'] || $field['code'] == 'street'): ?>disabled="disabled"<?php endif; ?>>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
+</div>
+<style>
+    #row_onestepcheckout_shipping_field_shipping_fields_customization > td:not(.value) {display: none;}
+    #row_onestepcheckout_shipping_field_shipping_fields_customization > td.use-default {display: block;}
+    #row_onestepcheckout_shipping_field_shipping_fields_customization >td.value {width: 100%;}
+    #row_onestepcheckout_billing_field_billing_fields_customization > td:not(.value) {display: none;}
+    #row_onestepcheckout_billing_field_billing_fields_customization > td.use-default {display: block;}
+    #row_onestepcheckout_billing_field_billing_fields_customization >td.value {width: 100%;}
+    .md-osc-field-customization-note {margin-bottom: 25px;color: #025eff;font-weight: bold;}
+    .required-mark:before {color: #e22626;content: '*';font-weight: 500;line-height: 2;margin-left: -12px;position: absolute;}
+    .important-notes {color: #000;margin-bottom: 20px;font-weight: normal;}
+</style>
+<script>
+    require(['jquery', 'jquery/ui'], function($){
+        jQuery(document).ready( function() {
+            if(jQuery('#onestepcheckout_shipping_field_shipping_fields_customization_inherit:checkbox:checked').length > 0) {
+                jQuery('#row_onestepcheckout_shipping_field_shipping_fields_customization .md-osc-field-customization-table :input').prop("disabled", true);
+            }
+            if(jQuery('#onestepcheckout_billing_field_billing_fields_customization_inherit:checkbox:checked').length > 0) {
+                jQuery('#row_onestepcheckout_billing_field_billing_fields_customization .md-osc-field-customization-table :input').prop("disabled", true);
+            }
+        });
+        jQuery('#onestepcheckout_shipping_field_shipping_fields_customization_inherit').change(function() {
+            if(!this.checked) {
+                jQuery('#row_onestepcheckout_shipping_field_shipping_fields_customization .md-osc-field-customization-table .__disabled :input').prop("disabled", true);
+            }
+        });
+        jQuery('#onestepcheckout_billing_field_billing_fields_customization_inherit').change(function() {
+            if(!this.checked) {
+                jQuery('#row_onestepcheckout_billing_field_billing_fields_customization .md-osc-field-customization-table .__disabled :input').prop("disabled", true);
+            }
+        });
+    });
+</script>

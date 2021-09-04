@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="maintenancepage_alert_for_admin_email_template" label="Admin Email Template" file="admin_email_template.html" type="html" module="Meetanshi_MaintenancePage" area="frontend"/>
+</config>

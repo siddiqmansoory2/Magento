@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="my_wallet" class="Dolphin\Walletrewardpoints\Ui\Component\Form\WalletFieldset">
+        <settings>
+            <label translate="true">My Wallet</label>
+        </settings>
+        <field name="wallet_credit" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">customer</item>
+                </item>
+            </argument>
+            <settings>
+                <elementTmpl>ui/form/element/text</elementTmpl>
+                <label translate="true">Wallet Credit</label>
+                <imports>
+                    <link name="value">${ $.provider }:data.customer.wallet_credit</link>
+                </imports>
+            </settings>
+        </field>
+        <htmlContent name="add_reward_credit">
+            <block class="Dolphin\Walletrewardpoints\Block\Adminhtml\Edit\Tab\Mywallet" name="mywallet_edit_tab" template="Dolphin_Walletrewardpoints::mywallet.phtml" />
+        </htmlContent>
+        <insertListing name="customer_wallet_transaction_history" component="Magento_Customer/js/form/components/insert-listing">
+            <settings>
+                <dataLinks>
+                    <exports>false</exports>
+                    <imports>true</imports>
+                </dataLinks>
+                <externalProvider>customer_wallet_transaction_history.customer_wallet_transaction_history_data_source</externalProvider>
+                <selectionsProvider>customer_wallet_transaction_history.customer_wallet_transaction_history.customer_address_listing_columns.ids</selectionsProvider>
+                <autoRender>true</autoRender>
+                <dataScope>customer_wallet_transaction_history</dataScope>
+                <ns>customer_wallet_transaction_history</ns>
+                <exports>
+                    <link name="customer_id">${ $.externalProvider }:params.customer_id</link>
+                </exports>
+                <imports>
+                    <link name="customer_id">${ $.provider }:data.customer.entity_id</link>
+                </imports>
+            </settings>
+        </insertListing>
+    </fieldset>
+</form>

@@ -1,0 +1,144 @@
+type Query {
+    GetWalletRewardTransactionalHistory(
+    	currentPage: Int = 1 @doc(description: "Specifies which page of results to return. The default value is 1"),
+        pageSize: Int = 20 @doc(description: "Specifies the maximum number of results to return at once. The default value is 20"),
+    ) : [GetWalletRewardTransactionalHistory] @resolver(class: "Dolphin\\Walletrewardpoints\\Model\\Resolver\\GetTransactionalHistory") @doc(description: "Get all wallet/reward transactional history")
+    GetWalletRewardWithdrawCreditHistory(
+    	currentPage: Int = 1 @doc(description: "Specifies which page of results to return. The default value is 1"),
+        pageSize: Int = 20 @doc(description: "Specifies the maximum number of results to return at once. The default value is 20"),
+    ) : [GetWalletRewardWithdrawCreditHistory] @resolver(class: "Dolphin\\Walletrewardpoints\\Model\\Resolver\\GetWithdrawCreditHistory") @doc(description: "Get all wallet/reward Withdraw Credit history")
+    GetWalletRewardInviteFriendHistory(
+    	currentPage: Int = 1 @doc(description: "Specifies which page of results to return. The default value is 1"),
+        pageSize: Int = 20 @doc(description: "Specifies the maximum number of results to return at once. The default value is 20"),
+    ) : [GetWalletRewardInviteFriendHistory] @resolver(class: "Dolphin\\Walletrewardpoints\\Model\\Resolver\\GetWalletRewardInviteFriendHistory") @doc(description: "Get all wallet/reward Invite Friend history")
+    GetWalletRewardEmailSubscription : GetWalletRewardEmailSubscription @resolver(class: "Dolphin\\Walletrewardpoints\\Model\\Resolver\\GetWalletRewardEmailSubscription") @doc(description: "Get customer wallet/reward EmailSubscription status")
+}
+
+type Mutation {
+	setWalletRewardEmailSubscription (subscription: Boolean!): EmailSubscription @resolver(class: "\\Dolphin\\Walletrewardpoints\\Model\\Resolver\\SetWalletRewardEmailSubscription") @doc(description:"Customer Email subscription")
+	setWalletRewardInviteFriend (firstname: String!, lastname: String!, email: String!, message: String!): WalletRewardOutput @resolver(class: "\\Dolphin\\Walletrewardpoints\\Model\\Resolver\\SetWalletRewardInviteFriend") @doc(description:"Add new invite friends account")
+	sendWalletRewardCreditToFriend (credit: Int!, firstname: String!, lastname: String!, email: String!, message: String!): WalletRewardOutput @resolver(class: "\\Dolphin\\Walletrewardpoints\\Model\\Resolver\\SendWalletRewardCreditToFriend") @doc(description:"Add new invite friends account")
+	walletRewardWithdrawCredit (credit: Int!, email: String!, reason: String!): WalletRewardOutput @resolver(class: "\\Dolphin\\Walletrewardpoints\\Model\\Resolver\\WalletRewardWithdrawCredit") @doc(description:"Wallet Reward Withdraw Credit")
+	walletRewardBuyCredit (credit: Int!): WalletRewardOutput @resolver(class: "\\Dolphin\\Walletrewardpoints\\Model\\Resolver\\WalletRewardBuyCredit") @doc(description:"Wallet Reward Buy Credit")
+	applyWalletCreditToCart(input: ApplyWalletCreditToCartInput): WalletRewardOutput @resolver(class: "\\Dolphin\\Walletrewardpoints\\Model\\Resolver\\ApplyWalletCreditToCart")
+	removeWalletCreditToCart: WalletRewardOutput @resolver(class: "\\Dolphin\\Walletrewardpoints\\Model\\Resolver\\RemoveWalletCreditToCart")
+}
+
+type EmailSubscription {
+    status : String @doc(description: "Wallet Reward Email Subscription Status")
+}
+
+input InviteFriend {
+    firstname: String @doc(description: "The invited friend's first name")
+    lastname: String @doc(description: "The invited friend's last name")
+    email: String @doc(description: "The invited friend's email address.")
+    message: String @doc(description: "The invited friend message")
+}
+
+input ApplyWalletCreditToCartInput {
+    credit	: Int!
+}
+
+type WalletRewardOutput {
+	status : String @doc(description: "Wallet Reward Output Status"),
+	message : String @doc(description: "Wallet Reward Output Mesaages"),
+}
+
+type GetWalletRewardTransactionalHistory {
+    transaction_id : Int  @doc(description: "Transaction Id"),
+    order_id : String  @doc(description: "Customer 	Order Id"),
+    customer_id : Int  @doc(description: "Customer ID"),
+    trans_title : String  @doc(description: "Customer Transaction Title "),
+    reward_point : String  @doc(description: "Reward Point"),
+    credit_get : String  @doc(description: "Credit Get"),
+    credit_spent : String  @doc(description: "Credit Spent"),
+    trans_date : String  @doc(description: "Credit Transaction Date"),
+    page_info: SearchResultPageInfo @doc(description: "An object that includes the current_page, page_info, and page_size values specified in the query")
+}
+
+type GetWalletRewardWithdrawCreditHistory {
+    withdraw_id : Int  @doc(description: "Transaction Id"),
+    customer_id : Int  @doc(description: "Customer 	Order Id"),
+    credit : Int  @doc(description: "Customer cradit withdraw"),
+    paypal_email : String  @doc(description: "Paypal email id"),
+    reason : String  @doc(description: "Reason why withdraw amount"),
+    status : String  @doc(description: "Withdraw credit status"),
+    requested_date : String  @doc(description: "Withdraw credit request date"),
+    updated_date : String  @doc(description: "Withdraw credit Update date"),
+}
+
+type GetWalletRewardEmailSubscription {
+	subscriber_id : Int  @doc(description: "Subscriber Id"),
+	subscriber_email : String  @doc(description: "Subscriber Email"),
+	subscriber_status : Int  @doc(description: "Subscriber Status"),
+	customer_id : Int  @doc(description: "Subscriber Customer Id"),
+	subscribe_date : String  @doc(description: "Subscrib Date"),
+}
+
+type GetWalletRewardInviteFriendHistory {
+	invite_id : Int  @doc(description: "Invite Id"),
+	customer_id : Int  @doc(description: "Customer Id"),
+	receiver_name : String  @doc(description: "Receiver Name"),
+	receiver_email : String  @doc(description: "Receiver Email"),
+	message : String  @doc(description: "Invited Customer Message"),
+	status : Int  @doc(description: "Invited customer status"),
+	invite_date : String  @doc(description: "Invited Date time"),
+}
+
+type StoreConfig {
+	walletreward_wallet_status: String @doc(description: "Wallet reward module status"),
+	walletreward_wallet_credit_usages_buy_credite: String  @doc(description: "Allow customer to buy credit status"),
+	walletreward_wallet_credit_usages_max_credit_for_customer: String  @doc(description: "Maximum credit allowed in the customer account"),
+	walletreward_wallet_credit_usages_credit_with_coupons: String  @doc(description: "Use credit with coupons"),
+	walletreward_wallet_withdraw_allow_withdrawal: String  @doc(description: "Allow customer to request for credit withdrawal status"),
+	walletreward_wallet_withdraw_min_withdraw: String  @doc(description: "Minimum credit to withdraw"),
+	walletreward_wallet_withdraw_withdraw_email_sender: String  @doc(description: "Withdraw email sender"),
+	walletreward_wallet_withdraw_withdraw_email_template: String  @doc(description: "Withdraw email template"),
+	walletreward_wallet_withdraw_sendtofriend_allow_send_credit: String  @doc(description: "Allow customer to send credit to a friend status"),
+	walletreward_wallet_withdraw_sendtofriend_email_sender: String  @doc(description: "Send credit to a friend email sender"),
+	walletreward_wallet_withdraw_sendtofriend_emailtemp: String  @doc(description: "Send credit to a friend registered user email template"),
+	walletreward_wallet_withdraw_sendtofriend_sendto_unregisterfriend_emailtemp: String  @doc(description: "Send credit to a friend  guest user email template"),
+	walletreward_wallet_order_max_credit_per_order: String  @doc(description: "Use maximum credit per order status"),
+	walletreward_wallet_order_allow_max_credit_per_order: String  @doc(description: "Maximum allowed credit per order"),
+	walletreward_wallet_order_percentage_of_order_subtotal: String  @doc(description: "Percentage of order subtotal"),
+	walletreward_wallet_refund_credit: String  @doc(description: "Refund credit status"),
+	walletreward_reward_enable: String  @doc(description: "Enable reward points extension"),
+	walletreward_reward_one_point_cost: String  @doc(description: "Reward point(s) to credit conversation"),
+	walletreward_reward_earn_reward_customer_registration_enable_on_create_account: String  @doc(description: "Enable on create an account status"),
+	walletreward_reward_earn_reward_customer_registration_reward_point: String  @doc(description: "Reward Point(s)"),
+	walletreward_reward_earn_reward_creating_order_enable_create_order: String  @doc(description: "Creating order enable"),
+	walletreward_reward_earn_reward_creating_order_min_order_qty: String  @doc(description: "Creating order min order qty"),
+	walletreward_reward_earn_reward_creating_order_min_order_total: String  @doc(description: "Creating order min order total"),
+	walletreward_reward_earn_reward_creating_order_earn_type: String  @doc(description: "Creating order earn type"),
+	walletreward_reward_earn_reward_creating_order_reward_point: String  @doc(description: "Creating order reward point(s)"),
+	walletreward_reward_earn_reward_creating_order_max_reward_per_order: String  @doc(description: "Creating order max reward point(s) per order"),
+	walletreward_reward_earn_reward_creating_order_max_order: String  @doc(description: "Creating order max no. of order"),
+	walletreward_reward_earn_reward_creating_order_reward_message: String  @doc(description: "Creating order display reward point(s) on product"),
+	walletreward_reward_earn_reward_newsletter_subscribers_enable: String  @doc(description: "Newsletter subscription enable"),
+	walletreward_reward_earn_reward_newsletter_subscribers_reward_point: String  @doc(description: "Newsletter subscription reward point(s)"),
+	walletreward_reward_earn_reward_customer_review_enable: String  @doc(description: "Customer review enable"),
+	walletreward_reward_earn_reward_customer_review_reward_point: String  @doc(description: "Customer review reward point(s)"),
+	walletreward_reward_earn_reward_customer_review_max_review: String  @doc(description: "Customer review max no. of review"),
+	walletreward_reward_earn_reward_invited_friend_registration_enable: String  @doc(description: "Invited friend registration enable status"),
+	walletreward_reward_earn_reward_invited_friend_registration_limit: String  @doc(description: "Invited friend registration max. registration limit"),
+	walletreward_reward_earn_reward_invited_friend_registration_reward_point: String  @doc(description: "Invited friend registration reward point(s)"),
+	walletreward_reward_earn_reward_invited_friend_registration_inv_email_sender: String  @doc(description: "Invited friend registration invite friend email sender "),
+	walletreward_reward_earn_reward_invited_friend_registration_invitefriendemailtemp: String  @doc(description: "Invited friend registration invite friend email template"),
+	walletreward_reward_earn_reward_invited_friend_registration_creating_order_enable_coif: String  @doc(description: "Creating order by invited friend status"),
+	walletreward_reward_earn_reward_invited_friend_registration_creating_order_coiv_earn_type: String  @doc(description: "Creating order by invited friend earn type"),
+	walletreward_reward_earn_reward_invited_friend_registration_creating_order_coif_reward_point: String  @doc(description: "Creating order by invited friend reward point(s)"),
+	walletreward_reward_earn_reward_invited_friend_registration_creating_order_coif_max_order: String  @doc(description: "Creating order by invited friend max no. of order"),
+	walletreward_transaction_sub_email_sender: String  @doc(description: "Transaction subscription email sender"),
+	walletreward_transaction_subscribe: String  @doc(description: "Transaction subscription email template"),
+	walletreward_transaction_unsub_email_sender: String  @doc(description: "Transaction unsubscription email sender"),
+	walletreward_transaction_unsubscribe: String  @doc(description: "Transaction unsubscription email template"),
+}
+
+type Customer {
+    wallet_email_status: Boolean  @doc(description: "Customer wallet credit email subscribed status.") @resolver(class: "Dolphin\\Walletrewardpoints\\Model\\Resolver\\GetWalletCreditEmailStatus")
+	wallet_credit : String  @doc(description: "Customer wallet credit points") @resolver(class: "Dolphin\\Walletrewardpoints\\Model\\Resolver\\GetWalletCredit")
+}
+
+type Cart {
+	applied_wallet_credit: Int @resolver(class: "\\Dolphin\\Walletrewardpoints\\Model\\Resolver\\ShowAppliedWalletCredit") @doc(description:"Show applied wallet credit values")
+}

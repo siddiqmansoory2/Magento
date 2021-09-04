@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceBlock name="product.info.review" remove="true"/> 
+		<referenceContainer name="content">
+			<container name="product.additional.bottom" htmlTag="div" htmlClass="product-additional-bottom review--share-blocks row" after="product.info.details">
+				<container name="pab.colone" htmlTag="div" htmlClass="col-12 col-md-12 col-lg-6" before="-">
+					<block class="Magento\Framework\View\Element\Template" name="product.review.content" template="Magento_Catalog::product/view/product-review-content.phtml" before="-" />
+				</container>
+				<container name="pab.coltwo" htmlTag="div" htmlClass="col-12 col-md-12 col-lg-6">
+					<block class="Magento\Framework\View\Element\Template" name="product.question.form.actions" template="Magezon_FAQ::product/form_actions.phtml"  />
+				</container>
+			</container>
+			<container name="product.question.form" htmlTag="div" htmlClass="product-question-form" after="product.additional.bottom">
+				<block class="Magento\Framework\View\Element\Template" name="product.question.form.submit" as="product_question_form_submit" template="Magezon_FAQ::product/form_submit.phtml"/>
+			</container>
+			
+			<!--<container name="product.review.container" htmlTag="div" htmlClass="product-additional-main" after="product.additional.bottom">
+				<block class="Magento\Framework\View\Element\Template" name="product.review.content" template="Magento_Catalog::product/view/product-review-content.phtml" after="-" />
+			</container>-->
+			
+			
+			<container name="product.reviewslider.container" htmlTag="div" htmlClass="product-additional-main" after="product.review.container">
+				<!--<block class="Magento\Framework\View\Element\Template" name="product.options" template="Magento_Catalog::product/view/productoptions.phtml" after="-" />	-->
+			</container>	
+			<container name="product.reviewcarousel.container" htmlTag="div" htmlClass="product-reviewcarousel-container" after="product.reviewslider.container">
+				<block class="Magento\Framework\View\Element\Template" name="product.review.carousel" template="Magento_Catalog::product/view/product-review-carousel.phtml" after="-" />
+			</container>
+		</referenceContainer>
+		<referenceContainer name="page.main.title">
+			<block class="Magento\Catalog\Block\Product\View" name="product.parent.category.info" template="Magento_Catalog::product/view/parent-category.phtml" before="-" />
+		</referenceContainer>
+		<referenceContainer name="product.info.main">
+			<block class="Magento\Framework\View\Element\Template" name="product.usp" template="Magento_Catalog::product/view/usp.phtml" after="-" />
+		</referenceContainer>		
+		<referenceContainer name="product.info.media">
+			<block class="Magento\Cms\Block\Block" name="discount.promotion" before="-">
+				<arguments>
+					<argument name="block_id" xsi:type="string">product_discount_message</argument>
+				</arguments>
+			</block>			
+            <block class="Magento\Framework\View\Element\Template" name="product.options" template="Magento_Catalog::product/view/productoptions.phtml" after="-" />
+        </referenceContainer>
+		<move element="product.info.details" destination="product.info.main" after="-"/>
+		<move element="product.info.review" destination="product.review.container" before="-"/>
+		<move element="view.addto.wishlist" destination="page.main.title" before="-"/>
+		<move element="reviews.tab" destination="product.reviewslider.container" before="-"/>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" after="product.info.media" name="product-extra" template="Magento_Theme::html/added/product-extra.phtml"/>
+        </referenceContainer>
+		<referenceBlock name="product.info.options.wrapper">
+			<block class="Magento\Catalog\Block\Product\View\Attributes" name="product.video" template="product/view/sizechart.phtml"/>
+		</referenceBlock>
+		<referenceBlock name="product.info.details">
+			<block class="Magento\Catalog\Block\Product\View\Description" name="product.info.materialcare"  template="Magento_Catalog::product/view/attribute.phtml" group="detailed_info">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getMaterialCare</argument>
+                        <argument name="at_code" xsi:type="string">material_care</argument>
+                        <argument name="css_class" xsi:type="string">material-care</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">Material and Care</argument>
+                        <argument name="sort_order" xsi:type="string">10</argument>
+                    </arguments>
+                </block>
+		</referenceBlock>
+		<referenceBlock name="product.attributes" remove="true" />
+		<referenceBlock name="product_faq_question" remove="true" />
+    </body>
+</page>

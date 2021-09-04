@@ -1,0 +1,11 @@
+
+type StoreConfig {
+    
+    increff_general_configuration_enable  : String  @doc(description: "Query by increff_general_configuration_enable.") 
+    increff_general_configuration_api_link  : String  @doc(description: "Query by increff_general_configuration_api_link.") 
+    increff_general_configuration_method  : String  @doc(description: "Query by increff_general_configuration_method.") 
+    increff_general_configuration_userid  : String  @doc(description: "Query by increff_general_configuration_userid.") 
+    login_with_otp_general_configuration_password  : String  @doc(description: "Query by login_with_otp_general_configuration_password.") 
+    login_with_otp_general_configuration_version  : String  @doc(description: "Query by login_with_otp_general_configuration_version.") 
+    login_with_otp_general_configuration_msg_type  : String  @doc(description: "Query by login_with_otp_general_configuration_msg_type.") 
+}

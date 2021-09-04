@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+		<arguments>
+			<argument name="extendedConfigData" xsi:type="array">
+				<item name="increff_general_configuration_enable" xsi:type="string">increff/general_configuration/enable</item>
+				<item name="increff_general_configuration_api_link" xsi:type="string">increff/general_configuration/api_link</item>
+				<item name="increff_general_configuration_method" xsi:type="string">increff/general_configuration/method</item>
+				<item name="increff_general_configuration_userid" xsi:type="string">increff/general_configuration/userid</item>
+				<item name="login_with_otp_general_configuration_password" xsi:type="string">login_with_otp/general_configuration/password</item>
+				<item name="login_with_otp_general_configuration_version" xsi:type="string">login_with_otp/general_configuration/version</item>
+				<item name="login_with_otp_general_configuration_msg_type" xsi:type="string">login_with_otp/general_configuration/msg_type</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

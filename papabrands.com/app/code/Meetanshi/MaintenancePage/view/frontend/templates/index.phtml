@@ -1,0 +1,85 @@
+<?php
+$helper = $block->getHelper();
+$pageLayoutModel = $block->getPageLayoutModel();
+$layout = $helper->getPageLayout();
+$backgroundTypeModel = $block->getBackgroundTypeModel();
+$backgroundType = $helper->getBackgroundType();
+
+if ($helper->isModuleEnabled()) {
+    if ($helper->getPageDesign()) {
+        if ($helper->getPageDesign() == '1') {
+            echo $block->getLayout()->createBlock("Meetanshi\MaintenancePage\Block\Index")->setTemplate("Meetanshi_MaintenancePage::firstDesign.phtml")->toHtml();
+        } elseif ($helper->getPageDesign() == '2') {
+            echo $block->getLayout()->createBlock("Meetanshi\MaintenancePage\Block\Index")->setTemplate("Meetanshi_MaintenancePage::secondDesign.phtml")->toHtml();
+        } elseif ($helper->getPageDesign() == '3') {
+            echo $block->getLayout()->createBlock("Meetanshi\MaintenancePage\Block\Index")->setTemplate("Meetanshi_MaintenancePage::threadDesign.phtml")->toHtml();
+        } elseif ($helper->getPageDesign() == '4') {
+            if ($layout == $pageLayoutModel::ONE_COLUMN['identifier']) {
+                echo $block->getLayout()->createBlock("Meetanshi\MaintenancePage\Block\Index")->setTemplate($pageLayoutModel::ONE_COLUMN['template'])->toHtml();
+            } elseif ($layout == $pageLayoutModel::TWO_COLUMN['identifier']) {
+                echo $block->getLayout()->createBlock("Meetanshi\MaintenancePage\Block\Index")->setTemplate($pageLayoutModel::TWO_COLUMN['template'])->toHtml();
+            }
+        }
+    }
+}
+?>
+<style type="text/css">
+    body {
+        color: #fff;
+        background-color: #555;
+    }
+    body ul {
+        padding: 0;
+        margin: 0;
+    }
+    .field.newsletter .block {
+        float: none;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .page-title-wrapper {
+        display: none
+    }
+    #style-1 .col-1 .main-logo img, #style-2 .col-2 .main-logo img {
+        width: <?= $helper->getIconWidth() ?>px;
+        height: <?= $helper->getIconHeight() ?>px;
+    }
+    <?php if ($backgroundType == $backgroundTypeModel::VIDEO && $helper->getBackgroundVideo()) : ?>
+    .maintenancepage.video .login-container {
+        position: fixed;
+        top: 10%;
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+    video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+    }
+    <?php endif; ?>
+    <?php if ($helper->getTimerTitleColor()) : ?>
+    .timer-title, .newslatter-title, .footer-title, .sub-content{font-weight: bold}
+    #style-1 .col-1 .timer-title, #style-2 .col-2 .timer-title {
+        color: <?=$helper->getTimerTitleColor()?>;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+    <?php endif; ?>
+    <?php if ($helper->getNewsletterTitleColor()) : ?>
+    #style-1 .col-1 .newslatter-title, #style-2 .col-2 .newslatter-title {
+        color: <?=$helper->getNewsletterTitleColor()?>;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+    <?php endif; ?>
+    <?php if ($helper->getSocialTitleColor()) : ?>
+    #style-1 .col-1 .footer-title, #style-2 .col-2 .footer-title {
+        color: <?=$helper->getSocialTitleColor()?>;
+        font-weight: bold;
+    }
+    <?php endif; ?>
+</style>

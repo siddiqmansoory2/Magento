@@ -1,0 +1,80 @@
+<?php
+$configValue = $block->getConfigValue();
+$isEnable = $configValue['is_enable'];
+$isLoggedIn = $configValue['isLoggedIn'];
+if ($isEnable && $isLoggedIn) {
+    $currencySymbol = $configValue['currencySymbol'];
+    $custWalletCredit = $currencySymbol . $configValue['customerwalletcredit'];
+    $maxAllow = $configValue['max_allow_credit'];
+    $maxAllowCredit = $configValue['maximum_allow_credit'];
+    $allowWithCoupon = $configValue['allow_with_coupon'];
+    $hasCredit = $block->getCreditDiscount();
+    if ($hasCredit == 0) {
+        $hasCredit = '';
+    }
+    ?>
+<div class="block credit discount"
+     id="block-credit-discount"
+     style="width: 100%;"
+     data-mage-init='{"collapsible":{"active": <?= $hasCredit ? 'true' : 'false' ?>,
+     "openedState": "active", "saveState": false}}'
+>
+    <div class="title" data-role="title">
+        <strong id="block-credit-discount-heading" role="heading" aria-level="2">
+            <?= $block->escapeHtml(__('Apply Wallet Credit')) ?></strong>
+    </div>
+    <div class="content" data-role="content" aria-labelledby="block-credit-discount-heading">
+        <form id="credit-discount-form"
+              action="<?= $block->escapeUrl($block->getUrl('walletrewardpoints/customer/discount')) ?>"
+              method="post"
+              data-mage-init='{"creditDiscount":{"creditSelector": "#apply_credit_value",
+                                               "removeCreditSelector": "#remove-credit",
+                                               "applyCredit": "button.action.applycredit",
+                                               "cancelCredit": "button.action.cancelcredit"},
+                                               "validation":{}}'>
+            <p><span>Your Wallet Credit: <?=$block->escapeHtml($custWalletCredit)?></span></p>
+            <div class="fieldset credit<?= $hasCredit ? ' applied' : '' ?>">
+                <input type="hidden" name="remove-credit" id="remove-credit" value="0" />
+                <div class="field">
+                    <label for="apply_credit_value" class="label">
+                        <span><?= $block->escapeHtml(__('Enter Credit')) ?></span></label>
+                    <div class="control">
+                        <input type="text"
+                               class="input-text required-entry validate-greater-than-zero validate-number"
+                               id="apply_credit_value"
+                               name="apply_credit_value"
+                               max="<?=$block->escapeHtml($maxAllow)?>"
+                               value="<?= $block->escapeHtmlAttr($hasCredit) ?>"
+                               placeholder="<?= $block->escapeHtmlAttr(__('Enter Credit')) ?>"
+                                <?php if ($hasCredit):?>
+                                   disabled="disabled"
+                                <?php endif; ?>
+                        />
+                    </div>
+                </div>
+                <div class="actions-toolbar">
+                    <?php if (!$hasCredit):?>
+                    <div class="primary">
+                        <button class="action applycredit primary" type="button"
+                        value="<?= $block->escapeHtmlAttr(__('Apply Credit')) ?>">
+                            <span><?= $block->escapeHtml(__('Apply Credit')) ?></span>
+                        </button>
+                    </div>
+                    <?php else:?>
+                        <div class="primary">
+                            <button  type="button" class="action cancelcredit primary"
+                            value="<?= $block->escapeHtmlAttr(__('Cancel Credit')) ?>">
+                            <span><?= $block->escapeHtml(__('Cancel Credit')) ?></span></button>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <p><span>Maximum redeemable credit(s) are <?=$block->escapeHtml($maxAllowCredit)?></span></p>
+            <?php
+            if (!$allowWithCoupon) { ?>
+                <p><b>NOTE: </b><span>Wallet Credit is not apply when coupon is applied.</span></p>
+            <?php } ?>
+        </form>
+    </div>
+</div>
+<?php } ?>

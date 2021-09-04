@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/system_file.xsd">
+    <system>
+        <tab id="magecomp" translate="label" sortOrder="100" class="magecomp-logo">
+            <label><![CDATA[]]></label>
+        </tab>
+        <section id="codverification" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+			<tab>magecomp</tab>
+            <label>Cash On Delivery Verification</label>
+           	<resource>Magecomp_Codverification::codverificationconfig</resource>
+            <group id="general" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configuration</label>
+				<field id="enable" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cash On Delivery Verification</label>
+					<source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="customlabel" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Title</label>
+                    <depends><field id="enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="otptemplate" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send OTP Text</label>
+                    <comment><![CDATA[{{var otp}}]]></comment>
+                    <depends><field id="enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="resendotptemplate" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Resend OTP Text</label>
+                    <comment><![CDATA[{{var otp}}]]></comment>
+                    <depends><field id="enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+		 	</group>
+            <group id="smsgatways" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>SMS Gateway</label>
+                <field id="gateway" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>SMS Gateway</label>
+                    <source_model>Magecomp\Codverification\Model\Config\Gateways</source_model>
+                    <config_path>codverification/smsgatways/gateway</config_path>
+                </field>
+                <field id="otptype" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>OTP String Type</label>
+                    <source_model>Magecomp\Codverification\Model\Config\Otp\Type</source_model>
+                </field>
+                <field id="otplength" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>OTP String Length</label>
+                    <source_model>Magecomp\Codverification\Model\Config\Otp\Length</source_model>
+                </field>
+            </group>
+            <group id="apitest" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Sandbox</label>
+                <field id="enable" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Testing Message</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="testmobile" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Testing Mobile Number</label>
+                    <depends><field id="enable">1</field></depends>
+                    <comment><![CDATA[Add Number With Country Code e.g:-(91xxxxxx013) <br /> You Will Get Test Message on this number.]]></comment>
+                    <validate>required-entry validate-number</validate>
+                </field>
+                <field id="testmessage" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Testing Message</label>
+                    <depends><field id="enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="sendtestsms" type="button" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Magecomp\Codverification\Block\System\Config\Sendtestmessage</frontend_model>
+                    <depends><field id="enable">1</field></depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

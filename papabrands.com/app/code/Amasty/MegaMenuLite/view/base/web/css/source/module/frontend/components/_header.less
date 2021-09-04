@@ -1,0 +1,40 @@
+//
+//  Menu Header Component
+//  ______________________________________________
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .ammenu-menu-header {
+        & {
+            .ammenu-flex(none, center);
+
+            position: relative;
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.6rem;
+        }
+
+        .ammenu-message.-welcome {
+            & {
+                margin: 0 @ammenu__indent / 2 0 0;
+            }
+
+            &:after {
+                content: ',';
+            }
+        }
+
+        .ammenu-name {
+            & {
+                border-bottom: 1px dashed;
+            }
+
+            &:after {
+                content: '!';
+            }
+        }
+    }
+}

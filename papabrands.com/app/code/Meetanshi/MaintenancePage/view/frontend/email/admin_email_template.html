@@ -1,0 +1,23 @@
+<!--@subject {{trans "Your Site Maintenance is Ending Soon!"}} @-->
+
+{{template config_path="design/email/header_template"}}
+<table>
+    <tr>
+        <th align="left">{{trans "Hi Admin,"}}</th>
+    </tr>
+    <br/>
+    <tr>
+        <td align="left">
+            {{trans "I would like to remind you that the maintenance mode you set is expiring on %at. If you’re still deciding whether or not to end the maintenance, please change the Maintenance Mode end date from the configuration."
+            at=$dateTime}}
+        </td>
+    </tr>
+    <br/>
+    <tr>
+        <td>{{trans "Regards,"}}</td>
+    </tr>
+    <tr>
+        <td>{{trans "Your Awesome Store"}}</td>
+    </tr>
+</table>
+{{template config_path="design/email/footer_template"}}

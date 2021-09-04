@@ -1,0 +1,54 @@
+//
+//  Amasty Tree of Categories Component
+//  ______________________________________________
+
+//
+//  Variables
+//  ----------------------------------------------
+
+@maxColumnCount: 10;
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .ammenu-categories-container {
+        & {
+            .ammenu-flex(none, none, wrap);
+            .ammenu-column-width(@maxColumnCount);
+        }
+
+        .ammenu-list {
+            display: inline-flex;
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 0;
+        }
+
+        .ammenu-list .ammenu-list {
+            padding: 0 0 0 @ammenu__indent__l;
+        }
+
+        .ammenu-link {
+            white-space: nowrap;
+            font-size: 1.6rem;
+        }
+
+        .ammenu-column {
+            & {
+                flex-basis: 100%;
+                box-sizing: border-box;
+                padding: 0;
+            }
+
+            &:not(:last-child) {
+                padding-right: @ammenu__indent__l;
+            }
+
+            > .ammenu-list {
+                padding-bottom: @ammenu__indent__xl;
+            }
+        }
+    }
+}

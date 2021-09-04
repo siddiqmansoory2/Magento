@@ -1,0 +1,36 @@
+<?php if ($block->getMdOscDeliveryDate()): ?>
+<section class="admin__page-section" id="delivery-date-content">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Delivery Information')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <?php if ($block->getMdOscDeliveryDate()): ?>
+            <div id="delivery-date">
+                <strong><?= __('Delivery Date') ?></strong>
+                <span><?= $block->getMdOscDeliveryDate() ?></span>
+            </div>
+        <?php endif; ?>
+        <?php if ($block->getMdOscDeliveryTime()): ?>
+            <div id="delivery-time">
+                <strong><?= __('Delivery Time') ?></strong>
+                <span><?= $block->getMdOscDeliveryTime() ?></span>
+            </div>
+        <?php endif; ?>
+        <?php if ($block->getMdOscDeliveryComment()): ?>
+            <div id="delivery-comment">
+                <strong><?= __('Comment') ?>:</strong>
+                <br/>
+                <?= $block->getMdOscDeliveryComment() ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</section>
+<script type="text/javascript">
+    require(
+        ['jquery'],
+        function($) {
+            $('#delivery-date-content').insertAfter($('.order-view-billing-shipping'));
+        }
+    );
+</script>
+<?php endif; ?>

@@ -1,0 +1,54 @@
+<?php
+/** @var \Dolphin\Walletrewardpoints\Block\Customer\InviteFriendHistory $block */
+$viewModel = $block->getViewModel();
+$helper = $viewModel->getHelperModel();
+$helper->checkForLogin();
+?>
+</br>
+<?php $inviteFriendData = $block->getInviteFriendHistory(); ?>
+<legend class="legend"><span>Invite Friends</span></legend>
+<?php if ($inviteFriendData && count($inviteFriendData)): ?>
+    <div class="table-wrapper invitefriend-history">
+        <table class="data table table-invitefriend-request history" id="my-invitefriend-table">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Invite Friends')) ?></caption>
+            <thead>
+                <tr>
+                    <th scope="col" class="col id"><?= $block->escapeHtml(__('Name')) ?></th>
+                    <th scope="col" class="col email"><?= $block->escapeHtml(__('Email')) ?></th>
+                    <th scope="col" class="col message"><?= $block->escapeHtml(__('Message')) ?></th>
+                    <th scope="col" class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+                    <th scope="col" class="col invite-date"><?= $block->escapeHtml(__('Invite Date')) ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($inviteFriendData as $inviteFriend): ?>
+                    <tr>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Name')) ?>" class="col id">
+                            <?= $block->escapeHtml($inviteFriend->getReceiverName()) ?></td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Email')) ?>" class="col email">
+                            <?= $block->escapeHtml($inviteFriend->getReceiverEmail()) ?></td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Message')) ?>" class="col message">
+                            <?= $block->escapeHtml($inviteFriend->getMessage()) ?></td>
+                        <?php
+                        $inviteDate = $block->formatDate($inviteFriend->getInviteDate());
+                        if ($inviteFriend->getStatus() == 0) {
+                            $status = 'Invitation Sent';
+                        } else {
+                            $status = 'Registered';
+                        }
+                        ?>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Status')) ?>" class="col status">
+                            <?= $block->escapeHtml($status) ?></td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Invite Date')) ?>" class="col invite-date">
+                            <?= $block->escapeHtml($inviteDate) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="invitefriend-history-toolbar toolbar bottom"><?= $block->getPagerHtml() ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty"><span><?= $block->escapeHtml(__('You have no invite friend.')) ?></span></div>
+<?php endif ?>

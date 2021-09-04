@@ -1,0 +1,41 @@
+<div class="order-review-section">
+    <div class="ajax-loader3 ajax-loader-order-review" id="ajax-review"></div>
+    <div id="control_overlay_review"></div>
+    <div class="clear"></div>
+    <div id="product-review">
+        <div class="step-title" style="float:left" id="review_step_header"
+             data-bind="css: 'step_'+getSequence(),i18n: window.checkoutConfig.review_step_config_label"></div>
+        <table id="checkout-review-table" class="data-table checkout-review-item">
+            <colgroup>
+                <col>
+                <col width="1">
+                <col width="1">
+                <col width="1">
+            </colgroup>
+            <thead>
+            <tr class="first odd">
+                <th class="a-left" rowspan="1" style="width:80%" data-bind="i18n: 'Product'"></th>
+                <th class="a-right" rowspan="1" style="width:10%; padding:10px 20px" data-bind="i18n: 'Qty'"></th>
+                <th class="a-right" colspan="1" style="width:10%" data-bind="i18n: 'Subtotal'"></th>
+            </tr>
+            </thead>
+            <tbody data-bind="scope: 'checkout.sidebar.summary.cart_items'">
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            </tbody>
+        </table>
+        <table id="checkout-total-table" class="data-table checkout-review-total">
+            <tbody data-bind="scope: 'checkout.sidebar.summary.totals'">
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            </tbody>
+        </table>
+    </div>
+    <div class="items-after" data-bind="scope: 'checkout.sidebar.summary.itemsAfter'">
+        <!-- ko template: getTemplate() -->
+        <!-- /ko -->
+    </div>
+    <div class="before-osc-button" data-bind="scope:'checkout'">
+        <!-- ko foreach: getRegion('before-osc-button') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+    </div>
+</div>

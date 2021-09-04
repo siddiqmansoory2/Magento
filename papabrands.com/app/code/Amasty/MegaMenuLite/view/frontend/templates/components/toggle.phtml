@@ -1,0 +1,31 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_MegaMenuLite
+ */
+?>
+<?php
+/**
+ * @var \Amasty\MegaMenuLite\Block\Container $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "hamburger_toggle": {
+                    "component": "Amasty_MegaMenuLite/js/components/hamburger_toggle"
+                }
+            }
+        }
+    }
+}
+</script>
+
+<!-- ko scope: 'index = hamburger_toggle' -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+<!-- /ko -->

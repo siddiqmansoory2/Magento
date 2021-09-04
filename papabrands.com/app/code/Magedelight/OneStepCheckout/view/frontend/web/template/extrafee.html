@@ -1,0 +1,23 @@
+<!--
+/**
+* Magedelight
+* Copyright (C) 2017 Magedelight <info@magedelight.com>
+*
+* @category Magedelight
+* @package Magedelight_OneStepCheckout
+* @copyright Copyright (c) 2017 Mage Delight (http://www.magedelight.com/)
+* @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+* @author Magedelight <info@magedelight.com>
+*/
+-->
+<!--ko if:isExtraFeeEnabled -->
+<div class="extrafee checkbox-group osc-extrafee">
+    <input type="checkbox" id="extrafee_checkbox" name="extrafee_checkbox"
+           class="checkbox osc-additional-data" data-bind="checked: extrafeeChecked">
+    <label class="label--checkbox" for="extrafee_checkbox">
+        <span class="check"></span>
+        <span class="box-check"></span>
+        <!-- ko i18n: extrafeeCheckboxTitle --><!-- /ko -->
+    </label>
+</div>
+<!--/ko-->

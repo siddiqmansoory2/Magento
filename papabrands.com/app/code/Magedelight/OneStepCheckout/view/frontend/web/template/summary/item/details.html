@@ -1,0 +1,82 @@
+<!--
+/**
+* Magedelight
+* Copyright (C) 2017 Magedelight <info@magedelight.com>
+*
+* @category Magedelight
+* @package Magedelight_OneStepCheckout
+* @copyright Copyright (c) 2017 Mage Delight (http://www.magedelight.com/)
+* @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+* @author Magedelight <info@magedelight.com>
+*/
+-->
+<tr class="even">
+    <td data-th="Product">
+
+        <!-- ko foreach: getRegion('before_details') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+        <h5 class="product-name"  data-bind="text: $parent.name"></h5>
+        <!-- ko if: (JSON.parse($parent.options).length > 0)-->
+        <div class="item-options">
+            <ul>
+            <!--ko foreach: JSON.parse($parent.options)-->
+            
+            <li class="label" data-bind="text: label"></li>
+            <!-- ko if: ($data.full_view)-->
+            <li class="values" data-bind="html: full_view"></li>
+            <!-- /ko -->
+            <!-- ko ifnot: ($data.full_view)-->
+            <li class="values" data-bind="html: value"></li>
+            <!-- /ko -->
+            <!-- /ko -->
+            </ul>
+        </div>
+        <!-- /ko -->
+        <div class="md-osc-gift-message" data-item-id="$parent.item_id">
+            <div data-bind="scope:'checkout.sidebar.summary.cart_items.details.gift_message_'+$parent.item_id, attr:{ id: 'gift-options-cart-item-' + $parent.item_id }"
+                 class="gift-options-cart-item">
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            </div>
+        </div>
+        <div class="md-osc-gift-wrapper" data-item-id="$parent.item_id">
+            <div data-bind="scope:'checkout.sidebar.summary.cart_items.details.magedelight_giftwrapper_product_'+$parent.item_id,
+                    attr:{ id: 'magedelight-giftwrapper-product-' + $parent.item_id }
+                    css: 'magedelight-giftwrapper-product-'+ $parent.item_id"
+                 class="magedelight-giftwrapper-product">
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            </div>
+        </div>
+    </td>
+    <!-- ko if: (isEditAllowed()) -->
+    <td data-th="Qty" class="a-center qty-box">
+        <div class="box-qty" data-item-id="<?php echo $_item->getId(); ?>">
+            <label for="qty_input"></label>
+            <input  class="qty input-text qty-item-display" type="text" data-bind="value: $parent.qty, event :{change: function(){updateNewQty($parent)}}"
+                    id="qty_input" readonly />
+            <div class="control-qty">
+                <div data-change-type="add" class="osc-add" data-bind="click: function(){addQty($parent)}"></div>
+                <div data-change-type="minus" class="osc-minus" data-bind="click: function(){minusQty($parent)}"></div>
+            </div>
+        </div>
+    </td>
+    <!-- /ko -->
+    <!-- ko ifnot: (isEditAllowed()) -->
+    <td data-th="Qty" class="a-center qty-box">
+        <div class="box-qty" data-item-id="<?php echo $_item->getId(); ?>">
+            <label for="qty_input"></label>
+            <input  class="qty input-text qty-item-display" type="text" data-bind="value: $parent.qty"
+                    id="qty_input" readonly/>
+        </div>
+    </td>
+    <!-- /ko -->
+    <td data-th="Subtotal" class="a-right last">
+        <!-- ko foreach: getRegion('after_details') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: (isEditAllowed()) -->
+        <div class="action delete" data-bind="click: function(){deleteItem($parent)}"></div>
+        <div class="action edit" data-bind="click: function(){editItem($parent)}"></div>
+        <!-- /ko -->
+    </td>
+</tr>

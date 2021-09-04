@@ -1,0 +1,9 @@
+<div class="pp-buttons-container">
+    <p>
+        <button id="<?php echo $block->getHtmlId() ?>" onclick="window.open('<?php /* @escapeNotVerified */
+        echo $block->getRedirectUrl() ?>')" type="button">
+            <?php /* @escapeNotVerified */
+            echo __($block->getButtonLabel()) ?>
+        </button>
+    </p>
+</div>

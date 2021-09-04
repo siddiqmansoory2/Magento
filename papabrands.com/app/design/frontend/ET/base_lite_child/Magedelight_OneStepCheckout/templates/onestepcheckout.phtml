@@ -1,0 +1,98 @@
+<?php
+/**
+ * Magedelight
+ * Copyright (C) 2017 Magedelight <info@magedelight.com>
+ *
+ * @category Magedelight
+ * @package Magedelight_OneStepCheckout
+ * @copyright Copyright (c) 2017 Mage Delight (http://www.magedelight.com/)
+ * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author Magedelight <info@magedelight.com>
+ */
+?>
+<?php
+$helper = $block->getData('osc_helper') ?>
+
+<div class="one-step-checkout onestepcheckout-index-index <?php echo $helper->getLayoutClass() ?> clearfix">
+    <div id="checkout" data-bind="scope:'checkout'" class="checkout-container md-checkout">
+        <div id="checkout-loader" data-role="checkout-loader" class="loading-mask" data-mage-init='{"checkoutLoader": {}}'>
+            <div class="loader">
+                <img src="<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('Magedelight_OneStepCheckout/images/loader-1.gif'); ?>"
+                     alt="<?php /* @escapeNotVerified */ echo __('Loading...'); ?>"
+                     style="position: absolute;">
+            </div>
+        </div>
+        <div class="osc-heading">
+            <h1><?php echo $helper->getCheckoutTitle() ?></h1>
+            <p><?php echo $helper->getCheckoutDescription() ?></p>
+        </div>
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <script type="text/x-magento-init">
+            {
+                "#checkout": {
+                    "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>
+                }
+            }
+        </script>
+        <script>
+            window.checkoutConfig = <?php /* @escapeNotVerified */ echo \Zend_Json::encode($block->getCheckoutConfig()); ?>;
+            window.isCustomerLoggedIn = window.checkoutConfig.isCustomerLoggedIn;
+            window.customerData = window.checkoutConfig.customerData;
+
+        </script>
+        <script>
+            require([
+                'mage/url',
+                'Magento_Ui/js/block-loader'
+            ], function(url, blockLoader) {
+                blockLoader("<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('Magedelight_OneStepCheckout/images/block-loader-1.gif'); ?>");
+                return url.setBaseUrl('<?php /* @escapeNotVerified */ echo $block->getBaseUrl();?>');
+            })
+        </script>
+        <script>
+            require(['jquery', 'jquery/ui'], function($){
+                $( document ).ready(function() {
+                    var existCondition = setInterval(function() {
+                        if ($('#co-shipping-form input[name="region"]').length) {
+                            clearInterval(existCondition);
+                            $('#co-shipping-form input[name="region"]').parent().parent().addClass(window.checkoutConfig.shipping_region_class);
+                            var additional = window.checkoutConfig.shipping_region_additional_class;
+                            if(additional.length > 0) {
+                                additional.forEach( function(classes) {
+                                    $('#co-shipping-form input[name="region"]').parent().parent().addClass(classes);
+                                })
+                            }
+                        }
+                    }, 100);
+
+
+                    var existCondition2 = setInterval(function() {
+                        if ($(document).find('#ajax-payment').length) {
+                            clearInterval(existCondition2);
+                            $(document).find('#ajax-payment').delay(1000).hide();
+                        }
+
+                    }, 100); 
+                });
+            });
+        </script>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require(['jquery', 'jquery/ui'], function($){
+        var waitForE1 = function(selector, callback) {
+            if (jQuery(selector).length) {
+                callback();
+            } else {
+               setTimeout(function() {
+                 waitForE1(selector, callback);
+               }, 1000);
+            }
+        };
+            
+        waitForE1('input[name=billing-address-same-as-shipping]', function() {
+            $('input[name=billing-address-same-as-shipping]').prop('checked', false).change();
+        });
+    });
+</script>

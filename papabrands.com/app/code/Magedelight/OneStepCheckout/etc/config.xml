@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Magedelight
+* Copyright (C) 2017 Magedelight <info@magedelight.com>
+*
+* @category Magedelight
+* @package Magedelight_OneStepCheckout
+* @copyright Copyright (c) 2017 Mage Delight (http://www.magedelight.com/)
+* @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+* @author Magedelight <info@magedelight.com>
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <onestepcheckout>
+            <general>
+                <active>0</active>
+                <checkout_title>Checkout</checkout_title>
+                <checkout_description>Please fill details and place order.</checkout_description>
+            </general>
+            <display>
+                <display_comments>1</display_comments>
+                <display_newsletter>1</display_newsletter>
+                <display_coupon>1</display_coupon>
+                <display_product_thumbnail>1</display_product_thumbnail>
+            </display>
+            <display_style>
+                <heading_color>#000000</heading_color>
+                <heading_description_color>#000000</heading_description_color>
+                <steps_layout_color>#1979c3</steps_layout_color>
+                <steps_font_color>#000000</steps_font_color>
+                <order_button_color>#1979c3</order_button_color>
+            </display_style>
+            <step_config>
+                <review_title>Order Review</review_title>
+                <layout>3column</layout>
+                <street_lines>3</street_lines>
+                <place_order_position>global</place_order_position>
+                <billing_address>payment</billing_address>
+            </step_config>
+        </onestepcheckout>
+    </default>
+</config>

@@ -1,0 +1,50 @@
+<?php $product = $block->getCurrentProduct() ?>
+<?php $helper=$this->helper("MageArray\CheckDelivery\Helper\Data");?>
+<?php if ($product && $product->getCheckDeliveryEnable() != 2 && $helper->getIsActive() == 1): ?>
+    <form class="form" id="check-delivery-form" method="post">
+       <fieldset class="fieldset">
+           <legend class="legend"><span><?= __('Check Delivery') ?></span></legend><br>
+            <div class="field required">
+                <label for="delivery_postcode" class="label"><span><?= __('Postcode') ?></span></label>
+                <div class="control">
+                    <input type="text" name="postcode" id="delivery_postcode" value="" title="<?= __('Postcode') ?>" class="input-text" data-validate="{required:true, 'validate-digits':true}">
+                </div>
+            </div>
+            <div class="message"></div>
+       </fieldset>
+       <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" class="action submit primary action-check-delivery" title="<?= __('Check') ?>"><span><?= __('Check') ?></span></button>
+            </div>
+        </div>    
+    </form>
+<script>
+require([
+    'jquery',
+    'mage/mage'
+], function ($) { 
+    var dataForm = $('#check-delivery-form');
+    dataForm.mage('validation', {});
+    var dataFormMessage = $('#check-delivery-form .message');
+    dataFormMessage.removeClass('success').removeClass('error').hide();
+    $('.action-check-delivery').on('click',function () {
+            var formData = new FormData();
+            formData.append('postcode', $('#check-delivery-form input[name="postcode"]').val());
+            $.ajax({
+                url: '<?= $block->getUrl('checkDelivery/postcode/check', ['id'=> $product->getId()]) ?>',
+                data: formData,
+                processData: false,
+                contentType: false,
+                showLoader: true,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    dataFormMessage.removeClass('success').removeClass('error').hide();
+                    dataFormMessage.addClass(response.type).html(response.message).show();
+                }
+            });
+            return false;
+    });
+});
+</script>
+<?php endif; ?>

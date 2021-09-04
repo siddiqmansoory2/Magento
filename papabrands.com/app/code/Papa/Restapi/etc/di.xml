@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Papa\Restapi\Api\PushcustomercancellationManagementInterface" type="Papa\Restapi\Model\PushcustomercancellationManagement"/>
+	<preference for="Papa\Restapi\Api\PushsellercancellationManagementInterface" type="Papa\Restapi\Model\PushsellercancellationManagement"/>
+	<preference for="Papa\Restapi\Api\UnholdorderManagementInterface" type="Papa\Restapi\Model\UnholdorderManagement"/>
+	<preference for="Papa\Restapi\Api\UpdateorderpropertiesManagementInterface" type="Papa\Restapi\Model\UpdateorderpropertiesManagement"/>
+	<preference for="Papa\Restapi\Api\UpdateinventorycountManagementInterface" type="Papa\Restapi\Model\UpdateinventorycountManagement"/>
+	<preference for="Papa\Restapi\Api\ReturnordernotificationManagementInterface" type="Papa\Restapi\Model\ReturnordernotificationManagement"/>
+	<preference for="Papa\Restapi\Api\UpdateinventoryurlManagementInterface" type="Papa\Restapi\Model\UpdateinventoryurlManagement"/>
+	<preference for="Papa\Restapi\Api\GetshippinglabelurlManagementInterface" type="Papa\Restapi\Model\GetshippinglabelurlManagement"/>
+	<preference for="Papa\Restapi\Api\GetinvoiceurlManagementInterface" type="Papa\Restapi\Model\GetinvoiceurlManagement"/>
+	<preference for="Papa\Restapi\Api\CreateshipmenturlManagementInterface" type="Papa\Restapi\Model\CreateshipmenturlManagement"/>
+	<preference for="Papa\Restapi\Api\PackorderManagementInterface" type="Papa\Restapi\Model\PackorderManagement"/>
+	<preference for="Papa\Restapi\Api\CancelorderManagementInterface" type="Papa\Restapi\Model\CancelorderManagement"/>
+</config>

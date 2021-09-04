@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <tab id="dolphin" translate="label" sortOrder="250">
+            <label>Dolphin</label>
+        </tab>
+        <section id="walletreward" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Wallet/Reward Points</label>
+            <tab>dolphin</tab>
+            <resource>Dolphin_Walletrewardpoints::walletrewardpoints_config</resource>
+            <group id="wallet" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Wallet Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <group id="credit_usages" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="5">
+                    <depends><field id="enable">1</field></depends>
+                    <label>Credit Usages</label>
+                    <attribute type="expanded">1</attribute>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                    <field id="buy_credit" translate="label" type="select" sortOrder="10" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                        <label>Allow Customer to Buy Credit</label>
+                        <comment>Buy Credit manage with Base Currency.</comment>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="max_credit_for_customer" translate="label comment" sortOrder="15" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Maximum Credit allowed in the Customer Account</label>
+                        <validate>validate-number validate-greater-than-zero</validate>
+                        <comment>Null for allow unlimited credit.</comment>
+                    </field>
+                    <field id="credit_with_coupons" translate="label" type="select" sortOrder="20" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                        <label>Use Credit with Coupons</label>
+                        <comment>If set 'No', then if customer apply coupon code then it will remove applied credit.</comment>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                </group>
+                <group id="withdraw" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                    <depends><field id="enable">1</field></depends>
+                    <label>Credit Withdrawal</label>
+                    <attribute type="expanded">1</attribute>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                    <field id="allow_withdrawal" translate="label" type="select" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                        <label>Allow Customer to Request for Credit Withdrawal</label>
+                        <comment>Withdrawal Credit manage with Base Currency.</comment>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="min_withdraw" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Minimum Credit to Withdraw</label>
+                        <validate>validate-number validate-greater-than-zero</validate>
+                        <comment>Blank for no minimum credit.</comment>
+                        <depends><field id="allow_withdrawal">1</field></depends>
+                    </field>
+                    <field id="withdraw_email_sender" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Withdraw Email Sender</label>
+                        <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                        <depends><field id="allow_withdrawal">1</field></depends>
+                    </field>
+                    <field id="withdraw_email_template" translate="label" type="select" sortOrder="20" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                        <label>Withdraw Email Template</label>
+                        <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                        <depends><field id="allow_withdrawal">1</field></depends>
+                        <comment>Email template chosen based on theme fallback when "Default" option is selected.</comment>
+                    </field>
+                </group>
+                <group id="sendtofriend" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="15">
+                    <depends><field id="enable">1</field></depends>
+                    <label>Send Credit to Friend</label>
+                    <attribute type="expanded">1</attribute>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                    <field id="allow_send_credit" translate="label" type="select" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                        <label>Allow customer to Send Credit to a Friend</label>
+                        <comment>Send Credit to a Friend manage with Base Currency.</comment>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="stf_email_sender" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Email Sender</label>
+                        <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                        <depends><field id="allow_send_credit">1</field></depends>
+                    </field>
+                    <field id="sendtofriend_emailtemp" translate="label" type="select" sortOrder="15" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                        <label>Registered User Email Template</label>
+                        <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                        <comment>Email template chosen based on theme fallback when "Default" option is selected.</comment>
+                        <depends><field id="allow_send_credit">1</field></depends>
+                    </field>
+                    <field id="sendto_unregisterfriend_emailtemp" translate="label" type="select" sortOrder="20" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                        <label>Guest User Email Template</label>
+                        <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                        <comment>Email template chosen based on theme fallback when "Default" option is selected.</comment>
+                        <depends><field id="allow_send_credit">1</field></depends>
+                    </field>
+                </group>
+                <group id="order" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">
+                    <depends><field id="enable">1</field></depends>
+                    <label>Order</label>
+                    <attribute type="expanded">1</attribute>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                    <field id="max_credit_per_order" translate="label" type="select" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                        <label>Use Maximum Credit per Order</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment><model>Dolphin\Walletrewardpoints\Model\SystemConfigComment</model></comment>
+                    </field>
+                    <field id="allow_max_credit_per_order" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Maximum Allowed Credit per Order</label>
+                        <validate>validate-number validate-greater-than-zero</validate>
+                        <depends><field id="max_credit_per_order">1</field></depends>
+                    </field>
+                    <field id="percentage_of_order_subtotal" translate="label comment" sortOrder="15" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Percentage of Order Subtotal</label>
+                        <validate>validate-number validate-greater-than-zero</validate>
+                        <depends><field id="max_credit_per_order">1</field></depends>
+                        <comment>If the maximum and percentage values are added then is considered the max. value from both.</comment>
+                    </field>
+                </group>
+                <group id="refund" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="25">
+                    <depends><field id="enable">1</field></depends>
+                    <label>Refund</label>
+                    <attribute type="expanded">1</attribute>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                    <field id="refund_credit" translate="label" type="select" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                        <label>Refund Credit</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>If set 'Yes', then refund as a credit on order cancel/credit-memo.</comment>
+                    </field>
+                </group>
+            </group>
+            <group id="reward" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Reward Points Configuration</label>
+                <field id="enable_reward" translate="label" type="select" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                    <label>Enable Reward Points Extension</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="one_point_cost" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Reward Point(s) to Credit Conversation</label>
+                    <validate>required-entry validate-number validate-greater-than-zero</validate>
+                    <comment><![CDATA[If set 10 then (10 Reward Points = 1 Credit)</br><b>NOTE: </b>Credit manage on Base Currency.]]></comment>
+                    <depends><field id="enable_reward">1</field></depends>
+                </field>
+                <group id="earn_reward" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="15">
+                    <depends><field id="enable_reward">1</field></depends>
+                    <label>Earn Reward Points</label>
+                    <attribute type="expanded">1</attribute>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                    <group id="customer_registration" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="5">
+                        <label>Customer Registration</label>
+                        <attribute type="expanded">1</attribute>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="enable_on_create_account" translate="label" type="select" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                            <label>Enable on Create an Account</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+                        <field id="ca_reward_point" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Reward Point(s)</label>
+                            <validate>required-entry validate-number validate-greater-than-zero</validate>
+                            <depends><field id="enable_on_create_account">1</field></depends>
+                        </field>
+                    </group>
+                    <group id="creating_order" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                        <label>Creating Order</label>
+                        <attribute type="expanded">1</attribute>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="enable_create_order" translate="label" type="select" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                            <label>Enable</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+                        <field id="min_order_qty" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Min Order Qty</label>
+                            <validate>validate-number validate-greater-than-zero</validate>
+                            <depends>
+                                <field id="enable_create_order">1</field>
+                            </depends>
+                        </field>
+                        <field id="min_order_total" translate="label comment" sortOrder="15" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Min Order Total</label>
+                            <validate>validate-number validate-greater-than-zero</validate>
+                            <depends>
+                                <field id="enable_create_order">1</field>
+                            </depends>
+                        </field>
+                        <field id="earn_type" translate="label" type="select" sortOrder="20" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                            <label>Earn Type</label>
+                            <source_model>Dolphin\Walletrewardpoints\Model\Config\Source\RewardType</source_model>
+                            <depends><field id="enable_create_order">1</field></depends>
+                        </field>
+                        <field id="co_reward_point" translate="label comment" sortOrder="25" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Reward Point(s)</label>
+                            <validate>required-entry validate-number validate-greater-than-zero</validate>
+                            <depends><field id="enable_create_order">1</field></depends>
+                        </field>
+                        <field id="max_reward_per_order" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Max Reward Point(s) per Order</label>
+                            <validate>validate-number validate-greater-than-zero</validate>
+                            <depends>
+                                <field id="earn_type">1</field>
+                            </depends>
+                        </field>
+                        <field id="co_max_order" translate="label comment" sortOrder="35" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                                <label>Max no. of Order</label>
+                                <validate>validate-number validate-greater-than-zero</validate>
+                                <comment>If set X then get reward point(s) upto X order.</comment>
+                                <depends><field id="enable_create_order">1</field></depends>
+                            </field>
+                        <field id="reward_message" translate="label" type="select" sortOrder="40" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                            <label>Display Reward Point(s) on Product</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <depends><field id="enable_create_order">1</field></depends>
+                        </field>
+                    </group>
+                    <group id="newsletter_subscribers" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="15">
+                        <label>Newsletter Subscription</label>
+                        <attribute type="expanded">1</attribute>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="enable_newsletter_subscribers" translate="label" type="select" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                            <label>Enable</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+                        <field id="nl_reward_point" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Reward Point(s)</label>
+                            <validate>required-entry validate-number validate-greater-than-zero</validate>
+                            <depends><field id="enable_newsletter_subscribers">1</field></depends>
+                        </field>
+                    </group>
+                    <group id="customer_review" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">
+                        <label>Customer Review</label>
+                        <attribute type="expanded">1</attribute>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="enable_customer_review" translate="label" type="select" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                            <label>Enable</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+                        <field id="cr_reward_point" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Reward Point(s)</label>
+                            <validate>required-entry validate-number validate-greater-than-zero</validate>
+                            <comment>Reward Point(s) get after review approval.</comment>
+                            <depends><field id="enable_customer_review">1</field></depends>
+                        </field>
+                        <field id="cr_max_review" translate="label comment" sortOrder="15" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Max no. of Review</label>
+                            <validate>validate-number validate-greater-than-zero</validate>
+                            <comment>If set X then get reward point(s) upto X review.</comment>
+                            <depends><field id="enable_customer_review">1</field></depends>
+                        </field>
+                    </group>
+                    <group id="invited_friend_registration" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="25">
+                        <label>Invited Friend Registration</label>
+                        <attribute type="expanded">1</attribute>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="enable_ifr" translate="label" type="select" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                            <label>Enable</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+                        <field id="ifr_limit" translate="label comment" sortOrder="8" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Max. Registration Limit</label>
+                            <validate>validate-number validate-greater-than-zero</validate>
+                            <comment>If set X then get reward point(s) upto X friend registration.</comment>
+                            <depends><field id="enable_ifr">1</field></depends>
+                        </field>
+                        <field id="ifr_reward_point" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Reward Point(s)</label>
+                            <validate>required-entry validate-number validate-greater-than-zero</validate>
+                            <comment>Get reward point(s) after friend's registration.</comment>
+                            <depends><field id="enable_ifr">1</field></depends>
+                        </field>
+                        <field id="inv_email_sender" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                            <label>Invite Friend Email Sender</label>
+                            <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                            <depends><field id="enable_ifr">1</field></depends>
+                        </field>
+                        <field id="invitefriendemailtemp" translate="label" type="select" sortOrder="20" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                            <label>Invite Friend Email Template</label>
+                            <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                            <comment>Email template chosen based on theme fallback when "Default" option is selected.</comment>
+                            <depends><field id="enable_ifr">1</field></depends>
+                        </field>
+                        <group id="creating_order_by_iv" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="25">
+                            <depends><field id="enable_ifr">1</field></depends>
+                            <label>Creating Order by Invited Friend</label>
+                            <attribute type="expanded">1</attribute>
+                            <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                            <field id="enable_coif" translate="label" type="select" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                                <label>Enable</label>
+                                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            </field>
+                            <field id="coiv_earn_type" translate="label" type="select" sortOrder="8" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                                <label>Earn Type</label>
+                                <source_model>Dolphin\Walletrewardpoints\Model\Config\Source\RewardType</source_model>
+                                <depends><field id="enable_coif">1</field></depends>
+                            </field>
+                            <field id="coif_reward_point" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                                <label>Reward Point(s)</label>
+                                <validate>required-entry validate-number validate-greater-than-zero</validate>
+                                <depends><field id="enable_coif">1</field></depends>
+                            </field>
+                            <field id="coif_max_order" translate="label comment" sortOrder="15" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                                <label>Max no. of Order</label>
+                                <validate>validate-number validate-greater-than-zero</validate>
+                                <comment>If set X then get reward point(s) upto X order of friend.</comment>
+                                <depends><field id="enable_coif">1</field></depends>
+                            </field>
+                        </group>
+                    </group>
+                </group>
+            </group>
+            <group id="transaction" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Transaction Subscription</label>
+                <field id="sub_email_sender" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Subscription Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="transaction_subscribe" translate="label" type="select" sortOrder="10" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                    <label>Subscription Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <comment>Email template chosen based on theme fallback when "Default" option is selected.</comment>
+                </field>
+                <field id="unsub_email_sender" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Unsubscription Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="transaction_unsubscribe" translate="label" type="select" sortOrder="20" showInDefault="1" showInStore="1" showInWebsite="1" canRestore="1">
+                    <label>Unsubscription Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <comment>Email template chosen based on theme fallback when "Default" option is selected.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

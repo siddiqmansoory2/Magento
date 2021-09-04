@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceBlock name="customer_account_navigation">
+			<block ifconfig="walletreward/wallet/enable" class="Magento\Customer\Block\Account\Delimiter" name="customer-account-navigation-delimiter-mywallet" template="Magento_Customer::account/navigation-delimiter.phtml">
+                <arguments>
+                    <argument name="sortOrder" xsi:type="number">10</argument>
+                </arguments>
+            </block>
+			<block ifconfig="walletreward/wallet/enable" class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-mywallet-link">
+				<arguments>
+					<argument name="path" xsi:type="string">walletrewardpoints/customer/transaction</argument>
+					<argument name="label" xsi:type="string">My Wallet</argument>
+				</arguments>
+			</block>
+		</referenceBlock>
+	</body>
+</page>

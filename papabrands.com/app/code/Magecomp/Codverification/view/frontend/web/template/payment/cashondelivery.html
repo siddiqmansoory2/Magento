@@ -1,0 +1,64 @@
+<div class="payment-method" data-bind="css: {'_active': (getCode() == isChecked())}">
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()"/>
+        <label data-bind="attr: {'for': getCode()}" class="label"><span data-bind="text: getTitle()"></span></label>
+    </div>
+
+    <div class="payment-method-content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div class="payment-method-billing-address">
+            <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <p data-bind="html: getInstructions()"></p>
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: $parent.getRegion('before-place-order') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div id="codverification" data-bind="style: {display: isEnable()}">
+            <div class="payment-option _collapsible" data-bind="mageInit: {'collapsible':{'openedState': '_active'}}">
+                <div class="payment-option-title field choice" data-role="title">
+                    <span class="action action-toggle" id="block-codverification-heading" role="heading" aria-level="2" data-bind="text: getCustomTitle()"></span>
+                </div>
+                <div class="payment-option-content" data-role="content">
+                    <p data-bind="html: getNumberInstruction()"></p>
+                    <div class="control">
+                        <button id="codsendotp" name="codsendotp" class="action primary checkout" click="sendCodcode" data-bind="'value': $t('Send OTP')" type="button">
+                            <span><!-- ko i18n: 'Send OTP'--><!-- /ko --></span>
+                        </button>
+                        <input class="input-text" type="password" id="codcode" name="codcode" data-bind="placeholder: $t('Enter OTP')" placeholder="Enter OTP" style="width: 15%; float: left; margin-right: 20px; display: none;" />
+                        <button id="codresendotp" name="codresendotp" class="action primary checkout" click="resendCodcode" data-bind="'value': $t('Resend OTP')" type="button" style="display: none;">
+                            <span><!-- ko i18n: 'Resend OTP'--><!-- /ko --></span>
+                        </button>
+                        <button id="codverifyotp" name="codverifyotp" class="action primary checkout" click="verifyCodcode" data-bind="'value': $t('Verify OTP')" type="button" style="display: none;">
+                            <span><!-- ko i18n: 'Verify OTP'--><!-- /ko --></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button class="action primary checkout"
+                        type="submit"
+                        data-bind="
+                        click: placeOrder,
+                        attr: {title: $t('Place Order')},
+                        enable: (getCode() == isChecked()),
+                        css: {disabled: !isPlaceOrderActionAllowed()}
+                        "
+                        disabled>
+                    <span data-bind="i18n: 'Place Order'"></span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

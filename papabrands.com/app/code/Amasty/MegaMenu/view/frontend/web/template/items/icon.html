@@ -1,0 +1,10 @@
+<figure class="ammenu-icon-block"
+        data-bind="
+            visible: item.isIconVisible,
+            css: {'-empty': !item.icon},
+            style: {
+                '-webkit-mask-image': item.icon ? 'url(' + item.icon + ')' : '',
+                'maskImage': item.icon ? 'url(' + item.icon + ')' : '',
+                'background-color': item.color() && item.icon ? item.color() : ''
+            }">
+</figure>

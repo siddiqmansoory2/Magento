@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Checkout\Api\Data\ShippingInformationInterface">
+        <attribute code="md_osc_delivery_date" type="string"/>
+        <attribute code="md_osc_delivery_time" type="string"/>
+        <attribute code="md_osc_delivery_comment" type="string"/>
+        <attribute code="mdosc_extra_fee_checked" type="string" />
+<!--        <attribute code="mdosc_registration_token" type="string" />-->
+    </extension_attributes>
+    <extension_attributes for="Magento\Sales\Api\Data\OrderInterface">
+        <attribute code="mdosc_extra_fee" type="string" />
+    </extension_attributes>
+</config>

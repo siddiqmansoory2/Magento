@@ -1,0 +1,38 @@
+<button data-bind="
+    attr: {
+        class: 'ammenu-link'
+    },
+    css: { '-current': item.current },
+    style: {
+        color: item.color() ? item.color() : ''
+    },
+    event: {
+        click: function() {
+            if (item.elems.length) {
+                uiClass.toggleItem(item);
+            } else {
+                window.location = item.url;
+            }
+        }
+    }">
+
+    <!-- ko if: uiClass.isIconsAvailable -->
+        <!-- ko template: { name: uiClass.root_templates.icon, data: { item: item } } --><!-- /ko-->
+    <!-- /ko -->
+
+    <span class="ammenu-text" data-bind="i18n: item.name"></span>
+
+    <span class="ammenu-label"
+          if="item.label"
+          data-bind="
+               style: {
+                    'background-color': item.label.label_background_color || '',
+                    'color': item.label.label_text_color || ''
+               },
+               i18n: item.label.label">
+    </span>
+
+    <!-- ko if: item.elems && item.elems.length -->
+        <!-- ko template: { name: uiClass.templates.toggleButton, data: $data } --><!-- /ko -->
+    <!-- /ko -->
+</button>

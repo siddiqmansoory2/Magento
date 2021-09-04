@@ -1,0 +1,12 @@
+<!--@subject {{trans "Withdraw Request Status"}} @-->
+<!--@vars {
+"template config_path=\"design\/email\/footer_template\"":"Email Footer Template",
+"template config_path=\"design\/email\/header_template\"":"Email Header Template"
+} @-->
+
+
+{{template config_path="design/email/header_template"}}
+
+{{trans "We have "}} {{var data.status}} {{trans " your withdraw request."}}
+
+{{template config_path="design/email/footer_template"}}

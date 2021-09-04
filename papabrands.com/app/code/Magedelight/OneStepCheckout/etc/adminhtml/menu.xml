@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magedelight
+ * Copyright (C) 2019 Magedelight <info@magedelight.com>
+ *
+ * @category Magedelight
+ * @package Magedelight_OneStepCheckout
+ * @copyright Copyright (c) 2019 Mage Delight (http://www.magedelight.com/)
+ * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author Magedelight <info@magedelight.com>
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magedelight_OneStepCheckout::onestepcheckout_root"
+             title="One Step Checkout"
+             module="Magedelight_OneStepCheckout"
+             sortOrder="50"
+             resource="Magedelight_OneStepCheckout::root"
+             toolTip="magedelight_base" />
+
+        <add id="Magedelight_OneStepCheckout::onestepcheckout_root_commonlyvisible"
+             title="One Step Checkout"
+             module="Magedelight_OneStepCheckout"
+             sortOrder="50"
+             parent="Magedelight_Base::md_modules"
+             resource="Magedelight_OneStepCheckout::root" />
+
+        <add id="Magedelight_OneStepCheckout::config_root"
+             title="Configuration"
+             module="Magedelight_OneStepCheckout"
+             sortOrder="600"
+             action="adminhtml/system_config/edit/section/onestepcheckout"
+             parent="Magedelight_OneStepCheckout::onestepcheckout_root"
+             resource="Magedelight_OneStepCheckout::config_root" />
+
+        <add id="Magedelight_OneStepCheckout::useful_links"
+             title="Useful Links"
+             module="Magedelight_OneStepCheckout"
+             sortOrder="999"
+             parent="Magedelight_OneStepCheckout::onestepcheckout_root"
+             resource="Magedelight_OneStepCheckout::root" />
+
+        <add id="Magedelight_OneStepCheckout::documentation"
+             title="Documentation"
+             module="Magedelight_OneStepCheckout"
+             sortOrder="10"
+             target="_blank"
+             parent="Magedelight_OneStepCheckout::useful_links"
+             resource="Magedelight_OneStepCheckout::root" />
+    </menu>
+</config>

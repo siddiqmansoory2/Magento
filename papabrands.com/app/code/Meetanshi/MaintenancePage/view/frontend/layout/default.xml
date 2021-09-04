@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Meetanshi\MaintenancePage\Block\Index" name="maintenancepage_google_analytics"
+                   as="maintenancepage_google_analytics" template="Meetanshi_MaintenancePage::googleanalytics.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

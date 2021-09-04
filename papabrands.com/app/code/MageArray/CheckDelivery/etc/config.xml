@@ -1,0 +1,13 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <checkDelivery>
+            <setting>
+                <enable>0</enable>
+                <postcodes><![CDATA[100000,100001,100002,100003,100004,100005,100006]]></postcodes>
+                <success_message><![CDATA[Delivery available]]></success_message>
+                <error_message><![CDATA[Item not available at this location, please try another pincode]]></error_message>
+            </setting>
+        </checkDelivery>
+    </default>
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+  <update handle="empty"/>
+  <referenceContainer name="page.wrapper">
+    <block class="Magento\Framework\View\Element\Template" name="theme_header" template="ET_Theme::html/header.phtml" before="main.content">
+      <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml">
+        <arguments>
+          <argument name="configProvider" xsi:type="object">Magento\Search\ViewModel\ConfigProvider</argument>
+        </arguments>
+      </block>
+      <block class="Magento\Framework\View\Element\Template" name="et.top.promotion" template="ET_Theme::html/promotion.phtml" />
+    </block>
+    <container name="page.top" as="page_top" label="After Page Header" after="header.container"/>
+    <container name="footer-container" as="footer" before="before.body.end" label="Page Footer Container" htmlTag="footer" htmlClass="page-footer"/>
+  </referenceContainer>
+  <!--<move element="logo" destination="theme_header"/>-->
+</layout>

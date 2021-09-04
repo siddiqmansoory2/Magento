@@ -1,0 +1,28 @@
+<?php
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_product = $block->getProduct();
+?>
+<?php if ($_product->getData('sizechart')): ?>
+
+<button type="button" class="action" data-trigger="trigger">
+    <span data-bind="i18n: 'Size & Fit Guide'"></span>
+</button>
+
+<div data-bind="mageInit: {
+        'Magento_Ui/js/modal/modal':{
+            'type': 'popup',
+            'title': 'Size Chart',
+            'trigger': '[data-trigger=trigger]',
+            'responsive': true,
+            'buttons': [{
+                text: jQuery.mage.__('Submit'),
+                class: 'action'
+            }]
+        }}">
+    <div class="content">
+       <?php 
+       echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($_product->getAttributeText('sizechart'))->toHtml();?>
+
+    </div>
+</div>
+<?php endif; ?>

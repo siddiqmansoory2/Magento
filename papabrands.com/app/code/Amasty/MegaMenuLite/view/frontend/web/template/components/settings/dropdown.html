@@ -1,0 +1,25 @@
+<span data-bind="attr: { class: 'ammenu-link' }">
+    <span class="ammenu-text" data-bind="i18n: item.current_name"></span>
+    <b class="ammenu-code" if="item.current_code_title" data-bind="i18n: item.current_code_title"></b>
+
+    <!-- ko template: { name: uiClass.root_templates.toggleButton } --><!-- /ko -->
+</span>
+
+<ul class="ammenu-items -dropdown"
+    data-bind="
+        foreach: item.items, visible: item.isActive,
+        style: {
+            color: uiClass.color_settings.submenu_text
+        }">
+    <li class="ammenu-item">
+        <a class="ammenu-link"
+           data-bind="
+                attr: {
+                    'href': $data.url ? $data.url : '#',
+                    'data-post': $data['data-post'] ? $data['data-post'] : null
+                }">
+            <span class="ammenu-text" data-bind="i18n: name"></span>
+            <b class="ammenu-code" if="$data.code_title" data-bind="i18n: code_title"></b>
+        </a>
+    </li>
+</ul>

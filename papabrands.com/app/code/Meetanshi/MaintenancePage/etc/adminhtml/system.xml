@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="meetanshi" translate="label" class="meetanshi" sortOrder="100">
+            <label></label>
+        </tab>
+        <section id="maintenancepage" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Maintenance Page</label>
+            <tab>meetanshi</tab>
+            <resource>Meetanshi_MaintenancePage::maintenancepage</resource>
+            <group id="general_configuration" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Configuration</label>
+                <field id="enable_disable" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Maintenance Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="whitelist_ips" translate="label" type="textarea" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Whitelist IPs</label>
+                    <comment>Whitelisted IPs are separated by "," and no space allowed.</comment>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="allowed_urls" translate="label" type="textarea" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Allowed URLs</label>
+                    <comment>Accepted URLs must be separated by "," and no space allowed. Example:
+                        contact,customer/account/login,home
+                        Use /#/ in the end to allow all the sub URLs. Example:
+                        customer/#/ will allow both customer/account/create and customer/account/login
+                    </comment>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="redirect_to_page" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Redirect to Page</label>
+                    <source_model>Meetanshi\MaintenancePage\Model\Config\Source\CmsPages</source_model>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="page_design" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Select Page Template</label>
+                    <source_model>Meetanshi\MaintenancePage\Model\Config\Source\PageDesign</source_model>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="layout_configuration" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Page Layout</label>
+                <field id="layout" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Select Layout</label>
+                    <source_model>Meetanshi\MaintenancePage\Model\Config\Source\PageLayout</source_model>
+                </field>
+            </group>
+            <group id="preview_configuration" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Page Preview</label>
+                <field id="preview" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Preview</button_label>
+                    <frontend_model>Meetanshi\MaintenancePage\Block\System\Config\Button</frontend_model>
+                </field>
+            </group>
+            <group id="timer_configuration" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Countdown Timer Settings</label>
+                <field id="enable_disable" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Countdown Timer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Title</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="title_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Title Color</label>
+                    <frontend_model>Meetanshi\MaintenancePage\Block\Adminhtml\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="end_time" translate="label" type="date" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Timer Ends on</label>
+                    <frontend_model>Meetanshi\MaintenancePage\Block\Adminhtml\System\Config\DateTimePicker</frontend_model>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="disable_maintenance" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Disable Maintenance Mode After End Time</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="logo_configuration" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Logo Settings</label>
+                <field id="icon" translate="label comment" type="image" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Upload Logo Image</label>
+                    <backend_model>Meetanshi\MaintenancePage\Model\Config\Backend\Icon</backend_model>
+                    <base_url type="media" scope_info="1">maintenancepage/icons</base_url>
+                    <comment>Allowed file types: jpg, jpeg, gif, png, svg</comment>
+                </field>
+                <field id="icon_width" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Logo Width</label>
+                    <comment>Default: 150</comment>
+                </field>
+                <field id="icon_height" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Logo Height</label>
+                    <comment>Default: 150</comment>
+                </field>
+            </group>
+            <group id="background_configuration" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Background Settings</label>
+                <field id="background_type" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Background As</label>
+                    <source_model>Meetanshi\MaintenancePage\Model\Config\Source\BackgroundType</source_model>
+                </field>
+                <field id="bgimage" translate="label comment" type="image" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Upload Image</label>
+                    <backend_model>Meetanshi\MaintenancePage\Model\Config\Backend\BgImage</backend_model>
+                    <base_url type="media" scope_info="1">maintenancepage/bgimages</base_url>
+                    <depends>
+                        <field id="background_type">image</field>
+                    </depends>
+                    <comment>Allowed file types: jpg, jpeg, gif, png, svg</comment>
+                </field>
+                <field id="bgvideo" translate="label comment" type="file" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Upload Video</label>
+                    <backend_model>Meetanshi\MaintenancePage\Model\Config\Backend\BgVideo</backend_model>
+                    <base_url type="media" scope_info="1">maintenancepage/bgvideos</base_url>
+                    <depends>
+                        <field id="background_type">video</field>
+                    </depends>
+                    <comment>Allowed file types: mp4</comment>
+                </field>
+                <field id="background_overlayer" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Background Overlay</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="text_content_configuration" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Content Settings</label>
+                <field id="page_title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Title</label>
+                </field>
+                <field id="page_desc" translate="label" type="editor" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Description</label>
+                    <frontend_model>Meetanshi\MaintenancePage\Block\Adminhtml\System\Config\Editor</frontend_model>
+                </field>
+            </group>
+            <group id="newsletter_configuration" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Newsletter Settings</label>
+                <field id="enable_disable" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Newsletter Subscription Box</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Title</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="title_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Title Color</label>
+                    <frontend_model>Meetanshi\MaintenancePage\Block\Adminhtml\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="social_configuration" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Social Media Settings</label>
+                <field id="enable_disable" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Social Connections</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Title</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="title_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Title Color</label>
+                    <frontend_model>Meetanshi\MaintenancePage\Block\Adminhtml\System\Config\Color</frontend_model>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="facebook_link" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Facebook URL</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="google_link" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Google+ URL</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="linkedin_link" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Linkedin URL</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="twitter_link" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Twitter URL</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="youtube_link" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>YouTube URL</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="instagram_link" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Instagram URL</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+                <field id="pinterest_link" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Pinterest URL</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="footer_configuration" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Footer Settings</label>
+                <field id="footer_text" translate="label" type="editor" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Footer Text</label>
+                    <frontend_model>Meetanshi\MaintenancePage\Block\Adminhtml\System\Config\Editor</frontend_model>
+                </field>
+            </group>
+            <group id="alert_for_admin" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Maintenance End Email Settings</label>
+                <field id="enable_disable" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Send Maintenance End Email to Admin</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="email_sender" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Email Sender</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="email_receiver" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Admin Email ID</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                    <comment>(Add comma separated Email IDs of the recipients)</comment>
+                </field>
+                <field id="email_template" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Email Template</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                    <comment>Email template is chosen based on theme fallback when "Default" option is selected.
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="no_of_days_to_notify" translate="label" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Send Email Before x Number of Days</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                    <comment>days</comment>
+                </field>
+            </group>
+            <group id="google_analytics" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Google Analytics Settings</label>
+                <field id="enable_disable" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Google Analytics</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="tracking_id" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Tracking ID</label>
+                    <depends>
+                        <field id="enable_disable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

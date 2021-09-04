@@ -1,0 +1,17 @@
+<form method="post" data-bind="attr: { action: getActionUrl() },submit:submitForm" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>" id="transaction-subscription-form" data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset info">
+        <div class="field">
+            <legend class="legend"><span>Wallet/Reward Transactional Email Subscription</span></legend>
+        	<div class="control">
+                <input type="checkbox" class="checkbox" label="Email Subscription" name="is_subscribed" id="subscription" data-bind="attr: {checked: getIsSubscribed()}"/>
+                <label for="subscription" class="label"><span>Email Subscription</span></label>
+            </div><br>
+            <div class="actions-toolbar">
+                <button class="action primary" id="transactionsub" type="submit" title="Save">
+                    <span data-bind="i18n: 'Save'"></span>
+                </button>
+            </div><br>
+            <span>If checked then you will get wallet/reward transactional email.</span>
+        </div>
+    </fieldset>
+</form>

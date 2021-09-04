@@ -1,0 +1,11 @@
+<div class="ammenu-settings-block"
+     if="settings && settings.switcher.items.length > 1"
+     afterRender="initLanguage"
+     data-bind="
+        style: {
+            color: color_settings.menu_text
+        }">
+    <p class="ammenu-title" data-bind="i18n: 'Language'"></p>
+
+    <!-- ko template: { name: $data.templates.dropdown, data: { item: settings.switcher, uiClass: $data } } --><!-- /ko -->
+</div>

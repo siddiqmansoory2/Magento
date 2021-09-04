@@ -1,0 +1,14 @@
+<section data-bind="
+                attr: { class: 'ammenu-nav-sections -topmenu' },
+                css: {
+                    '-hamburger': $data.is_hamburger,
+                    '-sticky': $data.isSticky() && ($data.isOpen ? !$data.isOpen() : true)
+                }">
+    <nav class="ammenu-main-container"
+         data-bind="
+            style: {
+                background: color_settings.menu_background
+            }">
+        <!-- ko template: { name: templates.items, data: { uiClass: $data, elems: $data.elems } } --><!-- /ko -->
+    </nav>
+</section>

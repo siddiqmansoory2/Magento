@@ -1,0 +1,11 @@
+<div class="ammenu-settings-block"
+     if="settings && settings.currency.items.length > 1"
+     afterRender="initCurrency"
+     data-bind="
+        style: {
+            color: color_settings.menu_text
+        }">
+    <p class="ammenu-title" data-bind="i18n: 'Currency'"></p>
+
+    <!-- ko template: { name: $data.templates.dropdown, data: { item: settings.currency, uiClass: $data } } --><!-- /ko -->
+</div>

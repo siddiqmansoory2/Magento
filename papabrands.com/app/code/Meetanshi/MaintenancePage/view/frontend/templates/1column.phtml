@@ -1,0 +1,146 @@
+<?php
+$helper = $block->getHelper();
+$backgroundTypeModel = $block->getBackgroundTypeModel();
+$backgroundType = $helper->getBackgroundType();
+?>
+<div class="main-content" id="style-1">
+
+    <div class="maintenance-content col-1">
+        <div class="top-header">
+            <div class="main-logo">
+                <?php if ($helper->getIcon()) : ?>
+                    <div class="field">
+                        <img src="<?php echo $helper->getIconUrl() ?>" alt="<?php echo __('Icon') ?>"
+                             width="<?= $helper->getIconWidth() ?>" height="<?= $helper->getIconHeight() ?>"/>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <?php if ($helper->getPageTitle()) : ?>
+                <div class="top-header-title"><h1><?= $block->escapeHtml(__($helper->getPageTitle())) ?></h1></div>
+            <?php endif; ?>
+            <?php if ($helper->getPageDesc()) : ?>
+            <div class="sub-content">
+                 <?=$helper->getPageDesc()?>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php if ($helper->isTimerEnabled()) : ?>
+        <div class="timer">
+            <?php if ($helper->getTimerTitle()) : ?>
+                <div class="timer-title"><?=$helper->getTimerTitle() ?></div>
+            <?php endif; ?>
+            <div class="timer-content">
+                <?php echo $block->getLayout()->createBlock("Meetanshi\MaintenancePage\Block\Index")->setTemplate("Meetanshi_MaintenancePage::counter.phtml")->toHtml(); ?>
+            </div>
+        </div>
+        <?php endif; ?>
+        <?php if ($helper->isNewsletterEnabled()) : ?>
+        <div class="newslatter">
+            <?php if ($helper->getNewsletterTitle()) : ?>
+            <div class="newslatter-title"><?=$helper->getNewsletterTitle()?></div>
+            <?php endif; ?>
+            <div class="newslatter-content">
+                <div class="block newsletter">
+                    <div class="title"><strong><?= $block->escapeHtml(__('Notify me')) ?></strong></div>
+                    <div class="content">
+                        <form class="form subscribe"
+                              novalidate
+                              action="<?= $block->escapeUrl($block->getFormActionUrl()) ?>"
+                              method="post"
+                              data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+                              id="newsletter-validate-detail">
+                            <div class="field newsletter">
+                                <label class="label"
+                                       for="newsletter"><span><?= $block->escapeHtml(__('Notify me:')) ?></span></label>
+                                <div class="control">
+                                    <input name="email" type="email" id="newsletter"
+                                           placeholder="<?= $block->escapeHtml(__('Your email address')) ?>"
+                                           data-validate="{required:true, 'validate-email':true}"/>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button class="action subscribe primary"
+                                        title="<?= $block->escapeHtmlAttr(__('Notify me')) ?>" type="submit">
+                                    <span><?= $block->escapeHtml(__('Notify me')) ?></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+        <div class="footer">
+            <?php if ($helper->isSocialEnabled()) : ?>
+                <?php if ($helper->getSocialTitle()) : ?>
+                    <div class="footer-title"><?=$helper->getSocialTitle()?></div>
+                <?php endif; ?>
+                <div class="footer-social-icon">
+                <ul class="social-icon">
+                    <?php if ($helper->canDisplayFacebookLink()) : ?>
+                        <li><a target="_blank" href="<?= $helper->getFacebookLink() ?>"><i
+                                        class="fa fa-facebook"></i></a></li>
+                    <?php endif; ?>
+                    <?php if ($helper->canDisplayGoogleLink()) : ?>
+                        <li><a target="_blank" href="<?= $helper->getGoogleLink() ?>"><i class="fa fa-google-plus"></i></a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($helper->canDisplayLinkedinLink()) : ?>
+                        <li><a target="_blank" href="<?= $helper->getLinkedinLink() ?>"><i
+                                        class="fa fa-linkedin"></i></a></li>
+                    <?php endif; ?>
+                    <?php if ($helper->canDisplayTwitterLink()) : ?>
+                        <li><a target="_blank" href="<?= $helper->getTwitterLink() ?>"><i class="fa fa-twitter"></i></a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($helper->canDisplayYoutubeLink()) : ?>
+                        <li><a target="_blank" href="<?= $helper->getYoutubeLink() ?>"><i class="fa fa-youtube"></i></a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($helper->canDisplayInstagramLink()) : ?>
+                        <li><a target="_blank" href="<?= $helper->getInstagramLink() ?>"><i class="fa fa-instagram"></i></a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($helper->canDisplayPinterestLink()) : ?>
+                        <li><a target="_blank" href="<?= $helper->getPinterestLink() ?>"><i class="fa fa-pinterest"></i></a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+            <?php endif; ?>
+            <?php if ($helper->getFooterText()) : ?>
+                <div class="footer-note">
+                    <?=$helper->getFooterText()?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<?php if ($backgroundType == $backgroundTypeModel::IMAGE) : ?>
+    <div id="bg"></div>
+    <style type="text/css">
+        #bg{
+            background-image: url('<?php echo $helper->getBackgroundImageUrl(); ?>');
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+    </style>
+<?php elseif ($backgroundType == $backgroundTypeModel::VIDEO && $helper->getBackgroundVideo()) : ?>
+    <video preload="preload" id="bgVideo" autoplay="autoplay" loop="loop">
+        <source src="<?=$helper->getBackgroundVideoUrl()?>" type="video/mp4" />
+    </video>
+<?php endif; ?>
+<?php if($helper->getBackgroundOverLayer()) : ?>
+    <div id="overlayer"></div>
+<?php endif; ?>
+
+

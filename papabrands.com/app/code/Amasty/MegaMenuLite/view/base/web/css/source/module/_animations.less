@@ -1,0 +1,21 @@
+//
+//  Animations Descriptions
+//  ______________________________________________
+
+@-webkit-keyframes ammenu-animation__fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.ammenu-animation__fadeIn(
+    @delay: none
+) {
+    & {
+        opacity: 0;
+        animation: ~'ammenu-animation__fadeIn @{delay}s forwards';
+    }
+}

@@ -1,0 +1,80 @@
+<?php
+/** @var \Dolphin\Walletrewardpoints\Block\Customer\SendCredittoFriend $block */
+$viewModel = $block->getViewModel();
+$viewModel->checkForLogin();
+$customer_id = '';
+if ($viewModel->getCustomerIdFromSession()) {
+    $customer_id = $viewModel->getCustomerIdFromSession();
+}
+$walletCredit = $viewModel->getWalletCredit($customer_id);
+$currencySymbol = $viewModel->getCurrencySymbol();
+$totalCredit = $currencySymbol . $walletCredit;
+$formAction = $block->getUrl('walletrewardpoints/customer/sendcredittofriendsubmit');
+$backUrl = $block->escapeUrl($block->getUrl('walletrewardpoints/customer/transaction'));
+$formKey = $block->getFormKey();
+?>
+<div>
+    <h3>Wallet Credit: <?= $block->escapeHtml($totalCredit); ?></h3>
+</div>
+<br>
+<form class="form create account" data-hasrequired="<?= $block->escapeHtml(__('* Required Fields')) ?>"
+    action="<?= $block->escapeHtml($formAction) ?>" id="sendcredittofriend"
+    data-mage-init='{"validation":{}}' method="post">
+    <fieldset class="fieldset info">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Credit Send Form')) ?></span></legend><br>
+        <input type="hidden" name="form_key" value="<?= $block->escapeHtml($formKey); ?>" />
+        <input type="hidden" name="customer_id" value="<?= $block->escapeHtml($customer_id); ?>"/>
+        <div class="fields">
+            <div class="field name required">
+                <label for="sender_amount" class="label"><span><?= $block->escapeHtml(__('Credit')) ?></span></label>
+                <div class="control">
+                    <input name="credit" max="<?= $block->escapeHtml($walletCredit) ?>" id="credit"
+                    type="text"  data-validate="{required:true}"
+                    class="input-text required-entry validate-greater-than-zero validate-number"/>
+                </div>
+            </div>
+            <div class="field name required">
+                <label for="friend_firstname" class="label">
+                    <span><?= $block->escapeHtml(__("Friend First Name")) ?></span></label>
+                <div class="control">
+                    <input name="firstname" id="friend_firstname" type="text"
+                    data-validate="{required:true}" class="input-text"/>
+                </div>
+            </div>
+            <div class="field name required">
+                <label for="friend_lastname" class="label">
+                    <span><?= $block->escapeHtml(__("Friend Last Name")) ?> </span></label>
+                <div class="control">
+                    <input name="lastname" id="friend_lastname" type="text"
+                    data-validate="{required:true}" class="input-text"/>
+                </div>
+            </div>
+            <div class="field name required">
+                <label class="label"><span><?= $block->escapeHtml(__('Friend Email')) ?></span></label>
+                <div class="control">
+                    <input type="text" id="friend_email"
+                           name="friend-email"
+                           title="Friend Email"
+                           class="input-text required-entry validate-email">
+                </div>
+            </div>
+            <div class="field name required">
+                <label for="message" class="label"><span><?= $block->escapeHtml(__('Message:')) ?></span></label>
+                <textarea  name="message" data-validate="{required:true}" class="input-text" id="message"></textarea>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" id="sendtofriend_submit"
+            title="<?= $block->escapeHtml(__('Send Credit To Friend')) ?>" class="action save primary">
+                <span><span><?= $block->escapeHtml(__('Send Credit')) ?></span></span>
+            </button>
+        </div>
+        <div class="secondary">
+            <a class="action" href="<?= $block->escapeHtml($backUrl) ?>">
+                <span><?= $block->escapeHtml(__('Back')) ?></span>
+            </a>
+        </div>
+    </div>
+</form>

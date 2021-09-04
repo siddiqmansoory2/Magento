@@ -1,0 +1,35 @@
+<?php
+$viewModel = $block->getViewModel();
+$enableReward = $viewModel->getEnableReward();
+$isLoggedIn = $viewModel->getIsLoggedIn();
+$allowOnOrder = $viewModel->getEnableCreatingOrder();
+$displayMessage = $viewModel->getDisplayRewardPointOnProduct();
+if ($enableReward && $allowOnOrder && $displayMessage && $isLoggedIn) {
+    $minOrderQty = $viewModel->getMinOrderedQty();
+    $minOrderTotal = $viewModel->getMinOrderTotal();
+    $currencySymbol = $viewModel->getCurrencySymbol();
+    $rewardPoints = $viewModel->getCreatingOrderRewardPoint();
+    $earnType = $viewModel->getCreatingOrderEarnType();
+    $message = __("Earn %1 Reward Point(s) on Order", $rewardPoints);
+    if ($earnType) {
+        $message = __("Earn %1% Reward Point(s) on Order Subtotal", $rewardPoints);
+    }
+    if ($minOrderQty || $minOrderTotal) {
+        $message .= __(" (");
+        if ($minOrderQty) {
+            $message .= __("Min Order Qty: %1", $minOrderQty);
+        }
+        if ($minOrderTotal) {
+            if ($minOrderQty) {
+                $message .= __(", ");
+            }
+            $message .= __("Min Order Total: %1%2", $currencySymbol, $minOrderTotal);
+        }
+        $message .= __(")");
+    }
+    ?>
+    <div><span id="dws-img-class"><?=$block->escapeHtml($message);?></span></div>
+    <style type="text/css">
+    .product-info-main .product-info-stock-sku{padding-left:0px !important;}
+    span#dws-img-class{font-size: 1.5rem;}</style>
+<?php } ?>

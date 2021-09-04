@@ -1,0 +1,23 @@
+<?php /* @var $block Magezon\FAQ\Block\Question\Form */?>
+
+<div class="mgz-faq-product-form">
+	<?= $this->getLayout()->createBlock(Magezon\FAQ\Block\Question\Form::class)->toHtml() ?>
+</div>
+
+<script type="text/javascript">
+	require(['jquery'], function($) {
+       
+        	$('.mgz-faq-action-btn').on('click', function() {
+        		var form = $('.mgz-faq-product-form'),
+        			self = $(this);
+        		if (form.is(':visible')) {
+        			form.fadeOut();
+        			self.html('<?= __("Ask a Question") ?>');
+        		} else {
+        			form.fadeIn();
+        			self.html('<?= __("Hide Form") ?>');
+        		}
+        	})
+        })
+
+</script>

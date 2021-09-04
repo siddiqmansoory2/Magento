@@ -1,0 +1,64 @@
+<!-- ko if: isLoggedIn() && is_enable() != 0 -->
+<div class="payment-option _collapsible opc-payment-additional credit-wallet"
+     data-bind="mageInit: {'collapsible':{'openedState': '_active'}}, click: applyCredit">
+    <div class="payment-option-title field choice" data-role="title">
+        <span class="action action-toggle" id="block-credit-heading" role="heading" aria-level="2">
+            <!-- ko i18n: 'Apply Wallet Credit'--><!-- /ko -->
+        </span>
+    </div>
+    <div class="payment-option-content" data-role="content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div data-bind="style:{'margin':'10px 0px'}">
+            <span data-bind="i18n: 'Your Wallet Credit: '"></span>
+            <span id="customerwalletcredit" data-bind="i18n: customerwalletcredit"></span>
+        </div>
+        <form class="form form-credit" id="credit-wallet-form">
+            <div class="payment-option-inner">
+                <div class="field">
+                    <div class="control">
+                        <!-- ko ifnot: isApplied() -->
+                        <input class="input-text"
+                               type="text"
+                               id="apply_credit_val"
+                               name="credit-wallet"
+                               placeholder="Enter Credit"
+                               data-validate="{'required-entry':true,'validate-greater-than-zero':true}"
+                               data-bind="{value: input_credit_val, placeholder: $t('Enter Credit')} " />
+                        <!-- /ko -->
+                        <!-- ko if: isApplied() -->
+                            <input class="input-text"
+                                   type="text"
+                                   id="apply_credit_val"
+                                   name="credit-wallet"
+                                   data-validate="{'required-entry':true,'validate-greater-than-zero':true}"
+                                   data-bind="{value: input_credit_val, placeholder: $t('Enter Credit')} " disabled="disabled" />
+                        <!-- /ko -->
+                        <p data-bind="style:{'margin':'10px 0px'}"><span data-bind="i18n: 'Maximum redeemable credit(s) are '">
+                        </span><span data-bind="i18n: maximum_allow_credit"></span></p>
+                        <!-- ko if: allow_with_coupon == 0 -->
+                        <p data-bind="style:{'margin':'10px 0px'}"><b><span data-bind="i18n: 'NOTE: '"></span></b><span data-bind="i18n: 'Wallet Credit is not apply when coupon is applied.'">
+                        </span></p>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <!-- ko ifnot: isApplied() -->
+                        <button class="action action-apply" name="credit-apply" id="apply" type="submit" data-bind="'value': $t('Apply'), click: apply">
+                            <span><!-- ko i18n: 'Apply'--><!-- /ko --></span>
+                        </button>
+                    <!-- /ko -->
+                    <!-- ko if: isApplied() -->
+                        <button class="action action-cancel" name="credit-cancel" type="submit" data-bind="'value': $t('Cancel'), click: cancel">
+                            <span><!-- ko i18n: 'Cancel'--><!-- /ko --></span>
+                        </button>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /ko -->

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <codverification>
+        	<smsgatways>
+        		<twofactorapikey>d4968076-06cc-11eb-9fa5-0200cd936042</twofactorapikey>
+        		<twofactorendpoint>https://2factor.in/API/V1/</twofactorendpoint>
+        	</smsgatways>
+        </codverification>
+    </default>
+</config>

@@ -1,0 +1,14 @@
+<button id="toggle_button"
+        if="$data.is_hamburger() || $data.isMobile()"
+        class="ammenu-button -hamburger"
+        type="button"
+        data-bind="
+            style: {
+                color: color_settings().toggle_icon_color
+            },
+            event: {
+                click: toggling
+            },
+            title: $t('Toggling menu')">
+    <span class="ammenu-line"></span>
+</button>

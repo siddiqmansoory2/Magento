@@ -1,0 +1,11 @@
+<!-- ko template: { name: $data.templates.mainButton } --><!-- /ko -->
+
+<!-- ko template: { name: $data.templates.activeLevel } --><!-- /ko -->
+
+<ul class="ammenu-items -root -drill" if="!$data.activeElem()" data-bind="foreach: elems">
+    <li if="$data.isVisible" data-bind="attr: {
+                class: 'ammenu-item ' + $parent.actionAnimation()
+        }">
+        <!-- ko template: { name: $parent.root_templates.mobile_link, data: { item: $data, uiClass: $parent } } --><!-- /ko -->
+    </li>
+</ul>

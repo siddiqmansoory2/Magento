@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_MegaMenuLite
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Review\Block\Product\View\ListView">
+        <plugin name="Amasty_MegaMenuLite::fix-magento-bug-with-varnish-cache-on-product-view-page" type="Amasty\MegaMenuLite\Plugin\MagentoReviews\Block\Product\View\ListView" />
+    </type>
+
+    <type name="Magento\Store\Model\BaseUrlChecker">
+        <plugin name="Amasty_MegaMenuLite::fix-magento-bug-with-varnish-cache-and-ssl" type="Amasty\MegaMenuLite\Plugin\MagentoStore\Model\BaseUrlChecker" />
+    </type>
+
+    <type name="Magento\Store\Model\PathConfig">
+        <plugin name="Amasty_MegaMenuLite::fix-magento-bug-with-varnish-cache-and-ssl-suppress-redirect" type="Amasty\MegaMenuLite\Plugin\MagentoStore\Model\PathConfig" />
+    </type>
+
+    <type name="Magento\Theme\Block\Html\Topmenu">
+        <plugin name="Amasty_MegaMenuLite::varnishHighLite" type="Amasty\MegaMenuLite\Plugin\Theme\Block\Html\TopmenuPlugin" />
+        <plugin name="Amasty_MegaMenuLite::addCurrencyCacheKey" type="Amasty\MegaMenuLite\Plugin\Theme\Block\Html\Topmenu\AddCurrencyCacheKey" />
+    </type>
+    <type name="Magento\PageCache\Controller\Block\Esi">
+        <plugin name="Amasty_MegaMenuLite::varnishHighLite" type="Amasty\MegaMenuLite\Plugin\PageCache\Controller\Block\EsiPlugin" />
+    </type>
+
+    <virtualType name="Amasty\MegaMenuLite\Helper\Invitation" type="Amasty\MegaMenuLite\Model\Di\Wrapper">
+        <arguments>
+            <argument name="name" xsi:type="string">Magento\Invitation\Helper\Data</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Amasty\MegaMenuLite\Model\DataProvider\Config\Lite">
+        <arguments>
+            <argument name="invitationHelper" xsi:type="object">Amasty\MegaMenuLite\Helper\Invitation</argument>
+        </arguments>
+    </type>
+    
+    <type name="Magento\Framework\App\Http\Context">
+        <plugin name="Amasty_MegaMenuLite::full_page_cache" type="Amasty\MegaMenuLite\Plugin\Framework\App\Http\Context\SplitMobileCache"/>
+    </type>
+</config>

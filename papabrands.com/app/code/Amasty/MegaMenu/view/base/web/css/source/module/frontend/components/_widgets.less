@@ -1,0 +1,37 @@
+//
+//  Amasty MegaMenu Product Widget
+//  ----------------------------------------------
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .ammenu-submenu-block .amreview-widget-container {
+        .amreview-title,
+        .review-item {
+            background: none !important;
+        }
+    }
+
+    .ammenu-submenu-block .ammenu-product-list {
+        &.-slider .slick-slide {
+            vertical-align: top;
+        }
+
+        &.-grid {
+            margin: 0;
+            padding: 0 @ammenu__indent;
+        }
+
+        .actions-secondary .action {
+            & {
+                opacity: .7;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}

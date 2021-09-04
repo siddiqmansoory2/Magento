@@ -1,0 +1,43 @@
+<?php
+    $customer_id = $block->getRequest()->getParam('id');
+?>
+<form class="form" method="post"
+ action="<?= $block->escapeHtml($block->getUrl('walletrewardpoints/credit/addDeduct'));?>"
+ data-mage-init='{"validation":{}}'>
+    <input type="hidden" name="form_key" value="<?= $block->escapeHtml($block->getFormKey()); ?>" />
+    <input type="hidden" name="customer_id" value="<?= $block->escapeHtml($customer_id); ?>" />
+    <div class="fieldset-wrapper customer-information">
+        <div class="fieldset-wrapper-title">
+            <strong class="dol-tab-title"><?= $block->escapeHtml(__('Add/Deduct Credit')) ?></strong>
+        </div>
+        <table class="form-list" cellspacing="0">
+            <tbody>
+                <tr><td width=100px><b>Enter Credit</b></td>
+                    <td>
+                        <input class="admin__field admin__control-text validate-number" type="text" name="credit"
+                        id="credit" required="required"/>
+                    </td>
+                </tr>
+                <tr><td width=100px></td><td>Use '-' sign to deduct credit. Ex. -20</td></tr>
+                <tr><td></td><td>&nbsp;</td></tr>
+                <tr><td></td>
+                    <td><button type="submit" class="submit" title="submit"><span>Submit</span></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+<div class="fieldset-wrapper customer-information">
+    <div class="fieldset-wrapper-title">
+        <strong class="dol-tab-title"><?= $block->escapeHtml(__('Transactions History')) ?></strong>
+    </div>
+</div>
+<style type="text/css">
+    .dol-tab-title {
+        font-size: 2rem;
+        font-weight: 400;
+    }
+    .form-list {
+        margin-left: 55px;
+    }
+</style>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Invite Friends</title>
+    </head>
+    <update handle="customer_account"/>
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Invite Friends</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" before="-" template="Dolphin_Walletrewardpoints::invitefriend.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="invitefriend-list" xsi:type="array">
+                                <item name="component" xsi:type="string">Dolphin_Walletrewardpoints/js/view/invitefriend</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="template" xsi:type="string">Dolphin_Walletrewardpoints/invitefriend</item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                    <argument name="view_model" xsi:type="object">Dolphin\Walletrewardpoints\ViewModel\ConfigData</argument>
+                </arguments>
+            </block>
+            <block class="Dolphin\Walletrewardpoints\Block\Customer\InviteFriendHistory" name="invite.friend.history" template="Dolphin_Walletrewardpoints::invite-friend-history.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Dolphin\Walletrewardpoints\ViewModel\ConfigData</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

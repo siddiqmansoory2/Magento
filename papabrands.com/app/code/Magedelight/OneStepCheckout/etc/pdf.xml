@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Sales:etc/pdf_file.xsd">
+    <totals>
+        <total name="mdosc_extra_fee">
+        	<!-- Add title to fixed Element 'total': Missing child element(s). Expected is one of ( title, title_source_field, amount_prefix ). -->
+        		<title>Extra fee</title>
+        	<!-- End of changes -->
+            <source_field>mdosc_extra_fee</source_field>
+            <model>Magedelight\OneStepCheckout\Model\Invoice\Pdf\ExtraFee</model>
+            <font_size>7</font_size>
+            <display_zero>false</display_zero>
+            <sort_order>600</sort_order>
+        </total>
+    </totals>
+</config>

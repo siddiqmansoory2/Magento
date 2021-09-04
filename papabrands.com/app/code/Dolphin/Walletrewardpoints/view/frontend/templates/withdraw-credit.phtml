@@ -1,0 +1,127 @@
+<?php
+/** @var \Dolphin\Walletrewardpoints\Block\Customer\Withdraw $block */
+$viewModel = $block->getViewModel();
+$helper = $viewModel->getHelperModel();
+$helper->checkForLogin();
+$customer_id = '';
+if ($helper->getCustomerIdFromSession()) {
+    $customer_id = $helper->getCustomerIdFromSession();
+}
+$walletCredit = $helper->getWalletCredit($customer_id);
+$currencySymbol = $helper->getCurrencySymbol();
+$totalCredit = $currencySymbol . $walletCredit;
+$minWithdrawCredit = $helper->getMinWithdrawCredit();
+$formAction = $block->escapeHtml($block->getUrl('walletrewardpoints/withdraw/request'));
+$formKey = $block->getFormKey();
+$backUrl = $block->escapeUrl($block->getUrl('walletrewardpoints/customer/transaction'));
+?>
+<div>
+    <h3>Wallet Credit: <?= $block->escapeHtml($totalCredit); ?></h3>
+</div>
+<br>
+<form class="form create account" action="<?= $block->escapeHtml($formAction); ?>" method="post"
+ data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Withdraw Form')) ?></span></legend><br>
+        <input type="hidden" name="form_key" value="<?= $block->escapeHtml($formKey); ?>" />
+        <input type="hidden" name="customer_id" value="<?= $block->escapeHtml($customer_id); ?>" />
+        <div class="fields">
+            <div class="field field-name-credit required">
+                <label class="label"><span><?= $block->escapeHtml(__('Credit')) ?></span></label>
+                <div class="control">
+                    <input min="<?= $block->escapeHtml($minWithdrawCredit); ?>"
+                    max="<?= $block->escapeHtml($walletCredit); ?>" type="text" id="credit"
+                           name="credit"
+                           title="Credit"
+                           class="input-text required-entry validate-greater-than-zero validate-number">
+                </div>
+            </div>
+            <div class="field field-name-email required">
+                <label class="label"><span><?= $block->escapeHtml(__('Paypal Email')) ?></span></label>
+                <div class="control">
+                    <input type="text" id="paypal_email"
+                           name="paypal_email"
+                           title="Paypal Email"
+                           class="input-text required-entry validate-email">
+                </div>
+                <span>Admin will manually process with your paypal email address.</span>
+            </div>
+            <div class="field field-name-reason required">
+                <label class="label"><span><?= $block->escapeHtml(__('Reason')) ?></span></label>
+                <div class="control">
+                    <input type="text" id="reason"
+                           name="reason"
+                           title="Reason"
+                           class="input-text required-entry">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit"
+                    class="action save primary"
+                    data-action="save-address"
+                    title="<?= $block->escapeHtmlAttr(__('Withdraw')) ?>">
+                <span><?= $block->escapeHtml(__('Withdraw')) ?></span>
+            </button>
+        </div>
+        <div class="secondary"><a class="action" href="<?= $block->escapeHtml($backUrl) ?>">
+            <span><?= $block->escapeHtml(__('Back')) ?></span></a></div>
+    </div>
+</form>
+<br/>
+<?php $withdrawData = $block->getWithdrawRequest(); ?>
+<legend class="legend"><span>Withdraw History</span></legend>
+<?php if ($withdrawData && count($withdrawData)): ?>
+    <div class="table-wrapper withdraw-history">
+        <table class="data table table-withdraw-request history" id="my-withdraw-table">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Withdraw History')) ?></caption>
+            <thead>
+                <tr>
+                    <th scope="col" class="col email"><?= $block->escapeHtml(__('Paypal Email')) ?></th>
+                    <th scope="col" class="col reason"><?= $block->escapeHtml(__('Reason')) ?></th>
+                    <th scope="col" class="col id"><?= $block->escapeHtml(__('Credit')) ?></th>
+                    <th scope="col" class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+                    <th scope="col" class="col requested-date"><?= $block->escapeHtml(__('Requested Date')) ?></th>
+                    <th scope="col" class="col updated-date"><?= $block->escapeHtml(__('Updated Date')) ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($withdrawData as $withdraw): ?>
+                    <tr>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Paypal Email')) ?>"
+                            class="col email"><?=  $block->escapeHtml($withdraw->getPaypalEmail()) ?></td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Reason')) ?>"
+                            class="col reason"><?= $block->escapeHtml($withdraw->getReason()) ?></td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Credit')) ?>" class="col id">
+                            <?= $block->escapeHtml($withdraw->getCredit()) ?></td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Status')) ?>" class="col status">
+                        <?php
+                        $updatedDate = $block->formatDate($withdraw->getUpdatedDate());
+                        $requestedDate = $block->formatDate($withdraw->getRequestedDate());
+                        if ($withdraw->getStatus() == 0) {
+                            $status = 'Pending';
+                        } elseif ($withdraw->getStatus() == 1) {
+                            $status = 'Approve';
+                        } else {
+                            $status = 'Reject';
+                        }
+                        ?>
+                        <?= /* @noEscape */ $block->escapeHtml($status) ?></td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Requested Date')) ?>"
+                            class="col requested-date"><?= $block->escapeHtml($requestedDate) ?></td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Updated Date')) ?>"
+                            class="col updated-date"><?= $block->escapeHtml($updatedDate) ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="withdraw-history-toolbar toolbar bottom"><?= $block->getPagerHtml() ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty"><span><?= $block->escapeHtml(__('You have no withdraw history.')) ?></span></div>
+<?php endif ?>

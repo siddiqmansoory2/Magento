@@ -1,0 +1,235 @@
+<?php $_product = $block->getProduct(); ?>
+
+
+<?php
+  /**
+   * Copyright © Magento, Inc. All rights reserved.
+   * See COPYING.txt for license details.
+   */
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');//get current product
+  
+  
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');
+	$categories = $product->getCategoryIds(); /*will return category ids array*/
+	foreach($categories as $category){
+		$cat = $objectManager->create('Magento\Catalog\Model\Category')->load($category);
+		//echo 'usp_description_'.$cat->getID();
+		
+		$html='';
+		$html=$this->getLayout()
+			->createBlock('Magento\Cms\Block\Block')
+			->setBlockId('usp_description_'.$cat->getID())
+			->toHtml();
+		echo $html;
+		
+		
+	}
+
+  
+  
+  
+  
+  
+  // echo $product->getId();
+  // $_product = $block->getProduct();
+  $blockObj = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\View\Attributes');
+  // echo $_product->getName();
+  $show_crafted_from_pure_linen =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getShowCraftedFromPureLinen(), 'show_crafted_from_pure_linen');
+  $show_comfortable_and_lightweight =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getShowComfortableAndLightweight(), 'show_comfortable_and_lightweight');
+  $show_perfect_cut_half_sleeves =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getShowPerfectCutHalfSleeves(), 'show_perfect_cut_half_sleeves');
+  $show_stay_fresh_in_all_conditions =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getShowStayFreshInAllConditions(), 'show_stay_fresh_in_all_conditions');
+  $show_powerful_sounds =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getPowerfulSounds(), 'powerful_sounds');
+
+
+  $show_long_playtime =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getLongPlaytime(), 'long_playtime');
+  $show_water_resistant =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getWaterResistant(), 'water_resistant');
+
+  $show_tws_technology =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getTWSTechnology(), 'tws_technology');
+  $show_deep_bass =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getDeepBass(), 'deep_bass');
+  $show_clear_mic =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getClearMic(), 'clear_mic');
+  $show_easily_compatible =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getEasilyCompatible(), 'easily_compatible');
+  $show_easily_portable =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getEasilyPortable(), 'easily_portable');
+  $show_bluetooth_5_1 =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getBluetooth51(), 'bluetooth_5_1');
+  $show_extra_in_ear_comfort =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getExtraInEarComfort(), 'extra_in_ear_comfort');
+  $show_over_95_bef_pef =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getOver95BefPef(), 'over_95_bef_pef');
+
+  $show_adjustable_nose_pin =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getAdjustableNosePin(), 'adjustable_nose_pin');
+  $show_super_breathable =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getSuperBreathable (), 'super_breathable');
+  $show_soft_earloops =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getSoftEarloops(), 'soft_earloops');
+  $show_10000_mah =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->get10000MAH(), '10000_mah');
+
+  $show_fast_charging =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getFastCharging(), 'fast_charging');
+  $show_lithium_battery =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getLithiumBattery(), 'lithium_battery');
+  $show_sleek_design =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getSleekDesign(), 'sleek_design');
+  $show_high_grade_material  =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getHighGradeMaterial (), 'high_grade_material');
+  $show_fully_certified =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getFullyCertified(), 'fully_certified');
+  $show_xyz =  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getXyz(), 'xyz');
+  
+  echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getUspDescription(), 'usp_description');
+  
+  
+  ?>
+  <!--<h1>Test</h1>-->
+  <div class="top-mentions">
+      <?php if($show_crafted_from_pure_linen){ ?>
+        <div class="mentions"> <img src="images/Crafted-from-Pure-Linen.png" alt="image">
+          <p class="mentions-title">Crafted from <br>
+            <b>Pure Linen</b></p>
+        </div>
+      <?php } ?>
+      <?php if($show_comfortable_and_lightweight){ ?>
+    <div class="mentions"> <img src="images/Comfortable-&amp;-Lightweight.png" alt="image">
+      <p class="mentions-title"><b>Comfortable</b> &amp; <br>
+        <b>Lightweight</b></p>
+    </div>
+      <?php } ?>
+      <?php if($show_perfect_cut_half_sleeves){ ?>
+    <div class="mentions"> <img src="images/Perfect-cut-Half-Sleeves.png" alt="image">
+      <p class="mentions-title"><b>Perfect-cut</b> <br>
+        Half sleeves</p>
+    </div>
+      <?php } ?>
+      <?php if($show_stay_fresh_in_all_conditions){ ?>
+    <div class="mentions"> <img src="images/Stay-fresh-in-all-conditions.png" alt="image">
+      <p class="mentions-title"><b>Stay fresh</b> in <br>
+        all conditions</p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_powerful_sounds){ ?>
+    <div class="mentions"> <img src="media/USP_icons/powerful_sounds.png" alt="image">
+      <p class="mentions-title"><b>Powerful Sounds</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_long_playtime){ ?>
+    <div class="mentions"> <img src="media/USP_icons/long_playtime.png" alt="image">
+      <p class="mentions-title"><b>Long Playtime</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_water_resistant){ ?>
+    <div class="mentions"> <img src="media/USP_icons/water_resistant.png" alt="image">
+      <p class="mentions-title"><b>Water Resistant</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_tws_technology){ ?>
+    <div class="mentions"> <img src="media/USP_icons/tws_technology.png" alt="image">
+      <p class="mentions-title"><b>TWS Technology</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_deep_bass){ ?>
+    <div class="mentions"> <img src="media/USP_icons/deep_bass.png" alt="image">
+      <p class="mentions-title"><b>Deep Bass</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_clear_mic){ ?>
+    <div class="mentions"> <img src="media/USP_icons/clear_mic.png" alt="image">
+      <p class="mentions-title"><b>Clear Mic</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_easily_compatible){ ?>
+    <div class="mentions"> <img src="media/USP_icons/easily_compatible.png" alt="image">
+      <p class="mentions-title"><b>Easily Compatible</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_easily_portable){ ?>
+    <div class="mentions"> <img src="media/USP_icons/easily_portable.png" alt="image">
+      <p class="mentions-title"><b>Easily Portable</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_bluetooth_5_1){ ?>
+    <div class="mentions"> <img src="media/USP_icons/bluetooth_5_1.png" alt="image">
+      <p class="mentions-title"><b>Bluetooth 5.1</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_extra_in_ear_comfort){ ?>
+    <div class="mentions"> <img src="media/USP_icons/extra_in_ear_comfort.png" alt="image">
+      <p class="mentions-title"><b>Extra in Ear Comfort</b></p>
+    </div>
+      <?php } ?> 
+
+      <?php if($show_over_95_bef_pef){ ?>
+    <div class="mentions"> <img src="media/USP_icons/over_95_bef_pef.png" alt="image">
+      <p class="mentions-title"><b>Over 95% BEF/PEF</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_adjustable_nose_pin){ ?>
+    <div class="mentions"> <img src="media/USP_icons/adjustable_nose_pin.png" alt="image">
+      <p class="mentions-title"><b>Adjustable Nose Pin</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_super_breathable){ ?>
+    <div class="mentions"> <img src="media/USP_icons/super_breathable.png" alt="image">
+      <p class="mentions-title"><b>Super Breathable </b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_soft_earloops){ ?>
+    <div class="mentions"> <img src="media/USP_icons/soft_earloops.png" alt="image">
+      <p class="mentions-title"><b>Soft Earloops</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_10000_mah){ ?>
+    <div class="mentions"> <img src="media/USP_icons/10000_mah.png" alt="image">
+      <p class="mentions-title"><b>10000 MAH</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_fast_charging){ ?>
+    <div class="mentions"> <img src="media/USP_icons/fast_charging.png" alt="image">
+      <p class="mentions-title"><b>Fast Charging</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_fast_charging){ ?>
+    <div class="mentions"> <img src="media/USP_icons/fast_charging.png" alt="image">
+      <p class="mentions-title"><b>Fast Charging</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_lithium_battery){ ?>
+    <div class="mentions"> <img src="media/USP_icons/lithium_battery.png" alt="image">
+      <p class="mentions-title"><b>Lithium Battery</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_sleek_design){ ?>
+    <div class="mentions"> <img src="media/USP_icons/sleek_design.png" alt="image">
+      <p class="mentions-title"><b>Sleek Design</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_high_grade_material){ ?>
+    <div class="mentions"> <img src="media/USP_icons/high_grade_material.png" alt="image">
+      <p class="mentions-title"><b>High Grade Material</b></p>
+    </div>
+      <?php } ?>
+
+      <?php if($show_fast_charging){ ?>
+    <div class="mentions"> <img src="media/USP_icons/fast_charging.png" alt="image">
+      <p class="mentions-title"><b>Fast Charging</b></p>
+    </div>
+      <?php } ?>
+      <?php if($show_xyz){ ?>
+    <div class="mentions"> <img src="media/USP_icons/fast_charging.png" alt="image">
+      <p class="mentions-title"><b>XYZ</b></p>
+    </div>
+      <?php } ?>
+
+      
+    
+
+  </div>

@@ -1,0 +1,70 @@
+<?php /* @var $block Magezon\FAQ\Block\ListCategory */?>
+
+<?php
+    $uid          = 'faq-' . time() . uniqid();
+    $coreHelper   = $this->helper('\Magezon\Core\Helper\Data');
+    $noResultText = "No FAQ";
+    $collection = $block->getNews();
+    $count        = $collection->count();
+?>
+
+<?php if ($count || $noResultText) { ?>
+    <div class="mgz-faq-body-wraper">
+        <div class="mgz-faq-question-list">
+            <?php if ($count) { ?>
+                <div id="<?= $uid ?>" class="question-question-listing question-question-list-layout" data-mage-init='{"accordion":{"openedState": "active", "collapsible": true, "active": false, "animate":{"duration":"400"}}}'>
+                    <?php foreach ($collection as $question) { ?>
+                        <div class="question-question-box question-question-type ?>" >
+                            <div class="question-question-box-inner">
+                                <div data-role="collapsible">
+                                    <h2 class="mgz-faq-question-box-title" data-role="trigger">
+                                        <span>
+                                            <i class="fas fa-plus-square"></i>
+                                        </span>
+                                        <a title="<?= $block->escapeHtml($question->getTitle()) ?>"><?= $this->escapeHtml($question->getTitle()) ?></a>
+                                    </h2>
+                                </div>
+                                <div class="mgz-faq-question-more" data-role="content">
+                                    <div class="mgz-faq-question-list-content">
+                                        <p><?= $question->getContent() ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            <?php } else if ($noResultText) { ?>
+                <div class="mgz-faq-noresult"><?= $noResultText ?></div>
+            <?php } ?>
+        </div>
+
+        <?php if ($block->getPagerHtml()): ?>
+            <div class="order-products-toolbar toolbar bottom">
+                <?php echo $block->getPagerHtml(); ?>
+            </div>
+        <?php endif ?>
+    </div>
+<?php } ?>
+
+<div class="ask-question">
+   <p><?= __("Ask your question"); ?></p>
+    <button href="#" class="shop-now-button leaf-btn login-pg-btn leaf-btn-lg mgz-faq-action-btn" id="mgz-faq-action">
+        <span><?= __("Ask a question"); ?></span>
+    </button>
+</div>
+
+<script type="text/javascript">
+	require(['jquery'], function($) {
+        $('.mgz-faq-action-btn').on('click', function() {
+            var form = $('.mgz-faq-post-form'),
+                self = $(this);
+            if (form.is(':visible')) {
+                form.fadeOut();
+                self.html('Ask a Question');
+            } else {
+                form.fadeIn();
+                self.html('Hide Form');
+            }
+        });
+    });
+</script>

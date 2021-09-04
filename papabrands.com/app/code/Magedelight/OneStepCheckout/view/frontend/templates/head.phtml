@@ -1,0 +1,78 @@
+<style>
+    /*.loading-mask .loader img {*/
+    /*    box-sizing: border-box;*/
+    /*    width: 50px;*/
+    /*    height: 50px;*/
+    /*    padding-left: 50px;*/
+    /*    background-image: url(*/<?php //echo $block->getLoader() ?>/*);*/
+    /*    background-repeat: no-repeat;*/
+    /*    background-size: contain;*/
+    /*}*/
+    /**/
+    .checkout-column-block {
+        box-shadow: 0 0 5px 0 #d0d0d0;
+    }
+
+    .column.main .checkout-container.md-checkout .osc-heading h1 {
+        color: <?php /* @escapeNotVerified */ echo $block->getConfigColor('heading') ?>;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .column.main .checkout-container.md-checkout .osc-heading p {
+        color: <?php /* @escapeNotVerified */ echo $block->getConfigColor('description'); ?>;
+    }
+
+    .column.main .checkout-container.md-checkout .step-title.step_1,
+    .column.main .checkout-container.md-checkout .step-title.step_2,
+    .column.main .checkout-container.md-checkout .step-title.step_3,
+    .column.main .checkout-container.md-checkout .step-title.step_4,
+    .column.main .checkout-container.md-checkout .md-osc-billing-address-after-shipping .field.field-select-billing,
+    .shipping-method-section-delivery .checkout-delivery-date .step-title{
+        color: <?php /* @escapeNotVerified */ echo $block->getConfigColor('step') ?>;
+    }
+
+    .column.main .checkout-container.md-checkout #address-section#address-section .shipping-address-item.selected-item {
+        border-color: <?php echo $block->getConfigColor('layout') ?>;
+    }
+
+    .column.main .checkout-container.md-checkout .step-title.step_1:before,
+    .column.main .checkout-container.md-checkout .step-title.step_2:before,
+    .column.main .checkout-container.md-checkout .step-title.step_3:before,
+    .column.main .checkout-container.md-checkout .step-title.step_4:before,
+    .shipping-method-section-delivery .checkout-delivery-date .step-title.osc-calendar-icon:before,
+    .column.main .checkout-container.md-checkout #address-section#address-section .shipping-address-item.selected-item:before,
+    .column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item:hover,
+    .column.main .checkout-container.md-checkout button[type="submit"],
+    .column.main .checkout-container.md-checkout button[type="button"] {
+        background-color: <?php echo $block->getConfigColor('layout') ?>;
+    }
+
+    .column.main .checkout-container.md-checkout .order-review-section.order-review-section .onestepcheckout-place {
+        background-color: <?php echo $block->getConfigColor('orderButton'); ?>;
+    }
+
+    .column.main .checkout-container.md-checkout .payment-method-section.md_osc_step_3 .onestepcheckout-place {
+        background-color: <?php echo $block->getConfigColor('orderButton'); ?>;
+    }
+
+
+    .shipping-method-section-delivery .checkout-delivery-date .product.data.items .delivery-date-tab-title > .item.title.active > .switch{
+        border: 1px solid <?php /* @escapeNotVerified */ echo $block->getConfigColor('step') ?>;
+        color: <?php /* @escapeNotVerified */ echo $block->getConfigColor('step') ?>;
+    }
+    .shipping-method-section-delivery .checkout-delivery-date .product.data.items .delivery-date-tab-content > .item.content > div .delivery-date-time.active {
+        background-color: #ffffff;
+        border: 1px solid <?php /* @escapeNotVerified */ echo $block->getConfigColor('step') ?>;
+        color: <?php /* @escapeNotVerified */ echo $block->getConfigColor('step') ?>;
+    }
+    .ajax-loader1{background:rgba(255,255,255,0.8) url(<?php echo $block->getBlockLoader() ?>) center center no-repeat}
+    .ajax-loader2{background:rgba(255,255,255,0.8) url(<?php echo $block->getBlockLoader() ?>) center center no-repeat}
+    .ajax-loader3{background:rgba(255,255,255,0.8) url(<?php echo $block->getBlockLoader() ?>) center center no-repeat}
+    #paypay-in-context-validate-error {color: #e02b27;}
+    p#paypay-in-context-button {
+        background-color: <?php echo $block->getConfigColor('orderButton'); ?>;
+        border-color: <?php echo $block->getConfigColor('orderButton'); ?>;
+    }
+    /*.virtualCheckout .order-review-section {width: 100% !important;}*/
+</style>

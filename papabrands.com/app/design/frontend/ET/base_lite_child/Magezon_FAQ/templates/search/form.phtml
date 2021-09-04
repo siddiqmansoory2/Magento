@@ -1,0 +1,92 @@
+<?php /* @var $block Magezon\FAQ\Block\Search\Form */?>
+<?php
+$dataHelper     = $this->helper('\Magezon\FAQ\Helper\Data');
+$coreHelper     = $this->helper(Magezon\Core\Helper\Data::class);
+$title          = $dataHelper->getFaqTitle();
+$searchRoute    = $dataHelper->getSearchRoute();
+$banner         = $dataHelper->getBanner();
+$bannerTitle    = $dataHelper->getBannerTitle() ? $dataHelper->getBannerTitle() : __('Knowledge Base');
+$bannerSubTitle = $dataHelper->getBannerSubTitle() ? $dataHelper->getBannerSubTitle() : __('Search our questions below');
+$searchOption   = $dataHelper->getSearchOption();
+$router         = $dataHelper->getRoute();
+?>
+<?php if ($searchRoute) { ?>
+    <div class="mgz-faq-banner">
+        <div class="top-container">
+            <?php /* if ($banner) { ?>
+                <div class="mgz-faq-banner-image" data-jarallax data-speed="0.2"></div>
+            <?php } else { ?>
+                <div class="mgz-faq-banner-color"></div>
+            <?php } */ ?>
+            <div class="faq-block faq-searchform">
+                <?php if ($title) { ?>
+                    <div class="faq-searchform-head">
+                        <div class="block-block-title"><h1 class="mgz-faq-banner-title-color"><?= $bannerTitle ?></h1></div>
+                        <!-- <div class="block-block-subtitle"><span class="mgz-faq-banner-sub-title-color" ><?//= $bannerSubTitle ?></span></div> -->
+                    </div>
+                <?php } ?>
+                <div class="block-block-content">
+                    <script type="text/javascript">
+                        require([
+                            'jquery',
+                            'Magezon_FAQ/js/jarallax.min',
+                        ], function($) {
+                            window.removeScript = function(value) {
+                                return value.replace("<script>", "&lt;script&gt;")
+                                        .replace("</" + "script>", "&lt;&#47;script&gt;");
+                            }
+                        })
+                    </script>
+                    <?php if (!$searchOption) { ?>
+                        <script type="text/javascript">
+                            require([
+                                'jquery'
+                            ], function($) {
+                                window.validateForm = function () {
+                                    var inputEl = $('#mgzfaq-search');
+                                    if (inputEl.val().length < 3) {
+                                        inputEl.addClass("alertEmpty");
+                                        $('.alert-comment').fadeIn();
+                                        setTimeout(function() {
+                                            inputEl.removeClass('alertEmpty');
+                                            $('.alert-comment').fadeOut();
+                                        }, 3000);
+                                        return false;
+                                    }
+                                    return true
+                                }
+                            })
+                        </script>
+                        <form action="<?= $this->getUrl($router . '/' . $searchRoute . '/result') ?>" method="GET" onsubmit="return validateForm()">
+                            <div class="form-input">
+                                <input type="text" name="s" placeholder="<?= __('Search questions here...') ?>" value="<?= $this->getRequest()->getParam('s') ?>" id="mgzfaq-search" autocomplete="off"/>
+                            </div>
+                            <div class="form-button">
+                                <button type="submit" id="buttom-submit-search" title="<?= __('Search') ?>"><?= __('Search') ?></button>
+                            </div>
+                            <p class="alert-comment">
+                                <i class="fas mgz-fa-comment-alt-exclamation"></i>
+                                <span>
+                                    <?= __('This field can’t be left empty or at least 3 characters') ?>
+                                </span>
+                            </p>
+                        </form>
+                    <?php } else { ?>
+                        <input type="text" name="s" placeholder="<?= __('Search questions here...') ?>" value="<?= $this->getRequest()->getParam('s') ?>" id="mgzfaq-search"/>
+                        <button type="submit" id="buttom-submit-search" title="<?= __('Search') ?>"><?= __('Search') ?></button>
+                        <p class="alert-comment">
+                            <i class="fas mgz-fa-comment-alt-exclamation"></i>
+                            <span>
+                                <?= __('This field can’t be left empty or at least 3 characters') ?>
+                            </span>
+                        </p>
+                        <script type="text/javascript">
+                            require(['searchAjax'], function() {})
+                        </script>
+                    <?php } ?>
+                </div>
+            <?= $this->getChildHtml('search_hints') ?>
+            </div>
+        </div>
+    </div>
+<?php } ?>

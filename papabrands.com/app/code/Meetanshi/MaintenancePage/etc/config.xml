@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <maintenancepage>
+            <general_configuration>
+                <enable_disable>0</enable_disable>
+                <redirect_to_page>maintenancepage</redirect_to_page>
+            </general_configuration>
+            <layout_configuration>
+                <layout>maintenancepage_1column</layout>
+            </layout_configuration>
+            <timer_configuration>
+                <enable_disable>1</enable_disable>
+            </timer_configuration>
+            <background_configuration>
+                <background_type>image</background_type>
+            </background_configuration>
+            <text_content_configuration>
+                <page_title>Coming Soon</page_title>
+                <page_desc>We are working on something really amazing!</page_desc>
+            </text_content_configuration>
+            <newsletter_configuration>
+                <enable_disable>1</enable_disable>
+            </newsletter_configuration>
+        </maintenancepage>
+    </default>
+</config>

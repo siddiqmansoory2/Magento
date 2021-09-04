@@ -1,0 +1,83 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+
+<?php 
+    $helper=$this->helper('Papa\CodTwoFactor\Helper\Success');
+    $orderId = $block->getOrderId();
+    $order =$helper->getOrder($orderId);
+    // $payment = $order->getPayment()->getMethodInstance();
+    $orderItems = $order->getAllVisibleItems();
+    $orderTotal = $order->formatPriceTxt($order->getGrandTotal());
+    $orderTax = $order->formatPriceTxt($order->getTaxAmount());
+    $orderShipping = $order->formatPriceTxt($order->getShippingAmount());
+    $orderCoupon = $order->getCouponCode();
+    
+?>
+
+<div class="checkout-success">
+    <?php if ($block->getOrderId()) : ?>
+        <?php if ($block->getCanViewOrder()) : ?>
+            <p><?= $block->escapeHtml(__('Your order number is: %1.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeUrl($block->getViewOrderUrl()), $block->getOrderId())), ['a', 'strong']) ?></p>
+        <?php else : ?>
+            <p><?= $block->escapeHtml(__('Your order # is: <span>%1</span>.', $block->getOrderId()), ['span']) ?></p>
+        <?php endif; ?>
+        <?php if ($block->getIsOrderStorePickup()->execute()) : ?>
+            <p><?= $block->escapeHtml(__('We\'ll email you an order and pick-up confirmation with details.')) ?></p>
+        <?php else : ?>
+            <p><?= $block->escapeHtml(__('We\'ll email you an order confirmation with details and tracking info.')) ?></p>
+        <?php endif; ?>
+    <?php endif; ?>
+
+    <?= $block->getAdditionalInfoHtml() ?>
+
+    <div class="actions-toolbar">
+        <div class="primary">
+            <a class="action primary continue"
+               href="<?= $block->escapeUrl($block->getContinueUrl()) ?>"><span><?= $block->escapeHtml(__('Continue Shopping')) ?></span></a>
+        </div>
+    </div>
+</div>
+
+<div class="order_info">
+    <input type="hidden" id="order_id" value="<?= $orderId; ?>">
+    <input type="hidden" id="order_value" value="<?= $orderTotal; ?>">
+    <input type="hidden" id="tax_amount" value="<?= $orderTax; ?>">
+    <input type="hidden" id="shipping_amount" value="<?= $orderShipping; ?>">
+    <input type="hidden" id="coupon_code" value="<?= $orderCoupon; ?>">
+</div>
+<div class="products_info">
+    <?php foreach ($orderItems as $item){
+
+        $product = $helper->getProduct($item->getProductId());
+        // $productImageUrl = $helper->getMediaUrl('catalog/product' . $product->getImage());
+        // $productUrl = $product->getProductUrl();
+        $productName = $item->getName();
+        $productId = $item->getProductId();
+        // $productSku = $item->getSku();
+        $productQty = round($item->getQtyOrdered(), 0);
+        $productPrice = $order->formatPriceTxt($item->getPrice());
+        // $productTotalPrice = $order->formatPriceTxt($item->getRowTotal(), true, false);
+        $productCategoryIds = $product->getCategoryIds();
+        
+        if(count($productCategoryIds) ){
+            $firstCategoryId = $productCategoryIds[1];
+            $_category = $helper->getCategory($firstCategoryId);
+            $productCategoryName = $_category->getName();
+        }
+    ?>
+
+        <div class="product_info">
+            <input type="hidden" id="product_name" value="<?= $productName; ?>">
+            <input type="hidden" id="product_id" value="<?= $productId; ?>">
+            <input type="hidden" id="price" value="<?= $productPrice; ?>">
+            <input type="hidden" id="category_name" value="<?= $productCategoryName; ?>">
+            <input type="hidden" id="quantity" value="<?= $productQty; ?>">
+        </div>
+
+    <?php } ?>
+</div>

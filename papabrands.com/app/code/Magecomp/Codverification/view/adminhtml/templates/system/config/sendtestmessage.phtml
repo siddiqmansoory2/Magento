@@ -1,0 +1,18 @@
+<script>
+    require([
+        'jquery',
+        'prototype',
+    ], function(jQuery){
+        jQuery('#sendtestsms').click(function () {
+            new Ajax.Request('<?php echo $block->getAjaxUrl() ?>', {
+                loaderArea:     false,
+                asynchronous:   true,
+                onSuccess: function(transport) {
+                    //var response = JSON.parse(transport.responseText);
+                    location.reload();
+                }
+            });
+        });
+    });
+</script>
+<?php echo $block->getButtonHtml() ?>

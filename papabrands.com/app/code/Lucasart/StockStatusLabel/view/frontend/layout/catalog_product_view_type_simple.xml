@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the StockStatusLabel package.
+ *
+ * (c) Luca Sculco <sculco.luca@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+
+        <!-- block for simple product -->
+
+        <referenceBlock name="product.info.addtocart">
+            <block class="Lucasart\StockStatusLabel\Block\Label" name="availability.label" template="Lucasart_StockStatusLabel::product/view/label.phtml" after="-"/>
+        </referenceBlock>
+
+    </body>
+</page>

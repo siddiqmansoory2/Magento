@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<!--
+/**
+* Magedelight
+* Copyright (C) 2017 Magedelight <info@magedelight.com>
+*
+* @category Magedelight
+* @package Magedelight_OneStepCheckout
+* @copyright Copyright (c) 2017 Mage Delight (http://www.magedelight.com/)
+* @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+* @author Magedelight <info@magedelight.com>
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magedelight_Base::root" title="Magedelight" sortOrder="51">
+                    <resource id="Magedelight_Base::md_modules">
+                        <resource id="Magedelight_OneStepCheckout::root" title="Magedelight OneStepCheckout" sortOrder="51" >
+                            <resource id="Magedelight_OneStepCheckout::config_root" title="OneStepCheckout Configuration" sortOrder="60" />
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Magedelight_Base::config_root">
+                                <resource id="Magedelight_OneStepCheckout::config_onestepcheckout" title="Magedelight OneStepCheckout" sortOrder="100"/>
+                            </resource>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

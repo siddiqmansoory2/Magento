@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+	<update handle="customer_account"/>
+	<body>
+		<referenceBlock name="page.main.title">
+			<action method="setPageTitle">
+				<argument translate="true" name="title" xsi:type="string">My Wallet</argument>
+			</action>
+		</referenceBlock>
+		<referenceContainer name="content">
+			<block class="Magento\Framework\View\Element\Template" name="my-wallet" template="Dolphin_Walletrewardpoints::mywallet.phtml">
+				<arguments>
+					<argument name="jsLayout" xsi:type="array">
+						<item name="components" xsi:type="array">
+							<item name="transaction-list" xsi:type="array">
+								<item name="component" xsi:type="string">Dolphin_Walletrewardpoints/js/view/transaction</item>
+								<item name="config" xsi:type="array">
+									<item name="template" xsi:type="string">Dolphin_Walletrewardpoints/transaction</item>
+								</item>
+							</item>
+						</item>
+					</argument>
+					<argument name="view_model" xsi:type="object">Dolphin\Walletrewardpoints\ViewModel\ConfigData</argument>
+				</arguments>
+			</block>
+			<block class="Dolphin\Walletrewardpoints\Block\Customer\TransactionHistory" name="transaction.history" template="Dolphin_Walletrewardpoints::transaction-history.phtml">
+				<arguments>
+					<argument name="view_model" xsi:type="object">Dolphin\Walletrewardpoints\ViewModel\ConfigData</argument>
+	            </arguments>
+			</block>
+			<block class="Magento\Framework\View\Element\Template" name="transaction_subscriptions" template="Dolphin_Walletrewardpoints::form/transaction-subscriptions.phtml">
+            	<arguments>
+					<argument name="jsLayout" xsi:type="array">
+						<item name="components" xsi:type="array">
+							<item name="transaction-subscription" xsi:type="array">
+								<item name="component" xsi:type="string">Dolphin_Walletrewardpoints/js/view/transactionsub</item>
+								<item name="config" xsi:type="array">
+									<item name="template" xsi:type="string">Dolphin_Walletrewardpoints/transactionsub</item>
+								</item>
+							</item>
+						</item>
+					</argument>
+				</arguments>
+            </block>
+		</referenceContainer>
+	</body>
+</page>

@@ -1,0 +1,95 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--  get System configuration values -->
+    <type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+        <arguments>
+            <argument name="extendedConfigData">
+            <!-- Wallet Configuration -->
+                <item name="walletreward_wallet_status" xsi:type="string">walletreward/wallet/enable</item>
+                <!-- Credit Usages -->
+                    <item name="walletreward_wallet_credit_usages_buy_credite" xsi:type="string">walletreward/wallet/credit_usages/enable</item>
+                    <item name="walletreward_wallet_credit_usages_max_credit_for_customer" xsi:type="string">walletreward/wallet/credit_usages/max_credit_for_customer</item>
+                    <item name="walletreward_wallet_credit_usages_credit_with_coupons" xsi:type="string">walletreward/wallet/credit_usages/credit_with_coupons</item>
+                <!-- Credit withdrawal  -->
+                    <item name="walletreward_wallet_withdraw_allow_withdrawal" xsi:type="string">walletreward/wallet/withdraw/allow_withdrawal</item>
+                    <item name="walletreward_wallet_withdraw_min_withdraw" xsi:type="string">walletreward/wallet/withdraw/min_withdraw</item>
+                    <item name="walletreward_wallet_withdraw_withdraw_email_sender" xsi:type="string">walletreward/wallet/withdraw/withdraw_email_sender</item>
+                    <item name="walletreward_wallet_withdraw_withdraw_email_template" xsi:type="string">walletreward/wallet/withdraw/withdraw_email_template</item>
+                <!-- Send Credit to Friend -->
+                    <item name="walletreward_wallet_withdraw_sendtofriend_allow_send_credit" xsi:type="string">walletreward/wallet/sendtofriend/allow_send_credit</item>
+                    <item name="walletreward_wallet_withdraw_sendtofriend_email_sender" xsi:type="string">walletreward/wallet/sendtofriend/stf_email_sender</item>
+                    <item name="walletreward_wallet_withdraw_sendtofriend_emailtemp" xsi:type="string">walletreward/wallet/sendtofriend/sendtofriend_emailtemp</item>
+                    <item name="walletreward_wallet_withdraw_sendtofriend_sendto_unregisterfriend_emailtemp" xsi:type="string">walletreward/wallet/sendtofriend/sendto_unregisterfriend_emailtemp</item>
+                <!-- Order -->
+                    <item name="walletreward_wallet_order_max_credit_per_order" xsi:type="string">walletreward/wallet/order/max_credit_per_order</item>
+                    <item name="walletreward_wallet_order_allow_max_credit_per_order" xsi:type="string">walletreward/wallet/order/allow_max_credit_per_order</item>
+                    <item name="walletreward_wallet_order_percentage_of_order_subtotal" xsi:type="string">walletreward/wallet/order/percentage_of_order_subtotal</item>
+                <!-- Refund -->
+                    <item name="walletreward_wallet_refund_credit" xsi:type="string">walletreward/wallet/refund/refund_credit</item>
+            <!-- Reward Points Configuration -->
+                <item name="walletreward_reward_enable" xsi:type="string">walletreward/reward/enable_reward</item>
+                <item name="walletreward_reward_one_point_cost" xsi:type="string">walletreward/reward/one_point_cost</item>
+                <!-- Earn Reward Points -->
+                    <!-- Customer Registration -->
+                    <item name="walletreward_reward_earn_reward_customer_registration_enable_on_create_account"
+                          xsi:type="string">walletreward/reward/earn_reward/customer_registration/enable_on_create_account</item>
+                    <item name="walletreward_reward_earn_reward_customer_registration_reward_point"
+                          xsi:type="string">walletreward/reward/earn_reward/customer_registration/ca_reward_point</item>
+                    <!-- Creating Order -->
+                    <item name="walletreward_reward_earn_reward_creating_order_enable_create_order"
+                          xsi:type="string">walletreward/reward/earn_reward/creating_order/enable_create_order</item>
+                    <item name="walletreward_reward_earn_reward_creating_order_min_order_qty"
+                          xsi:type="string">walletreward/reward/earn_reward/creating_order/min_order_qty</item>
+                    <item name="walletreward_reward_earn_reward_creating_order_min_order_total"
+                          xsi:type="string">walletreward/reward/earn_reward/creating_order/min_order_total</item>
+                    <item name="walletreward_reward_earn_reward_creating_order_earn_type"
+                          xsi:type="string">walletreward/reward/earn_reward/creating_order/earn_type</item>
+                    <item name="walletreward_reward_earn_reward_creating_order_reward_point"
+                          xsi:type="string">walletreward/reward/earn_reward/creating_order/co_reward_point</item>
+                    <item name="walletreward_reward_earn_reward_creating_order_max_reward_per_order"
+                          xsi:type="string">walletreward/reward/earn_reward/creating_order/max_reward_per_order</item>
+                    <item name="walletreward_reward_earn_reward_creating_order_max_order"
+                          xsi:type="string">walletreward/reward/earn_reward/creating_order/co_max_order</item>
+                    <item name="walletreward_reward_earn_reward_creating_order_reward_message"
+                          xsi:type="string">walletreward/reward/earn_reward/creating_order/reward_message</item>
+                    <!-- Newsletter Subscription -->
+                    <item name="walletreward_reward_earn_reward_newsletter_subscribers_enable"
+                          xsi:type="string">walletreward/reward/earn_reward/newsletter_subscribers/enable_newsletter_subscribers</item>
+                    <item name="walletreward_reward_earn_reward_newsletter_subscribers_reward_point"
+                          xsi:type="string">walletreward/reward/earn_reward/newsletter_subscribers/nl_reward_point</item>
+                    <!-- Customer Review -->
+                    <item name="walletreward_reward_earn_reward_customer_review_enable"
+                          xsi:type="string">walletreward/reward/earn_reward/customer_review/enable_customer_review</item>
+                    <item name="walletreward_reward_earn_reward_customer_review_reward_point"
+                          xsi:type="string">walletreward/reward/earn_reward/customer_review/cr_reward_point</item>
+                    <item name="walletreward_reward_earn_reward_customer_review_max_review"
+                          xsi:type="string">walletreward/reward/earn_reward/customer_review/cr_max_review</item>
+                    <!-- Invited Friend Registration -->
+                    <item name="walletreward_reward_earn_reward_invited_friend_registration_enable"
+                          xsi:type="string">walletreward/reward/earn_reward/invited_friend_registration/enable_ifr</item>
+                    <item name="walletreward_reward_earn_reward_invited_friend_registration_limit"
+                          xsi:type="string">walletreward/reward/earn_reward/invited_friend_registration/ifr_limit</item>
+                    <item name="walletreward_reward_earn_reward_invited_friend_registration_reward_point"
+                          xsi:type="string">walletreward/reward/earn_reward/invited_friend_registration/ifr_reward_point</item>
+                    <item name="walletreward_reward_earn_reward_invited_friend_registration_inv_email_sender"
+                          xsi:type="string">walletreward/reward/earn_reward/invited_friend_registration/inv_email_sender</item>
+                    <item name="walletreward_reward_earn_reward_invited_friend_registration_invitefriendemailtemp"
+                          xsi:type="string">walletreward/reward/earn_reward/invited_friend_registration/invitefriendemailtemp</item>
+                        <!-- Creating Order by Invited Friend -->
+                        <item name="walletreward_reward_earn_reward_invited_friend_registration_creating_order_enable_coif"
+                                xsi:type="string">walletreward/reward/earn_reward/invited_friend_registration/creating_order_by_iv/enable_coif</item>
+                        <item name="walletreward_reward_earn_reward_invited_friend_registration_creating_order_coiv_earn_type"
+                                xsi:type="string">walletreward/reward/earn_reward/invited_friend_registration/creating_order_by_iv/coiv_earn_type</item>
+                        <item name="walletreward_reward_earn_reward_invited_friend_registration_creating_order_coif_reward_point"
+                                xsi:type="string">walletreward/reward/earn_reward/invited_friend_registration/creating_order_by_iv/coif_reward_point</item>
+                        <item name="walletreward_reward_earn_reward_invited_friend_registration_creating_order_coif_max_order"
+                                xsi:type="string">walletreward/reward/earn_reward/invited_friend_registration/creating_order_by_iv/coif_max_order</item>
+            <!-- Transaction Subscription -->
+                <item name="walletreward_transaction_sub_email_sender" xsi:type="string">walletreward/transaction/sub_email_sender</item>
+                <item name="walletreward_transaction_subscribe" xsi:type="string">walletreward/transaction/transaction_subscribe</item>
+                <item name="walletreward_transaction_unsub_email_sender" xsi:type="string">walletreward/transaction/unsub_email_sender</item>
+                <item name="walletreward_transaction_unsubscribe" xsi:type="string">walletreward/transaction/transaction_unsubscribe</item>
+           </argument>
+        </arguments>
+    </type>
+</config>

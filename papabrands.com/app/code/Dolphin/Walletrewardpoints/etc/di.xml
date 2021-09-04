@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <virtualType name="DolphinCustomerWalletTransactionFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="DolphinCustomerWalletTransactionFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Dolphin\Walletrewardpoints\Model\ResourceModel\Transaction\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">DolphinCustomerWalletTransactionFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Dolphin\Walletrewardpoints\Model\ResourceModel\Transaction\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">dolphin_customer_wallet_transaction_history</argument>
+            <argument name="eventPrefix" xsi:type="string">dolphin_customerwallet_transaction_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">transaction_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Dolphin\Walletrewardpoints\Model\ResourceModel\Transaction</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="customer_wallet_transaction_history_data_source" xsi:type="string">Dolphin\Walletrewardpoints\Model\ResourceModel\Transaction\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="DolphinWalletrewardpointsWithdrawFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="DolphinWalletrewardpointsWithdrawFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Dolphin\Walletrewardpoints\Model\ResourceModel\Withdraw\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">DolphinWalletrewardpointsWithdrawFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Dolphin\Walletrewardpoints\Model\ResourceModel\Withdraw\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">dolphin_customer_withdraw_credit</argument>
+            <argument name="eventPrefix" xsi:type="string">dolphin_walletrewardpoints_withdraw_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">withdraw_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Dolphin\Walletrewardpoints\Model\ResourceModel\Withdraw</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="dolphin_walletrewardpoints_withdraw_listing_data_source" xsi:type="string">Dolphin\Walletrewardpoints\Model\ResourceModel\Withdraw\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Dolphin\Walletrewardpoints\Ui\Component\MassAction\Status\Options">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="urlPath" xsi:type="string">*/*/massStatus</item>
+                <item name="paramName" xsi:type="string">status</item>
+                <item name="confirm" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Update Withdraw Status</item>
+                    <item name="message" xsi:type="string" translate="true">Are you sure you want to update selected items status?</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magento\Quote\Api\CouponManagementInterface" type="Dolphin\Walletrewardpoints\Model\CouponManagementInterface"/>
+    <preference for="Magento\Sales\Model\Order\CreditmemoFactory"
+                type="Dolphin\Walletrewardpoints\Plugin\Sales\Model\Order\CreditmemoFactory"/>
+    <type name="Magento\Sales\Model\Order\Creditmemo\RefundOperation">
+        <plugin name="add_refunded_credit_discount_to_order"
+                type="Dolphin\Walletrewardpoints\Plugin\Sales\Model\Order\Creditmemo\RefundOperation" disabled="false"
+                sortOrder="500"/>
+    </type>
+
+    <!-- Rest API Start -->
+        <preference for="Dolphin\Walletrewardpoints\Api\WalletRewardPointsTransactionInterface"
+                    type="Dolphin\Walletrewardpoints\Model\WalletRewardPointsTransaction" />
+    <!-- Rest API End -->
+</config>

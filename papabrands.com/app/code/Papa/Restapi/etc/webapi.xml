@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/papa-restapi/pushcustomercancellation" method="PUT">
+		<service class="Papa\Restapi\Api\PushcustomercancellationManagementInterface" method="putPushcustomercancellation"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/papa-restapi/pushsellercancellation" method="PUT">
+		<service class="Papa\Restapi\Api\PushsellercancellationManagementInterface" method="putPushsellercancellation"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/papa-restapi/unholdorder" method="PUT">
+		<service class="Papa\Restapi\Api\UnholdorderManagementInterface" method="putUnholdorder"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/papa-restapi/updateorderproperties" method="PUT">
+		<service class="Papa\Restapi\Api\UpdateorderpropertiesManagementInterface" method="putUpdateorderproperties"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/papa-restapi/updateinventorycount" method="PUT">
+		<service class="Papa\Restapi\Api\UpdateinventorycountManagementInterface" method="putUpdateinventorycount"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/papa-restapi/returnordernotification" method="PUT">
+		<service class="Papa\Restapi\Api\ReturnordernotificationManagementInterface" method="putReturnordernotification"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/papa-restapi/updateinventoryurl" method="PUT">
+		<service class="Papa\Restapi\Api\UpdateinventoryurlManagementInterface" method="putUpdateinventoryurl"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/papa-restapi/getshippinglabelurl" method="GET">
+		<service class="Papa\Restapi\Api\GetshippinglabelurlManagementInterface" method="putGetshippinglabelurl"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/papa-restapi/getinvoiceurl" method="GET">
+		<service class="Papa\Restapi\Api\GetinvoiceurlManagementInterface" method="putGetinvoiceurl"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/papa-restapi/createshipmenturl" method="POST">
+		<service class="Papa\Restapi\Api\CreateshipmenturlManagementInterface" method="putCreateshipmenturl"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/papa-restapi/packorder" method="POST">
+		<service class="Papa\Restapi\Api\PackorderManagementInterface" method="postPackorder"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/papa-restapi/returnorders" method="POST">
+		<service class="Papa\Restapi\Api\ReturnordersManagementInterface" method="postReturnorders"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/papa-restapi/cancelorder" method="POST">
+		<service class="Papa\Restapi\Api\CancelorderManagementInterface" method="postCancelorder"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+</routes>

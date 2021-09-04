@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+     <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Dolphin_Walletrewardpoints::walletrewardpoints_config" title="Dolphin - Wallet/Reward Points" />
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="Magento_Customer::customer">
+                    <resource id="Dolphin_Walletrewardpoints::view" title="Dolphin - Wallet/Reward Points" translate="title" sortOrder="20">
+                        <resource id="Dolphin_Walletrewardpoints::trans_history" title="Credit Transaction History" translate="title" sortOrder="20" />
+                        <resource id="Dolphin_Walletrewardpoints::withdraw_credit" title="Withdraw Credit" translate="title" sortOrder="22" />
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

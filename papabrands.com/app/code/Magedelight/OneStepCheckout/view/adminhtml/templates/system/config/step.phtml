@@ -1,0 +1,75 @@
+<?php
+$steps = $block->getAllSteps();
+?>
+<div class="md-osc-field-customization-table">
+    <table class="admin__control-table" data-mage-init='{"mdDraggableFieldArray": {}}'>
+        <thead>
+        <tr>
+            <th></th>
+            <th><?php /* @noEscape */ echo __('Step') ?></th>
+            <th><?php /* @noEscape */ echo __('Label') ?></th>
+        </tr>
+        </thead>
+        <tbody data-role="row-container">
+            <?php foreach ($steps as $step):
+                $inputName = $block->getInputName($step['code']);
+                $sortName = $inputName.'[sort_order]';
+                $labelName = $inputName.'[label]';
+                $label = $block->getDefaultLabel($step['code']);
+                ?>
+            <tr id="drag-drop-<?php echo $step['code'] ?>">
+                <td class="col-draggable">
+                    <div data-role="draggable-handle"
+                         class="draggable-handle"
+                         title="<?php echo $block->escapeHtml(__('Sort Rows')) ?>">
+                    </div>
+                    <input data-role = "sort-order"
+                           type = "hidden"
+                           name="<?php echo $sortName; ?>"
+                           value="<?php echo $step['sort']?>"
+                    />
+                </td>
+                <td class="col-attribute-label">
+                    <label class="item-label" >
+                        <?php /* @noEscape */ echo __($label) ?>
+                    </label>
+                </td>
+                <td class="col-attributes">
+                    <div class="attribute-item-<?php /* @noEscape */ echo $step['code'] ?>" data-mage-init='{"mdAttributeMetaEdit": {}}'>
+                        <input id='<?php echo $labelName ?>'
+                            name='<?php echo $labelName; ?>'
+                            value='<?php echo $step['label'] ?>'
+                            placeholder='<?php echo $step['label'] ?>'
+                            class="input-text required-entry"
+                            type="text"
+                            data-meta-field-name="label"/>
+                    </div>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    require(['jquery', 'jquery/ui'], function($){
+        jQuery(document).ready( function() {
+            if(jQuery('#onestepcheckout_step_config_customization_inherit:checkbox:checked').length > 0) {
+                jQuery('#onestepcheckout_step_config .md-osc-field-customization-table :input').prop("disabled", true);
+            }
+            if(jQuery('#onestepcheckout_step_config_customization_inherit:checkbox:checked').length > 0) {
+                jQuery('#onestepcheckout_step_config .md-osc-field-customization-table :input').prop("disabled", true);
+            }
+        });
+        jQuery('#onestepcheckout_step_config_customization_inherit').change(function() {
+            if(!this.checked) {
+                jQuery('#onestepcheckout_step_config .md-osc-field-customization-table .__disabled :input').prop("disabled", true);
+            }
+        });
+        jQuery('#onestepcheckout_step_config_customization_inherit  ').change(function() {
+            if(!this.checked) {
+                jQuery('#onestepcheckout_step_config .md-osc-field-customization-table .__disabled :input').prop("disabled", true);
+            }
+        });
+    });
+</script>

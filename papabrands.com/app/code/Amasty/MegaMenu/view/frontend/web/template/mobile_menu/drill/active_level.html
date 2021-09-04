@@ -1,0 +1,31 @@
+<section if="$data.activeElem()"
+         data-bind="
+             style: {
+                color: color_settings.submenu_text,
+                fill: color_settings.submenu_text
+             },
+             attr: {
+                class: 'ammenu-active-level'
+             }">
+    <p class="ammenu-head"
+       data-bind="
+            attr: {
+                title: $t('Go Back')
+            },
+            event: {
+                click: setPrevLevel
+            }">
+        <button class="ammenu-button -prev">
+            <!-- ko template: { name: $data.root_templates.arrowIcon } --><!-- /ko -->
+        </button>
+        <!-- ko template: { name: $data.root_templates.icon, data: { item: $data.activeElem() } } --><!-- /ko -->
+        <span class="ammenu-link" data-bind="i18n: $data.activeElem().name"></span>
+    </p>
+    <ul class="ammenu-items -drill" data-bind="foreach: $data.activeElem().elems">
+        <li data-bind="attr: {
+                class: 'ammenu-item ' + $parent.actionAnimation()
+            }">
+            <!-- ko template: { name: $parent.root_templates.mobile_link, data: { item: $data, uiClass: $parent } } --><!-- /ko -->
+        </li>
+    </ul>
+</section>

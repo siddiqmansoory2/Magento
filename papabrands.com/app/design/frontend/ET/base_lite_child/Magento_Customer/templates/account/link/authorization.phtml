@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Customer\Block\Account\AuthorizationLink $block */
+
+$objectManagerlogin = \Magento\Framework\App\ObjectManager::getInstance();
+$baseurl = $objectManagerlogin->get('Magento\Store\Model\StoreManagerInterface')->getStore(0)->getBaseUrl();
+$dataPostParam = '';
+ if($block->isLoggedIn() && $baseurl || $block->isLoggedIn() )  {
+    $dataPostParam = sprintf(" data-post='%s'", $block->getPostParams());
+    ?>
+
+ 
+ <li class="authorization-link " >
+   <a href="<?php echo $baseurl .'customer/account/'; ?>">My Account</a>
+</li>
+<?php 
+}
+?>
+
+ <li class="authorization-link" data-label="<?= $block->escapeHtmlAttr(__('or')) ?>">
+    <a <?= /* @noEscape */ $block->getLinkAttributes() ?><?= /* @noEscape */ $dataPostParam ?>>
+        <?= $block->escapeHtml($block->getLabel()) ?>
+    </a>
+</li>

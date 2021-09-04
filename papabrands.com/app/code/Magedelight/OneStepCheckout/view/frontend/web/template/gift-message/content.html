@@ -1,0 +1,29 @@
+<!-- ko if: isActive() || hasActiveOptions() -->
+
+<div data-bind="click: showPopup, attr: { id: 'mdosc-gift-' + getClassName()}">
+    <span class="osc-right-hand-icon"></span>
+    <!-- ko if: getObservable('message') -->
+    <span data-bind="i18n: 'Edit Gift Message' "></span>
+    <!-- /ko -->
+    <!-- ko ifnot: getObservable('message') -->
+    <span data-bind="i18n: 'Add Gift Message' "></span>
+    <!-- /ko -->
+</div>
+<div data-bind="visible: isPopUpVisible(), attr: { id: 'mdosc-gift-messages-' + getClassName()}, ">
+    <div class="content">
+        <div class="gift-options">
+            <!-- ko foreach: getRegion('additionalOptions') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+            <!-- ko template: formTemplate --><!--/ko-->
+        </div>
+    </div>
+</div>
+<!-- ko if: getObservable('message') -->
+<div class="gift-message-summary">
+    <span data-bind="i18n: 'Message:'"></span>
+    <!-- ko text: getObservable('message') --><!-- /ko -->
+    <span class="remove-gift-message" data-bind="i18n: 'X', click: removePopup, attr: { id: 'mdosc-gift-remove-' + getClassName()}"></span>
+</div>
+<!-- /ko -->
+<!-- /ko -->

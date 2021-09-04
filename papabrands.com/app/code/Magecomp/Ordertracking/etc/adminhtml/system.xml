@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magecomp" translate="label" sortOrder="100" class="magecomp-logo">
+            <label><![CDATA[]]></label>
+        </tab>
+        <section id="ordertracking" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Order Tracking</label>
+            <tab>magecomp</tab>
+            <resource>Magecomp_Ordertracking::config_ordertracking</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configuration</label>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Tracking</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+            <group id="bluedart" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Bluedart Settings</label>
+                <depends><field id="ordertracking/general/enable">1</field></depends>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="licencekey" translate="label comment" type="password" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Licence Key</label>
+                    <depends><field id="ordertracking/bluedart/enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="loginid" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Login ID</label>
+                    <depends><field id="ordertracking/bluedart/enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+            <group id="usps" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>USPS Settings</label>
+                <depends><field id="ordertracking/general/enable">1</field></depends>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="userid" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>User ID</label>
+                    <depends><field id="ordertracking/usps/enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+            <group id="delhivery" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Delhivery Settings</label>
+                <depends><field id="ordertracking/general/enable">1</field></depends>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="shreetirupaticourier" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Shree Tirupati Courier Service Settings</label>
+                <depends><field id="ordertracking/general/enable">1</field></depends>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="trackoncourier" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Trackon Couriers PVT LTD Settings</label>
+                <depends><field id="ordertracking/general/enable">1</field></depends>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="appkey" translate="label comment" type="password" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>App Key</label>
+                    <depends><field id="ordertracking/trackoncourier/enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="userid" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>User ID</label>
+                    <depends><field id="ordertracking/trackoncourier/enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="password" translate="label comment" type="password" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Password</label>
+                    <depends><field id="ordertracking/trackoncourier/enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+            <group id="theprofessional" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>The Professional Couriers Settings</label>
+                <depends><field id="ordertracking/general/enable">1</field></depends>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="clientid" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>TPC Client ID</label>
+                    <depends><field id="ordertracking/theprofessional/enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="password" translate="label comment" type="password" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>TPC Password</label>
+                    <depends><field id="ordertracking/theprofessional/enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+            <group id="shiprocket" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>ShipRocket Settings</label>
+                <depends><field id="ordertracking/general/enable">1</field></depends>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="user_email" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>User Email ID</label>
+                    <depends><field id="ordertracking/shiprocket/enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="user_password" translate="label comment" type="password" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label> Password</label>
+                    <depends><field id="ordertracking/shiprocket/enable">1</field></depends>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

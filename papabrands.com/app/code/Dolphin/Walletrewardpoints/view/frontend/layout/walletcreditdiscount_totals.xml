@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="order_totals">
+            <block class="Dolphin\Walletrewardpoints\Block\Sales\Order\CreditDiscount" name="order_credit_discount"/>
+        </referenceContainer>
+        <referenceContainer name="invoice_totals">
+            <block class="Dolphin\Walletrewardpoints\Block\Sales\Order\CreditDiscount" name="invoice_credit_discount"/>
+        </referenceContainer>
+        <referenceContainer name="creditmemo_totals">
+            <block class="Dolphin\Walletrewardpoints\Block\Sales\Order\CreditDiscount" name="creditmemo_credit_discount"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,23 @@
+<?php
+$baseHelper = $this->helper('ET\Base\Helper\Data');
+
+$footerTopStaticBlock = $baseHelper->getConfigValue('footer_section/footer_top/static_block');
+
+$footerColumnOneStaticBlock = $baseHelper->getConfigValue('footer_section/footer_middle/column_one_static_block');
+$footerColumnTwoStaticBlock = $baseHelper->getConfigValue('footer_section/footer_middle/column_two_static_block');
+$footerColumnThreeStaticBlock = $baseHelper->getConfigValue('footer_section/footer_middle/column_three_static_block');
+$footerColumnFourStaticBlock = $baseHelper->getConfigValue('footer_section/footer_middle/column_four_static_block');
+
+$footerMiddleStaticBlock = $baseHelper->getConfigValue('footer_section/footer_middle/footer_middle_static_block');
+
+$bottomLeftStaticBlock = $baseHelper->getConfigValue('footer_section/footer_bottom/left_static_block');
+$bottomRightStaticBlock = $baseHelper->getConfigValue('footer_section/footer_bottom/right_static_block');
+
+$baseUrl = $baseHelper->getBaseUrl();
+$mediaUrl = $baseHelper->getMediaUrl();
+?>  
+<div class="footer-wrapper type1">
+    <div class="footer-top">
+        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($footerTopStaticBlock)->toHtml(); ?>
+    </div>
+</div>

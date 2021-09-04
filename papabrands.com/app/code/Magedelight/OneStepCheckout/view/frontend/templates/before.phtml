@@ -1,0 +1,18 @@
+<?php
+$helper = $this->helper('Magedelight\OneStepCheckout\Helper\Data');
+$isRedirectEnable = $helper->allowRedirectCheckoutAfterProductAddToCart();
+?>
+<script>
+    require([
+        'jquery',
+        'mage/url'
+    ], function($, url) {
+        $(document).on('ajax:addToCart', function() {
+            var enableRedirect = '<?php echo $isRedirectEnable; ?>';
+            if(enableRedirect==1) {
+                var redirecturl = url.build('checkout');
+                window.location.href = redirecturl;
+            }
+        });
+    })
+</script>

@@ -1,0 +1,11 @@
+<!-- ko if: $data.submenu_type && $data.type.value -->
+    <!-- ko scope: 'index = submenu_builder' -->
+        <!-- ko template: { name: getTemplate(), data: { uiClass: $data, item: $parent } } --><!-- /ko -->
+    <!-- /ko -->
+<!-- /ko -->
+
+<!-- ko if: !$data.submenu_type -->
+    <!-- ko scope: 'index = submenu_simple' -->
+        <!-- ko template: { name: getTemplate(), data: { uiClass: $data,  item: $parent } } --><!-- /ko -->
+    <!-- /ko -->
+<!-- /ko -->

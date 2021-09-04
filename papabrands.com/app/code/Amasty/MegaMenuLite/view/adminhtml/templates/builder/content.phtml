@@ -1,0 +1,31 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_MegaMenuLite
+ */
+?>
+<?php
+/** @var \Magento\Framework\Escaper $escaper */
+/** @var \Amasty\MegaMenuLite\Block\Adminhtml\Builder\Content $block */
+?>
+
+<ul class="ammenu-items-tree" data-ammenu-js="items-tree">
+<?php foreach ($block->getItems() as $item): ?>
+    <?php $contentItem = $block->getContentItem($item) ?>
+    <?php if ($contentItem !== null): ?>
+        <li class="ammenu-item" id="<?= $block->escapeHtml($item->getId()) ?>">
+            <?= $block->escapeHtml($contentItem->getName()) ?>
+        </li>
+    <?php endif; ?>
+<?php endforeach; ?>
+</ul>
+<script type="text/x-magento-init">
+    {
+        "[data-ammenu-js='items-tree']": {
+            "Amasty_MegaMenuLite/js/builder/sortable": {
+                "moveUrl": "<?= $escaper->escapeUrl($block->getMoveUrl()) ?>"
+            }
+        }
+    }
+</script>

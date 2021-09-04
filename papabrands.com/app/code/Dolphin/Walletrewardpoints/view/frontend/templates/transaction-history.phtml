@@ -1,0 +1,52 @@
+<?php
+/** @var \Dolphin\Walletrewardpoints\Block\Customer\TransactionHistory $block */
+$viewModel = $block->getViewModel();
+$helper = $viewModel->getHelperModel();
+$helper->checkForLogin();
+?>
+<?php $transactionData = $block->getTransactionHistory(); ?>
+<legend class="legend"><span>Transactions History</span></legend>
+<?php if ($transactionData && count($transactionData)): ?>
+    <div class="table-wrapper transaction-history">
+        <table class="data table table-transaction-request history" id="my-transaction-table">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Transaction History')) ?></caption>
+            <thead>
+                <tr>
+                    <th scope="col" class="col id"><?= $block->escapeHtml(__('Order ID #')) ?></th>
+                    <th scope="col" class="col details"><?= $block->escapeHtml(__('Details')) ?></th>
+                    <th scope="col" class="col reward-point"><?= $block->escapeHtml(__('Reward Point(s)')) ?></th>
+                    <th scope="col" class="col credit-earn"><?= $block->escapeHtml(__('Credit Earn')) ?></th>
+                    <th scope="col" class="col credit-spent"><?= $block->escapeHtml(__('Credit Spent')) ?></th>
+                    <th scope="col" class="col transaction-date"><?= $block->escapeHtml(__('Transaction Date')) ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($transactionData as $transaction): ?>
+                    <tr>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Order ID #')) ?>" class="col id">
+                            <?= ($transaction->getOrderId()) ? $block->escapeHtml($transaction->getOrderId()) : '-' ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Details')) ?>"
+                            class="col details"><?= $block->escapeHtml($transaction->getTransTitle()) ?></td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Reward Point(s)')) ?>"
+                            class="col reward-point"><?= $block->escapeHtml($transaction->getRewardPoint()) ?></td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Credit Earn')) ?>"
+                            class="col credit-earn"><?= $block->escapeHtml($transaction->getCreditGet()) ?></td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Credit Spent')) ?>"
+                            class="col credit-spent"><?= $block->escapeHtml($transaction->getCreditSpent()) ?></td>
+                        <?php
+                        $transactionDate = $block->formatDate($transaction->getTransDate());
+                        ?>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Transaction Date')) ?>"
+                            class="col transaction-date"><?= $block->escapeHtml($transactionDate) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="transaction-history-toolbar toolbar bottom"><?= $block->getPagerHtml() ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty"><span><?= $block->escapeHtml(__('You have no transaction history.')) ?></span></div>
+<?php endif ?>

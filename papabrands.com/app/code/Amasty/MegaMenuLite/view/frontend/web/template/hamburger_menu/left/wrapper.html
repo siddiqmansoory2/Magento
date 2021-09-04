@@ -1,0 +1,51 @@
+<nav data-bind="
+            css: {
+                '-opened': isOpen,
+                '-has-icons': $data.isChildHasIcons
+            },
+            style: {
+                background: color_settings.menu_background
+            },
+            attr: { class: 'ammenu-nav-sections -left-menu' + ' -' + $parent.mobile_class + ($parent.isMobile ? ' -mobile' : '') }">
+
+    <!-- ko template: { name: root_templates.close_button } --><!-- /ko -->
+
+    <!-- ko if: isHeaderActive -->
+        <!-- ko template: { name: root_templates.header } --><!-- /ko -->
+    <!-- /ko -->
+
+    <p class="ammenu-menu-title"
+       if="isTitleActive"
+       data-bind="
+            style: {
+                color: color_settings.menu_text
+            },
+            i18n: 'Shop by Category'"/>
+
+    <!-- ko if: $parent.isMobile -->
+        <!-- ko scope: 'index = mobile_menu_wrapper' -->
+            <!-- ko template: { name: templates.typeSwitcher } --><!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko ifnot: $parent.isMobile -->
+        <!-- ko template: { name: $data.templates.items, data: { uiClass: $data, elems: elems } } --><!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: $parent.isMobile && isHeaderActive -->
+        <div class="ammenu-settings-list">
+            <p class="ammenu-menu-title"
+               data-bind="
+                    style: {
+                        color: color_settings.menu_text
+                    },
+                    i18n: 'Help & Settings'"/>
+
+            <!-- ko scope: 'index = settings_wrapper' -->
+                <!-- ko template: { name: $data.templates.currency } --><!-- /ko -->
+                <!-- ko template: { name: $data.templates.language } --><!-- /ko -->
+                <!-- ko template: { name: $data.templates.login } --><!-- /ko -->
+            <!-- /ko -->
+        </div>
+    <!-- /ko -->
+</nav>

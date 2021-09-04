@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<increff>
+			<general_configuration>
+				<enable/>
+				<api_link/>
+				<method/>
+				<userid/>
+			</general_configuration>
+		</increff>
+		<login_with_otp>
+			<general_configuration>
+				<password/>
+				<version/>
+				<msg_type/>
+			</general_configuration>
+		</login_with_otp>
+	</default>
+</config>

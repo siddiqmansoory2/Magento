@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Magedelight
+* Copyright (C) 2017 Magedelight <info@magedelight.com>
+*
+* @category Magedelight
+* @package Magedelight_OneStepCheckout
+* @copyright Copyright (c) 2017 Mage Delight (http://www.magedelight.com/)
+* @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+* @author Magedelight <info@magedelight.com>
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">    
+    <type name="Magento\Checkout\Controller\Index\Index">
+        <plugin name="plugin_checkout" type="Magedelight\OneStepCheckout\Plugin\Checkout\Controller\Index\Index"/>
+    </type>
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="osc_plugin_layoutprocessor" type="Magedelight\OneStepCheckout\Plugin\Checkout\Block\LayoutProcessor" sortOrder="999"/>
+    </type>
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="magedelight_checkout_config" xsi:type="object">Magedelight\OneStepCheckout\Model\CheckoutConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <plugin name="magedelight_redirect_to_checkout" type="Magedelight\OneStepCheckout\Plugin\Checkout\Block\Product\AbstractProduct"/>
+    </type>
+    <type name="Magento\Framework\View\Page\Config\Renderer">
+        <plugin name="magedelight_onestepcheckout_page" type="Magedelight\OneStepCheckout\Plugin\View\Page\Config\Renderer" />
+    </type>
+    <type name="\Magento\Checkout\Block\Checkout\AttributeMerger">
+        <plugin name="magedelight_onestepcheckout_attribute_merger" type="Magedelight\OneStepCheckout\Plugin\AttributeMergerPlugin"/>
+    </type>
+
+    <type name="\Magento\Wishlist\Controller\Index\Cart">
+        <plugin name="wishlistredirectAddTocart" type="Magedelight\OneStepCheckout\Plugin\WishlistRedirectCheckout"/>
+    </type>
+</config>

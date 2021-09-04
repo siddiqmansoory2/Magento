@@ -1,0 +1,45 @@
+<div>
+    <h3><span data-bind="i18n: 'Wallet Credit: '"></span><span data-bind="text: getTotalWalletCredit() "></span></h3>
+</div>
+</br>
+<form method="post" data-bind="attr: { action: getActionUrl() },submit:submitForm" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>" id="buycredit-form" data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset info">
+        <div class="field field-name-credit">
+            <!-- ko if: getAllowToBuyCredit() == 1 -->
+        	<div class="control">
+                <input type="text" class="input-text digits" style="width:20%;float:left;display:inline-block" label="Buy Credit" name="credit" id="buy_credit" data-validate="{required:true}"/>
+            </div>
+            <div style="margin-left:10px;float:left;display:inline-block">
+                <button class="action buy-credit primary" id="buycredit_submit" type="submit" title="Buy Credit">
+                    <span data-bind="i18n: 'Buy Credit'"></span>
+                </button>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: getAllowToWithdrawal() == 1 -->
+            <div style="float:right;">
+                <button class="action withdraw-credit primary" data-bind="click: getWithdrawCreditUrl" type="button" title="Withdraw Credit">
+                    <span data-bind="i18n: 'Withdraw Credit'"></span>
+                </button>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: getAllowToInvite() == 1 -->
+            <div class="dws-button-class">
+                <button class="action invite-friends primary" data-bind="click: getInviteFriendUrl" type="button" title="Invite Friends">
+                    <span data-bind="i18n: 'Invite Friends'"></span>
+                </button>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: getAllowToSendCredit() == 1 -->
+            <div class="dws-button-class">
+                <button class="action send-to-friend primary" data-bind="click: getSendCredittoFriendUrl" type="button" title="Send to Friend">
+                    <span data-bind="i18n: 'Send To Friend'"></span>
+                </button>
+            </div>
+            <!-- /ko -->
+        </div>
+    </fieldset>
+</form></br>
+<style type="text/css">
+    #buy_credit-error {position: absolute;margin-top: 39px;}
+    .dws-button-class {float: right;margin-right: 5px;}
+</style>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>    
+		<update id="MageArray_Core::core" title="MageArray Extensions" module="MageArray_CheckDelivery" sortOrder="80" resource="MageArray_CheckDelivery::checkdelivery"/>
+		
+		<add id="MageArray_CheckDelivery::checkdelivery" title="MageArray CheckDelivery" module="MageArray_CheckDelivery" sortOrder="10" parent="MageArray_Core::core" dependsOnModule="MageArray_CheckDelivery" resource="MageArray_CheckDelivery::checkdelivery"/>
+		<add id="MageArray_CheckDelivery::settings" title="Settings" module="MageArray_CheckDelivery" sortOrder="50" resource="MageArray_CheckDelivery::config_checkdelivery" action="adminhtml/system_config/edit/section/checkDelivery" parent="MageArray_CheckDelivery::checkdelivery"/>
+    </menu>
+</config>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="empty"/>
+    <referenceContainer name="page.wrapper">
+        <container name="maintenancepage.header.container" as="maintenancepage_header_container" label="Maintenancepage Page Header Container" htmlTag="header" htmlClass="page-header" before="main.content">
+            <container name="maintenancepage.header.wrapper" label="Maintenancepage Page Header" as="maintenancepage_header_wrapper" htmlTag="div" htmlClass="header content"/>
+        </container>
+    </referenceContainer>
+    <referenceContainer name="page.wrapper">
+        <referenceBlock name="copyright" remove="true"/>
+    </referenceContainer>
+</layout>

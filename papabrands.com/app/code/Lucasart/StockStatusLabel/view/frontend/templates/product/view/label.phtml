@@ -1,0 +1,28 @@
+<?php
+/**
+ * This file is part of the StockStatusLabel package.
+ *
+ * (c) Luca Sculco <sculco.luca@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+?>
+<?php if ($block->isStockStatusLabelEnabled()) : ?>
+
+    <?php /* @noEscape */ echo $block->getStyle(); ?>
+    <label id="stock_status_label"></label>
+
+    <script type="text/x-magento-init">
+    {
+        "#stock_status_label": {
+            "Lucasart_StockStatusLabel/js/stock-status-label": {
+                "productOptions": <?php /* @noEscape */ echo $block->getProductOptions() ?>,
+                "productData": <?php /* @noEscape */ echo $block->getProductData() ?>,
+                "labels": <?php /* @noEscape */ echo $block->getLabelTexts() ?>
+            }
+        }
+    }
+    </script>
+
+<?php endif; ?>

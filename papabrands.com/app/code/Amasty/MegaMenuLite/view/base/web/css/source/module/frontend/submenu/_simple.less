@@ -1,0 +1,66 @@
+//
+//  Submenu type 'Simple' styles
+//  ______________________________________________
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .ammenu-submenu-block {
+        & {
+            box-sizing: border-box;
+            background-position: center center;
+            background-size: inherit;
+            background-repeat: no-repeat;
+            transition: .3s;
+        }
+
+        .ambrands-link {
+            display: none;
+        }
+
+        .ambrands-list-popup {
+            position: relative;
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    .ammenu-submenu-block.-root {
+        & {
+            position: absolute;
+            z-index: 999;
+            overflow-y: auto;
+            max-width: 100%;
+            max-height: 70vh;
+            box-shadow: 0 4px 5px rgba(35, 74, 87, .1);
+            font-weight: 400;
+            cursor: auto;
+        }
+
+        &.-full {
+            left: 0;
+        }
+    }
+
+    .ammenu-submenu-block.-simple {
+        & {
+            box-sizing: border-box;
+            padding: @ammenu__indent__xxl;
+            background-position: center center;
+            background-size: inherit;
+            background-repeat: no-repeat;
+        }
+
+        .ambrands-link {
+            display: none;
+        }
+
+        .ambrands-list-popup {
+            position: relative;
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+}

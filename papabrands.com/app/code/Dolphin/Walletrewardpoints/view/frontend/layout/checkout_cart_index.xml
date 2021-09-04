@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.cart.totals">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="block-totals" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="creditdiscount" xsi:type="array">
+                                    <item name="component"  xsi:type="string">Dolphin_Walletrewardpoints/js/view/checkout/cart/totals/creditdiscount</item>
+                                    <item name="sortOrder" xsi:type="string">100</item>
+                                    <item name="config" xsi:type="array">
+                                         <item name="template" xsi:type="string">Dolphin_Walletrewardpoints/checkout/cart/totals/creditdiscount</item>
+                                        <item name="title" xsi:type="string" translate="true">Wallet Credit Discount</item>
+                                    </item>
+                                </item>
+                                <item name="grand-total" xsi:type="array">
+                                    <item name="component"  xsi:type="string">Magento_Tax/js/view/checkout/cart/totals/grand-total</item>
+                                    <item name="config" xsi:type="array">
+                                        <item name="template" xsi:type="string">Magento_Tax/checkout/cart/totals/grand-total</item>
+                                        <item name="exclTaxLabel" xsi:type="string" translate="true">Order Total Excl. Tax</item>
+                                        <item name="inclTaxLabel" xsi:type="string" translate="true">Order Total Incl. Tax</item>
+                                        <item name="title" xsi:type="string" translate="true">Order Total</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="cart.summary">
+            <block class="Dolphin\Walletrewardpoints\Block\CartCredit" name="checkout.cart.credit" template="Dolphin_Walletrewardpoints::cart/credit.phtml"/>
+        </referenceContainer>
+        <move element="checkout.cart.credit" destination="cart.discount"/>
+    </body>
+</page>

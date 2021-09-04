@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_MegaMenuLite
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Amasty\MegaMenuLite\Api\Data\Menu\LinkInterface" type="Amasty\MegaMenuLite\Model\Menu\Link" />
+    <preference for="Amasty\MegaMenuLite\Api\LinkRepositoryInterface" type="Amasty\MegaMenuLite\Model\Repository\LinkRepository" />
+    <preference for="Amasty\MegaMenuLite\Api\Data\Menu\ItemInterface" type="Amasty\MegaMenuLite\Model\Menu\Item" />
+    <preference for="Amasty\MegaMenuLite\Api\ItemRepositoryInterface" type="Amasty\MegaMenuLite\Model\Repository\ItemRepository" />
+
+    <type name="Amasty\MegaMenuLite\Model\Provider\FieldsByStore">
+        <arguments>
+            <argument name="fieldsByStoreCustom" xsi:type="array">
+                <item name="general" xsi:type="array">
+                    <item name="name" xsi:type="string">name</item>
+                    <item name="status" xsi:type="string">status</item>
+                    <item name="label" xsi:type="string">label</item>
+                    <item name="label_text_color" xsi:type="string">label_text_color</item>
+                    <item name="label_background_color" xsi:type="string">label_background_color</item>
+                </item>
+                <item name="am_mega_menu_fieldset" xsi:type="array">
+                </item>
+            </argument>
+            <argument name="fieldsByStoreCategory" xsi:type="array">
+                <item name="am_mega_menu_fieldset" xsi:type="array">
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\MegaMenuLite\Model\ResourceModel\Menu\Link\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">amasty_menu_link</argument>
+            <argument name="eventPrefix" xsi:type="string">amasty_menu_link_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">amasty_menu_link_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Amasty\MegaMenuLite\Model\ResourceModel\Menu\Link</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="amasty_megamenu_link_listing_data_source"
+                      xsi:type="string">Amasty\MegaMenuLite\Model\ResourceModel\Menu\Link\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\MegaMenuLite\Model\OptionSource\ColorTemplate">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="light" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Lite</item>
+                    <item name="menu_background" xsi:type="string">#F4F4F4</item>
+                    <item name="menu_text" xsi:type="string">#363636</item>
+                    <item name="submenu_background" xsi:type="string">#FFFFFF</item>
+                    <item name="submenu_text" xsi:type="string">#363636</item>
+                    <item name="category_hover_color" xsi:type="string">#1787E0</item>
+                    <item name="toggle_icon_color" xsi:type="string">#757575</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\MegaMenuLite\Model\OptionSource\ColorTemplate">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="dark" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Dark</item>
+                    <item name="menu_background" xsi:type="string">linear-gradient(180deg, #4B4947 0%, #262524 100%)</item>
+                    <item name="menu_text" xsi:type="string">#FCFCFC</item>
+                    <item name="submenu_background" xsi:type="string">#292826</item>
+                    <item name="submenu_text" xsi:type="string">#FCFCFC</item>
+                    <item name="category_hover_color" xsi:type="string">#1787E0</item>
+                    <item name="toggle_icon_color" xsi:type="string">#757575</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\MegaMenuLite\Model\OptionSource\ColorTemplate">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="dark_blue" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Bright Blue</item>
+                    <item name="menu_background" xsi:type="string">linear-gradient(180deg, #232D6A 0%, #364A93 92.19%)</item>
+                    <item name="menu_text" xsi:type="string">#EAE8F5</item>
+                    <item name="submenu_background" xsi:type="string">#5C89E4</item>
+                    <item name="submenu_text" xsi:type="string">#FFFFFF</item>
+                    <item name="category_hover_color" xsi:type="string">#74CBED</item>
+                    <item name="toggle_icon_color" xsi:type="string">#757575</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--Add possibility for apply patches before DS start-->
+    <virtualType name="Magento\Framework\Setup\Patch\DeclarativeSchemaApplyBeforeReader" type="Magento\Framework\Setup\Patch\PatchReader">
+        <arguments>
+            <argument name="type" xsi:type="string">declarativeSchemaApplyBefore</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\MegaMenuLite\Setup\Patch\PatchApplier" type="Magento\Framework\Setup\Patch\PatchApplier">
+        <arguments>
+            <argument name="dataPatchReader" xsi:type="object">Magento\Framework\Setup\Patch\DeclarativeSchemaApplyBeforeReader</argument>
+            <argument name="schemaPatchReader" xsi:type="object">Magento\Framework\Setup\Patch\DeclarativeSchemaApplyBeforeReader</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Amasty\MegaMenuLite\Plugin\Setup\Model\DeclarationInstaller\ApplyPatchesBeforeDeclarativeSchema">
+        <arguments>
+            <argument name="patchApplier" xsi:type="object">Amasty\MegaMenuLite\Setup\Patch\PatchApplier</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Setup\Model\DeclarationInstaller">
+        <plugin name="Amasty_MegaMenuLite::execute-patches-before-schema-apply"
+                type="Amasty\MegaMenuLite\Plugin\Setup\Model\DeclarationInstaller\ApplyPatchesBeforeDeclarativeSchema"/>
+    </type>
+    <!--Add possibility for apply patches before DS end-->
+
+    <type name="Amasty\MegaMenuLite\Block\Container">
+        <arguments>
+            <argument name="contentResolver" xsi:type="object">Amasty\MegaMenuLite\Model\Menu\Content\Resolver</argument>
+        </arguments>
+    </type>
+</config>

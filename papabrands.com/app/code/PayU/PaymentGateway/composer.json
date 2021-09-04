@@ -1,0 +1,37 @@
+{
+    "name": "payu/magento24-payment-gateway",
+    "description": "Official PayU integration plugin for Magento 2.4",
+    "keywords": [
+        "payu",
+        "payu easy and plus merchant",
+        "payment processing",
+        "payment module",
+        "payu magento 2.4 module",
+        "payu magento 2.4"
+    ],
+    "type": "magento2-module",
+    "version": "1.0.3",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "require": {
+        "php": ">=7.3",
+        "ext-json": "*",
+        "magento/module-sales": "103.0.*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "PayU\\PaymentGateway\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "PayU S.A.",
+            "homepage": "https://payu.pl/"
+        }
+    ]
+}

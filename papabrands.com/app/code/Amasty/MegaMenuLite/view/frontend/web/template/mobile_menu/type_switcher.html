@@ -1,0 +1,8 @@
+<!-- ko if: $data.mobileClass() === 'accordion' -->
+    <!-- ko template: { name: templates.accordion, data: $data } --><!-- /ko -->
+<!-- /ko -->
+<!-- ko if: $data.mobileClass() === 'drill' -->
+    <!-- ko scope: 'index = drill_wrapper' -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+<!-- /ko -->

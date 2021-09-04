@@ -1,0 +1,32 @@
+
+<?php if ($block->getMdOscDeliveryDate()): ?>
+<div class="block block-order-details-view">
+    <div class="block-title">
+        <strong>Delivery Information</strong>
+    </div>
+    <div class="block-content">
+        <div class="box-order-delivery-information">
+            <div class="box-content">
+                <?php if ($block->getMdOscDeliveryDate()): ?>
+                    <div id="delivery-date">
+                        <strong><?= __('Delivery Date: ') ?></strong>
+                        <span class="price"><?= $block->getMdOscDeliveryDate() ?></span>
+                    </div>
+                <?php endif; ?>
+                <?php if ($block->getMdOscDeliveryTime()): ?>
+                    <div id="delivery-time">
+                        <strong><?= __('Delivery Time: ') ?></strong>
+                        <span class="price"><?= $block->getMdOscDeliveryTime() ?></span>
+                    </div>
+                <?php endif; ?>
+                <?php if ($block->getMdOscDeliveryComment()): ?>
+                    <div id="delivery-comment">
+                        <strong><?= __('Delivery Comment: ') ?>:</strong>
+                        <span class="price"><?= $block->getMdOscDeliveryComment() ?></span>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,56 @@
+<?php
+$helper = $block->getHelper();
+?>
+<ul id="timer" class="counter">
+    <li class="days">
+        <span class="time">00</span> <hr class="line">
+        <span class="label"><?php echo __('Days') ?></span>
+    </li>
+    <li class="hours">
+        <span class="time">00</span><hr class="line">
+        <span class="label"><?php echo __('Hours') ?></span>
+    </li>
+    <li class="minutes">
+        <span class="time">00</span> <hr class="line">
+        <span class="label"><?php echo __('Minutes') ?></span>
+    </li>
+    <li class="seconds">
+        <span class="time">00</span> <hr class="line">
+        <span class="label"><?php echo __('Seconds') ?></span>
+    </li>
+</ul>
+
+    <!-- Display the countdown timer in an element -->
+    <script type="text/javascript">
+        // Set the date we're counting down to
+        var countDownDate = new Date("<?=$helper->getTimerEndTime(false) ?>".replace(' ', 'T')).getTime();
+        var now = new Date("<?php echo $helper->getCurrentDateTime(false); ?>".replace(' ', 'T')).getTime();
+
+        var x = setInterval(function() {
+            now = now + 1000;
+            // Get todays date and time
+           // var now = new Date().getTime();
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                //window.location.href = "<?php echo $helper->getUrlInterface()->getUrl();?>";
+                //days=hours=minutes=seconds=00;
+                return false;
+            }
+
+            // Display the result in the element with id="demo"
+            document.getElementById("timer").getElementsByClassName("days")[0].getElementsByClassName("time")[0].innerHTML = days;
+            document.getElementById("timer").getElementsByClassName("hours")[0].getElementsByClassName("time")[0].innerHTML = hours;
+            document.getElementById("timer").getElementsByClassName("minutes")[0].getElementsByClassName("time")[0].innerHTML = minutes;
+            document.getElementById("timer").getElementsByClassName("seconds")[0].getElementsByClassName("time")[0].innerHTML = seconds;
+
+        }, 1000);
+
+    </script>

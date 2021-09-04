@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">walletrewardpoints_form.walletrewardpoints_form_data_source</item>
+            <item name="deps" xsi:type="string">walletrewardpoints_form.walletrewardpoints_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Withdraw Request Form</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">walletrewardpoints_form</item>
+        </item>
+        <item name="spinner" xsi:type="string">withdraw_request_form</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Dolphin\Walletrewardpoints\Block\Adminhtml\Index\Edit\Button\Back</item>
+            <item name="delete" xsi:type="string">Dolphin\Walletrewardpoints\Block\Adminhtml\Index\Edit\Button\Delete</item>
+            <item name="reset" xsi:type="string">Dolphin\Walletrewardpoints\Block\Adminhtml\Index\Edit\Button\Reset</item>
+            <item name="save" xsi:type="string">Dolphin\Walletrewardpoints\Block\Adminhtml\Index\Edit\Button\Save</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <dataSource name="walletrewardpoints_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Dolphin\Walletrewardpoints\Model\WithdrawDataProvider</argument>
+            <argument name="name" xsi:type="string">walletrewardpoints_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">withdraw_id</argument>
+            <argument name="requestFieldName" xsi:type="string">withdraw_id</argument>
+            <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+                 <item name="submit_url" xsi:type="url" path="*/*/save"/>
+              </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="withdraw_request_form">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Withdraw Request Form</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+        <field name="customer_fullname">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">customer_fullname</item>
+                    <item name="dataScope" xsi:type="string">customer_fullname</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/text</item>
+                </item>
+            </argument>
+        </field>
+        <field name="email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Email</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">email</item>
+                    <item name="dataScope" xsi:type="string">email</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/text</item>
+                </item>
+            </argument>
+        </field>
+        <field name="credit">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Credit</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">credit</item>
+                    <item name="dataScope" xsi:type="string">credit</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-greater-than-zero" xsi:type="boolean">true</item>
+                        <item name="validate-digits" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="paypal_email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Paypal Email</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">email</item>
+                    <item name="dataScope" xsi:type="string">email</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-email" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="reason">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Reason</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">reason</item>
+                    <item name="dataScope" xsi:type="string">reason</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Dolphin\Walletrewardpoints\Model\Config\Source\WithdrawStatus</item>
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="default" xsi:type="number">0</item>
+                    <item name="dataScope" xsi:type="string">status</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

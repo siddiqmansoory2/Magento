@@ -1,0 +1,21 @@
+<ul class="ammenu-items-list"
+    if="item.elems && item.type && item.type.value"
+    data-bind="foreach: { data: item.elems, as: 'elem' }">
+    <li class="ammenu-item"
+        data-bind="event: {
+                        mouseenter: function(elem) {
+                            $parent.uiClass.setActiveItem(elem);
+                            $data.isHover(true);
+                        },
+                        mouseleave: function() {
+                            $data.isHover(false);
+                        }
+                   },
+                   css: {
+                        '-current': elem.current,
+                        '-active': elem.isActive,
+                        '-label': elem.label
+                   }">
+        <!-- ko template: { name: $parent.uiClass.root_templates.link, data: { item: elem, uiClass: $parent.uiClass } } --><!-- /ko-->
+    </li>
+</ul>

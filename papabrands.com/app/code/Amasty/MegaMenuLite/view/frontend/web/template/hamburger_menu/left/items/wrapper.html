@@ -1,0 +1,21 @@
+<ul class="ammenu-items -root" data-bind="foreach: elems">
+    <li class="ammenu-item"
+        data-bind="
+            event: {
+                mouseenter: function() {
+                    isHover(true);
+                },
+                mouseleave: function() {
+                    isHover(false);
+                }
+        }">
+
+        <!-- ko template: { name: $parent.uiClass.templates.link, data: { item: $data, uiClass: $parent.uiClass } } --><!-- /ko -->
+
+        <!-- ko if: !$parent.uiClass.isMobile -->
+            <!-- ko scope: 'index = submenu_wrapper' -->
+                <!-- ko template: { name: getTemplate(), data: $parent } --><!-- /ko -->
+            <!-- /ko -->
+        <!-- /ko -->
+    </li>
+</ul>

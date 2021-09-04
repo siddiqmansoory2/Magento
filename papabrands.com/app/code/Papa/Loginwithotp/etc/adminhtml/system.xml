@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="papa" translate="label" sortOrder="999">
+			<label>papa</label>
+		</tab>
+		<section id="login_with_otp" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+			<label>login_with_otp</label>
+			<tab>papa</tab>
+			<resource>Papa_Loginwithotp::config_papa_loginwithotp</resource>
+			<group id="general_configuration" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+				<label>general_configuration</label>
+				<field id="enable" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>enable</label>
+					<comment/>
+					<source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+				</field>
+				<field id="api_link" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>api_link</label>
+					<comment/>
+				</field>
+				<field id="method" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>method</label>
+					<comment/>
+				</field>
+				<field id="userid" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>userid</label>
+					<comment/>
+				</field>
+				<field id="password" type="obscure" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>password</label>
+					<comment/>
+					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+					<config_path>login_with_otp/general_configuration/password</config_path>
+				</field>
+				<field id="version" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>version</label>
+					<comment/>
+				</field>
+				<field id="msg_type" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>msg_type</label>
+					<comment/>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

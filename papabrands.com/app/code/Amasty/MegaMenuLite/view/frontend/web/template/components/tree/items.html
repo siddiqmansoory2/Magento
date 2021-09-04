@@ -1,0 +1,29 @@
+<ul if="item.elems.length"
+    class="ammenu-list"
+    data-bind="
+        foreach: item.elems,
+        visible: level < 2 || $parent.isActive || $data.isActive">
+    <li data-bind="
+            event: {
+                mouseenter: function() {
+                    $data.isActive(true);
+                },
+                mouseleave: function() {
+                    $data.isActive(false);
+                },
+            },
+            afterRender: $parent.uiClass.initItem,
+            css: {
+                '-active': $data.isActive
+            },
+            attr: {
+                class: 'ammenu-item' + ' -level-' + $parent.level + ($data.elems.length ? ' -parent' : '')
+            }">
+
+        <!-- ko template: { name: $parent.uiClass.root_templates.link, data: { item: $data, uiClass: $parent.uiClass } } --><!-- /ko -->
+
+        <!-- ko if: $data.elems.length -->
+            <!-- ko template: { name: $parent.uiClass.templates.treeItems, data: { item: $data, uiClass: $parent.uiClass, level: $parent.level + 1 } } --><!-- /ko -->
+        <!-- /ko -->
+    </li>
+</ul>

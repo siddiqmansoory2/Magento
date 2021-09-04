@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the StockStatusLabel package.
+ *
+ * (c) Luca Sculco <sculco.luca@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <cataloginventory>
+            <stock_status_label>
+                <enable_stock_status_label>1</enable_stock_status_label>
+                <enable_critical_label>1</enable_critical_label>
+                <critical_label_qty>1</critical_label_qty>
+                <critical_label_text>Last item available</critical_label_text>
+                <critical_label_color>ff0000</critical_label_color>
+                <enable_warning_label>1</enable_warning_label>
+                <warning_label_qty>5</warning_label_qty>
+                <warning_label_text>Limited availability</warning_label_text>
+                <warning_label_color>ffa500</warning_label_color>
+                <enable_critical_label>1</enable_critical_label>
+                <secure_label_qty>1000</secure_label_qty>
+                <secure_label_text>Available</secure_label_text>
+                <secure_label_color>009900</secure_label_color>
+            </stock_status_label>
+        </cataloginventory>
+    </default>
+</config>

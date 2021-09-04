@@ -1,0 +1,62 @@
+<!--
+/**
+* Magedelight
+* Copyright (C) 2017 Magedelight <info@magedelight.com>
+*
+* @category Magedelight
+* @package Magedelight_OneStepCheckout
+* @copyright Copyright (c) 2017 Mage Delight (http://www.magedelight.com/)
+* @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+* @author Magedelight <info@magedelight.com>
+*/
+-->
+<!-- ko foreach: getRegion('authentication') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+
+<!-- ko foreach: getRegion('messages') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+
+<div class="md-osc three-columns-osc" data-bind="css:{virtualCheckout:isVirtual()},afterRender:afterRender">
+    <div class="md-osc-new-layout">
+
+        <div class="checkout-column-osc">
+            <!-- ko if: getBlock(0) -->
+            <div class="checkout-column-block">
+                <!-- ko with: getBlock(0) -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </div>
+            <!--/ko-->
+        </div>
+
+        <div class="checkout-column-osc">
+            <!-- ko if: getBlock(1) -->
+            <div class="checkout-column-block">
+                <!-- ko with: getBlock(1) -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </div>
+            <!--/ko-->
+            <!-- ko if: getBlock(2) -->
+            <div class="checkout-column-block">
+                <!-- ko with: getBlock(2) -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </div>
+            <!--/ko-->
+        </div>
+
+        <div class="checkout-column-osc">
+            <!-- ko if: getBlock(3) -->
+            <div class="checkout-column-block">
+                <!-- ko with: getBlock(3) -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </div>
+            <!--/ko-->
+        </div>
+    </div>
+</div>
+

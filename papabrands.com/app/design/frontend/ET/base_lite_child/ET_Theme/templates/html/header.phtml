@@ -1,0 +1,263 @@
+<?php
+    $baseHelper = $this->helper('ET\Base\Helper\Data');
+    $baseUrl = $this->getBaseUrl();
+    $headerStaticBlock = $baseHelper->getConfigValue('header_section/general/header_static_block');
+?>
+<?php /*echo $this->getChildHtml("et.top.promotion");*/ ?>
+
+<div class="top-header">
+    <div class="custom-container alignment">
+        <?php
+            if ($headerStaticBlock != '') {
+                echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($headerStaticBlock)->toHtml();
+            }
+        ?>
+
+        <?php /*echo $this->getChildHtml("skip_to_content"); ?>
+		<?php echo $this->getChildHtml("store_language"); ?>
+		<?php echo $this->getChildHtml("currency"); ?>
+		<?php echo $this->getChildHtml("header.links"); */ ?>
+
+    </div>
+</div>
+
+<?php
+
+    /* $this->_sobjectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $UrlInterface = $this->_sobjectManager->create('\Magento\Framework\UrlInterface');
+
+    
+    $_menu=array(
+        array("title"=>"Home","link"=>$UrlInterface->getUrl()),
+        array("title"=>"Papa Audio","link"=>$UrlInterface->getUrl("papa-audio.html")),
+        array("title"=>"Papa Mask","link"=>$UrlInterface->getUrl("papa-mask.html")),
+        array("title"=>"Papa Wear","link"=>$UrlInterface->getUrl("papa-wear.html")),
+        array("title"=>"Papa Health","link"=>$UrlInterface->getUrl("papa-health.html")),
+        array("title"=>"Papa Power","link"=>$UrlInterface->getUrl("papa-power.html")),
+        array("title"=>"FAQ","link"=>$UrlInterface->getUrl("faq")),
+        array("title"=>"Speakers","link"=>$UrlInterface->getUrl("papa-audio/speakers.html"))
+    ); */
+
+?>
+
+<header class="main-header">
+    <div class="left-side-menu-mob">
+        <div class="close-btn">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="main-menus" data-mage-init='{"accordion":{"openedState": "active", "collapsible": true, "active": false}}'>
+            <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('mobile_before_menu_link')->toHtml(); ?>
+            <?php
+               $_categories = $this->helper('Magento\Catalog\Helper\Category')->getStoreCategories();
+               $subHelper = $this->helper('Papa\CodTwoFactor\Helper\Data');
+
+                foreach($_categories as $_category): 
+                    $catname = $_category->getName();
+                    $catId = $_category->getId();
+                    $catUrl = $subHelper->getCategoryUrl($catId);
+                    $subCats  = $subHelper->getChildCategories($catId); ?>
+
+                    <li data-role="collapsible" class="menu-item">    
+                        <a href="<?php echo $catUrl; ?>" data-role="trigger"><?= $catname; ?></a>
+                        <?php if($subCats->getSize()) { ?>
+                            <ul class="content" data-role="content">
+                                <?php foreach($subCats as $secLevelCat) { ?>
+                                    <li>
+                                        <a href="<?= $secLevelCat->getUrl(); ?>"><?= $secLevelCat->getName(); ?></a>
+                                        <?php $secSubCats  = $subHelper->getChildCategories($secLevelCat->getId()); ?>
+                                        <?php if($subCats->getSize()) { ?>
+                                            <ul class="content" data-role="content">
+                                                <?php foreach($secSubCats as $secLevelSubCat) { ?>
+                                                    <li>
+                                                        <a href="<?= $secLevelSubCat->getUrl(); ?>"><?= $secLevelSubCat->getName(); ?></a>
+                                                    </li>
+                                                <?php } ?>
+                                            </ul>
+                                        <?php } ?>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        <?php } ?>
+                    </li>
+                <?php endforeach; ?>
+                <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('mobile_after_menu_link')->toHtml(); ?>
+
+			<?php /* ?>
+            <li class="active"><a href="index.html">Home</a></li>
+            <li class=""><a href="#">Papa Masks</a></li>
+            <li class=""><a href="brands-mens-collection.html">Papa Wear</a></li>
+            <li class=""><a href="#">Papa Power</a></li>
+            <li class="">
+                <a href="javascript:void(0)" class="level-top ui-corner-all" aria-haspopup="true" id="ui-id-1" tabindex="-1" role="menuitem"><span class="ui-menu-icon ui-icon ui-icon-carat-1-e"></span><span>Papa Audio</span></a>
+                <ul class="level0 submenu ui-menu ui-widget ui-widget-content ui-corner-all" role="menu" data-content="ui-id-1" aria-expanded="true">
+                    <li class="ui-menu-item all-category"><a href="https://papabrands.xyz/papa-audio.html" class="ui-state-focus">All Papa Audio</a></li>
+                    <li class="level1 nav-4-1 category-item first ui-menu-item" role="presentation"><a href="https://papabrands.xyz/papa-audio/tws-true-wireless-sound.html" id="ui-id-56" class="ui-corner-all" tabindex="-1" role="menuitem"><span>TWS (True Wireless Sound)</span></a></li>
+                    <li class="level1 nav-4-2 category-item ui-menu-item" role="presentation"><a href="https://papabrands.xyz/papa-audio/earphones.html" id="ui-id-57" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Earphones</span></a></li>
+                    <li class="level1 nav-4-3 category-item ui-menu-item" role="presentation"><a href="https://papabrands.xyz/papa-audio/headphones.html" id="ui-id-58" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Headphones</span></a></li>
+                    <li class="level1 nav-4-4 category-item ui-menu-item" role="presentation"><a href="https://papabrands.xyz/papa-audio/speakers.html" id="ui-id-59" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Speakers</span></a></li>
+                    <li class="level1 nav-4-5 category-item ui-menu-item" role="presentation"><a href="https://papabrands.xyz/papa-audio/wired-earphone.html" id="ui-id-60" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Wired Earphone</span></a></li>
+                    <li class="level1 nav-4-6 category-item last ui-menu-item" role="presentation"><a href="https://papabrands.xyz/papa-audio/papa-audio.html" id="ui-id-61" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Papa Audio</span></a></li>
+                </ul>
+            </li>
+
+            <li class="">
+                <a href="javascript:void(0)" class="level-top ui-corner-all" aria-haspopup="true" id="ui-id-4" tabindex="-1" role="menuitem"><span class="ui-menu-icon ui-icon ui-icon-carat-1-e"></span><span>Papa Health</span></a>
+                <ul class="level0 submenu ui-menu ui-widget ui-widget-content ui-corner-all" role="menu" data-content="ui-id-4" aria-expanded="false" aria-hidden="true">
+                    <li class="ui-menu-item all-category"><a href="https://papabrands.xyz/papa-health">All Papa Health</a></li>
+                    <li class="level1 nav-1-1 category-item first ui-menu-item" role="presentation"><a href="https://papabrands.xyz/papa-health/hazmat-suits.html" id="ui-id-9" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Hazmat Suits</span></a></li>
+                    <li class="level1 nav-1-2 category-item last ui-menu-item" role="presentation"><a href="https://papabrands.xyz/papa-health/infrared-thermometers.html" id="ui-id-10" class="ui-corner-all" tabindex="-1" role="menuitem"><span>Infrared Thermometers</span></a></li>
+                </ul>
+            </li><?php */ ?>
+        </ul>
+        <div class="links">
+            <ul>
+                <li><a href="#" class="text-links"><?= __("About"); ?></a></li>
+                <li><a href="#" class="text-links"><?= __("Contact"); ?></a></li>
+                <li><a href="order-tracking.html" class="text-links"><?= __("Track Your Order"); ?></a></li>
+                <li><a href="#" class="text-links"><i class="far fa-user"></i>&nbsp; <span><?= __("Log in"); ?></span></a></li>
+            </ul>
+        </div>
+        <div class="social-links">
+            <ul>
+                <li><a href="https://www.facebook.com/papabrandsinc/"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://twitter.com/papabrandsinc"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://www.instagram.com/papabrandsinc/"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://www.youtube.com/channel/UCbXE_mXb25yvF3fWMHNeV8Q"><i class="fab fa-youtube"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="custom-container">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="left-side-icons">
+                <a href="javascript:void(0)"><i class="fas fa-search for-desk"></i></a>
+                <div class="burger-menu">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="search-fied">
+                <form action="<?php echo $baseUrl; ?>/catalogsearch/result/" method="get">
+                    <input id="search" type="text" name="q" value="" placeholder="Search entire store here..." class="form-control" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off" aria-expanded="false">
+                    <input type="submit" value="" class="">
+                    <span class="close-search"><i class="fas fa-times ml-2"></i></span>
+                </form>
+            </div>
+            <div class="header-menu-center d-flex justify-content-between align-items-center">
+                <div class="main-logo ml-3 mr-3 text-center">
+                    <?php echo $this->getChildHtml("logo"); ?>
+                </div>
+            </div>
+            <div class="right-side-icons ">
+                <div class="dropdown d-inline">
+                    <a class="dropdown-toggle user-desk" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <?php echo $this->getChildHtml('header.links'); ?>
+                    </div>
+                </div>
+                <a href="javascript:void(0)" class="search-mob"><i class="fas fa-search"></i></a>
+                <?php echo $this->getChildHtml('minicart'); ?>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="mobile-search">
+    <div class="search-box d-flex align-items-center">
+        <div class="search d-flex align-items-center">
+            <span><i class="fas fa-search"></i></span>
+
+            <form action="<?php echo $baseUrl; ?>/catalogsearch/result/" method="get">
+                <input id="search" type="text" name="q" value="" placeholder="Search entire store here..." class="search-input" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off" aria-expanded="false">
+                <input type="submit" value="" class="">
+            </form>
+
+        </div>
+        <span class="cancel"><?= __("Cancel"); ?></span>
+    </div>
+    <div class="background-blur">
+    </div>
+</div>
+
+
+
+<?php /**/ ?>
+<header class="page-header type1 text-center custom-header">
+    <?php /* ?><div class="panel wrapper">
+        <div class="panel header">
+            <?php echo $this->getChildHtml("skip_to_content"); ?>
+            <?php echo $this->getChildHtml("store_language"); ?>
+            <?php echo $this->getChildHtml("currency"); ?>
+            <?php echo $this->getChildHtml("header.links"); ?>
+        </div>
+    </div><?php */ ?>
+    <?php /* ?><div class="header content">
+        <div class="header-logo">
+            <?php echo $this->getChildHtml("logo"); ?>
+        </div>
+        <?php echo $this->getChildHtml("minicart"); ?>
+        <?php
+        if ($headerStaticBlock != '') {
+            echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($headerStaticBlock)->toHtml();
+        }
+        ?>
+        <?php echo $this->getChildHtml("top.search"); ?>
+    </div><?php /**/ ?>
+    <?php echo $this->getChildHtml("navigation.sections"); ?>
+</header><?php /**/ ?>
+
+<script>
+    require(['jquery', 'jquery/ui'], function($) {
+        $(document).ready(() => {
+            jQuery('.burger-menu').on('click', () => {
+                jQuery('.left-side-menu-mob').css({
+                    'left': '0',
+                });
+            });
+
+            jQuery('.close-btn').on('click', () => {
+                jQuery('.left-side-menu-mob').css({
+                    'left': '-300px',
+                });
+            });
+
+            jQuery('.level-top').on('click', function() {
+                let id = jQuery(this).attr('id');
+                if(jQuery(this).hasClass('openSub')) {
+                    jQuery(this).removeClass('openSub');
+                    jQuery(`.submenu[data-content="${id}"]`).css({
+                        "max-height": "0"
+                    });
+                } else {
+                    jQuery(this).addClass('openSub');
+                    jQuery(`.submenu[data-content="${id}"]`).css({
+                        "max-height": "1000px"
+                    });
+                }
+            });
+
+            jQuery('.left-side-icons a .fa-search').on('click', () => {
+                jQuery('.search-fied').css({
+                    'width': '300px',
+                });
+            });
+
+            jQuery('.close-search').on('click', () => {
+                jQuery('.search-fied').css({
+                    'width': '0',
+                });
+            });
+
+            jQuery('.search-mob').on('click', () => {
+                jQuery('.mobile-search').toggle();
+            });
+
+            jQuery('.cancel').on('click', () => {
+                jQuery('.mobile-search').toggle();
+            });
+        });
+    });
+</script>

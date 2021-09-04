@@ -1,0 +1,20 @@
+<?php
+// NOTE: Make sure to replace this with your Kiwi Sizing shop ID
+$shop_id = "REPLACE_ME_KIWI_SIZING_SHOP_ID";
+//$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$objectManager = $this->helper('Papa\AjaxCartQty\Helper\Data')->getObjectManager();
+$product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');
+if ($product) {  // Insert kiwi sizing integration  
+echo '<!-- KiwiSizing v1.0.0 Integration !--><script>!function(t,n,s,e,i){function r(t){try{var s="; "+n.cookie,e=s.split("; "+t+"=");if(2==e.length)return e.pop().split(";").shift()}catch(i){}return null}t[i]=t[i]||{},t[i]._queue=[];const o="on setShopID setUserID setUserEmail setLanguage loadSizing".split(" ");for(var a=0;a<o.length;a++){const c=o[a];t[i][c]=function(){var n=Array.prototype.slice.call(arguments);return n.unshift(c),t[i]._queue.push(n),t[i]}}const l=r("_ks_scriptVersion")||t.ks_version||"";var u=n.createElement(s);n=n.getElementsByTagName(s)[0],u.async=1,void 0!==t.ks_load_async&&(u.async=t.ks_load_async),u.src=e+"?v="+l,u.id="ks-integration",n.parentNode.insertBefore(u,n)}(window,document,"script","https://cdn.static.kiwisizing.com/SizingPlugin.prod.js","ks");</script><!-- End KiwiSizing Integration !-->';
+$category_ids = []; 
+foreach($product->getCategoryIds() as $id)
+ {   array_push($category_ids, "'".addslashes($id)."'");  }   
+  $image_gallery = $product->getMediaGalleryImages(); 
+   $images = [];
+     foreach($image_gallery as $i) 
+     {    array_push($images, "'".$i['url']."'");  } 
+      $customerSession = $objectManager->create('Magento\Customer\Model\Session'); 
+       if ($customerSession->isLoggedIn() == true)
+        {    echo '<script>ks.setUserID("'.$customerSession->getCustomerId().'");ks.setUserEmail("'.$customerSession->getCustomer()->getEmail().'");</script>';  }  
+          echo '<script>ks.setShopID("'.$shop_id.'");ks.loadSizing({  productData: {    productID:"'.addslashes($product->getID()).'",    title:"'.addslashes($product->getName()).'",    sku:"'.addslashes($product->getSku()).'",    categories:['.join(",", $category_ids).'],    images:['.join(",", $images).'],  },});</script>';}
+?>

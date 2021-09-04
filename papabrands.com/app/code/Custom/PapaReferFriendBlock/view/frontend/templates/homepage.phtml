@@ -1,0 +1,66 @@
+<?php 
+/** @var \Magento\Framework\App\ObjectManager $om */
+$om = \Magento\Framework\App\ObjectManager::getInstance();
+/** @var \Magento\Framework\App\Http\Context $context */
+$context = $om->get('Magento\Framework\App\Http\Context');
+
+
+// $resource = $om->get('Magento\Framework\App\ResourceConnection');
+// $connection = $resource->getConnection();
+// $tableName = $resource->getTableName('aw_raf_summary'); //gives table name with prefix
+
+//Select Data from table
+// $sql = "Select * FROM " . $tableName;
+// $result = $connection->fetchAll($sql); // gives associated array, table fields as key in array.
+
+/** @var bool $isLoggedIn */
+$isLoggedIn = $context->getValue(\Magento\Customer\Model\Context::CONTEXT_AUTH);
+
+if($isLoggedIn){
+  ?>
+<section class="connect-section-form">
+    <img src="./media/wysiwyg/papabrands/bottom-sp.png" alt="images" class="bottom-sp">
+    <img src="./media/wysiwyg/papabrands/top-sp.png" alt="images" class="top-sp">
+    <div class="row mx-auto">
+        <div class="col-6">
+            <div class="connect-img-block">
+                <img src="./media/wysiwyg/papabrands/connect-image.png" alt="image" class="img-fluid">
+                <p class="tandc"><a href="#">How it works</a> <a href="#">T&C</a></p>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="connect-box">
+                <p class="connect-form-heading">REWARD YOUR FRIENDS & YOURSELF</p>
+                <p class="connect-form-dis">You can earn ₹100 off by inviting your amazing friends. They also
+                    get ₹100 off on their first order. </p>
+                <div class="d-flex align-items-center input-block">
+                    <input type="text" class="form-control inputs" placeholder="Enter Friend's email ids">
+                    <button type="button" class="btn invite-btn">Invite</button>
+                </div>
+                <div class="d-flex align-items-center">
+                    <input type="text" class="form-control inputs"
+                        placeholder="www.papabrands.com/referafriend">
+                    <button type="button" class="btn copy-btn">Copy</button>
+                </div>
+                <div class="share-links">
+                    <p class="sharelinks">Share your link
+                        <div class="social-links-connetc">
+                            <span>
+                                <i class="fab fa-facebook"></i>
+                            </span>
+                            <span>
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>
+                                <i class="fab fa-instagram-square"></i>
+                            </span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  
+  <?php
+}

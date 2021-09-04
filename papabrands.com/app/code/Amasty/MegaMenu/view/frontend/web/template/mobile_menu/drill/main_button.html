@@ -1,0 +1,13 @@
+<button class="ammenu-button -go-main"
+        if="$data.activeElem().level && $data.activeElem().level()"
+        data-bind="
+            event: {
+                click: function() {
+                    $data.setRootLevel();
+                }
+            },
+            style: {
+                backgroundColor: $parent.color_settings.category_hover_color
+            },
+            i18n: 'Main Menu'">
+</button>

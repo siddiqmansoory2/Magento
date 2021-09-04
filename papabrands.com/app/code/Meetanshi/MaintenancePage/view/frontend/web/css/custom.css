@@ -1,0 +1,132 @@
+@media screen and (max-width: 1479px) {
+    .maintenancepage.two-columns .login-container > .block {
+        padding: 2%;
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 1279px) {
+    .maintenancepage.two-columns #timer.style2 li {
+        width: 22%;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .maintenancepage .field.timer #timer li {
+        width: 21%;
+    }
+    .maintenancepage .field.timer #timer.style2 li span.time {
+        line-height: 90px;
+    }
+}
+
+@media screen and (max-width: 959px) {
+    .maintenancepage.two-columns #timer li span.time {
+        font-size: 3rem;
+    }
+
+    .maintenancepage.two-columns #timer li span {
+        font-size: 1.5rem;
+    }
+
+    .maintenancepage .field.timer #timer.style2 li span.time {
+        line-height: 75px;
+    }
+
+    .one-column .block.block-left {
+        min-width: 70%;
+    }
+
+    .maintenancepage.one-column .field.timer #timer.style2 li span.time {
+        line-height: 105px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .maintenancepage.two-columns .login-container > .block {
+        padding: 5%;
+        width: 90%;
+    }
+
+    .maintenancepage.two-columns .block.block-left {
+        border-right: none;
+    }
+
+    .maintenancepage .field.timer #timer.style2 li {
+        width: 19%;
+    }
+
+    .maintenancepage .field.timer #timer li {
+        width: 22%;
+    }
+
+    .maintenancepage .field.timer #timer li span.time {
+        font-size: 4rem;
+    }
+
+    .maintenancepage .field.timer #timer li span.label {
+        font-size: 2rem;
+    }
+
+    .maintenancepage.two-columns #timer.style2 li span.time {
+        line-height: 100px;
+    }
+
+    .maintenancepage .field.social .header.links {
+        display: inline-block;
+    }
+
+    .maintenancepage.video .login-container > .block {
+        padding: 2%;
+    }
+}
+
+@media screen and (max-width: 579px) {
+    .maintenancepage.two-columns .field.timer #timer li span.time {
+        font-size: 3rem;
+    }
+
+    .maintenancepage .field.timer #timer li span.label {
+        font-size: 1.5rem;
+    }
+
+    .maintenancepage.two-columns #timer.style2 li span.time {
+        line-height: 85px;
+    }
+
+    .maintenancepage.one-column .field.timer #timer.style2 li span.time {
+        line-height: 90px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .maintenancepage .field.timer #timer.style2 li span.time {
+        line-height: 65px;
+    }
+
+    .maintenancepage.one-column .field.timer #timer li span.time {
+        font-size: 3rem;
+    }
+
+    .maintenancepage.one-column .field.timer #timer li span {
+        font-size: 1.5rem;
+    }
+
+    .maintenancepage.one-column .field.timer #timer.style2 li span.time {
+        line-height: 75px;
+    }
+}
+
+@media screen and (max-width: 379px) {
+    .maintenancepage.two-columns #timer.style1 li span.time {
+        font-size: 2rem;
+    }
+
+    .maintenancepage.two-columns .field.timer #timer.style1 li span.label {
+        font-size: 1.25rem;
+    }
+
+    .maintenancepage .field.page-title h1 {
+        font-size: 4rem;
+    }
+}

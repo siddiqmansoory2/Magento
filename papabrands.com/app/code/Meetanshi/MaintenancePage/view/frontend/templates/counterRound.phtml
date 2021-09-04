@@ -1,0 +1,202 @@
+<?php
+$helper = $block->getHelper();
+?>
+<div class="countdown">
+    <div class="container days">
+        <canvas id="days-canvas" width="200" height="200"></canvas>
+        <svg width="200" height="200">
+            <circle id="outer" cx="100" cy="100" r="70" fill="transparent" stroke-width="20" stroke="#23342c"
+                    opacity="0.5"/>
+        </svg>
+        <div class="label">
+            <span id="days-value"></span>
+            <hr class="line">
+            <span>days</span>
+        </div>
+    </div>
+    <div class="container hours">
+        <canvas id="hours-canvas" width="200" height="200"></canvas>
+        <svg width="200" height="200">
+            <circle id="outer" cx="100" cy="100" r="70" fill="transparent" stroke-width="20" stroke="#23342c"
+                    opacity="0.1"/>
+        </svg>
+        <div class="label">
+            <span id="hours-value"></span>
+            <hr class="line">
+            <span>hours</span>
+        </div>
+    </div>
+    <div class="container minutes">
+        <canvas id="minutes-canvas" width="200" height="200"></canvas>
+        <svg width="200" height="200">
+            <circle id="outer" cx="100" cy="100" r="70" fill="transparent" stroke-width="20" stroke="#23342c"
+                    opacity="0.1"/>
+        </svg>
+        <div class="label">
+            <span id="minutes-value"></span>
+            <hr class="line">
+            <span>minutes</span>
+        </div>
+    </div>
+    <div class="container seconds">
+        <canvas id="seconds-canvas" width="200" height="200"></canvas>
+        <svg width="200" height="200">
+            <circle id="outer" cx="100" cy="100" r="70" fill="transparent" stroke-width="20" stroke="#23342c"
+                    opacity="0.1"/>
+        </svg>
+        <div class="label">
+            <span id="seconds-value"></span>
+            <hr class="line">
+            <span>seconds</span>
+        </div>
+    </div>
+</div>    <!-- Display the countdown timer in an element -->
+
+<script type="text/javascript">
+    require(['jquery', 'jquery/ui'], function ($) {
+
+        var countDownDate = new Date("<?=$helper->getTimerEndTime(false) ?>".replace(' ', 'T')).getTime();
+        var now = new Date("<?php echo $helper->getCurrentDateTime(false); ?>".replace(' ', 'T')).getTime();
+
+        // Context object
+        const c = {
+            context: {},
+            values: {},
+            times: {}
+        };
+
+        // Convert radians to degrees
+        function deg(d) {
+            return (Math.PI / 180) * d - (Math.PI / 180) * 90;
+        }
+
+        function render() {
+
+            c.context.seconds.clearRect(0, 0, 200, 200);
+            c.context.seconds.beginPath();
+            c.context.seconds.strokeStyle = "#606b7a";
+            c.context.seconds.arc(100, 100, 70, deg(0), deg(6 * (60 - c.times.seconds)));
+            c.context.seconds.lineWidth = 20;
+            c.context.seconds.lineCap = "round";
+            c.context.seconds.stroke();
+
+            c.context.minutes.clearRect(0, 0, 200, 200);
+            c.context.minutes.beginPath();
+            c.context.minutes.strokeStyle = "#7accc8";
+            c.context.minutes.arc(100, 100, 70, deg(0), deg(6 * (60 - c.times.minutes)));
+            c.context.minutes.lineWidth = 20;
+            c.context.minutes.lineCap = "round";
+            c.context.minutes.stroke();
+
+            c.context.hours.clearRect(0, 0, 200, 200);
+            c.context.hours.beginPath();
+            c.context.hours.strokeStyle = "#ffa246";
+            c.context.hours.arc(100, 100, 70, deg(0), deg(15 * (24 - c.times.hours)));
+            c.context.hours.lineWidth = 20;
+            c.context.hours.lineCap = "round";
+            c.context.hours.stroke();
+
+            c.context.days.clearRect(0, 0, 200, 200);
+            c.context.days.beginPath();
+            c.context.days.strokeStyle = "#47ffaf";
+            c.context.days.arc(100, 100, 70, deg(0), deg(365 - c.times.days));
+            c.context.days.lineWidth = 20;
+            c.context.days.lineCap = "round";
+            c.context.days.stroke();
+        }
+
+        function init() {
+
+            // Get 2D contexts
+            c.context.seconds = document.getElementById('seconds-canvas').getContext('2d');
+            c.context.minutes = document.getElementById('minutes-canvas').getContext('2d');
+            c.context.hours = document.getElementById('hours-canvas').getContext('2d');
+            c.context.days = document.getElementById('days-canvas').getContext('2d');
+
+            // Get displayed values
+            c.values.seconds = document.getElementById('seconds-value');
+            c.values.minutes = document.getElementById('minutes-value');
+            c.values.hours = document.getElementById('hours-value');
+            c.values.days = document.getElementById('days-value');
+
+            var x = setInterval(function () {
+                // Get todays date and time (ms)
+                now = now + 1000;
+
+                // Get distance from now to launchDate
+                const distance = countDownDate - now;
+
+                // Time calculations
+                c.times.days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                c.times.hours = Math.floor(
+                    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                );
+                c.times.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                c.times.seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                if (distance < 0) {
+                    clearInterval(x);
+                    //window.location.href = "<?php echo $helper->getUrlInterface()->getUrl();?>";
+                    //days=hours=minutes=seconds=00;
+                    c.values.days.innerText = "00";
+                    c.values.hours.innerText = "00";
+                    c.values.minutes.innerText = "00";
+                    c.values.seconds.innerText = "00";
+                    return false;
+                }
+                c.values.days.innerText = c.times.days;
+                c.values.hours.innerText = c.times.hours;
+                c.values.minutes.innerText = c.times.minutes;
+                c.values.seconds.innerText = c.times.seconds;
+
+
+                render(); // Draw!
+            }, 1000);
+        }
+
+        init();
+    });
+</script>
+<style>
+    .countdown {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 770px;
+    }
+
+    .countdown .container {
+        position: relative;
+    }
+
+    .countdown .container svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .countdown .container .label {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -55%);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .countdown .container .label span:first-of-type {
+        font-size: 40px;
+        color: #fff;
+    }
+
+    .countdown .container .label span:nth-of-type(2) {
+        font-size: 16px;
+        text-transform: uppercase;
+        color: #fff;
+    }
+
+
+</style>

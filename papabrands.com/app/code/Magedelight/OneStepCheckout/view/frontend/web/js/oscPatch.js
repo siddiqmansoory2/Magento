@@ -1,0 +1,1 @@
+ window.magentoVersion_osc_patch = '232';

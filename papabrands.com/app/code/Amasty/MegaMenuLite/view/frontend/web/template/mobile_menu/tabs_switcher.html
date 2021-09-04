@@ -1,0 +1,20 @@
+<ul class="ammenu-tabs-list" data-bind="foreach: tabsList">
+    <li class="ammenu-item">
+        <button class="ammenu-button"
+                data-bind="
+                    style: {
+                        background: $parent.activeTab() === $index() ? $parent.color_settings.submenu_background : $parent.color_settings.menu_background,
+                        color: $parent.activeTab() === $index() ? $parent.color_settings.category_hover_color : $parent.color_settings.menu_text
+                    },
+                    event: {
+                        click: function() {
+                            $parent.activeTab($index())
+                        }
+                    },
+                    css: {
+                       '-active': $parent.activeTab() === $index()
+                    },
+                    text: title">
+        </button>
+    </li>
+</ul>

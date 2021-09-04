@@ -1,0 +1,1 @@
+ window.magentoVersion_osc_patch = 'no-patch';

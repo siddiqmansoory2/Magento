@@ -1,0 +1,112 @@
+  <?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');//get current product
+$product_id =  $product->getId();
+
+$product = $objectManager->create("Magento\Catalog\Model\Product")->load($product_id);
+
+$storeManager = $objectManager->get('Magento\Store\Model\StoreManagerInterface');
+$currentStoreId = $storeManager->getStore()->getId();
+
+$reviewCollectionFactory = $objectManager->create('Magento\Review\Model\ResourceModel\Review\CollectionFactory')->create();
+$reviewsCollection = $reviewCollectionFactory->addFieldToSelect('*')
+        ->addStoreFilter($currentStoreId)
+        ->addStatusFilter(\Magento\Review\Model\Review::STATUS_APPROVED)
+        ->addEntityFilter(
+            'product',
+            $product_id
+        )->setDateOrder()
+        ->addRateVotes();
+$show_review = false;
+if(sizeof($reviewsCollection->getData()) > 0){
+    $show_review = true;
+}
+
+$avgRatingArray = array();
+foreach($reviewsCollection as $review){
+    $countRatings = count($review->getRatingVotes());
+    if ($countRatings > 0) {
+        $allRatings = 0;
+        foreach ($review->getRatingVotes() as $vote) {
+            $allRatings = $allRatings + $vote->getPercent();
+        }
+        $allRatingsAvg = $allRatings / $countRatings;
+        $avgRatingArray[] = $allRatingsAvg;
+    }
+}
+// print_r($avgRatingArray);
+
+$total = 0;
+$reviewCount = 0;
+$rateSummary = 0;
+
+if(count($avgRatingArray)>0){
+	$total = array_sum($avgRatingArray);
+	$reviewCount = count($avgRatingArray);
+	$rateSummary = $total / $reviewCount;
+}
+
+?>
+<?php if($show_review == true) {?>
+<section class="review-sec">
+  <h3 class="sub-heading text-center">Customer Reviews</h3>
+  <div class="review-carousel owl-carousel owl-loaded">
+    <?php
+                            foreach($reviewsCollection as $review){
+                                $countRatings = count($review->getRatingVotes());
+                        ?>
+    <div class="item">
+      <div class="review-container">
+        <p class="review-per-name"><?php echo $review->getNickname(); ?></p>
+        <p class="review-date"><?php echo ltrim(date('dS F Y',strtotime($review->getCreatedAt())),'0'); ?></p>
+        <?php if ($countRatings > 0) {
+                                    $allRatings = 0;
+                                    foreach ($review->getRatingVotes() as $vote) {
+                                        $allRatings = $allRatings + $vote->getPercent();
+                                    }
+                                    $allRatingsAvg = $allRatings / $countRatings;?>
+
+        <div class="rating-summary">
+          <div class="rating-result" title="<?php echo $allRatingsAvg;?>%"> <span style="width: <?php echo $allRatingsAvg;?>%;"> <span> <span itemprop="ratingValue"><?php echo $allRatingsAvg;?></span>% of <span itemprop="bestRating">100</span> </span> </span> </div>
+        </div>
+        <?php } ?>
+        <p class="review-discription"><?php echo $review->getDetail();?></p>
+      </div>
+    </div>
+    <?php 
+                            }
+                        ?>
+  </div>
+</section>
+<?php } ?>
+<script type="text/javascript">
+                    require([
+                        'jquery',
+                        'baseowlcarousel'
+                    ], function(){
+                        // console.log(123);
+                        jQuery('.review-carousel').owlCarousel({
+                            items: 4,
+                            margin:15,
+                            autoHeight:true,
+                            responsive: {
+                                0: {
+                                    items: 1
+                                },
+                                577: {
+                                    items: 2
+                                },
+                                768: {
+                                    items: 3
+                                },
+                                1024: {
+                                    items: 4
+                                }
+                            },
+                            autoplay: false,
+                            dots: false,
+                            nav: true,
+                            navText: ['<div class="prev-arrow"></div>', '<div class="next-arrow"></div>']
+                        });
+                    });
+                </script>

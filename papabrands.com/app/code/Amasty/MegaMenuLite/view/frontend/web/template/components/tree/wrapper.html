@@ -1,0 +1,10 @@
+<section class="ammenu-categories-container" if="$parent.item" data-bind="foreach: $parent.item.elems">
+    <div data-bind="
+            attr: {
+                class: 'ammenu-column' + ' -col-' + $root.item.column_count
+            },
+            afterRender: $parent.initItem">
+        <!-- ko template: { name: $parent.root_templates.link, data: { item: $data, uiClass: $parent } } --><!-- /ko -->
+        <!-- ko template: { name: $parent.templates.treeItems, data: { item: $data, uiClass: $parent, level: 1 } } --><!-- /ko -->
+    </div>
+</section>

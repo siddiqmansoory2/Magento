@@ -1,0 +1,12 @@
+<button class="ammenu-toggle"
+        data-bind="
+            css: { '-active': item.isActive },
+            click: function() {
+                if (uiClass.toggleItem) {
+                    uiClass.toggleItem(item);
+                } else {
+                    item.isActive(!item.isActive());
+                }
+            }">
+    <span class="ammenu-icon"></span>
+</button>

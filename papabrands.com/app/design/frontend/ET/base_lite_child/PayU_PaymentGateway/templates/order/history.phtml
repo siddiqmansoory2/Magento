@@ -1,0 +1,195 @@
+<?php
+/**
+ * @var \Payu\PaymentGateway\Block\Order\History $this
+ */
+?>
+<?php
+$orderNumberLabel = $this->escapeHtml(__('Order #'));
+$dateLabel = $this->escapeHtml(__('Date'));
+$shipToLabel = $this->escapeHtml(__('Ship To'));
+$orderTotalLabel = $this->escapeHtml(__('Order Total'));
+$statusLabel = $this->escapeHtml(__('Status'));
+$orders = $block->getOrders();
+echo $block->getChildHtml('info');
+// $order = $this->getData('order');
+if ($orders && count($orders)):
+    ?>
+<style>
+    .page-title-wrapper{
+        display: none;
+    }
+</style>
+<div class="order_history_section">
+            <div class="order-header row">
+                <div class="col-6">
+                    <h3>Showing All Orders</h3>
+                </div>
+                <!--<div class="col-6">-->
+                <!--    <div class="dropdown pull-right">-->
+                <!--        <button type="button" id="filterbutton" data-toggle="dropdown" aria-haspopup="true"-->
+                <!--            aria-expanded="false" class="global_button dropdown-toggle">-->
+                <!--            <img src="http://13.126.237.21/papa/images/filter-icon.png" style="height: 18px;"-->
+                <!--                class="mr-3">-->
+                <!--            <span>Filter</span>-->
+                <!--        </button>-->
+                        <!--<div aria-labelledby="filterbutton" class="dropdown-menu pop-menu order_filterpopup"-->
+                        <!--    x-placement="bottom-start">-->
+                        <!--    <a class="dropdown-item" href="#">All Orders</a>-->
+                        <!--    <a class="dropdown-item" href="#">Open Orders</a>-->
+                        <!--    <a class="dropdown-item" href="#">Returned Orders</a>-->
+                        <!--    <a class="dropdown-item" href="#">Cancelled Orders</a>-->
+                        <!--    <a class="dropdown-item" href="#">Delievered Orders</a>-->
+                        <!--</div>-->
+                <!--    </div>-->
+                <!--</div>-->
+            </div>
+            <div class="order-history-container">
+                <?php foreach ($orders as $order):
+                    $entity_id = $order->getEntityId();
+                    $state = $order->getState();
+                    $i=0;
+                    $image_url='';
+                    foreach ($order->getAllVisibleItems() as $_item) {
+                         if($i < 1){
+                            $product_name = $block->escapeHtml($_item->getName());
+                            $qty = $block->escapeHtml($_item->getQtyOrdered());
+                            $qty = round($qty, 0);
+                            $product_id = $_item->getProductId();
+                            if($product_id != ""){ 
+
+                                $objectManager =\Magento\Framework\App\ObjectManager::getInstance();
+                                $product = $objectManager->create('\Magento\Catalog\Model\ProductFactory')->create()->load($product_id);
+                                if($product->getId()){
+                                    $helperImport = $objectManager->get('\Magento\Catalog\Api\ProductRepositoryInterfaceFactory');
+                                    $store = $objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore();
+                                    $product = $helperImport->create()->getById($product_id);
+                                    $imageHelper  = $objectManager->get('\Magento\Catalog\Helper\Image');
+                                    $image_url = $imageHelper->init($product, 'product_page_image_small')->setImageFile($product->getImage())->resize(100, 100)->getUrl();
+                                    $i++;
+                                }
+                            }
+                        
+                         }
+                    } 
+                ?>
+                <div class="order-sec">
+                    <div class="row">
+                        <div class="col-md-12 no-border"> 
+                            <span class="ordr-id">Order ID: <?php echo $this->escapeHtml($order->getRealOrderId()); ?></span>
+                            <span class="pull-right"><?php echo $this->escapeHtml($this->formatDate($order->getCreatedAt())); ?></span>
+                        </div>
+                        <div class="col-md-2 no-border">
+                  
+                            <img src="<?php echo $image_url; ?>" class="img-fluid mt-2 d-block">
+                        </div>
+                        <div class="col-md-5 desc-sec no-border pt-2">
+                            <h1><?php echo $product_name; ?></h1>
+                            <h2>Rs. <?php echo $order->formatPrice($order->getGrandTotal()); ?></h2>
+                            <h3>Qty: <span><?php echo $qty;?></span></h3>
+                        </div>
+                        <div class="col-md-2 no-border pl-0 pr-0  pt-2"><span class="font-regular">Status</span><br><span
+                                class="mud-colour"><?php echo $this->escapeHtml($order->getStatusLabel()); ?></span></div>
+                        <div class="col-md-3 no-border pt-2">
+                            <div class="order-btns">
+                                 <!-- <?php $actionBlock = $this->getChildBlock('order.history.grid.action')->setData('order', $order);
+                        echo $actionBlock->toHtml();    ?> -->
+                                <?php if($state == "complete"){
+                                ?>
+                                <a href="/rma/account/newreturn/order/<?php echo $entity_id; ?>" class="shop-now-button leaf-btn leaf-btn-sm mt-2 shadow_hover">Return
+                                    / Exchange</a>
+                                <?php
+                                }?>
+                                
+                                
+                                <!-- <a data-post='<?php /* @escapeNotVerified */
+        echo $this->helper(\Magento\Framework\Data\Helper\PostHelper::class)->getPostData($block->getReorderUrl($order))
+        ?>' class="shop-now-button leaf-btn leaf-btn-sm mt-3 shadow_hover data-post='<?php /* @escapeNotVerified */
+        echo $this->helper(\Magento\Framework\Data\Helper\PostHelper::class)->getPostData($block->getReorderUrl($order))
+        ?>'">Reorder</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="arrow-order">
+                        <a href="<?php echo $this->escapeHtml($this->getViewUrl($order)); ?>"><i class="sl-icon-arrow-right"></i></a>
+                    </div>
+                </div>
+                <hr>
+                <?php endforeach; ?>
+            </div>
+        </div>
+   <!--  <div class="table-wrapper orders-history testing_orderhistory">
+        <table class="data table table-order-items history" id="my-orders-table">
+            <caption class="table-caption"><?php /* @escapeNotVerified */
+                echo __('Orders') ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col id"><?php echo $orderNumberLabel; ?></th>
+                <th scope="col" class="col date"><?php echo $dateLabel; ?></th>
+                <?php
+                /* @noEscape */
+                echo $this->getChildHtml('extra.column.header');
+                ?>
+                <th scope="col" class="col shipping"><?php echo $shipToLabel; ?></th>
+                <th scope="col" class="col total"><?php echo $orderTotalLabel; ?></th>
+                <th scope="col" class="col status"><?php echo $statusLabel; ?></th>
+                <th scope="col" class="col actions">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            /** @var Magento\Sales\Model\Order $order */
+            foreach ($orders as $order):
+                ?>
+                <tr>
+                    <td data-th="<?php echo $orderNumberLabel; ?>" class="col id">
+                        <?php echo $this->escapeHtml($order->getRealOrderId()); ?>
+                    </td>
+                    <td data-th="<?php echo $dateLabel; ?>" class="col date">
+                        <?php echo $this->escapeHtml($this->formatDate($order->getCreatedAt())); ?>
+                    </td>
+                    <?php
+                    /** @var \Magento\Sales\Block\Order\History\Container $extra */
+                    $extra = $block->getChildBlock('extra.container');
+                    if ($extra) {
+                        $extra->setOrder($order);
+                        /* @noEscape */
+                        echo $extra->getChildHtml();
+                    }
+                    ?>
+                    <td data-th="<?php echo $shipToLabel; ?>" class="col shipping">
+                        <?php
+                        echo $order->getShippingAddress() ? $this->escapeHtml($order->getShippingAddress()->getName()) :
+                            '&nbsp;';
+                        ?>
+                    </td>
+                    <td data-th="<?php echo $orderTotalLabel; ?>" class="col total">
+                        <?php
+                        /* @escapeNotVerified */
+                        echo $order->formatPrice($order->getGrandTotal());
+                        ?>
+                    </td>
+                    <td data-th="<?php echo $statusLabel; ?>" class="col status">
+                        <?php echo $this->escapeHtml($order->getStatusLabel()); ?>
+                    </td>
+                    <td data-th="<?php echo $this->escapeHtml(__('Actions')); ?>" class="col actions">
+                        <?php
+                        /** @var PayU\PaymentGateway\Block\Order\Grid\Action $actionBlock */
+                        $actionBlock = $this->getChildBlock('order.history.grid.action')->setData('order', $order);
+                        echo $actionBlock->toHtml();
+                        ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div> -->
+    <?php if ($block->getPagerHtml()): ?>
+    <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+    <?php
+endif;
+else:
+    ?>
+    <div class="message info empty">
+        <span><?php echo $this->escapeHtml(__('You have placed no orders.')); ?></span>
+    </div>
+<?php endif;

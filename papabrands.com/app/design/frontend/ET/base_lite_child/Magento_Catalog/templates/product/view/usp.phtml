@@ -1,0 +1,58 @@
+<?php
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');//get current product
+
+$blockObj = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\View\Attributes');
+
+$standard_free_delivery = $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getStandardFreeDelivery(), 'standard_free_delivery');
+
+$cash_on_delivery = $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getCashOnDelivery(), 'cash_on_delivery');
+
+$easy_return_exchange = $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getEasyReturnExchange(), 'easy_return_exchange');
+
+$easy_return_and_exchange_audio = $this->helper('Magento\Catalog\Helper\Output')->productAttribute($product, $product->getEasyReturnAndExchangeAudio(), 'easy_return_and_exchange_audio');
+
+
+?>
+
+	<div class="deleivery-options">
+		<?php if($standard_free_delivery) : ?>
+		<div class="d-flex align-items-center deliver-points">
+			<img src="images/Standard-free-delivery.png" alt="icom" class="deliver-icon">
+			<div class="point-detail">
+				<p class="point-head">standard free delivery</p>
+				<p class="point-subhead"><i>Delivers in 5-7 days</i></p>
+			</div>
+		</div>
+		<?php endif; ?>
+		<?php if($cash_on_delivery) : ?>
+		<div class="d-flex align-items-center deliver-points">
+			<img src="images/COD-small.png" alt="icom" class="deliver-icon">
+			<div class="point-detail">
+				<p class="point-head">COD</p>
+				<p class="point-subhead"><i>Cash on Delivery available</i></p>
+			</div>
+		</div>
+		<?php endif; ?>
+		<?php if($easy_return_exchange) : ?>
+		<div class="d-flex align-items-center deliver-points">
+			<img src="images/Easy-Returns-&amp;-Exchange.png" alt="icom" class="deliver-icon">
+			<div class="point-detail">
+				<p class="point-head">easy return and exchange</p>
+				<p class="point-subhead"><i>Within 14 days 100% refund</i></p>
+			</div>
+		</div>
+		<?php endif; ?>
+		<?php if($easy_return_and_exchange_audio) : ?>
+		<div class="d-flex align-items-center deliver-points">
+			<img src="images/Easy-Returns-&amp;-Exchange.png" alt="icom" class="deliver-icon">
+			<div class="point-detail">
+				<p class="point-head">easy return and exchange</p>
+				<p class="point-subhead"><i>Refer to refund & Exchange tab below</i></p>
+			</div>
+		</div>
+		<?php endif; ?>
+		
+	</div>
+

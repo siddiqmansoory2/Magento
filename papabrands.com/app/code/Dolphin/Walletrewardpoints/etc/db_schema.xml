@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="quote">
+        <column xsi:type="decimal" name="credit_fee_amount" precision="20" scale="2" nullable="false" default="0" comment="Credit Wallet Discount"/>
+        <column xsi:type="decimal" name="credit_base_fee_amount" precision="20" scale="2" nullable="false" default="0" comment="Base Credit Wallet Discount"/>
+    </table>
+    <table name="quote_address">
+        <column xsi:type="decimal" name="credit_fee_amount" precision="20" scale="2" nullable="false" default="0" comment="Credit Wallet Discount"/>
+        <column xsi:type="decimal" name="credit_base_fee_amount" precision="20" scale="2" nullable="false" default="0" comment="Base Credit Wallet Discount"/>
+    </table>
+    <table name="sales_order">
+        <column xsi:type="decimal" name="credit_fee_amount" precision="20" scale="2" nullable="false" default="0" comment="Credit Wallet Discount"/>
+        <column xsi:type="decimal" name="credit_base_fee_amount" precision="20" scale="2" nullable="false" default="0" comment="Base Credit Wallet Discount"/>
+        <column xsi:type="decimal" name="credit_fee_amount_refunded" precision="20" scale="2" nullable="false" default="0" comment="Credit Wallet Discount Refunded"/>
+        <column xsi:type="decimal" name="credit_base_fee_amount_refunded" precision="20" scale="2" nullable="false" default="0" comment="Base Credit Wallet Discount Refunded"/>
+    </table>
+    <table name="sales_invoice">
+        <column xsi:type="decimal" name="credit_fee_amount" precision="20" scale="2" nullable="false" default="0" comment="Credit Wallet Discount"/>
+        <column xsi:type="decimal" name="credit_base_fee_amount" precision="20" scale="2" nullable="false" default="0" comment="Base Credit Wallet Discount"/>
+    </table>
+    <table name="sales_creditmemo">
+        <column xsi:type="decimal" name="credit_fee_amount" precision="20" scale="2" nullable="false" default="0" comment="Credit Wallet Discount"/>
+        <column xsi:type="decimal" name="credit_base_fee_amount" precision="20" scale="2" nullable="false" default="0" comment="Base Credit Wallet Discount"/>
+    </table>
+</schema>

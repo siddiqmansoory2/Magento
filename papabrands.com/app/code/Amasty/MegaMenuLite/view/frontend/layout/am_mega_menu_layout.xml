@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_MegaMenuLite
+ */
+-->
+
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Amasty_Base::vendor/slick/amslick.min.css"/>
+    </head>
+
+    <body>
+        <attribute name="class" value="amasty-mega-menu"/>
+        <referenceContainer name="header.container" htmlId="ammenu-header-container" htmlClass="ammenu-header-container page-header"/>
+
+        <referenceBlock name="head.additional">
+            <referenceBlock name="header-wrapper">
+                <referenceBlock name="logo" remove="true"/>
+                <referenceBlock name="header.navigation.icon" remove="true"/>
+                <block name="amasty.menu.toggle"
+                       template="Amasty_MegaMenuLite::components/toggle.phtml"/>
+                <block class="Magento\Theme\Block\Html\Header\Logo"
+                       name="ammenu.logo"
+                       template="Amasty_MegaMenuLite::components/logo.phtml">
+                    <arguments>
+                        <argument name="view_model" xsi:type="object">
+                            Amasty\MegaMenuLite\ViewModel\Header\Logo
+                        </argument>
+                    </arguments>
+                </block>
+            </referenceBlock>
+        </referenceBlock>
+
+        <referenceContainer name="page.top">
+            <referenceBlock name="navigation.sections">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Amasty_MegaMenuLite::sections.phtml</argument>
+                </action>
+                <block class="Amasty\MegaMenuLite\Block\Container"
+                       name="amasty.store.menu"
+                       template="Amasty_MegaMenuLite::container.phtml">
+                    <arguments>
+                        <argument name="view_model" xsi:type="object">
+                            Amasty\MegaMenuLite\ViewModel\Store\Menu
+                        </argument>
+                        <argument name="jsLayout" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="lite" xsi:type="object">Amasty\MegaMenuLite\Model\DataProvider\Config\Lite</item>
+                            </item>
+                            <item name="components" xsi:type="array">
+                                <item name="settings_wrapper" xsi:type="array">
+                                    <item name="component" xsi:type="string">Amasty_MegaMenuLite/js/components/settings</item>
+                                </item>
+                                <item name="hamburger_top_wrapper" xsi:type="array">
+                                    <item name="component" xsi:type="string">Amasty_MegaMenuLite/js/hamburger_menu/top/wrapper</item>
+                                </item>
+                                <item name="hamburger_wrapper" xsi:type="array">
+                                    <item name="component" xsi:type="string">Amasty_MegaMenuLite/js/hamburger_menu/left/wrapper</item>
+                                </item>
+                                <item name="submenu_wrapper" xsi:type="array">
+                                    <item name="component" xsi:type="string">uiComponent</item>
+                                    <item name="config" xsi:type="array">
+                                        <item name="template" xsi:type="string">Amasty_MegaMenuLite/submenu/wrapper</item>
+                                    </item>
+                                </item>
+                                <item name="submenu_simple" xsi:type="array">
+                                    <item name="component" xsi:type="string">Amasty_MegaMenuLite/js/submenu/simple</item>
+                                </item>
+                                <item name="overlay_wrapper" xsi:type="array">
+                                    <item name="component" xsi:type="string">Amasty_MegaMenuLite/js/components/overlay</item>
+                                </item>
+                                <item name="tree_wrapper" xsi:type="array">
+                                    <item name="component" xsi:type="string">Amasty_MegaMenuLite/js/components/tree</item>
+                                </item>
+                                <item name="top_menu_wrapper" xsi:type="array">
+                                    <item name="component" xsi:type="string">Amasty_MegaMenuLite/js/top_menu/wrapper</item>
+                                </item>
+                                <item name="mobile_menu_wrapper" xsi:type="array">
+                                    <item name="component" xsi:type="string">Amasty_MegaMenuLite/js/mobile_menu/wrapper</item>
+                                </item>
+                            </item>
+                            <item name="settings" xsi:type="array">
+                                <item name="switcher" xsi:type="object">Amasty\MegaMenuLite\Model\DataProvider\Switcher</item>
+                                <item name="currency" xsi:type="object">Amasty\MegaMenuLite\Model\DataProvider\Currency</item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+                <referenceBlock name="amtheme.store.compare" remove="true"/>
+                <referenceBlock name="store.links" remove="true"/>
+                <referenceBlock name="store.settings" remove="true"/>
+            </referenceBlock>
+        </referenceContainer>
+    </body>
+</layout>

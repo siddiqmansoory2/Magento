@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="core_layout_render_element">
+        <observer name="md_osc_delivery_date_add_to_order_view" instance="Magedelight\OneStepCheckout\Observer\AdminOrderViewBlock" />
+    </event>
+    <event name="admin_system_config_changed_section_onestepcheckout">
+        <observer name="md_osc_system_config_save" instance="Magedelight\OneStepCheckout\Observer\SystemConfigSave" />
+    </event>
+</config>

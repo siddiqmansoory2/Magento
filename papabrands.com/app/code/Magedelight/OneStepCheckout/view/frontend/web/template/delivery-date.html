@@ -1,0 +1,51 @@
+<!-- ko if: isVisibleDelivery -->
+<div class="checkout-delivery-date">
+    <div class="step-title"
+         id="delivery_date_step_header"
+         data-bind="i18n: 'Delivery Date & Time'"
+         data-role="title">
+    </div>
+    <div class="product data items"
+         data-bind="visible: true,
+            mageInit: {
+                'mage/tabs':{
+                    'openedState': 'active',
+                    'animate': {
+                        'duration': 100
+                    },
+                     'active': -1,
+                     'disabledState': 'disabled'
+                 }
+             }
+    ">
+        <div class="title-container">
+            <div class="delivery-date-tab-title">
+                <!-- ko foreach: { data: availableDates, as: 'availableDate' } -->
+                <div class="item title" data-role="collapsible">
+                    <a class="switch" data-toggle="trigger" data-bind="attr: { href: '#' + availableDate.day+'-'+availableDate.unix_date }" >
+                        <span class="delivery-date-day" data-bind="i18n: availableDate.day"></span>
+                        <span class="delivery-date-date" data-bind="i18n: $parent.getFormatDate($data)"></span>
+                    </a>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="delivery-date-tab-content">
+            <!-- ko foreach: { data: availableDates, as: 'availableDate' } -->
+            <div data-bind="attr: { id: availableDate.day+'-'+availableDate.unix_date }" data-role="content" class="item content">
+                <!-- ko foreach: { data: availableDate.time, as: 'option' } -->
+                <div data-bind="click: $parentContext.$parent.selectedDate">
+                    <div class="delivery-date-day hide" data-bind="i18n: availableDate.day"></div>
+                    <div class="delivery-date-date hide" data-bind="i18n: availableDate.date"></div>
+                    <div class="delivery-date-time" data-bind="i18n: option,attr: {day: availableDate.day, date: availableDate.date}"></div>
+                </div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>
+<!-- ko foreach: getRegion('delivery-date-block') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+<!-- /ko -->

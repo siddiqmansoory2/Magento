@@ -1,0 +1,19 @@
+<div if="$data"
+     data-bind="attr: {
+                    class: 'ammenu-submenu-block -' + (item.type ? item.type.label : '') + (!item.elems ? ' -last' : '')
+                            + ((!item.elems.length && !item.content.length) ? ' -empty' : '')
+                },
+                visible: item.isActive">
+
+    <!-- ko template: {name: uiClass.templates.itemsList, $data: { item: item, parentElem: parent, uiClass: uiClass }} --><!-- /ko-->
+
+    <div class="ammenu-submenu-sidebar">
+        <!-- ko if: item.type && item.type.value -->
+            <!-- ko foreach: { data: item.elems, as: 'elem' }  -->
+                <!-- ko template: {name: $parent.uiClass.templates.itemWrapper, data: { item: elem, parentElem: $parent, uiClass: $parent.uiClass }} --><!-- /ko-->
+            <!-- /ko-->
+        <!-- /ko-->
+
+        <!-- ko template: {name: uiClass.templates.contentBlock, $data: $data} --><!-- /ko-->
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_MegaMenu
+ */
+-->
+
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="amasty.store.menu">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="megamenu" xsi:type="object">Amasty\MegaMenu\Model\DataProvider\Config\MegaMenu</item>
+                    </item>
+                    <item name="components" xsi:type="array">
+                        <item name="submenu_builder" xsi:type="array">
+                            <item name="component" xsi:type="string">Amasty_MegaMenu/js/submenu/builder</item>
+                        </item>
+                        <item name="drill_wrapper" xsi:type="array">
+                            <item name="component" xsi:type="string">Amasty_MegaMenu/js/mobile_menu/drill/wrapper</item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</layout>

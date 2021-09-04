@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!--  Invite To Friends Form Save -->
+    <route url="/V1/invitetofriend" method="POST">
+        <service class="Dolphin\Walletrewardpoints\Api\WalletRewardPointsTransactionInterface" method="inviteToFriendSave"/>
+            <resources>
+                <resource ref="Magento_Customer::customer"/>
+            </resources>
+    </route>
+    <!--  Invite To Friends Form Show Data -->
+    <route url="/V1/invitetofriend/customer/:customerid" method="GET">
+        <service class="Dolphin\Walletrewardpoints\Api\WalletRewardPointsTransactionInterface" method="inviteSendToFriendData"/>
+            <resources>
+                <resource ref="Magento_Customer::customer"/>
+            </resources>
+    </route>
+    <!-- Send Credit To Friend -->
+    <route url="/V1/sendcredittofriend" method="POST">
+        <service class="Dolphin\Walletrewardpoints\Api\WalletRewardPointsTransactionInterface" method="sendCreditToFriend"/>
+            <resources>
+                <resource ref="Magento_Customer::customer"/>
+            </resources>
+    </route>
+    <!-- Wallet Credit Withdraw -->
+    <route url="/V1/walletcreditwithdraw" method="POST">
+        <service class="Dolphin\Walletrewardpoints\Api\WalletRewardPointsTransactionInterface" method="withdrawCustomerCredit"/>
+            <resources>
+                <resource ref="Magento_Customer::customer"/>
+            </resources>
+    </route>
+    <!--  Wallet Credit Show Withdraw -->
+    <route url="/V1/walletcreditwithdraw/customer/:customerid" method="GET">
+        <service class="Dolphin\Walletrewardpoints\Api\WalletRewardPointsTransactionInterface" method="showCustomerWithdraw"/>
+            <resources>
+                <resource ref="Magento_Customer::customer"/>
+            </resources>
+    </route>
+    <!--  Show Wallet Credit Transactions -->
+    <route url="/V1/walletcredittransactions/customer/:customerid" method="GET">
+        <service class="Dolphin\Walletrewardpoints\Api\WalletRewardPointsTransactionInterface" method="showTransactionsHistory"/>
+            <resources>
+                <resource ref="Magento_Customer::customer"/>
+            </resources>
+    </route>
+    <!-- Customer Wallet Reward Email Subscription -->
+    <route url="/V1/walletemailsubscription" method="POST">
+        <service class="Dolphin\Walletrewardpoints\Api\WalletRewardPointsTransactionInterface" method="setWalletEmailSubscription"/>
+            <resources>
+                <resource ref="Magento_Customer::customer"/>
+            </resources>
+    </route>
+    <!-- Customer Wallet Reward Email Subscription Status -->
+    <route url="/V1/walletemailsubscription/customer/:customerid" method="GET">
+        <service class="Dolphin\Walletrewardpoints\Api\WalletRewardPointsTransactionInterface" method="getWalletEmailSubscriptionStatus"/>
+            <resources>
+                <resource ref="Magento_Customer::customer"/>
+            </resources>
+    </route>
+    <!-- Wallet Reward Buy Credit -->
+    <route url="/V1/walletecreditbuy" method="POST">
+        <service class="Dolphin\Walletrewardpoints\Api\WalletRewardPointsTransactionInterface" method="WithdrawawCustomerCredit"/>
+            <resources>
+                <resource ref="Magento_Customer::customer"/>
+            </resources>
+    </route>
+    <!-- Apply Credit To Cart -->
+    <route url="/V1/carts/:cartId/applywalletecredit/:credit" method="PUT">
+        <service class="Dolphin\Walletrewardpoints\Api\WalletRewardPointsTransactionInterface" method="applyWalleteCredit"/>
+            <resources>
+                <resource ref="Magento_Cart::manage" />
+            </resources>
+    </route>
+    <!-- Remove Credit From Cart -->
+    <route url="/V1/carts/:cartId/removewalletecredit" method="DELETE">
+        <service class="Dolphin\Walletrewardpoints\Api\WalletRewardPointsTransactionInterface" method="removeWalleteCredit"/>
+            <resources>
+                <resource ref="Magento_Cart::manage" />
+            </resources>
+    </route>
+    <!-- StoreView -->
+    <route url="/V1/store/walletstoreconfigs" method="GET">
+        <service class="Dolphin\Walletrewardpoints\Api\WalletRewardPointsTransactionInterface" method="getStoreConfig"/>
+            <resources>
+                <resource ref="Magento_Backend::store"/>
+            </resources>
+    </route>
+</routes>

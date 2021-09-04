@@ -1,0 +1,52 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+	.product-info-main {
+		.page-title-wrapper {
+			position: relative;
+			display: flex;
+		    flex-wrap: wrap;
+
+			.page-title {
+				.lib-vendor-prefix-order (2);
+				flex: 0 0 80%;
+			}
+			.action {
+				&.towishlist {
+					.lib-vendor-prefix-order (3);
+					padding: 10px;
+					border: 1px solid #ededed;
+					border-radius: 50%;
+					max-height: 54px;
+
+					&:extend(.abs-actions-addto all);
+					.lib-icon-font-symbol(
+					@_icon-font-content: @icon-wishlist,
+					@_icon-font-position: before
+					);
+					
+					.lib-icon-font-size(
+						@_icon-font-size: 32px,
+						@_icon-font-line-height: 32px
+					);
+					
+					.lib-icon-text-hide();
+					
+					&::before {
+						width: 32px;
+						margin: 0;
+						vertical-align: top;
+					}
+				}
+			}
+			
+			.product-category-name {
+				.lib-vendor-prefix-order (1);
+				flex: 0 0 100%;
+				text-transform: uppercase;
+			}
+		}
+	}
+}

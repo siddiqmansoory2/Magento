@@ -1,0 +1,347 @@
+.form.password.reset,
+.form.send.confirmation,
+.form.password.forget,
+.form.create.account,
+.form.search.advanced,
+.form.form-orders-search {
+	min-width: auto !important;
+	width: 100% !important;
+}
+
+.login-container .fieldset>.field>.control {
+	width: 100% !important;
+}
+
+.logo {
+	margin: 0 !important;
+	padding: 0 !important;
+	float: none !important;
+}
+
+.logo img {
+	display: inline-block !important;
+}
+
+
+.custom-control-label::after,
+.custom-control-label::before {
+	top: 0 !important;
+	width: 1.6rem !important;
+	height: 1.6rem !important;
+	left: -29px !important;
+}
+
+.login-sec a {
+	color: #000;
+}
+
+.page-wrapper .page-footer .footer-wrapper.type1 .footer-top {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+.top-header .links li {
+	margin-bottom: 0;
+}
+
+.minicart-wrapper .action.showcart:before {
+	color: #fff !important;
+}
+
+.widget.block.block-static-block {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	max-width: unset;
+}
+
+.page-wrapper .page-header.type1 {
+	margin-bottom: 0;
+}
+
+.cms-index-index .page-wrapper #maincontent {
+	padding: 0;
+}
+#check-delivery-form,
+.product-social-links{
+	display: none;
+}
+.page-wrapper .page-header.type1 .nav-sections,
+.page-wrapper .page-header.type1 .nav-sections .navigation {
+	background: #12314d !important;
+}
+
+.page-wrapper .page-header.type1 .nav-sections .navigation>ul li.level0>a.level-top {
+	color: #ffffff !important;
+	font-family: "Nunito", sans-serif;
+	font-size: 14px !important;
+}
+
+.page-wrapper .page-header.type1 .nav-sections .navigation>ul li.level0.active>a.level-top {
+	color: #ffffff !important;
+	padding: 5px 0;
+}
+
+.page-wrapper .page-header.type1 .nav-sections .navigation>ul li.level0 {
+	position: relative;
+}
+
+.page-wrapper .page-header.type1 .nav-sections .navigation>ul li.level0.active::after {
+	content: " ";
+	position: absolute;
+	left: 0;
+	bottom: -2px;
+	width: 100%;
+	height: 2px;
+	background: #415a71;
+	top: auto;
+}
+
+.page-wrapper .page-header.type1 .nav-sections .navigation>ul li.level0>a.level-top:hover {
+	color: #fff !important;
+}
+
+.page-wrapper .page-header.type1 .nav-sections .navigation>ul li.level0.parent>a.level-top {
+	padding: 5px 28px 5px 20px !important;
+}
+
+.page-wrapper .page-header.type1 .nav-sections .navigation>ul {
+	padding: 10px 0 20px 0 !important;
+	max-width: 65%;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.page-wrapper .page-header.type1 .nav-sections .navigation>ul li.level0>a.level-top {
+	padding: 5px 0 !important;
+}
+
+.action.subscribe.primary,
+.action.subscribe.primary:hover,
+.action.subscribe.primary:focus {
+	background: none;
+	border: none;
+}
+
+.footer .sub-form input,
+.footer .sub-form input:focus {
+	font-family: 'Overpass', sans-serif;
+	font-size: 17px;
+	padding: 0.375rem 0.75rem;
+	height: auto;
+}
+
+.nav-toggle {
+	display: none;
+}
+
+.search-box .search form {
+	line-height: 0;
+	height: max-content;
+}
+
+
+.search-fied form input,
+.search-fied form input:focus {
+	margin: 0;
+}
+
+.login-box .form-control,
+.login-box .input-text {
+	border: 1px solid #b9b9b9 !important;
+}
+
+.otp-link#btnLoginSubmit {
+	color: #fff;
+}
+
+.social-login a,
+.social-login a:hover {
+	color: #808080;
+	text-decoration: none;
+
+}
+
+.register-btn {
+	position: relative;
+	bottom: 0;
+}
+
+.register-btn button:hover,
+.register-btn button:focus {
+	background: #12314d;
+}
+
+.fieldset>.field>.label,
+.fieldset>.fields>.field>.label {
+	color: #5f5f5f;
+	font-family: 'Overpass', sans-serif;
+	font-size: 18px;
+	font-weight: 500;
+	margin-bottom: 0;
+}
+
+.login-box .nav-link {
+	padding: 0.9rem 1rem;
+}
+
+.showcart,
+.showcart:hover,
+.showcart:focus {
+	color: #fff;
+}
+
+#assistance_allowed_checkbox,
+[for="assistance_allowed_checkbox"],
+.login-box .field-tooltip,
+#password-strength-meter {
+	display: none !important;
+}
+
+.login-box .fieldset {
+	margin-bottom: 0;
+}
+
+.right-side-icons .dropdown-menu.show {
+	padding: 10px;
+    min-width: 200px;
+    -webkit-box-shadow: 0 0 8px 0 rgb(50 50 50 / 40%);
+    -moz-box-shadow: 0 0 8px 0 rgba(50,50,50,0.4);
+    box-shadow: 0 0 8px 0 rgb(50 50 50 / 40%);
+    border: none;
+    left: auto !important;
+    right: 0;
+    transform: translate3d(0, 23px, 0px) !important;
+    top: 10px !important;
+}
+
+.header.links {
+	list-style: none;
+	margin-bottom: 0;
+}
+
+.header.links li span,
+.header.links li a,
+.header.links li a:hover{
+	color: #000;
+    margin-left: 0;
+    font-size: 1.4rem;
+    font-family: 'Overpass', sans-serif;
+    font-weight: 600;
+	text-decoration: none;
+}
+
+.header.links li:last-child{
+	margin-bottom: 0;
+} 
+
+.user-desk:hover {
+	text-decoration: none;
+}
+
+.minicart-wrapper  {
+	position: relative;
+}
+
+.minicart-wrapper .block-minicart {
+	right: 0;
+}
+
+.minicart-wrapper .action.showcart {
+	position: relative;
+}
+
+.minicart-wrapper .action.showcart .counter.qty {
+	position: absolute;
+    top: -12px;
+    border-radius: 50px;
+    left: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+.minicart-wrapper .action.showcart .counter-number {
+	font-size: 14px;
+}
+
+.customer-welcome .action.switch {
+	font-weight: 600;
+	color: #000;
+}
+
+@media screen and (max-width: 1100px) {
+	.nav-sections-item-content {
+		display: none;
+	}
+
+	.search-box .search .search-input {
+		height: auto;
+	}
+
+	.main-menus .ui-widget-content {
+		max-height: 0;
+		overflow: hidden;
+		transition: all 0.3s ease-in-out;
+	}
+
+	.left-side-menu-mob ul.main-menus li a, .left-side-menu-mob ul.main-menus li a:hover {
+		position: relative;
+		text-decoration: none;
+	}
+
+	.left-side-menu-mob .main-menus .level-top[role="menuitem"]::after {
+		position: absolute;
+		right: -25px;
+		font-size: 12px;
+		top: 3px;
+		color: #000;
+		content: '\e622';
+		font-family: 'luma-icons';
+		transition: transform 0.3s ease-in-out;
+	}
+
+	.left-side-menu-mob .main-menus .level-top.openSub[role="menuitem"]::after {
+		transform: rotate(180deg);
+	}
+
+	.left-side-menu-mob .submenu {
+		margin-left: 10px;
+		margin-top: 10px;
+	}
+
+	.left-side-menu-mob .submenu li a,
+	.left-side-menu-mob .submenu li a:hover{
+		font-size: 16px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.minicart-wrapper {
+		margin-top: 0;
+	}
+
+	.right-side-icons a {
+		margin: 0 5px 0 0 !important;
+	}
+
+	.right-side-icons .dropdown-toggle::after {
+		margin-left: 0;
+	}
+
+	.footer .sub-form input,
+	.footer .sub-form input:focus {
+		height: 45px;
+		font-size: 12px;
+	}
+
+	.social-login {
+		margin-top: 1rem;
+	}
+}
+
+
+.page.messages.Middle {
+	position: fixed;
+}

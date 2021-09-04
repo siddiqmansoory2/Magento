@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page_layouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/PageLayout/etc/layouts.xsd">
+    <layout id="maintenancepage_1column">
+        <label translate="true">Maintenance Page 1 Column</label>
+    </layout>
+    <layout id="maintenancepage_2columns">
+        <label translate="true">Maintenance Page 2 Columns</label>
+    </layout>
+</page_layouts>

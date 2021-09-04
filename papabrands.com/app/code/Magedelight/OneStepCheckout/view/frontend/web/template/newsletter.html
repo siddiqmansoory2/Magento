@@ -1,0 +1,24 @@
+<!--
+/**
+* Magedelight
+* Copyright (C) 2017 Magedelight <info@magedelight.com>
+*
+* @category Magedelight
+* @package Magedelight_OneStepCheckout
+* @copyright Copyright (c) 2017 Mage Delight (http://www.magedelight.com/)
+* @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+* @author Magedelight <info@magedelight.com>
+*/
+-->
+
+<!-- ko if: isShowNewsletter() -->
+<div class="newsletter checkbox-group osc-news-letter">
+    <input type="checkbox" id="newsletter_subscriber_checkbox" name="newsletter_checkbox"
+           class="checkbox osc-additional-data" data-bind="checked: isChecked()">
+    <label class="label--checkbox" for="newsletter_subscriber_checkbox">
+        <span class="check"></span>
+        <span class="box-check"></span>
+        <!-- ko text: $t('Sign Up for Our Newsletter') --><!-- /ko -->
+    </label>
+</div>
+<!-- /ko -->

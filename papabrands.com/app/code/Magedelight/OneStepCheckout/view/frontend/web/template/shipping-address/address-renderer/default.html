@@ -1,0 +1,45 @@
+<!--
+/**
+* Magedelight
+* Copyright (C) 2017 Magedelight <info@magedelight.com>
+*
+* @category Magedelight
+* @package Magedelight_OneStepCheckout
+* @copyright Copyright (c) 2017 Mage Delight (http://www.magedelight.com/)
+* @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+* @author Magedelight <info@magedelight.com>
+*/
+-->
+<div class="shipping-address-item" data-bind="css: isSelected() ? 'selected-item' : 'not-selected-item'">
+    <div class='input-wrapper'>
+        <input class="radio"
+               type="radio"
+               data-bind="
+                  attr: {
+                    checked: isSelected(),
+                    'value' : '',
+                  }" />
+                <label class="address-detail"  data-bind="click: selectAddress">
+                    <span class="customer-name">
+                    <!-- ko text: address().prefix --><!-- /ko --> <!-- ko text: address().firstname --><!-- /ko -->
+                    <!-- ko text: address().lastname --><!-- /ko --> <!-- ko text: address().suffix --><!-- /ko --></span>
+                </label>
+<!--        <div class='input-mask' data-bind="click: selectAddress"></div>-->
+        <div class="registered-address">
+            <!-- ko text: address().street --><!-- /ko -->
+            <!-- ko text: address().city --><!-- /ko -->, <!-- ko text: address().region --><!-- /ko --> <!-- ko text: address().postcode --><!-- /ko -->
+            <!-- ko text: getCountryName(address().countryId) --><!-- /ko -->,
+            <!-- ko text: address().telephone --><!-- /ko -->
+        </div>
+    </div>
+    <div class='actions'>
+        <!-- ko if: (address().isEditable()) -->
+        <button type="button"
+                class="action edit-address-link osc-edit-button"
+                data-bind="click: editAddress, visible: address().isEditable()">
+            <span data-bind="i18n: 'Edit'"></span>
+        </button>
+        <!-- /ko -->
+    </div>
+    <div class='clear'></div>
+</div>

@@ -1,0 +1,30 @@
+<nav data-bind="
+        css: {
+            '-opened': isOpen,
+            '-has-icons': $data.isChildHasIcons
+        },
+        style: {
+            background: $parent.color_settings.menu_background
+        },
+        attr: { class: 'ammenu-nav-sections -mobile' + ' -' + $parent.mobile_class }">
+
+    <!-- ko template: { name: templates.tabsSwitcher } --><!-- /ko -->
+
+    <!-- ko if: $data.activeTab() === 0 -->
+        <!-- ko template: { name: templates.typeSwitcher } --><!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: $data.activeTab() === 1 -->
+        <!-- ko scope: 'index = settings_wrapper' -->
+            <!-- ko template: { name: $data.root_templates.header } --><!-- /ko -->
+            <!-- ko template: { name: $data.templates.login } --><!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko if: $data.activeTab() === 2 -->
+        <!-- ko scope: 'index = settings_wrapper' -->
+            <!-- ko template: { name: $data.templates.currency } --><!-- /ko -->
+            <!-- ko template: { name: $data.templates.language } --><!-- /ko -->
+        <!-- /ko -->
+    <!-- /ko -->
+</nav>

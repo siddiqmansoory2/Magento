@@ -1,0 +1,83 @@
+<?php /* @var $block Magezon\FAQ\Block\Question\Form */?>
+<?php 
+$helper             = $this->helper('\Magezon\FAQ\Helper\Data');
+$categoryCollection = $this->getCategoryCollection();
+$publicKey          = $helper->getConfig('recaptcha/public_key');
+$title          	= $helper->getFormTitle();
+?>
+
+<?php if ($publicKey): ?>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<?php endif; ?>
+
+<div class="mgz-faq-post-form">
+	<span class="close-btn mgz-faq-action-btn"></span>
+	<h2><span><i class="far mgz-fa-question-circle"></i><?= $title ?></span></h2>
+	<div class="mgz-faq-post-notif">
+		<span></span>
+	</div>
+	<form id="submit-form" action="<?= $this->getUrl('mgzfaq/question/questionSubmit') ?>" method="post" data-mage-init='{"postQuestion":{}}' novalidate>
+		<div class="mgz-faq-post-form-inner">
+			<div class="mgz-faq-post-form-name">
+				<label for="name"><?= __('Name') ?>
+					<span class="red-text">*</span>
+				</label>
+				<input type="text" name="name" id="name" autocomplete="off" data-validate="{required:true}" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)">
+			</div>
+			<div class="mgz-faq-post-form-email">
+				<label for="email"><?= __('Email ID')?>
+					<span class="red-text">*</span>
+				</label>
+				<input type="email" name="email" id="email" autocomplete="off" data-validate="{required:true, 'validate-email':true}">
+			</div>
+			<div class="mgz-faq-post-form-order">
+				<label for="order"><?= __('Order ID')?>
+					<span class="red-text">*</span>
+				</label>
+				<input type="text" name="order" id="order" autocomplete="off" data-validate="{required:true}">
+			</div>
+		</div>
+		<?php if ($categoryCollection->count()) { ?>
+			<div class="mgz-faq-post-form-inner">
+				<label for="category"><?= __('Category:') ?></label>
+				<select id="category" name="category">
+					<?php foreach($categoryCollection as $cat) { ?>
+						<option value="<?= $cat->getId() ?>"><?= $this->escapeHtml($cat->getTitle()) ?></option>
+					<?php } ?>
+				</select>
+			</div>
+		<?php } ?>
+		<div class="mgz-faq-post-form-inner">
+			<label for="question"><?= __('Question') ?>
+				<span class="red-text">*</span>
+			</label>
+			<input type="text" name="question" id="question" autocomplete="off" data-validate="{required:true, 'validate-length':true, 'question-vaid':true}" class="minimum-length-3">
+		</div>
+		<div class="mgz-faq-post-form-terms">
+			<input type="checkbox" name="terms" id="terms" data-validate="{required:true}"/>
+			<label for="terms"><?= __('I agree with the') ?> <a href="<?= $helper->getConfig('general/terms') ?>"><?= __('Terms & Conditions') ?></a></label>
+		</div>
+		<?php if ($publicKey != '') :?>
+			<div class="g-recaptcha" data-sitekey="<?= $block->escapeHtml($publicKey) ?>" data-callback="verifyCaptcha"></div>
+			<div id="g-recaptcha-error"></div>
+		<?php endif; ?>
+		<div class="mgz-faq-post-form-inner">
+			<button type="submit" class="submit-question"><?= __('Submit') ?></button>
+		</div>
+		<div class="mgz-faq-post-form-loading">
+			<div class="mgz-faq-post-form-loading-inner">
+				<div class="mgz-faq-post-form-loading-img"></div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<style type="text/css">
+	.g-recaptcha > * {
+		margin: auto;
+	}
+
+	.g-recaptcha {
+		padding: 10px 0;
+	}
+</style>

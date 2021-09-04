@@ -1,0 +1,24 @@
+<!--
+/**
+* Magedelight
+* Copyright (C) 2017 Magedelight <info@magedelight.com>
+*
+* @category Magedelight
+* @package Magedelight_OneStepCheckout
+* @copyright Copyright (c) 2017 Mage Delight (http://www.magedelight.com/)
+* @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+* @author Magedelight <info@magedelight.com>
+*/
+-->
+<!-- ko if: (visible)-->
+<div class="field addresses">
+    <div class="control">
+        <div class="shipping-address-items">
+            <!-- ko foreach: { data: elems, as: 'element' } -->
+                <!-- ko template: element.getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        </div>
+        <div data-bind="afterRender:selectDefaultAddress"></div>
+    </div>
+</div>
+<!-- /ko -->

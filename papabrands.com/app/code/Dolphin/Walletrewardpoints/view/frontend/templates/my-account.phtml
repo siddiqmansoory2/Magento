@@ -1,0 +1,32 @@
+<?php
+$viewModel = $block->getViewModel();
+$viewModel->checkForLogin();
+$customer_id = '';
+if ($viewModel->getCustomerIdFromSession()) {
+    $customer_id = $viewModel->getCustomerIdFromSession();
+}
+$walletCredit = $viewModel->getWalletCredit($customer_id);
+$currencySymbol = $viewModel->getCurrencySymbol();
+$helper = $viewModel->getHelperModel();
+$allowToBuyCredit = $helper->getAllowToBuyCredit();
+$totalCredit = $currencySymbol . $walletCredit;
+$transactionUrl = $block->getUrl('walletrewardpoints/customer/transaction');
+?>
+<div class="block block-wallet-credit-info">
+    <div class="block-title"><strong>Wallet Credit Information</strong></div>
+    <div class="block-content">
+        <dl class="box-content">
+            <strong class="box-title">
+                <span>Wallet Credit: <?= $block->escapeHtml($totalCredit); ?></span>
+            </strong>
+            <dd class="box-actions">
+                <a class="action view" href="<?= $block->escapeHtml($transactionUrl) ?>">
+                    <span>Credit Transactions History</span>
+                </a>
+                <?php if ($allowToBuyCredit == 1) { ?>
+                <a class="action view" href="<?= $block->escapeHtml($transactionUrl) ?>"><span>Buy Credit</span></a>
+                <?php } ?>
+            </dd>
+        </dl>
+    </div>
+</div>

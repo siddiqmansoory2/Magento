@@ -1,0 +1,32 @@
+{
+    "quote": {
+        "column": {
+            "credit_fee_amount": true,
+            "credit_base_fee_amount": true
+        }
+    },
+    "quote_address": {
+        "column": {
+            "credit_fee_amount": true,
+            "credit_base_fee_amount": true
+        }
+    },
+    "sales_order": {
+        "column": {
+            "credit_fee_amount": true,
+            "credit_base_fee_amount": true
+        }
+    },
+    "sales_invoice": {
+        "column": {
+            "credit_fee_amount": true,
+            "credit_base_fee_amount": true
+        }
+    },
+    "sales_creditmemo": {
+        "column": {
+            "credit_fee_amount": true,
+            "credit_base_fee_amount": true
+        }
+    }
+}

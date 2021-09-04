@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+   <menu>
+    	<add id="Dolphin_Walletrewardpoints::view" title="Dolphin - Wallet/Reward Points" module="Dolphin_Walletrewardpoints" sortOrder="120" resource="Dolphin_Walletrewardpoints::view" parent="Magento_Customer::customer"/>
+    	<add id="Dolphin_Walletrewardpoints::trans_history" title="Credit Transaction History" module="Dolphin_Walletrewardpoints" sortOrder="10" parent="Dolphin_Walletrewardpoints::view" action="walletrewardpoints/transaction/index" resource="Dolphin_Walletrewardpoints::trans_history"/>
+        <add id="Dolphin_Walletrewardpoints::withdraw_credit" title="Withdraw Credit" module="Dolphin_Walletrewardpoints" sortOrder="20" parent="Dolphin_Walletrewardpoints::view" action="walletrewardpoints/index/index" resource="Dolphin_Walletrewardpoints::withdraw_credit"/>
+	</menu>
+</config>

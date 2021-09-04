@@ -1,0 +1,115 @@
+//
+//  Toggle Component
+//  ______________________________________________
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .ammenu-button {
+        outline: none;
+    }
+
+    .ammenu-toggle {
+        & {
+            .ammenu-flex(center, center);
+            .ammenu-reset(button);
+
+            z-index: 1;
+            align-self: stretch;
+            width: 25px;
+            outline: none;
+            cursor: pointer;
+            transition: .1s;
+        }
+
+        .ammenu-icon {
+            .ammenu-flex(center, center);
+
+            position: relative;
+            display: inline-block;
+            box-sizing: border-box;
+            margin: 0 0 -5px;
+            width: 14px;
+            height: 14px;
+            border-style: solid;
+            border-width: 2px 2px 0 0;
+            border-radius: 2px;
+            cursor: pointer;
+            transform: rotate(315deg);
+        }
+    }
+
+    .ammenu-button.-hamburger {
+        & {
+            .ammenu-flex(none, center);
+
+            position: absolute;
+            left: 0;
+            display: inline-flex;
+            margin: @ammenu__indent__xl;
+            padding: 0;
+            width: 25px;
+            height: 17px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: none;
+        }
+
+        &:hover,
+        &:focus {
+            border: none;
+            background: transparent;
+        }
+
+        &:not(.-hamburger) {
+            display: none;
+        }
+
+        &:before,
+        &:after,
+        .ammenu-line {
+            position: absolute;
+            display: block;
+            margin: 0;
+            width: 100%;
+            border-color: inherit;
+            border-bottom: 1px solid;
+            border-radius: 1px;
+            content: '';
+            transition: all .3s ease;
+        }
+
+        &:before {
+            top: 0;
+        }
+
+        &:after {
+            bottom: 0;
+        }
+    }
+
+    .ammenu-button.-close {
+        & {
+            .ammenu-reset(button);
+
+            display: flex;
+            align-items: center;
+            color: @ammenu__color__grey;
+            cursor: pointer;
+        }
+
+        &:before {
+            .ammenu-icon(@ammenu-close-icon__background);
+
+            width: 15px;
+            height: 15px;
+        }
+
+        &:hover {
+            color: @ammenu__color__black;
+        }
+    }
+}

@@ -1,0 +1,49 @@
+@border : 1px solid;
+.fullwidth-control
+{
+  float: left;
+  width: 100%;
+}
+.alldate {
+  .fullwidth-control();
+}
+.scan-data {
+  float: left;
+  margin-bottom: 40px;
+  margin-top: 10px;
+  width: 100%;
+}
+.scan-row {
+  border-top: @border;
+  float: left;
+  width: 100%;
+  font-size: 12px;
+  p
+  {
+    float: left;
+    padding: 10px;
+    width: 21%;
+    word-wrap: break-word;
+  }
+  &:last-child
+  {
+    border-bottom: @border;
+  }
+  &.first-row
+  {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+.booking-data {
+  .scan-row {
+    p {
+      width: 16% !important;
+    }
+  }
+}
+.status-class {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 10px 10px 0;
+}

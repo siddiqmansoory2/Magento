@@ -1,0 +1,15 @@
+<?php $_product = $block->getProduct(); ?>
+<?php 
+$objectManager =  \Magento\Framework\App\ObjectManager::getInstance();        
+$categoryFactory = $objectManager->get('\Magento\Catalog\Model\CategoryFactory');
+$categoryIds = $_product->getCategoryIds();
+?>
+
+<?php if(count($categoryIds)>0):?>
+<?php 
+$lastIds = end($categoryIds);
+$category = $categoryFactory->create()->load($lastIds);  
+?>
+<div class="product-category-name"><?=$category->getName()?></div>
+<?php endif;?>
+

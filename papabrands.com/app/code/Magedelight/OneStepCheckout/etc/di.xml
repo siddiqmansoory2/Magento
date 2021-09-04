@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="\Magedelight\OneStepCheckout\Api\RegistrationInterface" type="Magedelight\OneStepCheckout\Model\Registration" />
+    <type name="Magedelight\OneStepCheckout\Model\Address\Form\DefaultWidth">
+        <arguments>
+            <argument name="defaultWidth" xsi:type="array">
+                <item name="firstname" xsi:type="number">50</item>
+                <item name="lastname" xsi:type="number">50</item>
+                <item name="company" xsi:type="number">100</item>
+                <item name="street" xsi:type="number">100</item>
+                <item name="city" xsi:type="number">50</item>
+                <item name="country_id" xsi:type="number">50</item>
+                <item name="region_id" xsi:type="number">50</item>
+                <item name="postcode" xsi:type="number">50</item>
+                <item name="telephone" xsi:type="number">100</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magedelight\OneStepCheckout\Model\Address\Form\DefaultSortOrder">
+        <arguments>
+            <argument name="defaultSortOrder" xsi:type="array">
+                <item name="prefix" xsi:type="number">0</item>
+                <item name="firstname" xsi:type="number">1</item>
+                <item name="middlename" xsi:type="number">2</item>
+                <item name="lastname" xsi:type="number">3</item>
+                <item name="suffix" xsi:type="number">4</item>
+                <item name="company" xsi:type="number">5</item>
+                <item name="street" xsi:type="number">6</item>
+                <item name="city" xsi:type="number">7</item>
+                <item name="country_id" xsi:type="number">8</item>
+                <item name="region_id" xsi:type="number">9</item>
+                <item name="postcode" xsi:type="number">10</item>
+                <item name="telephone" xsi:type="number">11</item>
+                <item name="fax" xsi:type="number">12</item>
+                <item name="vat_id" xsi:type="number">13</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="mdosc_save_delivery_date_in_quote" type="Magedelight\OneStepCheckout\Plugin\Checkout\Model\ShippingInformationManagement" sortOrder="99"/>
+    </type>
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="mdosc_extrafee_order_repository" type="Magedelight\OneStepCheckout\Plugin\OrderRepositoryPlugin" />
+    </type>
+    <type name="Magento\Tax\Model\TaxConfigProvider">
+        <plugin name="md_osc_tax_config_provider" type="Magedelight\OneStepCheckout\Plugin\Magento\Tax\Model\TaxConfigProvider"/>
+    </type>
+</config>

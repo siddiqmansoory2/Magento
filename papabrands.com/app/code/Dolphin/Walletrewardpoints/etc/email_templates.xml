@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Email/etc/email_templates.xsd">
+	<template id="walletreward_reward_earn_reward_invited_friend_registration_invitefriendemailtemp" label="Invite Friends" file="invitefriend.html" type="html" module="Dolphin_Walletrewardpoints" area="frontend"/>
+	<template id="walletreward_wallet_sendtofriend_sendtofriend_emailtemp" label="Send Credit To Registered User" file="sendcredittofriend.html" type="html" module="Dolphin_Walletrewardpoints" area="frontend"/>
+	<template id="walletreward_wallet_sendtofriend_sendto_unregisterfriend_emailtemp" label="Send Credit To Guest User" file="sendcredittounregisterfriend.html" type="html" module="Dolphin_Walletrewardpoints" area="frontend"/>
+	<template id="walletreward_transaction_transaction_subscribe" label="Subscription Success" file="subscribe_success.html" type="html" module="Dolphin_Walletrewardpoints" area="frontend"/>
+    <template id="walletreward_transaction_transaction_unsubscribe" label="Unsubscription Success" file="unsubscribe_success.html" type="html" module="Dolphin_Walletrewardpoints" area="frontend"/>
+    <template id="walletreward_wallet_withdraw_withdraw_email_template" label="Withdraw Email" file="withdrawrequest.html" type="html" module="Dolphin_Walletrewardpoints" area="frontend"/>
+</config>

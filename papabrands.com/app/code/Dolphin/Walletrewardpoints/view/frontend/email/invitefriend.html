@@ -1,0 +1,51 @@
+<!--@subject Invitation to register into {{var data.store_name}} from {{var data.sender_name}} @-->
+{{template config_path="design/email/header_template"}}
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+    <tr>
+        <td align="center" valign="top" style="padding:20px 0 20px 0">
+            <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650">
+                <tr>
+                    <td valign="top">
+                        <h1 style="font-size:22px;font-weight:normal;line-height:22px;margin:0 0 11px 0;">{{trans "Hello"}} {{var data.recipient_name}},</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table cellspacing="0" cellpadding="0" border="0" width="650">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" valign="top" style="font-size:12px;padding:7px 9px 9px 9px;">
+                                        {{var data.sender_name}} {{trans 'has invited you to register on our website '}}<a href="{{var data.register_url}}">{{var data.store_name}}</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" valign="top" style="font-size:12px;padding:7px 9px 9px 9px;width: 20%;">
+                                        <strong>{{trans 'Registration Link '}} : </strong>
+                                    </td>
+                                    <td valign="top" style="font-size:12px;padding:7px 9px 9px 9px;">
+                                        <a href="{{var data.register_url}}">Register Now</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" valign="top" style="font-size:12px;padding:7px 9px 9px 9px;">
+                                        {{trans 'Please click on above registration link and create your account on our website.'}} {{var data.rewardpoints_message}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA;text-align:center;">
+                        <center>
+                            <p style="font-size:12px;margin:0;">
+                                <strong>{{trans "Thank you"}}</strong>
+                            </p>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+{{template config_path="design/email/footer_template"}}

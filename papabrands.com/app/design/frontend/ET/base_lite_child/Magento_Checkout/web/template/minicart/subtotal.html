@@ -1,0 +1,21 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="subtotal subtotal-new ">
+    <div class="row">
+    <div class="col-6 text-left">
+    <span class="label">
+        <!-- ko i18n: 'Subtotal' --><!-- /ko -->
+    </span>
+</div>
+ <div class="col-6 text-right">
+    <!-- ko foreach: elems -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+</div>
+</div>
+<p class="small">Shipping, taxes, and discount codes calculated at checkout.</p>
+</div>

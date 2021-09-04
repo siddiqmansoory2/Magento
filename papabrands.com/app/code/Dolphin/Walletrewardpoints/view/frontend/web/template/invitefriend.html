@@ -1,0 +1,45 @@
+<form class="form create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>" data-bind="attr: { action: getActionUrl() },submit:submitForm" id="invite-friend-form" data-mage-init='{"validation":{}}' method="post">
+    <fieldset class="fieldset info">
+        <div data-bind="attr: {class:'field name required'}">
+            <label for="receiver-firstname" class="label"><span data-bind="i18n: 'First Name'"></span></label>
+            <div class="control">
+                <input name="receiver-firstname" type="text" class="input-text required-entry"/>
+            </div>
+        </div>
+        <div data-bind="attr: {class:'field name required'}">
+           <label for="receiver-lastname" class="label"><span data-bind="i18n: 'Last Name'"></span></label>
+           <div class="control">
+               <input name="receiver-lastname" type="text" class="input-text required-entry"/>
+            </div>
+        </div>
+        <div data-bind="attr: {class:'field name required'}">
+           <label for="receiver-email" class="label"><span data-bind="i18n: 'Email'"></span></label>
+           <div class="control">
+               <input name="receiver-email" type="text" class="input-text required-entry validate-email"/>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+        <div class="field name required">
+            <label for="message" class="label"><span data-bind="i18n: 'Your Message'"></span></label>
+            <textarea name="message" data-validate="{required:true}" class="input-text"></textarea>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" id="invitefriend_submit" class="action save primary"><span><span data-bind="i18n: 'Invite Friends'"></span></span></button>
+        </div>
+        <div class="secondary"><a class="action" data-bind="attr: { href: getBackUrl() }"><span data-bind="i18n: 'Back'"></span></a></div>
+    </div><br>
+    <span data-bind="i18n: 'Get ' + getInviteFriRewardPoints() + ' reward point(s) after each friend registration.'"></span>
+    <!-- ko if: getInviteFriEarnLimit() -->
+    <span data-bind="i18n: ' (Get upto ' + getInviteFriEarnLimit() +' friend registration)'"></span>
+    <!-- /ko -->
+    <!-- ko if: getInviteFriCOEnable() == 1 -->
+    </br><span data-bind="i18n: getInviteFriCOMessage()"></span>
+    <!-- ko if: getInviteFriOrderLimit() -->
+    <span data-bind="i18n: ' (Get upto ' + getInviteFriOrderLimit() +' order)'"></span>
+    <!-- /ko -->
+    <!-- /ko -->
+    </br><span data-bind="i18n: getOneRewardPointCost() + ' Reward Point(s) = 1 Base Credit'"></span>
+</form>
+<br/>

@@ -1,0 +1,316 @@
+<?php 
+$past = time()-(24*60*60);
+
+setcookie("PHPSESSID", "", $past);
+setcookie("PHPSESSID", "", $past, '/', ".papabrands.com");
+
+$count=0;
+
+ foreach($_COOKIE as $key => $value){
+    if ( $key == "PHPSESSID" ){
+       $count++;
+    }
+ }
+ if ($count>1){
+    //Destory all cookies here
+    foreach($_COOKIE as $key => $value){
+          setcookie($key,"",time()-3600,"/");
+    }
+
+    //Reload/redirect the current page to dispose of all things
+    header("Locations:" . "https://www.papabrands.com/loginwithotp/");
+    exit(0);
+ }
+
+
+?>
+
+<div style="display: none;">
+  <iframe style="width: 1px; height: 1px; display: none;" src="https://www.papabrands.com/unset_cookies.php"></iframe>
+</div>
+
+<div class="main-content pt-5 pb-5 mb-5 login-sec">
+  
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				
+				<div id="printmessage"></div>
+			</div>
+		</div>
+	</div>
+  
+	<div class="container">
+		<div class="row justify-content-center" id='enter-mobile-box'>
+
+			<div class="col-md-6">
+				<div class="login-box">
+					<div class="passwrd-sec check-otp">
+						<h1><?= $escaper->escapeHtml(__('Enter Mobile Number')) ?></h1>
+						<p class="font-montserrat"><?= $escaper->escapeHtml(__('Enter Mobile to get the OTP')) ?></p>
+						<form class="form form-login"
+							action="<?php echo $block->getUrl('loginwithotp/index/sendotp'); ?>"
+							method="post"
+							id="send-otp-form"
+							data-mage-init='{"validation":{}}'>
+								<?= $block->getBlockHtml('formkey') ?>
+							<div class="form-group number-wrappers">
+								
+								<input 
+									type="text" 
+									placeholder="<?= $escaper->escapeHtml(__('Enter Mobile Number')) ?>"
+									id="mobile_no" 
+									name="mobile_no" 
+									value="" 
+									title="<?= $escaper->escapeHtml(__('Enter Mobile Number')) ?>" 
+									class="input-text required-entry form-control validate-number" 
+									data-validate="{required:true}" 
+									autocomplete="off" 
+									aria-required="true">
+									
+								
+							</div>
+
+							<div class="text-center">
+								<button type="submit" class="shop-now-button mb-2 drop-shadow-btn leaf-btn login-pg-btn leaf-btn-lg" id="btnLoginSubmit"><?= $escaper->escapeHtml(__('SEND OTP')) ?></button>
+							</div>
+						</form>
+					</div>                
+				</div>           
+			</div>            
+		</div>   
+
+
+		<div class="row justify-content-center d-none" id='enter-otp-box'>
+
+			<div class="col-md-6">
+				<div class="login-box">
+					<div class="passwrd-sec check-otp">
+						<h1><?= $escaper->escapeHtml(__('Enter OTP')) ?></h1>
+						<p class="font-montserrat"><?= $escaper->escapeHtml(__('Check your Mobile for the OTP')) ?></p>
+						<form class="form form-login"
+							action="<?php echo $block->getUrl('loginwithotp/index/submit'); ?>"
+							method="post"
+							id="enter-otp-form"
+							data-mage-init='{"validation":{}}'>
+								<?= $block->getBlockHtml('formkey') ?>
+							<div class="form-group number-wrappers">
+								
+								<input 
+									type="hidden" 
+									id="_mobile_no" 
+									name="mobile_no" 
+									value="">
+									
+								<input 
+									type="text" 
+									placeholder="<?= $escaper->escapeHtml(__('Enter OTP')) ?>"
+									id="mobile_otp" 
+									name="mobile_otp" 
+									value="" 
+									title="<?= $escaper->escapeHtml(__('Enter OTP')) ?>" 
+									class="input-text required-entry form-control validate-number" 
+									data-validate="{required:true}" 
+									autocomplete="off" 
+									aria-required="true">
+									
+							</div>
+
+							<div class="text-center">
+								<button type="submit" class="shop-now-button mb-2 drop-shadow-btn leaf-btn login-pg-btn leaf-btn-lg" id="btnLoginSubmit"><?= $escaper->escapeHtml(__('VERIFY')) ?></button>
+							</div>
+							
+							<div class="form-group row">
+								<div class="col-md-6">
+									<a href="javascript:void(0)" class="text-decoration-underline font-16 edit_mobile">Edit Mobile</a>
+								</div>
+
+								<div class="col-md-6 text-right">
+									<a href="javascript:void(0)" class="text-decoration-underline font-16 resend_otp">Resend</a>
+								</div>
+							</div>
+							
+						</form>
+					</div>                
+				</div>           
+			</div>            
+		</div>   
+ 
+
+		
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+require([
+    "jquery",
+    "mage/mage"
+],function($) {
+    $(document).ready(function() {
+		
+		
+		$( ".resend_otp" ).click(function() {
+			var url = $('#send-otp-form').attr('action');	
+			$.ajax({
+				url: url,
+				data: $('#send-otp-form').serialize(),
+				type: 'POST',
+				dataType: 'json',
+				beforeSend: function() {
+					 $('body').trigger('processStart');
+				},
+				success: function(data, status, xhr) {
+					$('body').trigger('processStop');
+					
+					
+					if(data.error=== true){
+						/*$("#printmessage").addClass("error");*/
+						
+						
+						$("#printmessage").empty().html('<div class="alert alert-danger alert-dismissible fade show" role="alert">'+data.message+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+						
+						$('#enter-mobile-box').removeClass('d-none');
+						$('#enter-otp-box').addClass('d-none');
+			
+						return false;
+					}
+					else {
+						
+						
+						$("#_mobile_no").val($("#mobile_no").val());
+						
+						$("#printmessage").empty().html('<div class="alert alert-success alert-dismissible fade show" role="alert">'+data.message+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+						
+						
+						
+						$('#enter-mobile-box').addClass('d-none');
+						$('#enter-otp-box').removeClass('d-none');
+					}
+					
+					
+				},
+				error: function (xhr, status, errorThrown) {
+					
+					$('#enter-mobile-box').removeClass('d-none');
+					$('#enter-otp-box').addClass('d-none');
+					
+					
+					$('body').trigger('processStop');
+					
+					$("#printmessage").empty().html('<div class="alert alert-danger alert-dismissible fade show" role="alert">'+errorThrown+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');							
+					
+				}
+			});
+		});
+		
+		
+		$( ".edit_mobile" ).click(function() {
+			$('#enter-mobile-box').removeClass('d-none');
+			$('#enter-otp-box').addClass('d-none');
+		});
+		
+		
+		
+        $('#send-otp-form').mage(
+            'validation',
+            {
+
+                submitHandler: function(form) {
+					var url = $('#send-otp-form').attr('action');	
+                    $.ajax({
+                        url: url,
+                        data: $('#send-otp-form').serialize(),
+                        type: 'POST',
+                        dataType: 'json',
+                        beforeSend: function() {
+                             $('body').trigger('processStart');
+                        },
+                        success: function(data, status, xhr) {
+                            $('body').trigger('processStop');
+							
+							
+							if(data.error=== true){
+								/*$("#printmessage").addClass("error");*/
+								
+								
+								$("#printmessage").empty().html('<div class="alert alert-danger alert-dismissible fade show" role="alert">'+data.message+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+								
+								
+								return false;
+							}
+							else {
+								
+								
+								$("#_mobile_no").val($("#mobile_no").val());
+								
+								$("#printmessage").empty().html('<div class="alert alert-success alert-dismissible fade show" role="alert">'+data.message+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+								
+								
+								
+								$('#enter-mobile-box').addClass('d-none');
+								$('#enter-otp-box').removeClass('d-none');
+							}
+							
+							
+                        },
+                        error: function (xhr, status, errorThrown) {
+                            $('body').trigger('processStop');
+							
+							$("#printmessage").empty().html('<div class="alert alert-danger alert-dismissible fade show" role="alert">'+errorThrown+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');							
+							
+                        }
+                    });
+                }
+            }
+        );
+    });
+	
+	
+	
+	$(document).ready(function() {
+        $('#enter-otp-form').mage(
+            'validation',
+            {
+				
+				submitHandler: function(form) {
+					var url = $('#enter-otp-form').attr('action');
+                    $.ajax({
+                        url: url,
+                        data: $('#enter-otp-form').serialize(),
+                        type: 'POST',
+                        dataType: 'json',
+                        beforeSend: function() {
+                             $('body').trigger('processStart');
+                        },
+                        success: function(data, status, xhr) {
+                            $('body').trigger('processStop');
+							
+							
+							if(data.error=== true){
+								
+								$("#printmessage").empty().html('<div class="alert alert-danger alert-dismissible fade show" role="alert">'+data.message+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');								
+								return false;
+								
+							}
+							else {
+								location.reload(0);
+							}
+							
+							
+                        },
+                        error: function (xhr, status, errorThrown) {
+                            $('body').trigger('processStop');
+							
+							$("#printmessage").empty().html('<div class="alert alert-danger alert-dismissible fade show" role="alert">'+errorThrown+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');							
+							
+                        }
+                    });
+                }
+            }
+        );
+    });
+});
+</script>

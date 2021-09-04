@@ -1,0 +1,34 @@
+<?php
+$viewModel = $block->getViewModel();
+$viewModel->checkForLogin();
+$helper = $viewModel->getHelperModel();
+$oneCreditCost = $helper->getOneRewardPointCost();
+$ifRewardPoints = $helper->getInvitedFriendRegiRewardPoint();
+$ifoRewardPoints = $helper->getInviteOrderRewardPoint();
+$ifrLimit = $helper->getInviteFriendRegiLimit();
+$ifCreateOrderEnable = $helper->getCreateOrderByInviteFriend();
+$ifoEarnType = $helper->getInviteOrderEarnType();
+$ifMessage = __("Also get %1 reward point(s) after each friend order.", $ifoRewardPoints);
+if ($ifoEarnType) {
+    $ifMessage = __("Also get %1%(of order subtotal) reward point(s) after each friend order.", $ifoRewardPoints);
+}
+$ifoLimit = $helper->getInviteMaxOrderLimit();
+?>
+<div id="block-invitefriend-list" data-bind="scope:'invitefriend-list'" class="table-wrapper orders-history">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#block-invitefriend-list": {
+            "Magento_Ui/js/core/app": <?= /* @escapeNotVerified */ $block->getJsLayout();?>
+        }
+    }
+    </script>
+</div>
+<script type="text/javascript">
+    var oneCreditCost = "<?= $block->escapeHtml($oneCreditCost) ?>"
+    var ifRewardPoints = "<?= $block->escapeHtml($ifRewardPoints) ?>"
+    var ifrLimit = "<?= $block->escapeHtml($ifrLimit) ?>"
+    var ifCreateOrderEnable = "<?= $block->escapeHtml($ifCreateOrderEnable) ?>"
+    var ifMessage = "<?= $block->escapeHtml($ifMessage) ?>"
+    var ifoLimit = "<?= $block->escapeHtml($ifoLimit) ?>"
+</script>

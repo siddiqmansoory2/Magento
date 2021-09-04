@@ -1,0 +1,13 @@
+<?php
+$viewModel = $block->getViewModel();
+$helper = $viewModel->getHelperModel();
+$enableReward = $helper->getEnableReward();
+$isEnable = $helper->getEnableNewsletterSub();
+$isLoggedIn = $helper->getIsLoggedIn();
+if ($enableReward && $isEnable && $isLoggedIn) {
+    $oneRewardPointCost = $helper->getOneRewardPointCost();
+    $rewardPoints = $helper->getNewsletterSubRewardPoint();
+    ?>
+    </br><div><span><?= $block->escapeHtml(__("Subscribe and earn %1 Reward Point(s).", $rewardPoints)); ?></span>
+    </br><span><?= $block->escapeHtml(__("%1 Reward Point(s) = 1 Base Credit", $oneRewardPointCost)); ?></span></div>
+<?php } ?>

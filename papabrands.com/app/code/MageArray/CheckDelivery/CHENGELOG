@@ -1,0 +1,19 @@
+MageArray_CheckDelivery
+
+-------------
+  CHANGELOG
+-------------
+
+===== 1.0.0 =====
+ * Initial stable M2 release
+
+===== 1.0.1 =====
+ * Add Module enable/disable configuration
+ * Magento 2.2 compatibility
+ 
+===== 1.0.2 =====
+ * Compatibility with Magento 2.3
+ 
+===== 1.0.3 =====
+ * Bug Fixes
+ * Compatibility with Magento 2.3.4

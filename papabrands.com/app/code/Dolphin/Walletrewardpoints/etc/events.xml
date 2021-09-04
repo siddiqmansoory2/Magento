@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_place_after">
+        <observer name="dolphin_save_order_after" instance="Dolphin\Walletrewardpoints\Observer\Order\SaveOrderAfter" />
+    </event>
+    <event name="checkout_onepage_controller_success_action">
+        <observer name="success-order" instance="Dolphin\Walletrewardpoints\Observer\Order\SuccessOrder" />
+    </event>
+    <event name="sales_model_service_quote_submit_before">
+        <observer name="quote-submit-before" instance="Dolphin\Walletrewardpoints\Observer\Order\QuoteSubmitBefore" />
+    </event>
+    <event name="order_cancel_after">
+        <observer name="cancel-order-after" instance="Dolphin\Walletrewardpoints\Observer\Order\CancelOrder" />
+    </event>
+    <event name="sales_order_load_after">
+        <observer name="display-creditmemo-zero-grandtotal" instance="Dolphin\Walletrewardpoints\Observer\Order\SalesOrderLoadAfter"/>
+    </event>
+    <event name="customer_register_success">
+        <observer name="customer-register" instance="Dolphin\Walletrewardpoints\Observer\CustomerRegister" />
+    </event>
+    <event name="controller_action_postdispatch_newsletter_manage_save">
+        <observer name="customer-newsletter-subscriber" instance="Dolphin\Walletrewardpoints\Observer\NewsletterSubscriber\NewsletterSubscriber" />
+    </event>
+    <event name="controller_action_postdispatch_newsletter_subscriber_confirm">
+        <observer name="customer-newsletter-subscriber-confirm" instance="Dolphin\Walletrewardpoints\Observer\NewsletterSubscriber\NewsletterSubscriberConfirm" />
+    </event>
+    <event name="review_save_after">
+        <observer name="reviewsaveafter" instance="Dolphin\Walletrewardpoints\Observer\Review\ReviewSaveAfter" />
+    </event>
+    <event name="salesrule_validator_process">
+        <observer name="salesrule-validator-process" instance="Dolphin\Walletrewardpoints\Observer\Coupon\ApplyCheckoutCoupon" />
+    </event>
+    <event name="controller_action_postdispatch_checkout_cart_couponPost">
+        <observer name="checkout-cart-couponpost" instance="Dolphin\Walletrewardpoints\Observer\Coupon\ApplyCouponCode" />
+    </event>
+    <event name="sales_order_creditmemo_save_after">
+        <observer name="credit-refund" instance="Dolphin\Walletrewardpoints\Observer\Refund\CreditRefund" />
+    </event>
+    <event name="adminhtml_sales_order_creditmemo_register_before">
+        <observer name="creditmemo-allow-zero-grandtotal" instance="Dolphin\Walletrewardpoints\Observer\Refund\CreditmemoAllowZero"/>
+    </event>
+    <event name="checkout_cart_add_product_complete">
+        <observer name="checkout-cart-add-product" instance="Dolphin\Walletrewardpoints\Observer\AddItem" />
+    </event>
+    <event name="checkout_cart_update_items_after">
+        <observer name="checkout-cart-update-items" instance="Dolphin\Walletrewardpoints\Observer\UpdateItem" />
+    </event>
+    <event name="sales_quote_remove_item">
+        <observer name="sales-quote-remove-item" instance="Dolphin\Walletrewardpoints\Observer\DeleteItem" />
+    </event>
+    <event name="payment_cart_collect_items_and_amounts">
+        <observer name="payment_credit_discount_to_paypal" instance="Dolphin\Walletrewardpoints\Observer\Paypal\PaymentCreditDiscountPaypal"/>
+    </event>
+</config>

@@ -1,0 +1,74 @@
+"Incorrect Waybill number or No Information","Incorrect Waybill number or No Information"
+"Shipment Tracking","Shipment Tracking"
+"Status Type","Status Type"
+Description,Description
+"Status : ","Status : "
+Location,Location
+Details,Details
+Date,Date
+Time,Time
+"Could not find this order with us. Please check the AWB/order ID entered.","Could not find this order with us. Please check the AWB/order ID entered."
+"Something Went Wrong, See error Log","Something Went Wrong, See error Log"
+"STATUS : ","STATUS : "
+DateTime,DateTime
+Instructions,Instructions
+Status,Status
+"Could not find this order with us. Please check the waybill/order ID entered.","Could not find this order with us. Please check the waybill/order ID entered."
+Detail,Detail
+"Could not find this order with us. Please check the track/order ID entered.","Could not find this order with us. Please check the track/order ID entered."
+Waybill,Waybill
+"Origin Service Area","Origin Service Area"
+"Destination Service Area","Destination Service Area"
+"Status :","Status :"
+"Reciever Name","Reciever Name"
+From,From
+To,To
+"Booking Date","Booking Date"
+"Booking Time","Booking Time"
+"History :","History :"
+Origin,Origin
+Destination,Destination
+"Service Type","Service Type"
+"Tracking Code","Tracking Code"
+"Date & Time","Date & Time"
+Activity,Activity
+Bluedart,Bluedart
+Delhivery,Delhivery
+"Shree Tirupati Courier Service","Shree Tirupati Courier Service"
+"Trackon Couriers PVT LTD","Trackon Couriers PVT LTD"
+"The Professional Couriers","The Professional Couriers"
+"Ship Rocket","Ship Rocket"
+"Order tracking","Order tracking"
+"Tracking Number:","Tracking Number:"
+Carrier:,Carrier:
+Error:,Error:
+"Tracking information is currently not available. Please ","Tracking information is currently not available. Please "
+"contact us","contact us"
+" for more information or "," for more information or "
+"email us at ","email us at "
+Info:,Info:
+Track:,Track:
+". ':'",". ':'"
+N/A,N/A
+"Shipment #","Shipment #"
+"There is no tracking available for this shipment.","There is no tracking available for this shipment."
+"There is no tracking available.","There is no tracking available."
+"Close Window","Close Window"
+"Order Tracking","Order Tracking"
+Configuration,Configuration
+"Bluedart Settings","Bluedart Settings"
+Enabled,Enabled
+"Licence Key","Licence Key"
+"Login ID","Login ID"
+"USPS Settings","USPS Settings"
+"User ID","User ID"
+"Delhivery Settings","Delhivery Settings"
+"Shree Tirupati Courier Service Settings","Shree Tirupati Courier Service Settings"
+"Trackon Couriers PVT LTD Settings","Trackon Couriers PVT LTD Settings"
+"App Key","App Key"
+Password,Password
+"The Professional Couriers Settings","The Professional Couriers Settings"
+"TPC Client ID","TPC Client ID"
+"TPC Password","TPC Password"
+"ShipRocket Settings","ShipRocket Settings"
+"User Email ID","User Email ID"

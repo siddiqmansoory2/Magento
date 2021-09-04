@@ -1,0 +1,39 @@
+<?php
+$viewModel = $block->getViewModel();
+$viewModel->checkForLogin();
+$helper = $viewModel->getHelperModel();
+$totalWalletCredit = 0;
+if ($helper->getCustomerIdFromSession()) {
+    $customer_id = $helper->getCustomerIdFromSession();
+    $walletCredit = $helper->getWalletCredit($customer_id);
+    $currencySymbol = $helper->getCurrencySymbol();
+    $totalWalletCredit = $currencySymbol . $walletCredit;
+}
+$allowToSendCredit = $helper->getAllowSendCredit();
+$sendCredittoFriendUrl = $block->getUrl('walletrewardpoints/customer/sendcredittofriend');
+$allowToBuyCredit = $helper->getAllowToBuyCredit();
+$allowToWithdrawal = $helper->getAllowToWithdrawal();
+$enableReward = $helper->getEnableReward();
+$allowToInvite = $helper->getEarnInvitedFriendRegi();
+if (!$enableReward) {
+    $allowToInvite = 0;
+}
+?>
+<div id="block-transaction-list" data-bind="scope:'transaction-list'" class="table-wrapper orders-history">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#block-transaction-list": {
+            "Magento_Ui/js/core/app": <?= /* @escapeNotVerified */ $block->getJsLayout();?>
+        }
+    }
+    </script>
+</div>
+<script type="text/javascript">
+    var allowToBuyCredit = "<?= $block->escapeHtml($allowToBuyCredit); ?>";
+    var allowToWithdrawal = "<?= $block->escapeHtml($allowToWithdrawal); ?>";
+    var allowToInvite = "<?= $block->escapeHtml($allowToInvite); ?>";
+    var totalWalletCredit = "<?= $block->escapeHtml($totalWalletCredit); ?>";
+    var allowToSendCredit = "<?= $block->escapeHtml($allowToSendCredit); ?>";
+    var sendCredittoFriendUrl = "<?= $block->escapeHtml($sendCredittoFriendUrl); ?>";
+</script>

@@ -1,0 +1,19 @@
+<section if="item.content && item.content.trim().length > 7"
+         data-bind="
+            attr: {
+                class: 'ammenu-submenu-block -root -simple'
+            },
+            css: {
+                '-auto': item.width === 1,
+                '-full': item.width === 0
+            },
+            style: {
+                width: item.width_value(),
+                color: uiClass.color_settings.submenu_text,
+                background: uiClass.color_settings.submenu_background,
+                backgroundImage: uiClass.color_settings.submenu_background_image ? 'url(' + uiClass.color_settings.submenu_background_image + ')' : ''
+            },
+            html: item.content,
+            afterRender: uiClass.applyBindings,
+            visible: item.isActive">
+</section>

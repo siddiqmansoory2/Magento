@@ -1,0 +1,62 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_MegaMenuLite
+ */
+?>
+<?php
+/** @var \Amasty\MegaMenuLite\Block\Container $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Amasty\MegaMenuLite\ViewModel\Store\Menu $viewModel
+ */
+
+$viewModel = $block->getViewModel();
+?>
+
+<section class="ammenu-menu-wrapper <?= /* @noEscape */ $viewModel->isRenderSkeleton() ? '-skeleton' : '' ?>"
+         data-bind="
+            scope: 'ammenu_wrapper',
+            mageInit: {
+                'Magento_Ui/js/core/app': {
+                    components: {
+                        'ammenu_wrapper': {
+                            component: 'Amasty_MegaMenuLite/js/wrapper',
+                            data: <?= $escaper->escapeHtml($block->getJsData()) ?>,
+                            config: <?= $escaper->escapeHtml($block->getJsConfig()) ?>,
+                            children: <?= $escaper->escapeHtml($block->getJsComponents()) ?>,
+                            settings: <?= $escaper->escapeHtml($block->getJsSettings()) ?>,
+                            links: <?= $escaper->escapeHtml($block->getStoreLinks()) ?>
+                        }
+                    }
+                }
+            }"
+         aria-hidden="true">
+        <!-- ko if: $data.is_hamburger -->
+            <!-- ko ifnot: $data.isMobile -->
+                <!-- ko scope: 'index = hamburger_top_wrapper' -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko scope: 'index = hamburger_wrapper' -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: !$data.is_hamburger -->
+            <!-- ko if: !$data.isMobile -->
+                <!-- ko scope: 'index = top_menu_wrapper' -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: $data.isMobile -->
+                <!-- ko scope: 'index = mobile_menu_wrapper' -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                <!-- /ko -->
+            <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: $data.is_hamburger || $data.isMobile -->
+            <!-- ko scope: 'index = overlay_wrapper' -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        <!-- /ko -->
+</section>

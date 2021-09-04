@@ -1,0 +1,100 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+/** @var \Magento\Contact\Block\ContactForm $block */
+?>
+<?php
+$baseHelper = $this->helper('ET\Base\Helper\Data');
+?>
+  <?php
+    $storeTitle = $baseHelper->getConfigValue('contact_section/contact_info/store_title');
+    $storePhone = $baseHelper->getConfigValue('contact_section/contact_info/store_phone');
+    $storeAddress = $baseHelper->getConfigValue('contact_section/contact_info/store_address');
+    $storeEmail = $baseHelper->getConfigValue('contact_section/contact_info/store_email');
+    $addtionalInfo = $baseHelper->getConfigValue('contact_section/contact_info/addtional_info');
+    ?>
+<div class="row">
+            <div class="col-md-12">
+                <ul class="contact-list contact_details_container">
+                    <?php if ($storeAddress != '') { ?>
+                    <li>
+                        <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>                   
+                        <div class="contact_details"><?php echo $storeAddress; ?></div>                   
+                    </li>
+                    <?php } ?>
+                    <?php if ($storePhone != '') { ?>
+                    <li>
+                        <span class="contact-icon"><i class="fas fa-phone-alt"></i></span>                   
+                        <div class="contact_details"><?php echo $storePhone; ?></div>                   
+                    </li>
+                    <?php } ?>
+                    <?php if ($storeEmail != '') { ?>
+                    <li>
+                        <span class="contact-icon"><i class="fas fa-envelope"></i></span>                    
+                        <div class="contact_details"><?php echo $storeEmail; ?></div>                   
+                    </li>
+                    <?php } ?>
+                    <?php if ($addtionalInfo != '') { ?>
+                    <li>                   
+                        <span class="contact-icon"><i class="fas fa-info"></i></span>                    
+                        <div class="contact_details"><?php echo $addtionalInfo; ?></div>                 
+                    </li>
+                    <?php } ?>
+                </ul>
+            </div>
+    
+    <div class="col-md-6">
+        <div class="card contact-card">
+            <div class="card-body">
+    <form class="form contact_form mb-0"
+          action="<?= $block->escapeUrl($block->getFormAction()) ?>"
+          id="contact-form"
+          method="post"
+          data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+          data-mage-init='{"validation":{}}'>
+        <fieldset class="fieldset mb-0">
+           <!--  <legend class="legend"><span><?= $block->escapeHtml(__('Write Us')) ?></span></legend><br />
+            <div class="field note no-label"><?= $block->escapeHtml(__('Jot us a note and we’ll get back to you as quickly as possible.')) ?></div> -->
+            <div class="field name required">
+                <label class="label" for="name"><span><?= $block->escapeHtml(__('Full Name')) ?></span></label>
+                <div class="control">
+                    <input name="name" id="name" title="<?= $block->escapeHtmlAttr(__('Name')) ?>" value="<?= $block->escapeHtmlAttr($this->helper(\Magento\Contact\Helper\Data::class)->getPostValue('name') ?: $this->helper(\Magento\Contact\Helper\Data::class)->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field email required">
+                <label class="label" for="email"><span><?= $block->escapeHtml(__('Email Address')) ?></span></label>
+                <div class="control">
+                    <input name="email" id="email" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" value="<?= $block->escapeHtmlAttr($this->helper(\Magento\Contact\Helper\Data::class)->getPostValue('email') ?: $this->helper(\Magento\Contact\Helper\Data::class)->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                </div>
+            </div>
+            <div class="field telephone">
+                <label class="label" for="telephone"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
+                <div class="control">
+                    <input name="telephone" id="telephone" title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>" value="<?= $block->escapeHtmlAttr($this->helper(\Magento\Contact\Helper\Data::class)->getPostValue('telephone')) ?>" class="input-text" type="text" />
+                </div>
+            </div>
+            <div class="field comment required">
+                <label class="label" for="comment"><span><?= $block->escapeHtml(__('Message')) ?></span></label>
+                <div class="control">
+                    <textarea name="comment" id="comment" title="<?= $block->escapeHtmlAttr(__('What’s on your mind?')) ?>" class="input-text" cols="3" rows="2" data-validate="{required:true}"><?= $block->escapeHtml($this->helper(\Magento\Contact\Helper\Data::class)->getPostValue('comment')) ?></textarea>
+                </div>
+            </div>
+            <?= $block->getChildHtml('form.additional.info') ?>
+        </fieldset>
+        <div class="form-btn">           
+                <input type="hidden" name="hideit" id="hideit" value="" />
+                <button type="submit" class="shop-now-button leaf-btn leaf-btn-lg remove_btnhover btn_font18 mt-3">
+                    <span><?= $block->escapeHtml(__('Send Now')) ?></span>
+                </button>
+        </div>
+    </form>
+  
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+        <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d396.26901349895144!2d72.88269383101674!3d19.109084171328146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8134a179b75%3A0x96d6801b9927c2a1!2sShiv%20Shakti%20Industrial%20Estate!5e0!3m2!1sen!2sin!4v1623841461294!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</div>

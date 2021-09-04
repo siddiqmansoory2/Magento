@@ -1,0 +1,28 @@
+<ul class="ammenu-items -root -account-links"
+    data-bind="
+        style: {
+            color: color_settings.menu_text
+        }">
+    <!-- ko ifnot: customer().fullname -->
+        <li class="ammenu-item">
+            <a class="ammenu-link" data-bind="attr: { href: settings.account.login }, i18n: 'Sign In'"></a>
+        </li>
+        <li class="ammenu-item">
+            <a class="ammenu-link" data-bind="attr: { href: settings.account.create }, i18n: 'Create an Account'"></a>
+        </li>
+    <!-- /ko -->
+    <!-- ko if: customer().fullname -->
+        <li class="ammenu-item">
+            <a class="ammenu-link" data-bind="attr: { href: settings.account.account }, i18n: 'My Account'"></a>
+        </li>
+        <li class="ammenu-item -wishlist">
+            <a class="ammenu-link" data-bind="attr: { href: '/wishlist' }">
+                <span data-bind="i18n: 'My Wish Lists'"></span>
+                <span class="ammenu-counter" if="wishlist().counter" data-bind="i18n: wishlist().counter"></span>
+            </a>
+        </li>
+        <li class="ammenu-item">
+            <a class="ammenu-link" data-bind="attr: { href: settings.account.logout }, i18n: 'Log Out'"></a>
+        </li>
+    <!-- /ko -->
+</ul>

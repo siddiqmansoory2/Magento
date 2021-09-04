@@ -1,0 +1,9 @@
+
+/* Manage minicart height and auto scroll*/
+
+.minicart-items-wrapper {
+    border-left: 0;
+    border-right: 0;
+    overflow-x: auto;
+    padding: 15px;
+}

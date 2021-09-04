@@ -1,0 +1,35 @@
+<?php $_source = $block->getSource() ?>
+<?php if ($_source): ?>
+    <tr>
+        <td class="label"><?= $block->escapeHtml($block->getCreditFeeLabel()) ?><div id="credit_fee_amount_adv"></div>
+        </td>
+        <td>
+            <input type="text"
+                   name="creditmemo[credit_fee_amount]"
+                   value="<?= $block->escapeHtmlAttr($block->getCreditBaseFeeAmount()) ?>"
+                   class="input-text admin__control-text"
+                   id="credit_fee_amount" />
+            <script>
+                require(['prototype'], function(){
+                    //<![CDATA[
+                    if ($('credit_fee_amount')) {
+                        $('credit_fee_amount').advaiceContainer = $('credit_fee_amount_adv');
+                        unblockSubmit('credit_fee_amount');
+                    }
+
+                    function unblockSubmit(id) {
+                        $(id).observe('focus', function(event) {
+                            if ($$('button[class="scalable update-button disabled"]').size() > 0) {
+                                enableElements('submit-button');
+                            }
+                        });
+                        $(id).observe('change', function (event) {
+                            enableElements('submit-button');
+                        });
+                    }
+                    //]]>
+                });
+            </script>
+        </td>
+    </tr>
+<?php endif; ?>

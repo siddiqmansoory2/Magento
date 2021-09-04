@@ -1,0 +1,24 @@
+//
+//  Accordion Open Type
+//  ______________________________________________
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .ammenu-nav-sections.-mobile.-accordion {
+        .ammenu-toggle {
+            transform: rotate(180deg);
+        }
+
+        .ammenu-toggle.-active {
+            transform: rotate(0);
+        }
+
+        .ammenu-items.-root > .ammenu-item > .ammenu-items > .ammenu-item > .ammenu-link {
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+    }
+}

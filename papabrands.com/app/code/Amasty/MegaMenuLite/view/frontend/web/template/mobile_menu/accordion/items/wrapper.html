@@ -1,0 +1,9 @@
+<ul class="ammenu-items" if="elems.length" data-bind="foreach: elems, visible: $parent.isActive">
+    <li class="ammenu-item">
+        <!-- ko template: { name: $parent.uiClass.root_templates.mobile_link, data: { item: $data, uiClass: $parent.uiClass } } --><!-- /ko -->
+
+        <!-- ko if: $data.elems.length -->
+            <!-- ko template: { name: $parent.uiClass.templates.itemsAccordion, data: { uiClass: $parent.uiClass, elems: $data.elems } } --><!-- /ko -->
+        <!-- /ko -->
+    </li>
+</ul>

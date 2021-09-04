@@ -1,0 +1,37 @@
+<div if="item && item.elems.length"
+     data-bind="
+                attr: {
+                    class: 'ammenu-submenu-block -root -builder' + (item.type ? ' -' + item.type.label : '')
+                },
+                css: {
+                    '-auto': item.width === 1,
+                    '-full': item.width === 0
+                },
+                style: {
+                    width: item.width_value(),
+                    color: uiClass.color_settings.submenu_text,
+                    backgroundColor: uiClass.color_settings.submenu_background,
+                    backgroundImage: uiClass.color_settings.submenu_background_image ? 'url(' + uiClass.color_settings.submenu_background_image + ')' : ''
+
+                },
+                afterRender: function() {
+                    uiClass.initRoot(item);
+                },
+                visible: item.isActive,
+                event: {
+                    mouseleave: function() {
+                        uiClass.reset(item);
+                    }
+                }">
+    <!-- ko template: { name: uiClass.templates.itemsList, $data: item } --><!-- /ko-->
+
+    <div class="ammenu-submenu-sidebar">
+        <!-- ko if: item.type && item.type.value -->
+            <!-- ko foreach: { data: item.elems, as: 'elem' }  -->
+                <!-- ko template: { name: $parent.uiClass.templates.itemWrapper, data: { uiClass: $parent.uiClass, item: elem, parentElem: $parent.item }} --><!-- /ko-->
+            <!-- /ko-->
+        <!-- /ko-->
+
+        <!-- ko template: { name: uiClass.templates.contentBlock, $data: { uiClass: uiClass, item: item } } --><!-- /ko-->
+    </div>
+</div>

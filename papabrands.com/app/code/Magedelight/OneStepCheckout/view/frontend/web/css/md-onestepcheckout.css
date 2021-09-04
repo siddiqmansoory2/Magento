@@ -1,0 +1,940 @@
+@font-face {
+ font-family:'md-osc-icon';
+ src:url('../../Magedelight_OneStepCheckout/fonts/MD-osc-icon/MD-osc-icon.eot');
+ src:url('../../Magedelight_OneStepCheckout/fonts/MD-osc-icon/MD-osc-icon.eot?874j09#iefix') format('embedded-opentype'),
+   url('../../Magedelight_OneStepCheckout/fonts/MD-osc-icon/MD-osc-icon.ttf?874j09') format('truetype'),
+   url('../../Magedelight_OneStepCheckout/fonts/MD-osc-icon/MD-osc-icon.woff?874j09') format('woff'),
+   url('../../Magedelight_OneStepCheckout/fonts/MD-osc-icon/MD-osc-icon.svg?874j09#MD-Icon') format('svg');
+ font-weight:normal;
+ font-style:normal;
+}
+
+
+.column.main .checkout-container.md-checkout [class^="icon-"],[class*=" icon-"] {
+ font-family:'md-osc-icon';
+ speak:none;
+ font-style:normal;
+ font-weight:normal;
+ font-variant:normal;
+ text-transform:none;
+ line-height:1;
+ -webkit-font-smoothing:antialiased;
+ -moz-osx-font-smoothing:grayscale;
+}
+.column.main .checkout-container.md-checkout {
+ position:relative;
+}
+.column.main .checkout-container.md-checkout input[type="text"], .column.main .checkout-container.md-checkout select {
+    min-height: auto;
+}
+.column.main .checkout-container.md-checkout *,.column.main .checkout-container.md-checkout *:before {
+ box-sizing:border-box;
+}
+.column.main .checkout-container.md-checkout a:focus,.column.main .checkout-container.md-checkout ._keyfocus *:focus:focus,.column.main .checkout-container.md-checkout input:focus:not([disabled]):focus,.column.main .checkout-container.md-checkout textarea:focus:not([disabled]):focus,.column.main .checkout-container.md-checkout select:focus:not([disabled]):focus,.column.main .checkout-container.md-checkout textarea:focus,.column.main .checkout-container.md-checkout input:focus,.column.main .checkout-container.md-checkout select:focus {
+ box-shadow:none;
+ outline:0;
+}
+.column.main .checkout-container.md-checkout input:-webkit-autofill,.column.main .checkout-container.md-checkout input:-webkit-autofill:hover,.column.main .checkout-container.md-checkout input:-webkit-autofill:focus,.column.main .checkout-container.md-checkout input:-webkit-autofill:active {
+ transition:all 5000s ease-in-out 0s;
+ transition-property:background-color,transparent;
+}
+.column.main .checkout-container.md-checkout input[type="checkbox"] {
+ margin:-8px 0 0 0;
+ float:left;
+ opacity:0;
+ z-index:9;
+ left:0;
+ position:absolute;
+ top:50%;
+}
+.column.main .checkout-container.md-checkout input.radio {
+ display:none;
+}
+.column.main .checkout-container.md-checkout input.radio+label {
+ position:relative;
+ padding-left:20px !important;
+}
+.column.main .checkout-container.md-checkout input.radio+label:before {
+ box-sizing:border-box;
+ border:1px solid #000;
+ border-radius:50%;
+ content:"";
+ height:14px;
+ left:0;
+ position:absolute;
+ top:2px;
+ width:14px;
+}
+.column.main .checkout-container.md-checkout input.radio+label:after {
+ border:3px solid #fff;
+ border-radius:50%;
+ box-sizing:border-box;
+ content:"";
+ height:12px;
+ left:1px;
+ position:absolute;
+ top:3px;
+ width:12px;
+ margin:0;
+}
+.column.main .checkout-container.md-checkout input[type="radio"]:checked+label:before {
+ background:black
+}
+.column.main .checkout-container.md-checkout input[type="checkbox"]+label {
+ position:relative;
+ padding-left:20px !important;
+}
+.column.main .checkout-container.md-checkout input[type="checkbox"]+label:before {
+ border:1px solid #000;
+ content:"";
+ height:14px;
+ left:0;
+ position:absolute;
+ top:1px;
+ width:14px;
+}
+.column.main .checkout-container.md-checkout input[type="checkbox"]:checked+label {
+ display:inline-block;
+ text-decoration:none;
+}
+.column.main .checkout-container.md-checkout input[type="checkbox"]:checked+label:before {
+ -webkit-font-smoothing:antialiased;
+ -moz-osx-font-smoothing:grayscale;
+ font-size:10px;
+ line-height:12px;
+ color:inherit;
+ content:'\e610';
+ font-family:'md-osc-icon';
+ vertical-align:middle;
+ display:inline-block;
+ font-weight:normal;
+ overflow:hidden;
+ speak:none;
+ text-align:center;
+}
+.column.main .checkout-container.md-checkout input[type="checkbox"]:checked+label:before {
+ font-weight:bold
+}
+.column.main .checkout-container.md-checkout label {
+ font-family:inherit;
+ font-size:inherit;
+ display:inherit;
+ font-weight:inherit;
+}
+.column.main .checkout-container.md-checkout button[type="submit"],.column.main .checkout-container.md-checkout button[type="button"] {
+ background:#1979c3;
+ border-radius:0;
+ border:0;
+ color:#fff;
+ font-weight:bold;
+ font-size:14px;
+ padding:10px 20px;
+ text-transform:uppercase;
+ line-height:16px;
+ height:auto;
+}
+.column.main .checkout-container.md-checkout button[type="submit"]:hover,.column.main .checkout-container.md-checkout button[type="button"]:hover {
+ background:#666;
+ text-decoration:none;
+}
+.column.main .checkout-container.md-checkout div.mage-error {
+ display:none;
+}
+.column.main .checkout-container.md-checkout button.action-close {
+ padding:10px 10px 4px 10px;
+}
+.column.main .checkout-container.md-checkout button.action-close:before {
+ color:#fff;
+}
+.column.main .checkout-container.md-checkout .checkout-shipping-method {
+    margin-top: 0;
+}
+.column.main .checkout-container.md-checkout .authentication-wrapper {
+ margin-top:0;
+ position:absolute;
+ top:10px;
+ right:0;
+ width:320px;
+}
+.column.main .checkout-container.md-checkout .authentication-wrapper .authentication-dropdown {
+ border-color:#1979c3;
+}
+.column.main .checkout-container.md-checkout .authentication-wrapper .action-auth-toggle {
+ float:right;
+}
+.column.main .checkout-container.md-checkout li {
+ list-style:none;
+}
+.column.main .checkout-container.md-checkout h1 {
+ text-transform:uppercase;
+ font-size:26px;
+ color:#000;
+ font-weight:400;
+ margin-bottom:20px;
+ margin-top:20px;
+}
+.column.main .checkout-container.md-checkout .message.error {
+ text-align:left;
+}
+.column.main .checkout-container.md-checkout .osc-heading p {
+ text-align:justify;
+}
+.column.main .checkout-container.md-checkout .payment-method-box {
+ width:32.33%;
+ float:left;
+ margin-left:1.5%;
+}
+.column.main .checkout-container.md-checkout #address-section,.column.main .checkout-container.md-checkout .shipping-method-section,.column.main .checkout-container.md-checkout .payment-method-section,.column.main .checkout-container.md-checkout .order-review-section {
+ width:32.33%;
+ float:left;
+ border:1px solid #ccc;
+ padding:15px;
+ margin-left:1.5%;
+}
+.column.main .checkout-container.md-checkout .order-review-section .checkout-review-total {
+	width: 100%;
+}
+.column.main .checkout-container.md-checkout .order-review-section .checkout-review-total tr th.mark {
+    background: transparent;
+}
+.column.main .checkout-container.md-checkout #address-section#address-section,.column.main .checkout-container.md-checkout .shipping-method-section#address-section,.column.main .checkout-container.md-checkout .payment-method-section#address-section,.column.main .checkout-container.md-checkout .order-review-section#address-section {
+ margin-left:0;
+}
+.column.main .checkout-container.md-checkout #address-section.shipping-method-section,.column.main .checkout-container.md-checkout .shipping-method-section.shipping-method-section,.column.main .checkout-container.md-checkout .payment-method-section.shipping-method-section,.column.main .checkout-container.md-checkout .order-review-section.shipping-method-section,.column.main .checkout-container.md-checkout #address-section.payment-method-section,.column.main .checkout-container.md-checkout .shipping-method-section.payment-method-section,.column.main .checkout-container.md-checkout .payment-method-section.payment-method-section,.column.main .checkout-container.md-checkout .order-review-section.payment-method-section {
+ width:100%;
+ float:left;
+ margin-left:0px;
+}
+.column.main .checkout-container.md-checkout #address-section.payment-method-section.hide-sp-method .opc-payment .step-title.step_3:before,.column.main .checkout-container.md-checkout .shipping-method-section.payment-method-section.hide-sp-method .opc-payment .step-title.step_3:before,.column.main .checkout-container.md-checkout .payment-method-section.payment-method-section.hide-sp-method .opc-payment .step-title.step_3:before,.column.main .checkout-container.md-checkout .order-review-section.payment-method-section.hide-sp-method .opc-payment .step-title.step_3:before {
+ content:"2";
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section.hide-sp-method .step-title.step_4:before,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section.hide-sp-method .step-title.step_4:before,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section.hide-sp-method .step-title.step_4:before,.column.main .checkout-container.md-checkout .order-review-section.order-review-section.hide-sp-method .step-title.step_4:before {
+ content:"3";
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field {
+ width:49%;
+ float:left;
+ padding:0 0 10px 0;
+ position:relative;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field.street,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field.street,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field.street,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field.street {
+ width:100%;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field.street .field,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field.street .field,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field.street .field,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field.street .field {
+ width:100%;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field.checkbox-group,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field.checkbox-group,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field.checkbox-group,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field.checkbox-group {
+ width:100%;
+ margin:0 0 15px 0;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field.checkbox-group .label,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field.checkbox-group .label,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field.checkbox-group .label,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field.checkbox-group .label {
+ display:inline-block;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field.lastname-field,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field.lastname-field,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field.lastname-field,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field.lastname-field,.column.main .checkout-container.md-checkout #address-section .fieldset .field.region_id-field,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field.region_id-field,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field.region_id-field,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field.region_id-field,.column.main .checkout-container.md-checkout #address-section .fieldset .field.country_id-field,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field.country_id-field,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field.country_id-field,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field.country_id-field {
+ float:right;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field.region_id-field+[class="field"],.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field.region_id-field+[class="field"],.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field.region_id-field+[class="field"],.column.main .checkout-container.md-checkout .order-review-section .fieldset .field.region_id-field+[class="field"] {
+ float:right;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field[name="billingAddressauthorizenet_directpost.telephone"],.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field[name="billingAddressauthorizenet_directpost.telephone"],.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field[name="billingAddressauthorizenet_directpost.telephone"],.column.main .checkout-container.md-checkout .order-review-section .fieldset .field[name="billingAddressauthorizenet_directpost.telephone"],.column.main .checkout-container.md-checkout #address-section .fieldset .field[name="billingAddressauthorizenet_directpost.company"],.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field[name="billingAddressauthorizenet_directpost.company"],.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field[name="billingAddressauthorizenet_directpost.company"],.column.main .checkout-container.md-checkout .order-review-section .fieldset .field[name="billingAddressauthorizenet_directpost.company"],.column.main .checkout-container.md-checkout #address-section .fieldset .field[name="shippingAddress.telephone"],.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field[name="shippingAddress.telephone"],.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field[name="shippingAddress.telephone"],.column.main .checkout-container.md-checkout .order-review-section .fieldset .field[name="shippingAddress.telephone"],.column.main .checkout-container.md-checkout #address-section .fieldset .field[name="shippingAddress.company"],.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field[name="shippingAddress.company"],.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field[name="shippingAddress.company"],.column.main .checkout-container.md-checkout .order-review-section .fieldset .field[name="shippingAddress.company"] {
+ width:100%;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field.telephone-field,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field.telephone-field,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field.telephone-field,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field.telephone-field,.column.main .checkout-container.md-checkout #address-section .fieldset .field.company-field,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field.company-field,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field.company-field,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field.company-field {
+ width:100%;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field legend.label,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field legend.label,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field legend.label,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field legend.label,.column.main .checkout-container.md-checkout #address-section .fieldset .field label.label,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field label.label,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field label.label,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field label.label {
+ display:inline-block;
+ font-weight:bold;
+ text-transform:uppercase;
+ font-size:12px;
+ margin:0 0 5px 0;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field legend.label span,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field legend.label span,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field legend.label span,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field legend.label,.column.main .checkout-container.md-checkout #address-section .fieldset .field label.label span,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field label.label span,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field label.label span,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field label.label span {
+	margin-left: 0px !important;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field .select,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field .select,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field .select,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field .select {
+ font-size:13px;
+ height:32px;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field .input-text,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field .input-text,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field .input-text,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field .input-text {
+ font-size:13px;
+ position:relative;
+ height:32px;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field .input-text+span,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field .input-text+span,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field .input-text+span,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field .input-text+span {
+ background:black;
+ bottom:0px;
+ width:0;
+ height:1px;
+ position:absolute;
+ left:0;
+ opacity:0;
+ z-index:999;
+ -webkit-transform:scale3d(0, 1, 1);
+ transform:scale3d(0, 1, 1);
+ -webkit-transition:-webkit-transform .5s;
+ transition:transform .5s;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field .input-text:focus+span,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field .input-text:focus+span,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field .input-text:focus+span,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field .input-text:focus+span {
+ width:100%;
+ opacity:1;
+ -webkit-transform:scale3d(1, 1, 1);
+ transform:scale3d(1, 1, 1);
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field input[type="checkbox"]+label,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field input[type="checkbox"]+label,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field input[type="checkbox"]+label,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field input[type="checkbox"]+label,.column.main .checkout-container.md-checkout #address-section .fieldset .field input[type="radio"]+label,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field input[type="radio"]+label,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field input[type="radio"]+label,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field input[type="radio"]+label {
+ display:inline-block;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field input[type="radio"]+label,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field input[type="radio"]+label,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field input[type="radio"]+label,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field input[type="radio"]+label {
+ text-transform:none;
+ font-weight:normal;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field .control,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field .control,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field .control,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field .control {
+ position:relative;
+ float:left;
+ width:100%;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset .field.address .input-text,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field.address .input-text,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field.address .input-text,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field.address .input-text {
+ margin-bottom:5px;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset.full-row .field,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset.full-row .field,.column.main .checkout-container.md-checkout .payment-method-section .fieldset.full-row .field,.column.main .checkout-container.md-checkout .order-review-section .fieldset.full-row .field {
+ width:100%;
+}
+.column.main .checkout-container.md-checkout #address-section .fieldset:last-child .field,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset:last-child .field,.column.main .checkout-container.md-checkout .payment-method-section .fieldset:last-child .field,.column.main .checkout-container.md-checkout .order-review-section .fieldset:last-child .field {
+ padding-bottom:0;
+}
+.column.main .checkout-container.md-checkout #address-section#address-section .actions,.column.main .checkout-container.md-checkout .shipping-method-section#address-section .actions,.column.main .checkout-container.md-checkout .payment-method-section#address-section .actions,.column.main .checkout-container.md-checkout .order-review-section#address-section .actions {
+ clear:both;
+}
+.column.main .checkout-container.md-checkout #address-section#address-section .actions button,.column.main .checkout-container.md-checkout .shipping-method-section#address-section .actions button,.column.main .checkout-container.md-checkout .payment-method-section#address-section .actions button,.column.main .checkout-container.md-checkout .order-review-section#address-section .actions button {
+ width:49%;
+}
+.column.main .checkout-container.md-checkout #address-section#address-section .actions button+button,.column.main .checkout-container.md-checkout .shipping-method-section#address-section .actions button+button,.column.main .checkout-container.md-checkout .payment-method-section#address-section .actions button+button,.column.main .checkout-container.md-checkout .order-review-section#address-section .actions button+button {
+ float:right;
+}
+.column.main .checkout-container.md-checkout #address-section#address-section .registered-address,.column.main .checkout-container.md-checkout .shipping-method-section#address-section .registered-address,.column.main .checkout-container.md-checkout .payment-method-section#address-section .registered-address,.column.main .checkout-container.md-checkout .order-review-section#address-section .registered-address {
+ float:left;
+ width:100%;
+ padding:10px 0 15px 0;
+}
+.column.main .checkout-container.md-checkout #address-section#address-section .form.form-login .fieldset .field,.column.main .checkout-container.md-checkout .shipping-method-section#address-section .form.form-login .fieldset .field,.column.main .checkout-container.md-checkout .payment-method-section#address-section .form.form-login .fieldset .field,.column.main .checkout-container.md-checkout .order-review-section#address-section .form.form-login .fieldset .field {
+ width:100%;
+}
+.column.main .checkout-container.md-checkout #address-section#address-section .shipping-address-item,.column.main .checkout-container.md-checkout .shipping-method-section#address-section .shipping-address-item,.column.main .checkout-container.md-checkout .payment-method-section#address-section .shipping-address-item,.column.main .checkout-container.md-checkout .order-review-section#address-section .shipping-address-item {
+ border:1px solid #ccc;
+ margin:0 0 10px 0;
+ padding:10px;
+ position:relative;
+ width:100%;
+}
+.column.main .checkout-container.md-checkout #address-section#address-section .shipping-address-item.selected-item,.column.main .checkout-container.md-checkout .shipping-method-section#address-section .shipping-address-item.selected-item,.column.main .checkout-container.md-checkout .payment-method-section#address-section .shipping-address-item.selected-item,.column.main .checkout-container.md-checkout .order-review-section#address-section .shipping-address-item.selected-item {
+ border-color:#1979c3;
+ display:inline-block;
+ text-decoration:none;
+}
+.column.main .checkout-container.md-checkout #address-section#address-section .shipping-address-item.selected-item:before,.column.main .checkout-container.md-checkout .shipping-method-section#address-section .shipping-address-item.selected-item:before,.column.main .checkout-container.md-checkout .payment-method-section#address-section .shipping-address-item.selected-item:before,.column.main .checkout-container.md-checkout .order-review-section#address-section .shipping-address-item.selected-item:before {
+ width:28px;
+ height:28px;
+ background:#1979c3;
+ position:absolute;
+ right:0;
+ top:0;
+}
+.column.main .checkout-container.md-checkout #address-section#address-section .shipping-address-item.selected-item:before,.column.main .checkout-container.md-checkout .shipping-method-section#address-section .shipping-address-item.selected-item:before,.column.main .checkout-container.md-checkout .payment-method-section#address-section .shipping-address-item.selected-item:before,.column.main .checkout-container.md-checkout .order-review-section#address-section .shipping-address-item.selected-item:before {
+ -webkit-font-smoothing:antialiased;
+ -moz-osx-font-smoothing:grayscale;
+ font-size:16px;
+ line-height:28px;
+ color:#fff;
+ content:'\e610';
+ font-family:'md-osc-icon';
+ vertical-align:middle;
+ display:inline-block;
+ font-weight:normal;
+ overflow:hidden;
+ speak:none;
+ text-align:center;
+}
+.column.main .checkout-container.md-checkout #address-section.shipping-method-section,.column.main .checkout-container.md-checkout .shipping-method-section.shipping-method-section,.column.main .checkout-container.md-checkout .payment-method-section.shipping-method-section,.column.main .checkout-container.md-checkout .order-review-section.shipping-method-section {
+ margin-bottom:18px;
+}
+.column.main .checkout-container.md-checkout #address-section.shipping-method-section .sp-methods dt,.column.main .checkout-container.md-checkout .shipping-method-section.shipping-method-section .sp-methods dt,.column.main .checkout-container.md-checkout .payment-method-section.shipping-method-section .sp-methods dt,.column.main .checkout-container.md-checkout .order-review-section.shipping-method-section .sp-methods dt {
+ display:inline-block;
+ font-weight:bold;
+ text-transform:uppercase;
+ font-size:12px;
+ margin:0 0 5px 0;
+}
+.column.main .checkout-container.md-checkout #address-section.shipping-method-section .sp-methods ul,.column.main .checkout-container.md-checkout .shipping-method-section.shipping-method-section .sp-methods ul,.column.main .checkout-container.md-checkout .payment-method-section.shipping-method-section .sp-methods ul,.column.main .checkout-container.md-checkout .order-review-section.shipping-method-section .sp-methods ul {
+ margin:0;
+ padding:0
+}
+.column.main .checkout-container.md-checkout #address-section.shipping-method-section .table-checkout-shipping-method,.column.main .checkout-container.md-checkout .shipping-method-section.shipping-method-section .table-checkout-shipping-method,.column.main .checkout-container.md-checkout .payment-method-section.shipping-method-section .table-checkout-shipping-method,.column.main .checkout-container.md-checkout .order-review-section.shipping-method-section .table-checkout-shipping-method {
+ min-width:100%
+}
+.column.main .checkout-container.md-checkout #address-section.shipping-method-section .table-checkout-shipping-method tr th,
+.column.main .checkout-container.md-checkout .shipping-method-section.shipping-method-section .table-checkout-shipping-method tr th,
+.column.main .checkout-container.md-checkout .payment-method-section.shipping-method-section .table-checkout-shipping-method tr th,
+.column.main .checkout-container.md-checkout .order-review-section.shipping-method-section .table-checkout-shipping-method tr th {
+ padding-left:10px;
+ padding-right:10px;
+}
+.column.main .checkout-container.md-checkout #address-section.shipping-method-section .table-checkout-shipping-method tr td,
+.column.main .checkout-container.md-checkout .shipping-method-section.shipping-method-section .table-checkout-shipping-method tr td,
+.column.main .checkout-container.md-checkout .payment-method-section.shipping-method-section .table-checkout-shipping-method tr td,
+.column.main .checkout-container.md-checkout .order-review-section.shipping-method-section .table-checkout-shipping-method tr td {
+ background:#F7F7F7;
+ padding:8px 10px;
+ font-size:13px;
+ border-bottom:2px solid #fff;
+}
+.column.main .checkout-container.md-checkout #address-section.shipping-method-section .table-checkout-shipping-method tr td .price,.column.main .checkout-container.md-checkout .shipping-method-section.shipping-method-section .table-checkout-shipping-method tr td .price,.column.main .checkout-container.md-checkout .payment-method-section.shipping-method-section .table-checkout-shipping-method tr td .price,.column.main .checkout-container.md-checkout .order-review-section.shipping-method-section .table-checkout-shipping-method tr td .price {
+ font-weight:normal;
+}
+.column.main .checkout-container.md-checkout #address-section.shipping-method-section .table-checkout-shipping-method tr td:last-child,.column.main .checkout-container.md-checkout .shipping-method-section.shipping-method-section .table-checkout-shipping-method tr td:last-child,.column.main .checkout-container.md-checkout .payment-method-section.shipping-method-section .table-checkout-shipping-method tr td:last-child,.column.main .checkout-container.md-checkout .order-review-section.shipping-method-section .table-checkout-shipping-method tr td:last-child {
+ text-align:right;
+}
+.column.main .checkout-container.md-checkout #address-section.shipping-method-section .table-checkout-shipping-method tr:last-child td,.column.main .checkout-container.md-checkout .shipping-method-section.shipping-method-section .table-checkout-shipping-method tr:last-child td,.column.main .checkout-container.md-checkout .payment-method-section.shipping-method-section .table-checkout-shipping-method tr:last-child td,.column.main .checkout-container.md-checkout .order-review-section.shipping-method-section .table-checkout-shipping-method tr:last-child td {
+ border-bottom:0;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead th:first-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead th:first-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead th:first-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead th:first-child,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody th:first-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody th:first-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody th:first-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody th:first-child,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead td:first-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead td:first-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead td:first-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead td:first-child,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody td:first-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody td:first-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody td:first-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody td:first-child {
+ padding-left:0;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead th:first-child:before,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead th:first-child:before,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead th:first-child:before,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead th:first-child:before,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody th:first-child:before,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody th:first-child:before,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody th:first-child:before,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody th:first-child:before,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead td:first-child:before,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead td:first-child:before,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead td:first-child:before,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead td:first-child:before,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody td:first-child:before,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody td:first-child:before,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody td:first-child:before,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody td:first-child:before {
+ padding-left:10px;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead th:last-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead th:last-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead th:last-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead th:last-child,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody th:last-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody th:last-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody th:last-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody th:last-child,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead td:last-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead td:last-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead td:last-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead td:last-child,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody td:last-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody td:last-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody td:last-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody td:last-child {
+ padding-right:0;
+ text-align:right;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item {
+ background:#efefef;
+ width:20px;
+ height:20px;
+ float:right;
+ margin:10px 0 0 0;
+ text-align:center;
+ cursor:pointer;
+ line-height: 20px;
+ display:inline-block;
+ text-decoration:none;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item:before,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item:before,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item:before,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item:before,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item:before,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item:before,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item:before,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item:before,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item:before,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item:before,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item:before,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item:before,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item:before,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item:before,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item:before,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item:before {
+ -webkit-font-smoothing:antialiased;
+ -moz-osx-font-smoothing:grayscale;
+ font-size:11px;
+ line-height:inherit;
+ color:inherit;
+ content:'\e616';
+ font-family:'md-osc-icon';
+ vertical-align:middle;
+ display:inline-block;
+ font-weight:normal;
+ overflow:hidden;
+ speak:none;
+ text-align:center;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item:hover,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item:hover,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item:hover,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item:hover,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item:hover,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item:hover,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item:hover,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item:hover,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item:hover,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item:hover,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item:hover,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item:hover,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item:hover,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item:hover,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item:hover,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item:hover {
+ background:#1979c3;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead th:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody th:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead td:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item:hover:before,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody td:last-child .delete-item:hover:before {
+ color:#fff;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead th .subtotal span,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead th .subtotal span,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead th .subtotal span,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead th .subtotal span,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody th .subtotal span,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody th .subtotal span,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody th .subtotal span,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody th .subtotal span,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead td .subtotal span,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead td .subtotal span,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead td .subtotal span,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead td .subtotal span,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody td .subtotal span,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody td .subtotal span,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody td .subtotal span,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody td .subtotal span {
+ font-size:12px;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead th.qty-box,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead th.qty-box,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead th.qty-box,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead th.qty-box,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody th.qty-box,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody th.qty-box,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody th.qty-box,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody th.qty-box,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead td.qty-box,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead td.qty-box,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead td.qty-box,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead td.qty-box,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody td.qty-box,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody td.qty-box,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody td.qty-box,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody td.qty-box {
+ padding-left:7px;
+ padding-right:7px;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead th.qty-box label,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead th.qty-box label,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead th.qty-box label,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead th.qty-box label,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody th.qty-box label,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody th.qty-box label,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody th.qty-box label,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody th.qty-box label,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead td.qty-box label,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead td.qty-box label,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead td.qty-box label,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead td.qty-box label,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody td.qty-box label,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody td.qty-box label,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody td.qty-box label,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody td.qty-box label {
+ display:none;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item thead tr th,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item thead tr th,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item thead tr th,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item thead tr th {
+ display:inline-block;
+ font-weight:bold;
+ text-transform:uppercase;
+ font-size:12px;
+ margin:0 0 5px 0;
+ display:table-cell;
+ border-bottom:1px solid #ccc;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody tr td,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody tr td,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody tr td,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody tr td {
+ border-bottom:1px solid #ccc
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody tr td h5.product-name,
+.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody tr td h5.product-name,
+.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody tr td h5.product-name,
+.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody tr td h5.product-name {
+ font-weight:bold;
+ font-size: 12px;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody tr td .osc-product-image,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody tr td .osc-product-image,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody tr td .osc-product-image,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody tr td .osc-product-image {
+ float:left;
+ width:30%;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody tr td .osc-product-image img,
+.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody tr td .osc-product-image img,
+.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody tr td .osc-product-image img,
+.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody tr td .osc-product-image img {
+ max-width: 100%;
+ height: auto;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody tr td .osc-product-image img,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody tr td .osc-product-image img,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody tr td .osc-product-image img,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody tr td .osc-product-image img {
+ border:1px solid #ccc;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody tr td .product-name,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody tr td .product-name,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody tr td .product-name,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody tr td .product-name {
+ float:left;
+ width:70%;
+ padding-left:10px;
+ text-transform:uppercase;
+ font-weight:normal;
+ margin:3px 0 0 0;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options {
+ float:left;
+ font-size:13px;
+ padding-left:10px;
+ margin:10px 0 0 0;
+ font-weight:normal;
+ max-width:70%;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options ul,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options ul,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options ul,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options ul {
+ float:left;
+ width:100%;
+ padding:0;
+ margin:0;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .label,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .label,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .label,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .label,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .values,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .values,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .values,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .values {
+ margin:0;
+ padding:0;
+ font-weight:normal;
+ float:left;
+ width:50%;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .label.values,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .label.values,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .label.values,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .label.values,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .values.values,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .values.values,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .values.values,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody tr td .item-options .values.values {
+ font-style:italic;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-item tbody tr:last-child td,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-item tbody tr:last-child td,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-item tbody tr:last-child td,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-item tbody tr:last-child td {
+ border-bottom:0;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total thead th:first-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total thead th:first-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total thead th:first-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total thead th:first-child,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total tbody th:first-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total tbody th:first-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total tbody th:first-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total tbody th:first-child,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total thead td:first-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total thead td:first-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total thead td:first-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total thead td:first-child,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total tbody td:first-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total tbody td:first-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total tbody td:first-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total tbody td:first-child {
+ padding-left:0;
+ font-weight:normal;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total thead th:last-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total thead th:last-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total thead th:last-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total thead th:last-child,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total tbody th:last-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total tbody th:last-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total tbody th:last-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total tbody th:last-child,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total thead td:last-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total thead td:last-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total thead td:last-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total thead td:last-child,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total tbody td:last-child,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total tbody td:last-child,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total tbody td:last-child,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total tbody td:last-child {
+ padding-right:0;
+ text-align:right;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total thead .totals,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total thead .totals,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total thead .totals,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total thead .totals,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total tbody .totals,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total tbody .totals,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total tbody .totals,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total tbody .totals {
+ font-size:18px;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total thead .totals .price,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total thead .totals .price,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total thead .totals .price,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total thead .totals .price,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total tbody .totals .price,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total tbody .totals .price,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total tbody .totals .price,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total tbody .totals .price {
+ font-size:18px;
+ font-weight:bold;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total thead .totals.grand,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total thead .totals.grand,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total thead .totals.grand,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total thead .totals.grand,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total tbody .totals.grand,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total tbody .totals.grand,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total tbody .totals.grand,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total tbody .totals.grand {
+ text-transform:uppercase;
+ background:#efefef;
+ font-size:16px;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total thead .totals.grand th,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total thead .totals.grand th,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total thead .totals.grand th,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total thead .totals.grand th,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total tbody .totals.grand th,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total tbody .totals.grand th,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total tbody .totals.grand th,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total tbody .totals.grand th,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total thead .totals.grand td,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total thead .totals.grand td,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total thead .totals.grand td,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total thead .totals.grand td,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total tbody .totals.grand td,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total tbody .totals.grand td,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total tbody .totals.grand td,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total tbody .totals.grand td {
+ padding-left:10px;
+ padding-right:10px;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total thead .totals.discount td,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total thead .totals.discount td,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total thead .totals.discount td,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total thead .totals.discount td,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total tbody .totals.discount td,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total tbody .totals.discount td,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total tbody .totals.discount td,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total tbody .totals.discount td,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total thead .totals.discount th,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total thead .totals.discount th,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total thead .totals.discount th,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total thead .totals.discount th,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total tbody .totals.discount th,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total tbody .totals.discount th,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total tbody .totals.discount th,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total tbody .totals.discount th {
+ color:#45ac2a;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total thead tr:last-child td,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total thead tr:last-child td,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total thead tr:last-child td,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total thead tr:last-child td,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total tbody tr:last-child td,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total tbody tr:last-child td,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total tbody tr:last-child td,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total tbody tr:last-child td,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total thead tr:last-child th,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total thead tr:last-child th,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total thead tr:last-child th,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total thead tr:last-child th,.column.main .checkout-container.md-checkout #address-section.order-review-section .data-table.checkout-review-total tbody tr:last-child th,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .data-table.checkout-review-total tbody tr:last-child th,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .data-table.checkout-review-total tbody tr:last-child th,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .data-table.checkout-review-total tbody tr:last-child th {
+ border-top:0;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .onestepcheckout-place,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .onestepcheckout-place,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .onestepcheckout-place,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .onestepcheckout-place {
+ width:100%;
+ padding:15px 20px 13px 20px;
+ margin-top:10px;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .box-qty,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .box-qty,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .box-qty,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .box-qty {
+ position:relative;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .box-qty .qty,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .box-qty .qty,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .box-qty .qty,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .box-qty .qty {
+ height:32px;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .box-qty .control-qty,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .box-qty .control-qty,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .box-qty .control-qty,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .box-qty .control-qty {
+ display:inline-block;
+ float:left;
+ position:absolute;
+ width:18px;
+ right:1px;
+ top:1px;
+ text-align:center;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .box-qty .control-qty .osc-minus,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .box-qty .control-qty .osc-minus,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .box-qty .control-qty .osc-minus,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .box-qty .control-qty .osc-minus,.column.main .checkout-container.md-checkout #address-section.order-review-section .box-qty .control-qty .osc-add,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .box-qty .control-qty .osc-add,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .box-qty .control-qty .osc-add,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .box-qty .control-qty .osc-add {
+ cursor:pointer;
+ background:#efefef;
+ height:50%;
+ float:left;
+ width:100%;
+ line-height:14px;
+ display:inline-block;
+ text-decoration:none;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .box-qty .control-qty .osc-minus:before,
+.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .box-qty .control-qty .osc-minus:before,
+.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .box-qty .control-qty .osc-minus:before,
+.column.main .checkout-container.md-checkout .order-review-section.order-review-section .box-qty .control-qty .osc-minus:before,
+.column.main .checkout-container.md-checkout #address-section.order-review-section .box-qty .control-qty .osc-add:before,
+.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .box-qty .control-qty .osc-add:before,
+.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .box-qty .control-qty .osc-add:before,
+.column.main .checkout-container.md-checkout .order-review-section.order-review-section .box-qty .control-qty .osc-add:before {
+ -webkit-font-smoothing:antialiased;
+ -moz-osx-font-smoothing:grayscale;
+ font-size:10px;
+ line-height:inherit;
+ color:inherit;
+ content:'\e621';
+ font-family:'md-osc-icon';
+ vertical-align:middle;
+ display:inline-block;
+ font-weight:normal;
+ overflow:hidden;
+ speak:none;
+ text-align:center;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .box-qty .control-qty .osc-minus,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .box-qty .control-qty .osc-minus,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .box-qty .control-qty .osc-minus,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .box-qty .control-qty .osc-minus {
+ display:inline-block;
+ text-decoration:none;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .box-qty .control-qty .osc-minus:before,
+.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .box-qty .control-qty .osc-minus:before,
+.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .box-qty .control-qty .osc-minus:before,
+.column.main .checkout-container.md-checkout .order-review-section.order-review-section .box-qty .control-qty .osc-minus:before {
+ -webkit-font-smoothing:antialiased;
+ -moz-osx-font-smoothing:grayscale;
+ font-size:10px;
+ line-height:inherit;
+ color:inherit;
+ content:'\e622';
+ font-family:'md-osc-icon';
+ vertical-align:middle;
+ display:inline-block;
+ font-weight:normal;
+ overflow:hidden;
+ speak:none;
+ text-align:center;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .onestepcheckout-discount,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .onestepcheckout-discount,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .onestepcheckout-discount,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .onestepcheckout-discount {
+ margin:20px 0 20px 0;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .onestepcheckout-discount .discount-form,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .onestepcheckout-discount .discount-form,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .onestepcheckout-discount .discount-form,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .onestepcheckout-discount .discount-form {
+ position:relative;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .onestepcheckout-discount .discount-form input.input-text,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .onestepcheckout-discount .discount-form input.input-text,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .onestepcheckout-discount .discount-form input.input-text,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .onestepcheckout-discount .discount-form input.input-text {
+ height:35px;
+ padding-right:100px;
+ box-shadow:none;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .onestepcheckout-discount .discount-form .actions-button,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .onestepcheckout-discount .discount-form .actions-button,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .onestepcheckout-discount .discount-form .actions-button,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .onestepcheckout-discount .discount-form .actions-button {
+ position:absolute;
+ top:-1px;
+ right:0px;
+}
+.column.main .checkout-container.md-checkout #address-section.order-review-section .order-comments,.column.main .checkout-container.md-checkout .shipping-method-section.order-review-section .order-comments,.column.main .checkout-container.md-checkout .payment-method-section.order-review-section .order-comments,.column.main .checkout-container.md-checkout .order-review-section.order-review-section .order-comments {
+ margin:20px 0 0 0;
+}
+.column.main .checkout-container.md-checkout #address-section .checkbox-group label,.column.main .checkout-container.md-checkout .shipping-method-section .checkbox-group label,.column.main .checkout-container.md-checkout .payment-method-section .checkbox-group label,.column.main .checkout-container.md-checkout .order-review-section .checkbox-group label {
+ font-size:11px;
+ font-weight:bold;
+ text-transform:uppercase;
+}
+.column.main .checkout-container.md-checkout .step-title.step_1,.column.main .checkout-container.md-checkout .step-title.step_2,.column.main .checkout-container.md-checkout .step-title.step_3,.column.main .checkout-container.md-checkout .step-title.step_4 {
+ position:relative;
+ border-bottom:1px solid #ccc;
+ text-transform:uppercase;
+ padding:5px 0 14px 40px;
+ margin:0 0 15px 0;
+ font-weight:700;
+ line-height:1.1;
+ font-size:16px;
+ width:100%;
+}
+.column.main .checkout-container.md-checkout .step-title.step_1:before,.column.main .checkout-container.md-checkout .step-title.step_2:before,.column.main .checkout-container.md-checkout .step-title.step_3:before,.column.main .checkout-container.md-checkout .step-title.step_4:before {
+ content:"";
+ background:#1979c3;
+ color:#fff;
+ position:absolute;
+ top:0;
+ left:0;
+ height:28px;
+ width:28px;
+ padding:5px 0 0 0;
+ text-align:center;
+ letter-spacing:0;
+}
+.column.main .checkout-container.md-checkout .step-title.step_1.step_1:before,.column.main .checkout-container.md-checkout .step-title.step_2.step_1:before,.column.main .checkout-container.md-checkout .step-title.step_3.step_1:before,.column.main .checkout-container.md-checkout .step-title.step_4.step_1:before {
+ content:"1";
+}
+.column.main .checkout-container.md-checkout .step-title.step_1.step_2:before,.column.main .checkout-container.md-checkout .step-title.step_2.step_2:before,.column.main .checkout-container.md-checkout .step-title.step_3.step_2:before,.column.main .checkout-container.md-checkout .step-title.step_4.step_2:before {
+ content:"2";
+}
+.column.main .checkout-container.md-checkout .step-title.step_1.step_3:before,.column.main .checkout-container.md-checkout .step-title.step_2.step_3:before,.column.main .checkout-container.md-checkout .step-title.step_3.step_3:before,.column.main .checkout-container.md-checkout .step-title.step_4.step_3:before {
+ content:"3";
+}
+.column.main .checkout-container.md-checkout .step-title.step_1.step_4:before,.column.main .checkout-container.md-checkout .step-title.step_2.step_4:before,.column.main .checkout-container.md-checkout .step-title.step_3.step_4:before,.column.main .checkout-container.md-checkout .step-title.step_4.step_4:before {
+ content:"4";
+}
+.column.main .checkout-container.md-checkout .checkout-payment-method .checkout-billing-address .fieldset,.column.main .checkout-container.md-checkout .checkout-payment-method .checkout-billing-address .billing-address-same-as-shipping-block.field.choice {
+ width:100%;
+}
+.column.main .checkout-container.md-checkout .checkout-payment-method .checkout-billing-address .fieldset.fieldset .field.field-select-billing,.column.main .checkout-container.md-checkout .checkout-payment-method .checkout-billing-address .billing-address-same-as-shipping-block.field.choice.fieldset .field.field-select-billing {
+ width:100%;
+}
+.column.main .checkout-container.md-checkout .checkout-payment-method .checkout-billing-address .primary {
+ clear:both;
+ width:100%;
+}
+.column.main .checkout-container.md-checkout .checkout-payment-method .checkout-billing-address .primary button {
+ width:49%;
+ float:left;
+ margin:0;
+ line-height:18px;
+}
+.column.main .checkout-container.md-checkout .checkout-payment-method .checkout-billing-address .primary button+button {
+ float:right;
+}
+.column.main .checkout-container.md-checkout .checkout-payment-method .checkout-billing-address .primary button:hover {
+ text-decoration:none;
+}
+.column.main .checkout-container.md-checkout .opc-payment .actions-toolbar .primary.checkout {
+ display:none;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method {
+ float:left;
+ width:100%;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method .payment-method-title.field {
+ width:100%;
+ background:#f7f7f7;
+ padding:6px 5px 4px 7px;
+ border:0;
+ margin:0 0 2px 0;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-methods .payment-group {
+ clear:both;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-methods .payment-group+.payment-group .step-title.step_3 {
+ padding:20px 0 14px 0px;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-methods .payment-group+.payment-group .step-title.step_3:before {
+ display:none;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-title {
+ float:left;
+ width:100%;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-title input.radio+label:before {
+ top:50%;
+ margin-top:-6px;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-title input.radio+label:after {
+ top:50%;
+ margin-top:-5px;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content {
+ float:left;
+ width:100%;
+ padding:0;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .checkout-billing-address {
+ margin:0;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .checkout-billing-address .billing-address-details {
+ padding:0 0 0 0;
+ clear:both;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .checkout-billing-address .billing-address-form {
+ float:left;
+ clear:both;
+ max-width:100%;
+ margin-top:10px;
+ width:100%;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .checkout-billing-address .billing-address-form .field:last-child:last-child {
+ margin-bottom:20px;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .checkout-billing-address .primary {
+ clear:both;
+ width:100%;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .checkout-billing-address .primary button {
+ width:49%;
+ float:left;
+ margin:0;
+ min-width: 0;
+ line-height:18px;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .checkout-billing-address .primary button+button {
+ float:right;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .checkout-billing-address .primary button:hover {
+ text-decoration:none;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .checkout-billing-address .actions-toolbar {
+ clear:both;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .field.field-select-billing,.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .field.billing-address-same-as-shipping-block {
+ width:100%;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .field.field-select-billing.field.billing-address-same-as-shipping-block,.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .field.billing-address-same-as-shipping-block.field.billing-address-same-as-shipping-block {
+ margin-top:10px;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .field.field-select-billing.field.billing-address-same-as-shipping-block label,.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .field.billing-address-same-as-shipping-block.field.billing-address-same-as-shipping-block label {
+ display:inline-block;
+ font-weight:bold;
+ text-transform:uppercase;
+ font-size:11px;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .field.field-select-billing.field.field-select-billing,.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .field.billing-address-same-as-shipping-block.field.field-select-billing {
+ margin-bottom:10px;
+ max-width:100%;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .form .ccard .field {
+ width:100%;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .form .ccard .field .month,.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .form .ccard .field .year {
+ float:left;
+ margin-right:5px;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .form .credit-card-types {
+ margin-bottom:0;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .form .credit-card-types li.item {
+ float:left;
+}
+.column.main .checkout-container.md-checkout .opc-payment .payment-method-content .form-purchase-order {
+ padding:15px 0 0px 0;
+}
+.column.main .checkout-container.md-checkout .md-osc.virtualCheckout #address-section {
+ display:none;
+}
+.column.main .checkout-container.md-checkout .md-osc.virtualCheckout .payment-method-box {
+ width:49%;
+ margin-left:0;
+}
+.column.main .checkout-container.md-checkout .md-osc.virtualCheckout .payment-method-box .opc-payment .step-title.step_3:before {
+ content:"1";
+}
+.column.main .checkout-container.md-checkout .md-osc.virtualCheckout .order-review-section {
+ width:49%;
+ margin-left:0;
+ float:right;
+}
+.column.main .checkout-container.md-checkout .md-osc.virtualCheckout .order-review-section .step-title.step_4:before {
+ content:"2";
+}
+div.loading-ajax,div.loading-ajax-login{height:50px;text-align:center;background:url(../../../../../../frontend/Magento/blank/en_US/Magedelight_OneStepCheckout/images/onestepcheckout/material/ajax-loader.gif) center center no-repeat;float:left;width:100%}
+#control_overlay_payment, #control_overlay_shipping, #control_overlay_review {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ z-index: 9998;
+ opacity: 0.1;
+ background-color: #636363;
+ filter: alpha(opacity=10);
+ display: none;
+}
+body.oscHideLoader .loading-mask{
+ display:none !important;
+}
+body.oscHideLoader .one-step-checkout .loading-mask{
+ display:none !important;
+}
+body.oscHideLoader #checkout-loader .loader {
+ display: none !important;
+}
+body.oscHideLoader.ajax-loadiing #checkout-loader .loader {
+ display: none !important;
+}
+.payment-method-section, .shipping-method-section, .order-review-section {
+ position: relative;
+}
+.show { display: block; !important;}
+.hide { display: none; !important;}
+
+.ajax-loader1{background:rgba(255,255,255,0.8) url(../../../../../../frontend/Magento/blank/en_US/Magedelight_OneStepCheckout/images/onestepcheckout/material/loading-1.gif) center center no-repeat;z-index:999;clear:both;margin:0 ;position:absolute;top:0;right:0;left:0;bottom:0;}
+.ajax-loader2{background:rgba(255,255,255,0.8) url(../../../../../../frontend/Magento/blank/en_US/Magedelight_OneStepCheckout/images/onestepcheckout/material/loading-1.gif) center center no-repeat;z-index:999;clear:both;margin:0;top:0;right:0;left:0;bottom:0;}
+.ajax-loader3{background:rgba(255,255,255,0.8) url(../../../../../../frontend/Magento/blank/en_US/Magedelight_OneStepCheckout/images/onestepcheckout/material/loading-1.gif) center center no-repeat;z-index:999;clear:both;margin:0;position:absolute;top:0;right:0;left:0;bottom:0;}
+#loading-mask-onestepcheckout{position:absolute;color:#d85909;font-size:1.1em;font-weight:700;text-align:center;opacity:.8;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=80);z-index:500}
+#loading-mask-onestepcheckout .loader-onestepcheckout{position:fixed;top:45%;left:50%;width:120px;margin-left:-60px;padding:15px 60px;background:#fff4e9;border:2px solid #f1af73;color:#d85909;font-weight:700;text-align:center;z-index:1000}
+
+.column.main .checkout-container.md-checkout .checkout-agreements.fieldset{margin: 0;}
+.column.main .checkout-container.md-checkout .checkout-agreements.checkout-agreement{margin: 10px 0 0;}
+.column.main .checkout-container.md-checkout .checkout-agreements.checkout-agreement .action-show{ background-color: transparent; padding: 0; font-weight: bold; font-size: 11px; color:#333; box-shadow: none;}
+
+@media only screen and (max-width:768px){
+	.column.main .checkout-container.md-checkout .payment-methods{
+        margin:0;
+    }
+    .column.main .checkout-container.md-checkout .order-review-section,.column.main .checkout-container.md-checkout .payment-method-box,.column.main .checkout-container.md-checkout #address-section{
+        width:100%;
+        margin:15px 0 0 0;
+    }
+    .column.main .checkout-container.md-checkout #address-section#address-section .shipping-address-item label .customer-name{
+        display:inherit;
+    }
+    .column.main .checkout-container.md-checkout .md-osc.virtualCheckout .payment-method-box{
+        width:100%;
+    }
+    .column.main .checkout-container.md-checkout .md-osc.virtualCheckout .order-review-section{
+        width:100%;
+    }
+}
+@media only screen and (max-width:479px){
+	.column.main .checkout-container.md-checkout #address-section .fieldset .field,.column.main .checkout-container.md-checkout .shipping-method-section .fieldset .field,.column.main .checkout-container.md-checkout .payment-method-section .fieldset .field,.column.main .checkout-container.md-checkout .order-review-section .fieldset .field{
+        width:100%;
+    }
+    .column.main .checkout-container.md-checkout .authentication-wrapper{
+        position:static;
+        width:100%;
+        max-width:100%;
+    }
+    .column.main .checkout-container.md-checkout .authentication-wrapper .action-auth-toggle{
+        width:100%;
+    }
+    .column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item thead tr th{
+        display:none;
+    }
+    .column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr{
+        border-bottom:1px solid #ccc;
+    }
+    .column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td.qty-box,.column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td{
+        width:100%;
+        float:left;
+        text-align:left !important;
+        padding-left:0;
+        padding-right:0;
+        border:0 !important;
+    }
+    .column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td.qty-box:before,.column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td:before{
+        padding:0 0 10px 0;
+        text-transform:uppercase;
+        content:attr(data-th) ': ';
+        display:inline-block;
+        color:#111;
+        font-weight:700;
+    }
+    .column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td.qty-box.qty-box,.column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td.qty-box,.column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td.qty-box.last,.column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td.last{
+        width:48%;
+    }
+    .column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td.qty-box.last,.column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td.last{
+        float:right;
+        text-align:right !important;
+    }
+    .column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td.qty-box.last .price,.column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td.last .price{
+        font-size:18px;
+        font-weight:normal;
+    }
+    .column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td.qty-box.qty-box .box-qty,.column.main .checkout-container.md-checkout .md-osc .order-review-section .data-table.checkout-review-item tbody tr td.qty-box .box-qty{
+        max-width:50%;
+    }
+}

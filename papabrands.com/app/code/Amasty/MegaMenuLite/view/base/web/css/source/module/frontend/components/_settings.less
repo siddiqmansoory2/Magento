@@ -1,0 +1,82 @@
+//
+//  Amasty Setting Component
+//  ______________________________________________
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .ammenu-nav-sections.-mobile {
+        .ammenu-settings-list {
+            padding: @ammenu__indent__xl 0;
+        }
+
+        .ammenu-items.-account-links {
+            & {
+                margin: @ammenu__indent__l 0;
+            }
+
+            .ammenu-counter {
+                & {
+                    padding: 0 0 0 5px;
+                    text-transform: capitalize;
+                    font-size: .8em;
+                    opacity: .5;
+                }
+
+                &:before {
+                    content: '(';
+                }
+
+                &:after {
+                    content: ')';
+                }
+            }
+        }
+    }
+
+    .ammenu-nav-sections.-mobile .ammenu-settings-block {
+        & {
+            padding: @ammenu__indent__l 0;
+            border-bottom: 1px solid @ammenu__color__grey__border;
+        }
+
+        .ammenu-toggle {
+            transform: rotate(180deg);
+        }
+
+        .ammenu-toggle.-active {
+            transform: rotate(0);
+        }
+
+        .ammenu-text {
+            padding: 5px 0;
+            max-width: 70%;
+        }
+
+        .ammenu-title {
+            margin: 0;
+            padding: 0 @ammenu__indent__xl 0;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+
+        .ammenu-items.-dropdown {
+            & {
+                padding: @ammenu__indent 0 0 @ammenu__indent;
+            }
+
+            .ammenu-link {
+                justify-content: space-between;
+                height: 30px;
+            }
+        }
+
+        .ammenu-code {
+            margin: 0 0 0 @ammenu__indent;
+            text-transform: uppercase;
+        }
+    }
+}

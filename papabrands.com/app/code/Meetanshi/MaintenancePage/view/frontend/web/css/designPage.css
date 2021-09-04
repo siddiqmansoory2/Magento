@@ -1,0 +1,541 @@
+#overlayer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+#bg {
+    display: none
+}
+
+#style-1.main-content, #column1.main-content {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    height: 100%;
+    position: relative;
+    font-family: "Open Sans";
+    z-index: 1;
+}
+
+#style-1 .main-logo img {
+    width: 100px;
+}
+#style-1 .timer-title, #style-1 .newslatter-title, #style-1 .footer-title, #style-1 .top-header-title{padding-bottom: 15px;}
+#style-1 .timer-title, #style-1 .newslatter-title, #style-1 .footer-title, .sub-content, #style-3 .footer-title {
+    font-size: 18px;
+}
+
+#style-1 .maintenance-content {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#style-1 .main-logo, #style-1 .timer, #style-1 .newslatter {
+    padding-bottom: 35px
+}
+#style-1 .top-header{padding-bottom: 60px}
+#style-1 .main-logo {
+    padding-top: 35px;
+}
+
+#style-1 .top-header .top-header-title h1 {
+    margin: 0;
+    font-weight: bold
+}
+
+#style-1 .timer-content h3 {
+    display: none
+}
+
+#style-1 .timer-content #timer, #style-1 .social-icon {
+    padding: 0;
+}
+
+#style-1 .timer-content .counter li {
+    display: inline-grid;
+    text-align: center;
+    width: 20%;
+    padding-bottom: 5px;
+}
+
+#style-1 .timer-content .counter li .time {
+    font-size: 36px;
+    margin: 0 auto;
+}
+
+#style-1 .timer-content .counter li .label {
+    font-size: 16px;
+}
+
+#style-1 .line {
+    margin-bottom: 8px;
+    margin-top: 8px;
+    border: 1px solid;
+    width: 20px;
+}
+
+#style-1 .block.newsletter {
+    width: 80%;
+    margin: 5px auto;
+}
+
+#style-1 .footer-title {
+    padding-top: 100px
+}
+
+#style-1 .footer-social-icon .social-icon li {
+    display: inline-block;
+    color: #ffffff;
+    border: 1px solid;
+    width: 36px;
+    padding: 7px;
+    border-radius: 50px;
+    margin: 5px;
+}
+
+#style-1 .footer-social-icon .social-icon li i {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#style-1 .footer-note, #style-1 .footer-note a {
+    color: #ffffff;
+    font-size: 12px;
+    padding-top: 30px;
+}
+
+#style-1 .action.primary {
+    background: transparent;
+    border: 1px solid #ffffff;
+}
+
+input[type="email"] {
+    border: 1px solid #ffffff;
+}
+
+#style-2.main-content {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    font-family: "Open Sans";
+}
+
+#style-2 .main-logo img {
+    width: 100px;
+}
+
+#style-2 .timer-title, #style-2 .newslatter-title, #style-2 .footer-title, #style-2 .sub-content {
+    font-size: 18px;
+}
+
+#style-2 .timer-title, #style-2 .newslatter-title, #style-2 .footer-title {
+    text-align: left;
+    padding-left: 35px;
+    padding-bottom: 10px;
+}
+
+#style-2 .maintenance-content {
+    color: #ffffff;
+    margin: 15% auto
+}
+
+#style-2 .left {
+    width: 49%;
+    float: left;
+}
+
+#style-2 .right {
+    width: 49%;
+    float: right;
+    border-left: 1px solid
+}
+
+#style-2 .main-logo, #style-2 .top-header, #style-2 .timer, #style-2 .newslatter {
+    margin-bottom: 35px
+}
+
+#style-2 .top-header .top-header-title h1 {
+    font-weight: bold
+}
+
+#style-2 .timer-content h3 {
+    display: none
+}
+
+#style-2 .timer-content #timer, #style-2 .social-icon {
+    padding: 0;
+}
+
+#style-2 .timer-content .counter li {
+    display: inline-grid;
+    text-align: center;
+    width: 15%;
+    padding-bottom: 5px;
+    margin: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+#style-2 .timer-content .counter li .time {
+    font-size: 36px;
+    margin: 0 auto;
+}
+
+#style-2 .timer-content .counter li .label {
+    font-size: 16px;
+}
+
+#style-2 .line {
+    margin-bottom: 8px;
+    margin-top: 8px;
+    border: 1px solid;
+    width: 20px;
+}
+
+#style-2 .newslatter-content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#style-2 .block.newsletter {
+    width: 75%;
+    margin: 5px auto;
+}
+
+#style-2 .social-icon {
+    text-align: left;
+    padding-left: 90px;
+}
+
+#style-2 .footer-social-icon .social-icon li {
+    display: inline-block;
+    color: #ffffff;
+    border: 1px solid;
+    width: 36px;
+    padding: 7px;
+    border-radius: 50px;
+    margin: 5px;
+    text-align: center;
+}
+
+#style-2 .footer-social-icon .social-icon li i {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#style-2 .footer-note {
+    color: #ffffff;
+    font-size: 12px;
+    clear: both;
+    text-align: center;
+    width: 100%;
+    padding-top: 35px;
+}
+
+#style-3 .footer-note {
+    color: #ffffff;
+    font-size: 12px;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+#style-2 .footer-note a {
+    color: #ffffff;
+}
+
+#style-2 .action.primary {
+    background: transparent;
+    border: 1px solid #ffffff;
+}
+
+#style-3.main-content {
+    text-align: center;
+    position: relative;
+    font-family: "Open Sans";
+    z-index: 1;
+}
+
+#style-3 .main-logo img {
+    width: 100px;
+    margin-top: 20px;
+}
+
+#style-3 .timer-title, #style-3 .newslatter-title, #style-3 .sub-content {
+    font-size: 18px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+#style-3 .maintenance-content {
+    width: 70%;
+    margin: 0 auto;
+    color: #ffffff;
+}
+
+#style-3 .top-header {
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#style-3 .top-header .top-header-title h1 {
+    margin: 0;
+    font-weight: bold
+}
+
+#style-3 .timer-content h3 {
+    display: none
+}
+
+#style-3 .timer-content #timer, #style-3 .social-icon {
+    padding: 0
+}
+
+#style-3 .timer-content .counter li {
+    display: inline-grid;
+    text-align: center;
+    width: 120px;
+    padding-bottom: 5px;
+    border: 5px solid #FFA246;
+    border-radius: 50%;
+    margin: 10px;
+    max-width: 120px;
+    min-width: 120px;
+}
+
+#style-3 .timer-content .counter li .time {
+    font-size: 36px;
+    margin: 0 auto;
+}
+
+#style-3 .timer-content .counter li .label {
+    font-size: 16px;
+}
+
+#style-3 .line {
+    margin-bottom: 8px;
+    margin-top: 8px;
+    border: 1px solid;
+    width: 20px;
+}
+
+#style-3 .block.newsletter {
+    width: 60%;
+    margin: 0 auto;
+}
+#style-3 .sub-content{width: 60%;margin: 0 auto;}
+#style-2 .sub-content, #style-1 .sub-content{width: 80%;margin: 0 auto;}
+#style-3 .footer-title, #style-3 .footer-note {
+    padding-top: 80px;
+    color: #ffffff;
+}
+#style-3 .footer-title{padding-bottom: 20px;}
+#style-3 .footer-social-icon .social-icon li {
+    display: inline-block;
+    color: #ffffff;
+    border: 1px solid;
+    width: 36px;
+    padding: 7px;
+    border-radius: 50px;
+    margin: 5px;
+}
+
+#style-3 .footer-social-icon .social-icon li i {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#style-3 .footer-note, #style-3 .footer-note a {
+    color: #ffffff;
+    font-size: 12px
+}
+
+#style-3 .action.primary {
+    background: transparent;
+    border: 1px solid #ffffff;
+}
+
+div#newsletter-error {
+    background: #fff;
+    padding: 4px 0;
+}
+
+#style-3 .block.newsletter .field .control:before, #style-2 .block.newsletter .field .control:before, #style-1 .block.newsletter .field .control:before {
+    display: none;
+}
+
+#style-3 .block.newsletter input, #style-1 .block.newsletter input, #style-2 .block.newsletter input {
+    padding-left: 10px;
+}
+
+.footer-social-icon .social-icon li i.fa-google-plus:hover {
+    color: #f34a38 !important;
+}
+
+.footer-social-icon .social-icon li i.fa-linkedin:hover {
+    color: #f34a38 !important;
+}
+
+.footer-social-icon .social-icon li i.fa-twitter:hover {
+    color: #03a9f4 !important;
+}
+
+.footer-social-icon .social-icon li i.fa-youtube:hover {
+    color: #090b08 !important;
+}
+
+.footer-social-icon .social-icon li i.fa-instagram:hover {
+    color: #090b08 !important;
+}
+
+.footer-social-icon .social-icon li i.fa-pinterest:hover {
+    color: #f34a38 !important;
+}
+
+.footer-social-icon .social-icon li {
+    font-size: 24px;
+}
+
+@media only screen and (min-width: 980px) {
+    .top-header-title h1 {
+        font-size: 60px
+    }
+
+    #style-1 .newslatter-content {
+        max-width: 80%;
+        margin: 0 auto
+    }
+
+    #style-2 .footer-note {
+        bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 980px) {
+
+    #style-3 .maintenance-content {
+        left: 0;
+        transform: translate(0%, 0%);
+        color: #ffffff;
+        width: 100%;
+    }
+
+    #style-3 .countdown {
+        flex-wrap: wrap;
+    }
+
+    #style-3 .footer-note {
+        color: #ffffff;
+        font-size: 12px;
+        bottom: 0;
+        position: relative;
+        text-align: center;
+        width: 100%;
+    }
+
+    #style-2 .timer-content .counter li {
+        min-width: 60px;
+        font-size: 15px;
+        margin: 3px;
+    }
+
+    #style-2 #timer.style1 li span.label {
+        font-size: 12px;
+    }
+    .top-header-title h1{font-size: 36px;}
+}
+
+@media only screen and (max-width: 992px) {
+    #column1 .maintenance-content {
+        width: 80%;
+    }
+
+    #style-2 .timer-content .counter li {
+        padding: 5px;
+        margin: 5px
+    }
+
+    #style-2 .timer-content .counter li .time {
+        font-size: 30px
+    }
+
+    #style-2 .timer-content .counter li .label {
+        font-size: 12px
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    #style-1 .maintenance-content {
+        width: 80%;
+    }
+
+    #style-2 .left, #column2 .left {
+        width: 100%;
+        float: none;
+    }
+
+    #style-2 .right, #column2 .right {
+        width: 100%;
+        float: none;
+        border-left: 0 solid;
+    }
+
+    #style-2 .timer-title, #style-2 .newslatter-title, #style-2 .footer-title, #style-2 .social-icon {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    #style-2 .newslatter-content {
+        width: 100%
+    }
+
+    #style-2 .footer-note {
+        position: absolute;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    #style-1 .maintenance-content {
+        width: 80%;
+    }
+
+}
+
+@media only screen and (max-width: 490px) {
+
+    #style-1 .timer-content li .time {
+        font-size: 30px;
+    }
+
+    #style-1 .timer-content .counter li .label {
+        font-size: 12px
+    }
+
+}
+
+@media only screen and (max-width: 380px) {
+    #style-2 .timer-content #timer {
+        width: 60%;
+        margin: 0 auto
+    }
+    .top-header-title h1 {
+        font-size: 36px;
+    }
+    .sub-content{width: 100%;margin: 0 auto;}
+
+}

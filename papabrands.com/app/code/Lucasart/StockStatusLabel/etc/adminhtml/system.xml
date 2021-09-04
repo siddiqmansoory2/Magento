@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the StockStatusLabel package.
+ *
+ * (c) Luca Sculco <sculco.luca@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="cataloginventory">
+            <group id="stock_status_label" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Stock Status Label</label>
+                <!--
+                <field id="min_sale_qty" translate="label" sortOrder="6" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Minimum Qty Allowed in Shopping Cart</label>
+                    <frontend_model>Magento\CatalogInventory\Block\Adminhtml\Form\Field\Minsaleqty</frontend_model>
+                    <backend_model>Magento\CatalogInventory\Model\System\Config\Backend\Minsaleqty</backend_model>
+                </field>
+                -->
+                <field id="enable_stock_status_label" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enable stock status label module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enable_critical_label" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enable critical threshold</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable critical stock status label.</comment>
+                    <depends>
+                        <field id="enable_stock_status_label">1</field>
+                    </depends>
+                </field>
+                <field id="critical_label_qty" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Critical stock qty</label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <depends>
+                        <field id="enable_stock_status_label">1</field>
+                        <field id="enable_critical_label">1</field>
+                    </depends>
+                </field>
+                <field id="critical_label_text" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Critical label text</label>
+                    <depends>
+                        <field id="enable_stock_status_label">1</field>
+                        <field id="enable_critical_label">1</field>
+                    </depends>
+                </field>
+                <field id="critical_label_color" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Critical label color</label>
+                    <comment>Use HEX format e.g. ff0000</comment>
+                    <depends>
+                        <field id="enable_stock_status_label">1</field>
+                        <field id="enable_critical_label">1</field>
+                    </depends>
+                </field>
+                <field id="enable_warning_label" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enable warning threshold</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable warning stock status label.</comment>
+                    <depends>
+                        <field id="enable_stock_status_label">1</field>
+                    </depends>
+                </field>
+                <field id="warning_label_qty" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Warning stock qty</label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <depends>
+                        <field id="enable_stock_status_label">1</field>
+                        <field id="enable_warning_label">1</field>
+                    </depends>
+                </field>
+                <field id="warning_label_text" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Warning label text</label>
+                    <depends>
+                        <field id="enable_stock_status_label">1</field>
+                        <field id="enable_warning_label">1</field>
+                    </depends>
+                </field>
+                <field id="warning_label_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Critical label color</label>
+                    <comment>Use HEX format e.g. ff0000</comment>
+                    <depends>
+                        <field id="enable_stock_status_label">1</field>
+                        <field id="enable_warning_label">1</field>
+                    </depends>
+                </field>
+                <field id="enable_secure_label" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enable secure threshold</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable secure stock status label.</comment>
+                    <depends>
+                        <field id="enable_stock_status_label">1</field>
+                    </depends>
+                </field>
+                <field id="secure_label_qty" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Secure stock qty</label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <depends>
+                        <field id="enable_stock_status_label">1</field>
+                        <field id="enable_secure_label">1</field>
+                    </depends>
+                </field>
+                <field id="secure_label_text" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Secure label text</label>
+                    <depends>
+                        <field id="enable_stock_status_label">1</field>
+                        <field id="enable_secure_label">1</field>
+                    </depends>
+                </field>
+                <field id="secure_label_color" translate="label" type="text" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Secure label color</label>
+                    <comment>Use HEX format e.g. ff0000</comment>
+                    <depends>
+                        <field id="enable_stock_status_label">1</field>
+                        <field id="enable_secure_label">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
